@@ -292,6 +292,9 @@ echo.^(^i^) Mounting iso file...
 powershell.exe "Mount-DiskImage ""%~dp0%officeSetupISO%"""
 timeout /nobreak /t 5 >nul
 
+echo.^(^i^) Running setup...
+for /f "skip=3" %%i in ('powershell.exe "Get-DiskImage ""%~dp0%officeSetupISO%"" | Get-Volume | Select-Object {$_.DriveLetter}"') do start /wait %%i:\O16Setup.exe
+
 choice /c yn /n /m "(>) Setup is completed? (y/n) > "
 if "%errorLevel%" == "2" goto :officeSetup
 set errorLevel=
