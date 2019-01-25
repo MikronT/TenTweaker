@@ -1,9 +1,10 @@
-# TenTweaker
-Small console tweaker for Windows 10
+# Ten Tweaker
+Small console tweaker for Windows 10 with some useful options
 
 Main features:
-- add "This PC" shortcut on the desktop
-- control suggestions
-- restore SPPSvc
 - control Windows Update Center
-- setup Office 2016
+- control suggestions and auto completion
+- setup Microsoft Office Professional Plus 2016
+
+<!-- - add "This PC" shortcut on the desktop -->
+<!-- - restore SPPSvc -->
