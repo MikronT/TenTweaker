@@ -1,8 +1,10 @@
 @echo off
 chcp 65001>nul
 
-net session>nul 2>nul
-if %errorLevel% GEQ 1 goto :startAsAdmin
+if "%1" NEQ "--reboot" (
+  net session>nul 2>nul
+  if %errorLevel% GEQ 1 goto :startAsAdmin
+)
 
 %~d0
 cd "%~dp0"
@@ -16,11 +18,17 @@ echo.^(^i^) Ten Tweaker is running...
 echo.
 timeout /nobreak /t 1 >nul
 
-echo.^(^!^) The author is not responsible for any possible damage to the computer^!
-echo.^(^?^) Are you sure^? ^(Enter or close^)
-pause>nul
-
-goto :mainMenu
+if "%1" == "--reboot" (
+  if "%2" == "sppsvcActivator" (
+    for /l %%i in (10,-1,1) do sc start sppsvc
+    for /l %%i in (4,-1,1) do reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v TenTweaker_SPPSvcActivator /f
+  )
+) else (
+  echo.^(^!^) The author is not responsible for any possible damage to the computer^!
+  echo.^(^?^) Are you sure^? ^(Enter or close^)
+  pause>nul
+  goto :mainMenu
+)
 
 
 
@@ -63,10 +71,11 @@ echo.    ^(1^) Add or remove desktop objects ^(This PC, Recycle Bin etc^)
 echo.    ^(2^) Control suggestions and auto completion
 echo.    ^(3^) Control Windows Update
 echo.    ^(4^) Setup Microsoft Office Professional Plus 2016
+echo.    ^(5^) Restore Software Protection Platform Service ^(SPPSvc^)
 echo.
 echo.
 echo.
-choice /c 1234 /n /m "> "
+choice /c 12345 /n /m "> "
 set command=%errorLevel%
 
 
@@ -74,6 +83,7 @@ if "%command%" == "1" call :desktopObjectsMenu
 if "%command%" == "2" call :suggestionsControlMenu
 if "%command%" == "3" call :windowsUpdateControlMenu
 if "%command%" == "4" call :officeSetupMenu
+if "%command%" == "5" call :sppsvcActivatorMenu
 
 if "%errorLevel%" == "1234567890" exit /b
 goto :mainMenu
@@ -225,13 +235,13 @@ set windowsUpdate_updateDistributions=unlocked
 for /f "delims=" %%i in ('dir /a:-d /b %WinDir%\SoftwareDistribution\Download') do if "%%i" == "Download" set windowsUpdate_updateDistributions=locked
 
 set windowsUpdate_updateCenter=enabled
-for /f "skip=3 tokens=1,2,3* delims= " %%i in ('sc query wuauserv') do if "%%i" == "STATE" if "%%k" == "1" set windowsUpdate_updateCenter=disabled
+for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKLM\SYSTEM\ControlSet001\Services\wuauserv /v Start') do if "%%i" == "0x4" set windowsUpdate_updateCenter=disabled
 
 call :logo
 echo.^(^i^) Windows Update Control Menu
 echo.
 echo.
-echo.^(^>^) Choose action:
+echo.^(^>^) Choose action to enable/disable Windows Update:
 echo.    ^(1^) Windows Update distributions       %windowsUpdate_updateDistributions%
 echo.    ^(2^) Windows Update Center              %windowsUpdate_updateCenter%
 echo.
@@ -326,6 +336,46 @@ echo.^(^i^) Unmounting iso file...
 powershell.exe "Dismount-DiskImage ""%~dp0%officeSetupISO%"""
 timeout /nobreak /t 1 >nul
 goto :officeSetupMenu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:sppsvcActivatorMenu
+set sppsvc_service=enabled
+for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKLM\SYSTEM\ControlSet001\Services\sppsvc /v Start') do if "%%i" == "0x4" set sppsvc_service=disabled
+
+call :logo
+echo.^(^i^) SPPSvc Activator Menu
+echo.
+echo.
+echo.^(^>^) Choose action:
+echo.    ^(1^) Restore Software Protection Platform Service ^(SPPSvc^)       %sppsvc_service%
+echo.
+echo.    ^(0^) Go back
+echo.
+echo.
+echo.
+choice /c 10 /n /m "> "
+set command=%errorLevel%
+
+
+if "%command%" == "2" ( set command= & exit /b )
+
+for /l %%i in (4,-1,1) do reg import files\sppsvcActivator_registry.reg
+for /l %%i in (10,-1,1) do sc start sppsvc
+for /l %%i in (4,-1,1) do reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v TenTweaker_SPPSvcActivator /t REG_SZ /d """%~dp0sppsvcActivatorRebooter.cmd""" /f
+goto :sppsvcActivatorMenu
 
 
 
