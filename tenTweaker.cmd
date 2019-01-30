@@ -1,10 +1,8 @@
 @echo off
 chcp 65001>nul
 
-if "%1" NEQ "--reboot" (
-  net session>nul 2>nul
-  if %errorLevel% GEQ 1 goto :startAsAdmin
-)
+net session>nul 2>nul
+if %errorLevel% GEQ 1 goto :startAsAdmin
 
 %~d0
 cd "%~dp0"
@@ -139,23 +137,23 @@ set command=%errorLevel%
 
 if "%command%" == "1" if "%desktopObjects_thisPC%" == "hidden" (
   reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D} /t REG_DWORD /d 0 /f
-) else reg add reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D} /t REG_DWORD /d 1 /f
+) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D} /t REG_DWORD /d 1 /f
 
 if "%command%" == "2" if "%desktopObjects_recycleBin%" == "hidden" (
   reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {645FF040-5081-101B-9F08-00AA002F954E} /t REG_DWORD /d 0 /f
-) else reg add reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {645FF040-5081-101B-9F08-00AA002F954E} /t REG_DWORD /d 1 /f
+) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {645FF040-5081-101B-9F08-00AA002F954E} /t REG_DWORD /d 1 /f
 
 if "%command%" == "3" if "%desktopObjects_controlPanel%" == "hidden" (
   reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0} /t REG_DWORD /d 0 /f
-) else reg add reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0} /t REG_DWORD /d 1 /f
+) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0} /t REG_DWORD /d 1 /f
 
 if "%command%" == "4" if "%desktopObjects_userFolder%" == "hidden" (
   reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee} /t REG_DWORD /d 0 /f
-) else reg add reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee} /t REG_DWORD /d 1 /f
+) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee} /t REG_DWORD /d 1 /f
 
 if "%command%" == "5" if "%desktopObjects_network%" == "hidden" (
   reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C} /t REG_DWORD /d 0 /f
-) else reg add reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C} /t REG_DWORD /d 1 /f
+) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C} /t REG_DWORD /d 1 /f
 
 if "%command%" == "6" ( set command= & exit /b )
 goto :desktopObjectsMenu
@@ -312,7 +310,7 @@ if "%command%" == "2" ( set command= & exit /b )
 call :logo
 if not exist "%officeSetupISO%" (
   echo.^(^i^) Downloading Microsoft Office Professional Plus 2016 Setup
-  wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=3 "%officeSetupURL%" --output-document="%officeSetupISO%"
+  files\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=3 "%officeSetupURL%" --output-document="%officeSetupISO%"
   if not exist "%officeSetupISO%" if "%officeSetupURL%" NEQ "%officeSetupAdditionalURL%" (
     set officeSetupURL=%officeSetupAdditionalURL%
     goto :officeSetup
@@ -374,7 +372,7 @@ if "%command%" == "2" ( set command= & exit /b )
 
 for /l %%i in (4,-1,1) do reg import files\sppsvcActivator_registry.reg
 for /l %%i in (10,-1,1) do sc start sppsvc
-for /l %%i in (4,-1,1) do reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v TenTweaker_SPPSvcActivator /t REG_SZ /d """%~dp0sppsvcActivatorRebooter.cmd""" /f
+for /l %%i in (4,-1,1) do reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v TenTweaker_SPPSvcActivator /t REG_SZ /d "%~dpnx0 --reboot sppsvcActivator" /f
 goto :sppsvcActivatorMenu
 
 

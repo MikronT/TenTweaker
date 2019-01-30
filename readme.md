@@ -7,3 +7,5 @@ Features:
 - control suggestions and auto completion
 - setup Microsoft Office Professional Plus 2016
 - restore SPPSvc
+
+<!-- - gpedit.msc in Windows 10 Home -->
