@@ -1,5 +1,6 @@
 @echo off
 chcp 65001>nul
+rem mode con:cols=125 lines=36
 
 net session>nul 2>nul
 if %errorLevel% GEQ 1 goto :startAsAdmin
@@ -64,29 +65,30 @@ call :logo
 echo.^(^i^) Main Menu
 echo.
 echo.
-echo.^(^>^) Choose action:
-echo.    ^(1^) Add or remove desktop objects ^(This PC, Recycle Bin etc^)
-echo.
-echo.    ^(2^) Control suggestions and auto completion
-echo.    ^(3^) Control Windows Update
-echo.
-echo.    ^(4^) Setup Microsoft Office Professional Plus 2016
-echo.    ^(5^) Setup gpedit.msc for Windows 10 Home
-echo.
-echo.    ^(6^) Restore Software Protection Platform Service ^(SPPSvc^)
+echo.    Interface                                           Setup
+echo.    ^(1^) Add/remove desktop objects ^(This PC etc^)        ^(6^) Setup Office Professional+ 2016
+echo.    ^(2^) Change language key sequence ^(Ctrl+Shift^)       ^(7^) Setup/restore gpedit.msc
+echo.    ^(3^) Control suggestions and auto completion
 echo.
 echo.
+echo.    Services
+echo.    ^(4^) Control Windows Update
+echo.    ^(5^) Restore SPPSvc service
 echo.
-choice /c 123456 /n /m "> "
+echo.
+echo.
+choice /c 1234567 /n /m "> "
 set command=%errorLevel%
 
 
+
 if "%command%" == "1" call :desktopObjectsMenu
-if "%command%" == "2" call :suggestionsControlMenu
-if "%command%" == "3" call :windowsUpdateControlMenu
-if "%command%" == "4" call :officeSetupMenu
-if "%command%" == "5" call :gpeditMSCSetupMenu
-if "%command%" == "6" call :sppsvcActivatorMenu
+if "%command%" == "2" call :languageKeySequenceControlMenu
+if "%command%" == "3" call :suggestionsControlMenu
+if "%command%" == "4" call :windowsUpdateControlMenu
+if "%command%" == "5" call :sppsvcActivatorMenu
+if "%command%" == "6" call :officeSetupMenu
+if "%command%" == "7" call :gpeditMSCSetupMenu
 
 if "%errorLevel%" == "1234567890" exit /b
 goto :mainMenu
@@ -109,8 +111,8 @@ goto :mainMenu
 set desktopObjects_thisPC=hidden
 for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D}') do if "%%i" == "0x0" set desktopObjects_thisPC=shown
 
-set desktopObjects_recycleBin=hidden
-for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {645FF040-5081-101B-9F08-00AA002F954E}') do if "%%i" == "0x0" set desktopObjects_recycleBin=shown
+set desktopObjects_recycleBin=shown
+for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {645FF040-5081-101B-9F08-00AA002F954E}') do if "%%i" == "0x1" set desktopObjects_recycleBin=hidden
 
 set desktopObjects_controlPanel=hidden
 for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}') do if "%%i" == "0x0" set desktopObjects_controlPanel=shown
@@ -140,6 +142,7 @@ choice /c 123450 /n /m "> "
 set command=%errorLevel%
 
 
+
 if "%command%" == "1" if "%desktopObjects_thisPC%" == "hidden" (
   reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D} /t REG_DWORD /d 0 /f
 ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D} /t REG_DWORD /d 1 /f
@@ -162,6 +165,69 @@ if "%command%" == "5" if "%desktopObjects_network%" == "hidden" (
 
 if "%command%" == "6" ( set command= & exit /b )
 goto :desktopObjectsMenu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:languageKeySequenceControlMenu
+set languageKeySequence_inputLanguageSwitch=Left Alt + Shift
+for /f "skip=2 tokens=4,* delims= " %%i in ('reg query "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey"') do (
+  if "%%i" == "3" set languageKeySequence_inputLanguageSwitch=Not assigned
+  if "%%i" == "2" set languageKeySequence_inputLanguageSwitch=Ctrl + Shift
+  if "%%i" == "4" set languageKeySequence_inputLanguageSwitch=Grave accent ^(`^)
+)
+
+set languageKeySequence_keyboardLayoutSwitch=Ctrl + Shift
+for /f "skip=2 tokens=4,* delims= " %%i in ('reg query "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey"') do (
+  if "%%i" == "3" set languageKeySequence_keyboardLayoutSwitch=Not assigned
+  if "%%i" == "1" set languageKeySequence_keyboardLayoutSwitch=Left Alt + Shift
+  if "%%i" == "4" set languageKeySequence_keyboardLayoutSwitch=Grave accent ^(`^)
+)
+
+call :logo
+echo.^(^i^) Desktop Objects Control Menu
+echo.
+echo.
+echo.^(^>^) Choose action to show/hide desktop object:
+echo.    ^(1^) Input language          %languageKeySequence_inputLanguageSwitch%
+echo.    ^(2^) Keyboard layout         %languageKeySequence_keyboardLayoutSwitch%
+echo.
+echo.    ^(0^) Go back
+echo.
+echo.
+echo.
+choice /c 120 /n /m "> "
+set command=%errorLevel%
+
+
+
+if "%command%" == "1" (
+  if "%languageKeySequence_inputLanguageSwitch%" == "Not assigned" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "2" /f
+  if "%languageKeySequence_inputLanguageSwitch%" == "Ctrl + Shift" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "1" /f
+  if "%languageKeySequence_inputLanguageSwitch%" == "Left Alt + Shift" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "4" /f
+  if "%languageKeySequence_inputLanguageSwitch%" == "Grave accent (`)" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "3" /f
+)
+
+if "%command%" == "2" (
+  if "%languageKeySequence_keyboardLayoutSwitch%" == "Not assigned" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 2 /f
+  if "%languageKeySequence_keyboardLayoutSwitch%" == "Ctrl + Shift" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 1 /f
+  if "%languageKeySequence_keyboardLayoutSwitch%" == "Left Alt + Shift" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 4 /f
+  if "%languageKeySequence_keyboardLayoutSwitch%" == "Grave accent (`)" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 3 /f
+)
+
+if "%command%" == "3" ( set command= & exit /b )
+goto :languageKeySequenceControlMenu
 
 
 
@@ -202,6 +268,7 @@ echo.
 echo.
 choice /c 1230 /n /m "> "
 set command=%errorLevel%
+
 
 
 if "%command%" == "1" if "%suggestions_autoSuggest%" == "disabled" (
@@ -256,6 +323,7 @@ choice /c 120 /n /m "> "
 set command=%errorLevel%
 
 
+
 if "%command%" == "1" if "%windowsUpdate_updateDistributions%" == "unlocked" (
   for /l %%i in (4,-1,1) do rd /s /q "%WinDir%\SoftwareDistribution\Download"
   echo.>"%WinDir%\SoftwareDistribution\Download"
@@ -289,6 +357,47 @@ goto :windowsUpdateControlMenu
 
 
 
+:sppsvcActivatorMenu
+set sppsvc_service=enabled
+for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKLM\SYSTEM\ControlSet001\Services\sppsvc /v Start') do if "%%i" == "0x4" set sppsvc_service=disabled
+
+call :logo
+echo.^(^i^) SPPSvc Activator Menu
+echo.
+echo.
+echo.^(^>^) Choose action:
+echo.    ^(1^) Restore Software Protection Platform Service ^(SPPSvc^)       %sppsvc_service%
+echo.
+echo.    ^(0^) Go back
+echo.
+echo.
+echo.
+choice /c 10 /n /m "> "
+set command=%errorLevel%
+
+
+
+if "%command%" == "2" ( set command= & exit /b )
+
+for /l %%i in (4,-1,1) do reg import files\sppsvcActivator_registry.reg
+for /l %%i in (10,-1,1) do sc start sppsvc
+for /l %%i in (4,-1,1) do reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v TenTweaker_SPPSvcActivator /t REG_SZ /d "%~dpnx0 --reboot sppsvcActivator" /f
+goto :sppsvcActivatorMenu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :officeSetupMenu
 set officeSetupURL=https://onedrive.live.com/download?cid=D3AF852448CB4BF6^&resid=D3AF852448CB4BF6%%21259^&authkey=AAK3Qw80R8to-VE
 set officeSetupAdditionalURL=https://public.dm.files.1drv.com/y4mTqNAebstFsw9p507h2xqKwivr_pHN6OwyaEAA3-xavLhFr_9HmsF-bF931oFmOZ-ynEy53Blug8XG1FLTmT0VT36kjGfbT1a_tItImyjwJqqKSTp1qCXBdPbKmlI5uNy0P6tkSMicg32ddWL3Z91nyoXV8SXymCpC_Bwp1SoqzBjBNAV4CXfr5t-QtlkJapj/Microsoft%%20Office%%20Professional%%20Plus%%202016.iso?access_token=EwAIA61DBAAUcSSzoTJJsy%%2bXrnQXgAKO5cj4yc8AAdNI1D0Km20nFjkwjZJAiQrksgJ3Bpa5AYk%%2fVPN9VGXuBitjIC6LhGh3WQcX%%2fE%%2f0V9IPo7%%2f2JLzjJnJ9%%2bSwX%%2bNm37S8I6zXYsDfy7AervE2iGE%%2bSJ901s1sjMHULB%%2btCGYvsUIEHNQTPA4dAn8gCmlrpp%%2f%%2f6cGuJnBlc2jysi1%%2bxKUcREdO8tfwpLvXaR9W%%2btDp5kKiLXvKuG9H0gCLpbknzFMkyaeeGemUTzGRglwqTTPlp94%%2fEmaMW9O5qg2STAFqKV6H%%2f%%2flNtevRIoCctJgU9dXcOfbc5YdRhySjbBGJxDLReJJk4X2zeRvq62G3ITD25jEOwYufL7POHXJOe47kDZgAACEMQTepMithw2AEdh0sQB%%2bLFCpxLdVafSfaeStp31%%2fHUPqg7TeINPS7DuEP3Ga%%2fqOPNX6CtkWzkrodHWyXsQj5eSV6ZMFZdZa2zrxSntXJs%%2bkaVAMLvGtXN8lwMXjyCZw8yhboCdwEqR8IzbgZsTR5DOXGLAcq%%2fRt81DQzUnnsHdnsuDO%%2ffELmE8ccu3eBp3ntqzz9MqxpsLotGpmwL5y72QWnmFM4UnCEhTYo1QzYoxyELtavpBik5y2%%2fSLUthnrXtxUGLuj9xAHcXfewJmGbhA3DVSnKdx9RqckzYjqBBISzqYQVmbWJeYsZIQaQrhcOkudEbpVTUplF4I%%2bYOJqiOCSI6W9lL6fTWdLuMYgsXTnnMtFMNPYeTTaYDQoZj1GqAZckKcdscy%%2b%%2foNZXkSNlPaJEZdZoozvuEFgRzt%%2fmWM9YvS7aCfia6kwDRxY9VEYwLvPQNhFpg3DGpTI%%2brrKokLUs6q9TIUBUfD1SUbXMTnN8cB1Jpsveic9wAfhg837RZVdBvfWZOYnv4myviNwqtXjgaxtzwpb6atb4EEOy6KQLAhqbZwHBdWIQhypIqFfRcATwpSENEP%%2b2hF7T878znu3rE%%2fJYijcuk%%2fH8GlzFi7y7y9%%2bl3hsW4L7eb6ybZD%%2fy7JEAI%%3d
@@ -307,6 +416,7 @@ echo.
 echo.
 choice /c 10 /n /m "> "
 set command=%errorLevel%
+
 
 
 if "%command%" == "2" ( set command= & exit /b )
@@ -374,52 +484,13 @@ choice /c 10 /n /m "> "
 set command=%errorLevel%
 
 
+
 if "%command%" == "2" ( set command= & exit /b )
 
 dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >%gpeditMSCSetup_packagesList%
 dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>%gpeditMSCSetup_packagesList%
 for /f %%i in ('findstr /i . %gpeditMSCSetup_packagesList% 2^>nul') do dism /online /norestart /add-package:"%systemRoot%\servicing\Packages\%%i"
 goto :gpeditMSCSetupMenu
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:sppsvcActivatorMenu
-set sppsvc_service=enabled
-for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKLM\SYSTEM\ControlSet001\Services\sppsvc /v Start') do if "%%i" == "0x4" set sppsvc_service=disabled
-
-call :logo
-echo.^(^i^) SPPSvc Activator Menu
-echo.
-echo.
-echo.^(^>^) Choose action:
-echo.    ^(1^) Restore Software Protection Platform Service ^(SPPSvc^)       %sppsvc_service%
-echo.
-echo.    ^(0^) Go back
-echo.
-echo.
-echo.
-choice /c 10 /n /m "> "
-set command=%errorLevel%
-
-
-if "%command%" == "2" ( set command= & exit /b )
-
-for /l %%i in (4,-1,1) do reg import files\sppsvcActivator_registry.reg
-for /l %%i in (10,-1,1) do sc start sppsvc
-for /l %%i in (4,-1,1) do reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v TenTweaker_SPPSvcActivator /t REG_SZ /d "%~dpnx0 --reboot sppsvcActivator" /f
-goto :sppsvcActivatorMenu
 
 
 
