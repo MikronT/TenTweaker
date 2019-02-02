@@ -1,13 +1,18 @@
-# Ten Tweaker
+# Ten Tweaker v0.9
 Small console tweaker for Windows 10 with some useful options
 
-Features:
-- add or remove desktop objects (This PC, Recycle Bin etc)
-- change language key sequence
-- control suggestions and auto completion
+## Features
+### Interface
+- add or remove desktop objects (This PC, Recycle Bin etc.)
+- configure language key sequence
+- configure input suggestions and auto completion
+- configure Windows Explorer (file extensions, hidden files etc.)
+- configure Windows Task Bar
 
+### Setup
 - setup Microsoft Office Professional Plus 2016
-- setup gpedit.msc in Windows 10 Home
+- setup/restore Group Policy Editor (gpedit.msc) for Windows 10 Home
 
-- control Windows Update Center
-- restore SPPSvc
+### Services
+- configure Windows Update (wuaserv)
+- restore Software Protection Platform Service (sppsvc)
