@@ -38,12 +38,9 @@ echo.^(^i^) The work is completed^!
 echo.
 timeout /nobreak /t 1 >nul
 
-echo.^(^?^) Reload now^? ^(Enter or close^)
+echo.^(^?^) Reboot now^? ^(Enter or close^)
 pause>nul
-
-echo.^(^!^) Reboot^!
-shutdown /r /t 5
-timeout /t 4 >nul
+call :reboot_computer
 exit
 
 
@@ -136,11 +133,14 @@ echo.    ^(3^) Control Panel         %interface_desktopObjects_controlPanel%
 echo.    ^(4^) User Folder           %interface_desktopObjects_userFolder%
 echo.    ^(5^) Network               %interface_desktopObjects_network%
 echo.
+echo.    Note: These features need to restart Windows Explorer.
+echo.    ^(R^) Restart Windows Explorer
+echo.
 echo.    ^(0^) Go back
 echo.
 echo.
 echo.
-choice /c 123450 /n /m "> "
+choice /c 12345R0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -165,7 +165,9 @@ if "%command%" == "5" if "%interface_desktopObjects_network%" == "hidden" (
   reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C} /t REG_DWORD /d 0 /f
 ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C} /t REG_DWORD /d 1 /f
 
-if "%command%" == "6" ( set command= & exit /b )
+if "%command%" == "6" call :restart_explorer
+
+if "%command%" == "7" ( set command= & exit /b )
 goto :interface_desktopObjects
 
 
@@ -358,10 +360,12 @@ echo.    ^(5^) Folder merge conflicts                %interface_explorer_folderM
 echo.
 echo.    ^(6^) Ribbon (option bar)                   %interface_explorer_ribbon%
 echo.    ^(7^) Expand to open folder                 %interface_explorer_expandToCurrentFolder%
-echo.    ^(8^) Status bar                            %interface_explorer_statusBar%             
-echo.    ^(9^) File info tip                         %interface_explorer_fileInfoTip%             
+echo.    ^(8^) Status bar                            %interface_explorer_statusBar%
+echo.    ^(9^) File info tip                         %interface_explorer_fileInfoTip%
 echo.
-echo.    ^(R^) Refresh Windows Explorer
+echo.    Note: These features need to restart Windows Explorer.
+echo.    ^(R^) Restart Windows Explorer
+echo.
 echo.    ^(0^) Go back
 echo.
 echo.
@@ -407,11 +411,7 @@ if "%command%" == "9" if "%interface_explorer_fileInfoTip%" == "shown" (
   reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowInfoTip /t REG_DWORD /d 0 /f
 ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowInfoTip /t REG_DWORD /d 1 /f
 
-if "%command%" == "10" (
-  taskkill /f /im explorer.exe >nul
-  timeout /nobreak /t 1 >nul
-  start "" "%winDir%\explorer.exe"
-)
+if "%command%" == "10" call :restart_explorer
 
 if "%command%" == "11" ( set command= & exit /b )
 goto :interface_explorer
@@ -450,7 +450,7 @@ for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\W
 )
 
 call :logo
-echo.^(^i^) Template - Control Menu
+echo.^(^i^) Windows Task Bar - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to config Windows Task Bar:
@@ -460,7 +460,9 @@ echo.    ^(3^) Task view button                  %interface_taskBar_taskViewButt
 echo.    ^(4^) Small icons                       %interface_taskBar_smallIcons%
 echo.    ^(5^) Buttons combine                   %interface_taskBar_buttonsCombine%
 echo.
-echo.    ^(R^) Refresh Windows Explorer
+echo.    Note: These features need to restart Windows Explorer.
+echo.    ^(R^) Restart Windows Explorer
+echo.
 echo.    ^(0^) Go back
 echo.
 echo.
@@ -492,11 +494,7 @@ if "%command%" == "5" (
   if "%interface_taskBar_buttonsCombine%" == "never" reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarGlomLevel /t REG_DWORD /d 0 /f
 )
 
-if "%command%" == "6" (
-  taskkill /f /im explorer.exe >nul
-  timeout /nobreak /t 1 >nul
-  start "" "%winDir%\explorer.exe"
-)
+if "%command%" == "6" call :restart_explorer
 
 if "%command%" == "7" ( set command= & exit /b )
 goto :interface_taskBar
@@ -527,43 +525,50 @@ echo.
 echo.^(^>^) Choose action:
 echo.    ^(1^) Run setup
 echo.
+echo.    Note: This feature needs to reboot your computer.
+echo.    ^(R^) Reboot computer
+echo.
 echo.    ^(0^) Go back
 echo.
 echo.
 echo.
-choice /c 10 /n /m "> "
+choice /c 1R0 /n /m "> "
 set command=%errorLevel%
 
 
 
-if "%command%" == "2" ( set command= & exit /b )
-
 :setup_office_setup
-call :logo
-if not exist "%setup_office_setupISO%" (
-  echo.^(^i^) Downloading Microsoft Office Professional Plus 2016 Setup
-  files\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=3 "%setup_office_setupURL%" --output-document="%setup_office_setupISO%"
+if "%command%" == "1" (
+  call :logo
+  if not exist "%setup_office_setupISO%" (
+    echo.^(^i^) Downloading Microsoft Office Professional Plus 2016 Setup
+    files\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=3 "%setup_office_setupURL%" --output-document="%setup_office_setupISO%"
+    timeout /nobreak /t 1 >nul
+  )
+
+  echo.^(^i^) Mounting iso file...
+  start /wait /b powershell.exe "Mount-DiskImage ""%~dp0%setup_office_setupISO%"""
+  timeout /nobreak /t 1 >nul
+
+  echo.^(^i^) Setup...
+  for /f "skip=3" %%i in ('powershell.exe "Get-DiskImage """%~dp0%setup_office_setupISO%""" | Get-Volume | Select-Object {$_.DriveLetter}"') do start /wait %%i:\O16Setup.exe
+  timeout /nobreak /t 1 >nul
+
+  choice /c yn /n /m "(>) Setup is completed? (y/n) > "
+  if "%errorLevel%" == "2" if "%setup_office_setupURL%" NEQ "%setup_office_setupAdditionalURL%" (
+    set setup_office_setupURL=%setup_office_setupAdditionalURL%
+    set command=1
+    goto :setup_office_setup
+  )
+
+  echo.^(^i^) Unmounting iso file...
+  start /wait /b powershell.exe "Dismount-DiskImage ""%~dp0%setup_office_setupISO%"""
   timeout /nobreak /t 1 >nul
 )
 
-echo.^(^i^) Mounting iso file...
-start /wait /b powershell.exe "Mount-DiskImage ""%~dp0%setup_office_setupISO%"""
-timeout /nobreak /t 1 >nul
+if "%command%" == "2" call :reboot_computer
 
-echo.^(^i^) Setup...
-for /f "skip=3" %%i in ('powershell.exe "Get-DiskImage """%~dp0%setup_office_setupISO%""" | Get-Volume | Select-Object {$_.DriveLetter}"') do start /wait %%i:\O16Setup.exe
-timeout /nobreak /t 1 >nul
-
-choice /c yn /n /m "(>) Setup is completed? (y/n) > "
-set command=%errorLevel%
-if "%command%" == "2" if "%setup_office_setupURL%" NEQ "%setup_office_setupAdditionalURL%" (
-  set setup_office_setupURL=%setup_office_setupAdditionalURL%
-  goto :setup_office_setup
-)
-
-echo.^(^i^) Unmounting iso file...
-start /wait /b powershell.exe "Dismount-DiskImage ""%~dp0%setup_office_setupISO%"""
-timeout /nobreak /t 1 >nul
+if "%command%" == "3" ( set command= & exit /b )
 goto :setup_office
 
 
@@ -602,11 +607,13 @@ set command=%errorLevel%
 
 
 
-if "%command%" == "2" ( set command= & exit /b )
+if "%command%" == "1" (
+  dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >%setup_gpeditMSC_packagesList%
+  dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>%setup_gpeditMSC_packagesList%
+  for /f %%i in ('findstr /i . %setup_gpeditMSC_packagesList% 2^>nul') do dism /online /norestart /add-package:"%systemRoot%\servicing\Packages\%%i"
+)
 
-dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >%setup_gpeditMSC_packagesList%
-dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>%setup_gpeditMSC_packagesList%
-for /f %%i in ('findstr /i . %setup_gpeditMSC_packagesList% 2^>nul') do dism /online /norestart /add-package:"%systemRoot%\servicing\Packages\%%i"
+if "%command%" == "2" ( set command= & exit /b )
 goto :setup_gpeditMSC
 
 
@@ -691,24 +698,30 @@ echo.
 echo.^(^>^) Choose action:
 echo.    ^(1^) Restore service         %services_sppsvc_service%
 echo.
+echo.    Note: This feature needs to reboot your computer two times.
+echo.          The computer will automatically reboot after the next system start.
+echo.    ^(R^) Reboot computer
+echo.
 echo.    ^(0^) Go back
 echo.
 echo.
 echo.
-echo.    ^(^!^) The computer will automatically reboot after the next system start^!
-echo.
-echo.
-echo.
-choice /c 10 /n /m "> "
+choice /c 1R0 /n /m "> "
 set command=%errorLevel%
 
 
 
-if "%command%" == "2" ( set command= & exit /b )
+if "%command%" == "1" (
+  for /l %%i in (4,-1,1) do reg import files\services_sppsvc_registry.reg
+  for /l %%i in (10,-1,1) do sc start sppsvc
+)
 
-for /l %%i in (4,-1,1) do reg import files\services_sppsvc_registry.reg
-for /l %%i in (10,-1,1) do sc start sppsvc
-for /l %%i in (4,-1,1) do reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v tenTweaker_services_sppsvc /t REG_SZ /d "%~dpnx0 --reboot services_sppsvc" /f
+if "%command%" == "2" (
+  reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v tenTweaker_services_sppsvc /t REG_SZ /d "%~dpnx0 --reboot services_sppsvc" /f
+  call :reboot_computer
+)
+
+if "%command%" == "3" ( set command= & exit /b )
 goto :services_sppsvc
 
 
@@ -779,14 +792,39 @@ color 0b
 cls
 echo.
 echo.
-echo.    [MikronT] ==^> Ten Tweaker v0.9
-echo.   ================================
+echo.    [MikronT] ==^> Ten Tweaker v0.907
+echo.   ==================================
 echo.     See other here:
 echo.         github.com/MikronT
 echo.
 echo.
 echo.
 exit /b
+
+
+
+
+
+
+
+:restart_explorer
+taskkill /f /im explorer.exe >nul
+timeout /nobreak /t 1 >nul
+start "" "%winDir%\explorer.exe"
+exit /b
+
+
+
+
+
+
+
+:reboot_computer
+call :logo
+echo.^(^!^) Reboot^!
+shutdown /r /t 3
+timeout /nobreak /t 3 >nul
+exit
 
 
 
