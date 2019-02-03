@@ -64,7 +64,7 @@ exit
 call :logo
 echo.  Interface                                                   Setup
 echo.   ^(1^) Desktop objects ^(This PC etc^)                           ^(6^) Setup Office Professional+ 2016
-echo.   ^(2^) Language key sequence ^(Ctrl+Shift^)                      ^(7^) Setup/restore gpedit.msc
+echo.   ^(2^) Language key sequence ^(Ctrl + Shift^)                    ^(7^) Setup/restore gpedit.msc
 echo.   ^(3^) Input suggestions and auto completion
 echo.   ^(4^) Windows Explorer                                       Services
 echo.   ^(5^) Windows Task Bar                                        ^(8^) Windows Update ^(wuauserv^)
@@ -297,8 +297,8 @@ if "%command%" == "2" if "%interface_suggestions_appendCompletion%" == "disabled
 ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v "Append Completion" /t REG_SZ /d no /f
 
 if "%command%" == "3" if "%interface_suggestions_startTrackProgs%" == "disabled" (
-  reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs /t REG_SZ /d 00000001 /f
-) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs /t REG_SZ /d 00000000 /f
+  reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs /t REG_DWORD /d 1 /f
+) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs /t REG_DWORD /d 0 /f
 
 if "%command%" == "4" ( set command= & exit /b )
 goto :interface_suggestions
@@ -454,11 +454,11 @@ echo.^(^i^) Template - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to config Windows Task Bar:
-echo.    ^(1^) Peaple band                     %interface_taskBar_peopleBand%
-echo.    ^(2^) Command prompt on Win+X         %interface_taskBar_commandPromptOnWinX%
-echo.    ^(3^) Task view button                %interface_taskBar_taskViewButton%
-echo.    ^(4^) Small icons                     %interface_taskBar_smallIcons%
-echo.    ^(5^) Buttons combine                 %interface_taskBar_buttonsCombine%
+echo.    ^(1^) Peaple band                       %interface_taskBar_peopleBand%
+echo.    ^(2^) Command prompt on Win + X         %interface_taskBar_commandPromptOnWinX%
+echo.    ^(3^) Task view button                  %interface_taskBar_taskViewButton%
+echo.    ^(4^) Small icons                       %interface_taskBar_smallIcons%
+echo.    ^(5^) Buttons combine                   %interface_taskBar_buttonsCombine%
 echo.
 echo.    ^(R^) Refresh Windows Explorer
 echo.    ^(0^) Go back
