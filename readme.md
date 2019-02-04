@@ -1,5 +1,7 @@
-# Ten Tweaker v0.9
+# Ten Tweaker
 Small console tweaker for Windows 10 with some useful options
+
+### Version: **0.907**
 
 ## Features
 ### Interface
