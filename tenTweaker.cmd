@@ -1,6 +1,5 @@
 @echo off
 chcp 65001>nul
-mode con:cols=124 lines=36
 
 net session>nul 2>nul
 if %errorLevel% GEQ 1 goto :startAsAdmin
@@ -787,6 +786,7 @@ goto :template
 
 
 :logo
+mode con:cols=124 lines=36
 title [MikronT] Ten Tweaker
 color 0b
 cls
