@@ -35,6 +35,8 @@ Run Command Prompt as admin and enter the command like this:
 
 ```
 "[Path]\tenTweaker.cmd" --key_[KeyName]=[Options] --key_[KeyName2]=[Options] ...
+
+"C:\Users\Admin\Desktop\TenTweaker\tenTweaker.cmd" --key_main_eula=hidden --key_tools_administrativeTools_hiddenOptions=enabled
 ```
 
 | Syntax marking | Description                     |
