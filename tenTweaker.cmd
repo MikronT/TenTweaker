@@ -65,20 +65,21 @@ exit
 :main_menu
 call :logo
 echo.  Interface                                                   Setup
-echo.   ^(1^) Desktop objects ^(This PC etc^)                           ^(6^) Setup Office Professional+ 2016
-echo.   ^(2^) Language key sequence ^(Ctrl + Shift^)                    ^(7^) Setup/restore gpedit.msc
-echo.   ^(3^) Input suggestions and auto completion
-echo.   ^(4^) Windows Explorer                                       Services
-echo.   ^(5^) Windows Task Bar                                        ^(8^) Windows Update ^(wuauserv^)
-echo.                                                               ^(9^) Software Protection Platform Service ^(sppsvc^)
+echo.    ^(1^) Desktop objects ^(This PC etc^)                           ^(6^) Setup Office Professional+ 2016
+echo.    ^(2^) Language key sequence ^(Ctrl + Shift^)                    ^(7^) Setup/restore gpedit.msc
+echo.    ^(3^) Input suggestions and auto completion
+echo.    ^(4^) Windows Explorer                                      Services
+echo.    ^(5^) Windows Task Bar                                        ^(8^) Windows Update ^(wuauserv^)
+echo.                                                                ^(9^) Software Protection Platform Service ^(sppsvc^)
 echo.  Tools
-echo.   ^(A^) Manage Administrative Tools
+echo.    ^(A^) Manage Administrative Tools
 echo.
 echo.
-echo.   ^(0^) Exit
+echo.    ^(0^) Exit
 echo.
 echo.
 echo.
+if "%error_main_variables_disabledRegistryTools%" NEQ "0" call :errorMessage_main_variables_disabledRegistryTools main_menu
 choice /c 123456789A0 /n /m "> "
 set command=%errorLevel%
 
@@ -131,6 +132,8 @@ for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\W
 set interface_desktopObjects_network=hidden
 for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C}') do if "%%i" == "0x0" set interface_desktopObjects_network=shown
 
+call :main_variables
+
 call :logo
 echo.^(^i^) Desktop Objects - Control Menu
 echo.
@@ -149,6 +152,7 @@ echo.    ^(0^) Go back
 echo.
 echo.
 echo.
+if "%error_main_variables_disabledRegistryTools%" NEQ "0" call :errorMessage_main_variables_disabledRegistryTools
 choice /c 12345E0 /n /m "> "
 set command=%errorLevel%
 
@@ -207,9 +211,11 @@ for /f "skip=2 tokens=4,* delims= " %%i in ('reg query "HKCU\Keyboard Layout\Tog
   if "%%i" == "4" set interface_languageKeySequence_keyboardLayoutSwitch=Grave accent ^(`^)
 )
 
-if "%interface_languageKeySequence_inputLanguageSwitch%" == "%interface_languageKeySequence_keyboardLayoutSwitch%" (
-  set interface_languageKeySequence_error=1
-) else set interface_languageKeySequence_error=0
+if "%error_main_variables_disabledRegistryTools%" == "0" if "%interface_languageKeySequence_inputLanguageSwitch%" == "%interface_languageKeySequence_keyboardLayoutSwitch%" (
+  set error_interface_languageKeySequence=1
+) else set error_interface_languageKeySequence=0
+
+call :main_variables
 
 call :logo
 echo.^(^i^) Language Key Sequence - Control Menu
@@ -223,7 +229,8 @@ echo.    ^(0^) Go back
 echo.
 echo.
 echo.
-if "%interface_languageKeySequence_error%" == "1" (
+if "%error_main_variables_disabledRegistryTools%" NEQ "0" call :errorMessage_main_variables_disabledRegistryTools
+if "%error_interface_languageKeySequence%" == "1" (
   color 0c
   echo.    ^(^!^) Can not be two identical key combinations^!
   echo.
@@ -249,11 +256,11 @@ if "%command%" == "2" (
   if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "Grave accent (`)" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 3 /f
 )
 
-if "%interface_languageKeySequence_inputLanguageSwitch%" == "%interface_languageKeySequence_keyboardLayoutSwitch%" (
-  set interface_languageKeySequence_error=1
-) else set interface_languageKeySequence_error=0
+if "%error_main_variables_disabledRegistryTools%" == "0" if "%interface_languageKeySequence_inputLanguageSwitch%" == "%interface_languageKeySequence_keyboardLayoutSwitch%" (
+  set error_interface_languageKeySequence=1
+) else set error_interface_languageKeySequence=0
 
-if "%command%" == "3" if "%interface_languageKeySequence_error%" == "0" ( set command= & exit /b )
+if "%command%" == "3" if "%error_interface_languageKeySequence%" == "0" ( set command= & exit /b )
 goto :interface_languageKeySequence
 
 
@@ -280,6 +287,8 @@ for /f "skip=2 tokens=4,* delims= " %%i in ('reg query HKCU\Software\Microsoft\W
 set interface_suggestions_startTrackProgs=disabled
 for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs') do if "%%i" == "0x1" set interface_suggestions_startTrackProgs=enabled
 
+call :main_variables
+
 call :logo
 echo.^(^i^) Input Suggestions - Control Menu
 echo.
@@ -293,6 +302,7 @@ echo.    ^(0^) Go back
 echo.
 echo.
 echo.
+if "%error_main_variables_disabledRegistryTools%" NEQ "0" call :errorMessage_main_variables_disabledRegistryTools
 choice /c 1230 /n /m "> "
 set command=%errorLevel%
 
@@ -355,6 +365,8 @@ for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\W
 set interface_explorer_fileInfoTip=shown
 for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowInfoTip') do if "%%i" == "0x0" set interface_explorer_fileInfoTip=hidden
 
+call :main_variables
+
 call :logo
 echo.^(^i^) Windows Explorer - Control Menu
 echo.
@@ -378,6 +390,7 @@ echo.    ^(0^) Go back
 echo.
 echo.
 echo.
+if "%error_main_variables_disabledRegistryTools%" NEQ "0" call :errorMessage_main_variables_disabledRegistryTools
 choice /c 123456789E0 /n /m "> "
 set command=%errorLevel%
 
@@ -456,6 +469,8 @@ for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\W
   if "%%i" == "0x2" set interface_taskBar_buttonsCombine=never
 )
 
+call :main_variables
+
 call :logo
 echo.^(^i^) Windows Task Bar - Control Menu
 echo.
@@ -474,6 +489,7 @@ echo.    ^(0^) Go back
 echo.
 echo.
 echo.
+if "%error_main_variables_disabledRegistryTools%" NEQ "0" call :errorMessage_main_variables_disabledRegistryTools
 choice /c 12345E0 /n /m "> "
 set command=%errorLevel%
 
@@ -524,6 +540,8 @@ set setup_office_setupURL=https://onedrive.live.com/download?cid=D3AF852448CB4BF
 set setup_office_setupAdditionalURL=https://public.dm.files.1drv.com/y4mTqNAebstFsw9p507h2xqKwivr_pHN6OwyaEAA3-xavLhFr_9HmsF-bF931oFmOZ-ynEy53Blug8XG1FLTmT0VT36kjGfbT1a_tItImyjwJqqKSTp1qCXBdPbKmlI5uNy0P6tkSMicg32ddWL3Z91nyoXV8SXymCpC_Bwp1SoqzBjBNAV4CXfr5t-QtlkJapj/Microsoft%%20Office%%20Professional%%20Plus%%202016.iso?access_token=EwAIA61DBAAUcSSzoTJJsy%%2bXrnQXgAKO5cj4yc8AAdNI1D0Km20nFjkwjZJAiQrksgJ3Bpa5AYk%%2fVPN9VGXuBitjIC6LhGh3WQcX%%2fE%%2f0V9IPo7%%2f2JLzjJnJ9%%2bSwX%%2bNm37S8I6zXYsDfy7AervE2iGE%%2bSJ901s1sjMHULB%%2btCGYvsUIEHNQTPA4dAn8gCmlrpp%%2f%%2f6cGuJnBlc2jysi1%%2bxKUcREdO8tfwpLvXaR9W%%2btDp5kKiLXvKuG9H0gCLpbknzFMkyaeeGemUTzGRglwqTTPlp94%%2fEmaMW9O5qg2STAFqKV6H%%2f%%2flNtevRIoCctJgU9dXcOfbc5YdRhySjbBGJxDLReJJk4X2zeRvq62G3ITD25jEOwYufL7POHXJOe47kDZgAACEMQTepMithw2AEdh0sQB%%2bLFCpxLdVafSfaeStp31%%2fHUPqg7TeINPS7DuEP3Ga%%2fqOPNX6CtkWzkrodHWyXsQj5eSV6ZMFZdZa2zrxSntXJs%%2bkaVAMLvGtXN8lwMXjyCZw8yhboCdwEqR8IzbgZsTR5DOXGLAcq%%2fRt81DQzUnnsHdnsuDO%%2ffELmE8ccu3eBp3ntqzz9MqxpsLotGpmwL5y72QWnmFM4UnCEhTYo1QzYoxyELtavpBik5y2%%2fSLUthnrXtxUGLuj9xAHcXfewJmGbhA3DVSnKdx9RqckzYjqBBISzqYQVmbWJeYsZIQaQrhcOkudEbpVTUplF4I%%2bYOJqiOCSI6W9lL6fTWdLuMYgsXTnnMtFMNPYeTTaYDQoZj1GqAZckKcdscy%%2b%%2foNZXkSNlPaJEZdZoozvuEFgRzt%%2fmWM9YvS7aCfia6kwDRxY9VEYwLvPQNhFpg3DGpTI%%2brrKokLUs6q9TIUBUfD1SUbXMTnN8cB1Jpsveic9wAfhg837RZVdBvfWZOYnv4myviNwqtXjgaxtzwpb6atb4EEOy6KQLAhqbZwHBdWIQhypIqFfRcATwpSENEP%%2b2hF7T878znu3rE%%2fJYijcuk%%2fH8GlzFi7y7y9%%2bl3hsW4L7eb6ybZD%%2fy7JEAI%%3d
 set setup_office_setupISO=files\setup_office_microsoftOfficeProfessionalPlus2016Setup.iso
 
+call :main_variables
+
 call :logo
 echo.^(^i^) Microsoft Office Professional+ 2016 - Setup Menu
 echo.
@@ -538,6 +556,7 @@ echo.    ^(0^) Go back
 echo.
 echo.
 echo.
+if "%error_main_variables_disabledRegistryTools%" NEQ "0" call :errorMessage_main_variables_disabledRegistryTools
 choice /c 1R0 /n /m "> "
 set command=%errorLevel%
 
@@ -596,6 +615,8 @@ set setup_gpeditMSC_packagesList=files\setup_gpeditMSC_packagesList.txt
 set setup_gpeditMSC_gpeditFile=not exist
 for /f "delims=" %%i in ('dir /a:-d /b "%winDir%\System32\gpedit.msc"') do if "%%i" == "gpedit.msc" set setup_gpeditMSC_gpeditFile=exist
 
+call :main_variables
+
 call :logo
 echo.^(^i^) Group Policy Editor - Setup Menu
 echo.
@@ -607,6 +628,7 @@ echo.    ^(0^) Go back
 echo.
 echo.
 echo.
+if "%error_main_variables_disabledRegistryTools%" NEQ "0" call :errorMessage_main_variables_disabledRegistryTools
 choice /c 10 /n /m "> "
 set command=%errorLevel%
 
@@ -642,6 +664,8 @@ for /f "delims=" %%i in ('dir /a:-d /b %WinDir%\SoftwareDistribution\Download') 
 set services_windowsUpdate_updateCenter=enabled
 for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKLM\SYSTEM\ControlSet001\Services\wuauserv /v Start') do if "%%i" == "0x4" set services_windowsUpdate_updateCenter=disabled
 
+call :main_variables
+
 call :logo
 echo.^(^i^) Windows Update ^(wuauserv^) - Control Menu
 echo.
@@ -654,6 +678,7 @@ echo.    ^(0^) Go back
 echo.
 echo.
 echo.
+if "%error_main_variables_disabledRegistryTools%" NEQ "0" call :errorMessage_main_variables_disabledRegistryTools
 choice /c 120 /n /m "> "
 set command=%errorLevel%
 
@@ -696,6 +721,8 @@ goto :services_windowsUpdate
 set services_sppsvc_service=enabled
 for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKLM\SYSTEM\ControlSet001\Services\sppsvc /v Start') do if "%%i" == "0x4" set services_sppsvc_service=disabled
 
+call :main_variables
+
 call :logo
 echo.^(^i^) Software Protection Platform Service ^(sppsvc^) - Restore Menu
 echo.
@@ -711,6 +738,7 @@ echo.    ^(0^) Go back
 echo.
 echo.
 echo.
+if "%error_main_variables_disabledRegistryTools%" NEQ "0" call :errorMessage_main_variables_disabledRegistryTools
 choice /c 1R0 /n /m "> "
 set command=%errorLevel%
 
@@ -744,6 +772,8 @@ goto :services_sppsvc
 
 
 :tools_administrativeTools
+if "%error_main_variables_disabledRegistryTools%" NEQ "0" set key_tools_administrativeTools_hiddenOptions=enabled
+
 set tools_administrativeTools_taskManager=enabled
 for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr') do if "%%i" == "0x1" set tools_administrativeTools_taskManager=disabled
 
@@ -763,6 +793,8 @@ if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
   set tools_administrativeTools_desktop=enabled
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoDesktop') do if "%%i" == "0x1" set tools_administrativeTools_desktop=disabled
 )
+
+call :main_variables
 
 call :logo
 echo.^(^i^) Windows Administrative Tools - Control Menu
@@ -796,6 +828,7 @@ echo.    ^(0^) Go back
 echo.
 echo.
 echo.
+if "%error_main_variables_disabledRegistryTools%" NEQ "0" call :errorMessage_main_variables_disabledRegistryTools
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
   choice /c 123456UER0 /n /m "> "
 ) else choice /c 123UE0 /n /m "> "
@@ -854,6 +887,8 @@ goto :tools_administrativeTools
 
 
 :template
+call :main_variables
+
 call :logo
 echo.^(^i^) Template - Control Menu
 echo.
@@ -867,6 +902,7 @@ echo.    ^(0^) Go back
 echo.
 echo.
 echo.
+if "%error_main_variables_disabledRegistryTools%" NEQ "0" call :errorMessage_main_variables_disabledRegistryTools
 choice /c 1230 /n /m "> "
 set command=%errorLevel%
 
@@ -901,14 +937,102 @@ goto :template
 
 
 
+:main_variables
+set errorLevel=
+reg query HKCU>nul 2>nul
+
+if %errorLevel% GEQ 1 (
+  set interface_desktopObjects_thisPC=[error]
+  set interface_desktopObjects_recycleBin=[error]
+  set interface_desktopObjects_controlPanel=[error]
+  set interface_desktopObjects_userFolder=[error]
+  set interface_desktopObjects_network=[error]
+
+  set interface_languageKeySequence_inputLanguageSwitch=[error]
+  set interface_languageKeySequence_keyboardLayoutSwitch=[error]
+
+  set interface_suggestions_autoSuggest=[error]
+  set interface_suggestions_appendCompletion=[error]
+  set interface_suggestions_startTrackProgs=[error]
+
+  set interface_explorer_fileExtensions=[error]
+  set interface_explorer_hiddenFiles=[error]
+  set interface_explorer_hiddenProtectedSystemFiles=[error]
+  set interface_explorer_emptyDrives=[error]
+  set interface_explorer_folderMergeConflicts=[error]
+  set interface_explorer_ribbon=[error]
+  set interface_explorer_expandToCurrentFolder=[error]
+  set interface_explorer_statusBar=[error]
+  set interface_explorer_fileInfoTip=[error]
+
+  set interface_taskBar_peopleBand=[error]
+  set interface_taskBar_commandPromptOnWinX=[error]
+  set interface_taskBar_taskViewButton=[error]
+  set interface_taskBar_smallIcons=[error]
+  set interface_taskBar_buttonsCombine=[error]
+
+  set setup_gpeditMSC_gpeditFile=[error]
+
+  set services_windowsUpdate_updateCenter=[error]
+
+  set services_sppsvc_service=[error]
+
+  set tools_administrativeTools_taskManager=[error]
+  set tools_administrativeTools_controlPanel=[error]
+  set tools_administrativeTools_runDialog=[error]
+  set tools_administrativeTools_registryTools=disabled
+  set tools_administrativeTools_cmd=[error]
+  set tools_administrativeTools_desktop=[error]
+
+  set error_main_variables_disabledRegistryTools=1
+) else set error_main_variables_disabledRegistryTools=0
+exit /b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:errorMessage_main_variables_disabledRegistryTools
+echo.    ^(^!^) Registry Tools are disabled^!
+echo.        If you see "[error]" than this feature state cannot be shown or changed^!
+if "%1" == "main_menu" echo.        To fix it you must enable Registry Tools in ^(A^) menu ^(with hidden options^)^!
+echo.
+echo.
+echo.
+exit /b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :logo
-mode con:cols=124 lines=36
+mode con:cols=124 lines=40
 title [MikronT] Ten Tweaker
 color 0b
 cls
 echo.
 echo.
-echo.    [MikronT] ==^> Ten Tweaker v0.92
+echo.    [MikronT] ==^> Ten Tweaker v0.94
 echo.   =================================
 echo.     See other here:
 echo.         github.com/MikronT
