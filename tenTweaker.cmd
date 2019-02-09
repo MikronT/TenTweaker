@@ -7,10 +7,31 @@ if %errorLevel% GEQ 1 goto :startAsAdmin
 %~d0
 cd "%~dp0"
 
-for /f "tokens=1,2,3,* delims=- " %%i in ("%*") do (
+if not exist temp md temp
+
+for /f "tokens=1,2,3,4,* delims=- " %%i in ("%*") do (
   set %%i
   set %%j
   set %%k
+  set %%l
+)
+
+if "%key_main_registryMergeCompleted%" NEQ "true" (
+  reg export HKCU\Console\%%SystemRoot%%_system32_cmd.exe temp\consoleSettings.reg /y>nul 2>nul
+  reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v CodePage         /t REG_DWORD /d 65001      /f>nul 2>nul
+  reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v ColorTable00     /t REG_DWORD /d 0          /f>nul 2>nul
+  reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v FaceName         /t REG_SZ    /d Consolas   /f>nul 2>nul
+  reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v FontFamily       /t REG_DWORD /d 0x0000036  /f>nul 2>nul
+  reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v FontSize         /t REG_DWORD /d 0x00100008 /f>nul 2>nul
+  reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v FontWeight       /t REG_DWORD /d 0x0000190  /f>nul 2>nul
+  reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v ScreenBufferSize /t REG_DWORD /d 2329006a   /f>nul 2>nul
+  reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v WindowSize       /t REG_DWORD /d 1e006a     /f>nul 2>nul
+
+  start "" cmd /c "%~dpnx0" --key_main_registryMergeCompleted=true
+  exit
+) else if exist temp\consoleSettings.reg (
+  reg delete HKCU\Console\%%SystemRoot%%_system32_cmd.exe /va /f
+  reg import temp\consoleSettings.reg 2>nul
 )
 
 
@@ -101,7 +122,10 @@ if "%command%" == "9" call :services_sppsvc
 
 if "%command%" == "10" call :tools_administrativeTools
 
-if "%command%" == "11" exit /b
+if "%command%" == "11" (
+  rd /s /q temp
+  exit /b
+)
 goto :main_menu
 
 
@@ -1011,7 +1035,7 @@ if "%1" == "interface_taskBar" (
 if "%1" == "setup_office" (
   set setup_office_setupURL=https://onedrive.live.com/download?cid=D3AF852448CB4BF6^&resid=D3AF852448CB4BF6%%21259^&authkey=AAK3Qw80R8to-VE
   set setup_office_setupAdditionalURL=https://public.dm.files.1drv.com/y4mTqNAebstFsw9p507h2xqKwivr_pHN6OwyaEAA3-xavLhFr_9HmsF-bF931oFmOZ-ynEy53Blug8XG1FLTmT0VT36kjGfbT1a_tItImyjwJqqKSTp1qCXBdPbKmlI5uNy0P6tkSMicg32ddWL3Z91nyoXV8SXymCpC_Bwp1SoqzBjBNAV4CXfr5t-QtlkJapj/Microsoft%%20Office%%20Professional%%20Plus%%202016.iso?access_token=EwAIA61DBAAUcSSzoTJJsy%%2bXrnQXgAKO5cj4yc8AAdNI1D0Km20nFjkwjZJAiQrksgJ3Bpa5AYk%%2fVPN9VGXuBitjIC6LhGh3WQcX%%2fE%%2f0V9IPo7%%2f2JLzjJnJ9%%2bSwX%%2bNm37S8I6zXYsDfy7AervE2iGE%%2bSJ901s1sjMHULB%%2btCGYvsUIEHNQTPA4dAn8gCmlrpp%%2f%%2f6cGuJnBlc2jysi1%%2bxKUcREdO8tfwpLvXaR9W%%2btDp5kKiLXvKuG9H0gCLpbknzFMkyaeeGemUTzGRglwqTTPlp94%%2fEmaMW9O5qg2STAFqKV6H%%2f%%2flNtevRIoCctJgU9dXcOfbc5YdRhySjbBGJxDLReJJk4X2zeRvq62G3ITD25jEOwYufL7POHXJOe47kDZgAACEMQTepMithw2AEdh0sQB%%2bLFCpxLdVafSfaeStp31%%2fHUPqg7TeINPS7DuEP3Ga%%2fqOPNX6CtkWzkrodHWyXsQj5eSV6ZMFZdZa2zrxSntXJs%%2bkaVAMLvGtXN8lwMXjyCZw8yhboCdwEqR8IzbgZsTR5DOXGLAcq%%2fRt81DQzUnnsHdnsuDO%%2ffELmE8ccu3eBp3ntqzz9MqxpsLotGpmwL5y72QWnmFM4UnCEhTYo1QzYoxyELtavpBik5y2%%2fSLUthnrXtxUGLuj9xAHcXfewJmGbhA3DVSnKdx9RqckzYjqBBISzqYQVmbWJeYsZIQaQrhcOkudEbpVTUplF4I%%2bYOJqiOCSI6W9lL6fTWdLuMYgsXTnnMtFMNPYeTTaYDQoZj1GqAZckKcdscy%%2b%%2foNZXkSNlPaJEZdZoozvuEFgRzt%%2fmWM9YvS7aCfia6kwDRxY9VEYwLvPQNhFpg3DGpTI%%2brrKokLUs6q9TIUBUfD1SUbXMTnN8cB1Jpsveic9wAfhg837RZVdBvfWZOYnv4myviNwqtXjgaxtzwpb6atb4EEOy6KQLAhqbZwHBdWIQhypIqFfRcATwpSENEP%%2b2hF7T878znu3rE%%2fJYijcuk%%2fH8GlzFi7y7y9%%2bl3hsW4L7eb6ybZD%%2fy7JEAI%%3d
-  set setup_office_setupISO=files\setup_office_microsoftOfficeProfessionalPlus2016Setup.iso
+  set setup_office_setupISO=temp\setup_office_microsoftOfficeProfessionalPlus2016Setup.iso
 )
 
 
@@ -1019,7 +1043,7 @@ if "%1" == "setup_office" (
 
 
 if "%1" == "setup_gpeditMSC" (
-  set setup_gpeditMSC_packagesList=files\setup_gpeditMSC_packagesList.txt
+  set setup_gpeditMSC_packagesList=temp\setup_gpeditMSC_packagesList.txt
 
   set setup_gpeditMSC_gpeditFile=not exist
   for /f "delims=" %%i in ('dir /a:-d /b "%winDir%\System32\gpedit.msc"') do if "%%i" == "gpedit.msc" set setup_gpeditMSC_gpeditFile=exist
@@ -1059,7 +1083,7 @@ if "%1" == "tools_administrativeTools" (
 
   if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
     set tools_administrativeTools_registryTools=enabled
-    for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableRegistryTools') do if "%%i" == "0x1" set tools_administrativeTools_registryTools=disabled
+    rem for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableRegistryTools') do if "%%i" == "0x1" set tools_administrativeTools_registryTools=disabled
 
     set tools_administrativeTools_cmd=enabled
     for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableCMD') do if "%%i" == "0x1" set tools_administrativeTools_cmd=disabled
@@ -1085,14 +1109,16 @@ exit /b
 
 
 :logo
-mode con:cols=124 lines=41
+mode con:cols=124 lines=42
 title [MikronT] Ten Tweaker
 color 0b
 cls
 echo.
 echo.
-echo.    [MikronT] ==^> Ten Tweaker v0.95
-echo.   =================================
+echo.    [MikronT] ==^> Ten Tweaker
+echo.                  Beta v0.96
+rem echo.                  Release v1.0
+echo.   ===========================
 echo.     See other here:
 echo.         github.com/MikronT
 echo.

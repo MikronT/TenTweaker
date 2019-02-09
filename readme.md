@@ -1,7 +1,14 @@
 # Ten Tweaker
-### Version: 0.92
 
-Small console tweaker for Windows 10 with some useful options
+[![Status: Beta](https://img.shields.io/badge/Status-Beta-yellow.svg?style=for-the-badge)](#)
+
+<!--
+[![Status: Release](https://img.shields.io/badge/Status-Release-green.svg?style=for-the-badge)](#)
+-->
+
+### Version name: *Beta v0.96*
+
+Console tweaker for Windows 10 with some useful options.
 
 
 
@@ -26,6 +33,7 @@ Small console tweaker for Windows 10 with some useful options
 ## Keys
 | Key Name                                | Options         | Description                                                                  |
 |-----------------------------------------|-----------------|------------------------------------------------------------------------------|
+| main_registryMergeCompleted             | true            | to skip registry parameters merge (not recommended)                          |
 | main_eula                               | hidden          | hides eula start message                                                     |
 | main_reboot                             | services_sppsvc | shows reboot dialog, but specifically this option used for restore sppsvc    |
 | tools_administrativeTools_hiddenOptions | enabled         | enables hidden options for administrative tools menu (can kill your Windows) |
@@ -47,3 +55,20 @@ Run Command Prompt as admin and enter the command like this:
 | ...            | Other keys and options          |
 
 Note: you can combine the keys as you wish.
+
+
+
+## Version History
+| Date       | Version      |
+|------------|--------------|
+| 09.02.2019 | Beta v0.96   |
+| 09.02.2019 | Beta v0.95   |
+| 09.02.2019 | Beta v0.94   |
+| 05.02.2019 | Beta v0.92   |
+| 03.02.2019 | Beta v0.907  |
+| 03.02.2019 | Beta v0.9    |
+| 25.05.2019 | Beta         |
+
+<!--
+| 08.02.2019 | Release v1.0 |
+-->
