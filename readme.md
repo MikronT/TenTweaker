@@ -1,6 +1,7 @@
 # Ten Tweaker
 
 [![Status: Beta](https://img.shields.io/badge/Status-Beta-yellow.svg?style=for-the-badge)](#)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-black.svg?style=for-the-badge)](https://www.gnu.org/licenses/gpl-3.0)
 
 <!--
 [![Status: Release](https://img.shields.io/badge/Status-Release-green.svg?style=for-the-badge)](#)
@@ -55,6 +56,11 @@ Run Command Prompt as admin and enter the command like this:
 | ...            | Other keys and options          |
 
 Note: you can combine the keys as you wish.
+
+
+
+## Disclaimer
+- *I am not responsible for any damage to your computer.* I am not responsible for any lost files or data.
 
 
 
