@@ -1083,7 +1083,6 @@ if "%1" == "tools_administrativeTools" (
 
   if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
     set tools_administrativeTools_registryTools=enabled
-    rem for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableRegistryTools') do if "%%i" == "0x1" set tools_administrativeTools_registryTools=disabled
 
     set tools_administrativeTools_cmd=enabled
     for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableCMD') do if "%%i" == "0x1" set tools_administrativeTools_cmd=disabled
