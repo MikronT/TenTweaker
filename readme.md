@@ -1,15 +1,19 @@
 # Ten Tweaker
 
-[![Status: Beta](https://img.shields.io/badge/Status-Beta-yellow.svg?style=for-the-badge)](#)
+[![Status: Beta](https://img.shields.io/badge/Status-Beta-orange.svg?style=for-the-badge)](#)
+[![Latest Release](https://img.shields.io/badge/Latest-Release-blue.svg?style=for-the-badge)](https://github.com/MikronT/TenTweaker/releases/latest)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-black.svg?style=for-the-badge)](https://www.gnu.org/licenses/gpl-3.0)
 
 <!--
+[![Status: Pre-Release](https://img.shields.io/badge/Status-Pre--Release-yellow.svg?style=for-the-badge)](#)
 [![Status: Release](https://img.shields.io/badge/Status-Release-green.svg?style=for-the-badge)](#)
 -->
 
 ### Version name: *Beta v0.96*
 
 Console tweaker for Windows 10 with some useful options.
+
+*Developed for Windows 10 but, in theory, can work on Windows 7, 8 and 8.1 too.*
 
 
 
