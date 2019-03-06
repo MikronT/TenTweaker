@@ -9,7 +9,7 @@
 [![Status: Release](https://img.shields.io/badge/Status-Release-green.svg?style=for-the-badge)](#)
 -->
 
-### Version name: *Beta v0.96*
+### Version name: *Beta v0.97*
 
 Console tweaker for Windows 10 with some useful options.
 
@@ -71,6 +71,7 @@ Note: you can combine the keys as you wish.
 ## Version History
 | Date       | Version      |
 |------------|--------------|
+| 06.03.2019 | Beta v0.97   |
 | 09.02.2019 | Beta v0.96   |
 | 09.02.2019 | Beta v0.95   |
 | 09.02.2019 | Beta v0.94   |

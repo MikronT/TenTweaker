@@ -34,6 +34,13 @@ if "%key_main_registryMerge%" NEQ "true" (
   reg import temp\consoleSettings.reg 2>nul
 )
 
+set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
+set option_enabled=enabled         
+set option_disabled=disabled        
+set option_shown=shown           
+set option_hidden=hidden          
+set option_error=[error]         
+
 
 
 
@@ -150,11 +157,36 @@ echo.^(i^) Desktop Objects - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to show/hide desktop object:
-echo.    ^(1^) This PC               %interface_desktopObjects_thisPC%
-echo.    ^(2^) Recycle Bin           %interface_desktopObjects_recycleBin%
-echo.    ^(3^) Control Panel         %interface_desktopObjects_controlPanel%
-echo.    ^(4^) User Folder           %interface_desktopObjects_userFolder%
-echo.    ^(5^) Network               %interface_desktopObjects_network%
+
+set stringBuilder_string=^(1^) This PC                            
+if "%interface_desktopObjects_thisPC%" == "shown" (
+  call %stringBuilder_build% %option_shown%
+) else if "%interface_desktopObjects_thisPC%" == "hidden" (
+  call %stringBuilder_build% %option_hidden%
+) else call %stringBuilder_build% %option_error%
+call %stringBuilder_build%    ^(4^) User Folder                        
+if "%interface_desktopObjects_userFolder%" == "shown" (
+  call %stringBuilder_build% %option_shown%
+) else if "%interface_desktopObjects_userFolder%" == "hidden" (
+  call %stringBuilder_build% %option_hidden%
+) else call %stringBuilder_build% %option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=^(2^) Recycle Bin                        
+if "%interface_desktopObjects_recycleBin%" == "shown" (
+  call %stringBuilder_build% %option_shown%
+) else if "%interface_desktopObjects_recycleBin%" == "hidden" (
+  call %stringBuilder_build% %option_hidden%
+) else call %stringBuilder_build% %option_error%
+call %stringBuilder_build%    ^(5^) Network                            
+if "%interface_desktopObjects_network%" == "shown" (
+  call %stringBuilder_build% %option_shown%
+) else if "%interface_desktopObjects_network%" == "hidden" (
+  call %stringBuilder_build% %option_hidden%
+) else call %stringBuilder_build% %option_error%
+echo.    %stringBuilder_string%
+
+echo.    ^(3^) Control Panel                       %interface_desktopObjects_controlPanel%
 echo.
 echo.    Note: These features require to restart Windows Explorer.
 echo.    ^(E^) Restart Windows Explorer
@@ -220,8 +252,8 @@ echo.^(i^) Language Key Sequence - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to change key sequence:
-echo.    ^(1^) Input language          %interface_languageKeySequence_inputLanguageSwitch%
-echo.    ^(2^) Keyboard layout         %interface_languageKeySequence_keyboardLayoutSwitch%
+echo.    ^(1^) Input language                      %interface_languageKeySequence_inputLanguageSwitch%
+echo.    ^(2^) Keyboard layout                     %interface_languageKeySequence_keyboardLayoutSwitch%
 echo.
 echo.    ^(0^) Go back
 echo.
@@ -285,9 +317,9 @@ echo.^(i^) Input Suggestions - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to enable/disable input suggestions:
-echo.    ^(1^) Auto Suggest              %interface_suggestions_autoSuggest%
-echo.    ^(2^) Append Completion         %interface_suggestions_appendCompletion%
-echo.    ^(3^) Start Track Progs         %interface_suggestions_startTrackProgs%
+echo.    ^(1^) Auto Suggest                        %interface_suggestions_autoSuggest%
+echo.    ^(2^) Append Completion                   %interface_suggestions_appendCompletion%
+echo.    ^(3^) Start Track Progs                   %interface_suggestions_startTrackProgs%
 echo.
 echo.    ^(0^) Go back
 echo.
@@ -338,16 +370,65 @@ echo.^(i^) Windows Explorer - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to config Windows Explorer:
-echo.    ^(1^) File extensions                       %interface_explorer_fileExtensions%
-echo.    ^(2^) Hidden files                          %interface_explorer_hiddenFiles%
-echo.    ^(3^) Hidden protected system files         %interface_explorer_hiddenProtectedSystemFiles%
-echo.    ^(4^) Empty drives                          %interface_explorer_emptyDrives%
-echo.    ^(5^) Folder merge conflicts                %interface_explorer_folderMergeConflicts%
+
+set stringBuilder_string=^(1^) File extensions                    
+if "%interface_explorer_fileExtensions%" == "shown" (
+  call %stringBuilder_build% %option_shown%
+) else if "%interface_explorer_fileExtensions%" == "hidden" (
+  call %stringBuilder_build% %option_hidden%
+) else call %stringBuilder_build% %option_error%
+call %stringBuilder_build%    ^(6^) Ribbon ^(option bar^)                
+if "%interface_explorer_ribbon%" == "shown" (
+  call %stringBuilder_build% %option_shown%
+) else if "%interface_explorer_ribbon%" == "hidden" (
+  call %stringBuilder_build% %option_hidden%
+) else call %stringBuilder_build% %option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=^(2^) Hidden files                       
+if "%interface_explorer_hiddenFiles%" == "shown" (
+  call %stringBuilder_build% %option_shown%
+) else if "%interface_explorer_hiddenFiles%" == "hidden" (
+  call %stringBuilder_build% %option_hidden%
+) else call %stringBuilder_build% %option_error%
+call %stringBuilder_build%    ^(7^) Expand to open folder              
+if "%interface_explorer_expandToCurrentFolder%" == "enabled" (
+  call %stringBuilder_build% %option_enabled%
+) else if "%interface_explorer_expandToCurrentFolder%" == "disabled" (
+  call %stringBuilder_build% %option_disabled%
+) else call %stringBuilder_build% %option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=^(3^) Hidden protected system files      
+if "%interface_explorer_hiddenProtectedSystemFiles%" == "shown" (
+  call %stringBuilder_build% %option_shown%
+) else if "%interface_explorer_hiddenProtectedSystemFiles%" == "hidden" (
+  call %stringBuilder_build% %option_hidden%
+) else call %stringBuilder_build% %option_error%
+call %stringBuilder_build%    ^(8^) Status bar                         
+if "%interface_explorer_statusBar%" == "shown" (
+  call %stringBuilder_build% %option_shown%
+) else if "%interface_explorer_statusBar%" == "hidden" (
+  call %stringBuilder_build% %option_hidden%
+) else call %stringBuilder_build% %option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=^(4^) Empty drives                       
+if "%interface_explorer_emptyDrives%" == "shown" (
+  call %stringBuilder_build% %option_shown%
+) else if "%interface_explorer_emptyDrives%" == "hidden" (
+  call %stringBuilder_build% %option_hidden%
+) else call %stringBuilder_build% %option_error%
+call %stringBuilder_build%    ^(9^) File info tip                      
+if "%interface_explorer_fileInfoTip%" == "shown" (
+  call %stringBuilder_build% %option_shown%
+) else if "%interface_explorer_fileInfoTip%" == "hidden" (
+  call %stringBuilder_build% %option_hidden%
+) else call %stringBuilder_build% %option_error%
+echo.    %stringBuilder_string%
+
+echo.    ^(5^) Folder merge conflicts              %interface_explorer_folderMergeConflicts%
 echo.
-echo.    ^(6^) Ribbon (option bar)                   %interface_explorer_ribbon%
-echo.    ^(7^) Expand to open folder                 %interface_explorer_expandToCurrentFolder%
-echo.    ^(8^) Status bar                            %interface_explorer_statusBar%
-echo.    ^(9^) File info tip                         %interface_explorer_fileInfoTip%
 echo.
 echo.    Note: These features require to restart Windows Explorer.
 echo.    ^(E^) Restart Windows Explorer
@@ -426,11 +507,38 @@ echo.^(i^) Windows Task Bar - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to config Windows Task Bar:
-echo.    ^(1^) Peaple band                       %interface_taskBar_peopleBand%
-echo.    ^(2^) Command prompt on Win + X         %interface_taskBar_commandPromptOnWinX%
-echo.    ^(3^) Task view button                  %interface_taskBar_taskViewButton%
-echo.    ^(4^) Small icons                       %interface_taskBar_smallIcons%
-echo.    ^(5^) Buttons combine                   %interface_taskBar_buttonsCombine%
+
+set stringBuilder_string=^(1^) Peaple band                        
+if "%interface_taskBar_peopleBand%" == "shown" (
+  call %stringBuilder_build% %option_shown%
+) else if "%interface_taskBar_peopleBand%" == "hidden" (
+  call %stringBuilder_build% %option_hidden%
+) else call %stringBuilder_build% %option_error%
+call %stringBuilder_build%    ^(4^) Small icons                        
+if "%interface_taskBar_smallIcons%" == "enabled" (
+  call %stringBuilder_build% %option_enabled%
+) else if "%interface_taskBar_smallIcons%" == "disabled" (
+  call %stringBuilder_build% %option_disabled%
+) else call %stringBuilder_build% %option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=^(2^) Command prompt on Win + X          
+if "%interface_taskBar_commandPromptOnWinX%" == "PowerShell" (
+  call %stringBuilder_build% PowerShell      
+) else if "%interface_taskBar_commandPromptOnWinX%" == "Command Prompt" (
+  call %stringBuilder_build% Command Prompt  
+) else call %stringBuilder_build% %option_error%
+call %stringBuilder_build%    ^(5^) Buttons combine                    
+if "%interface_taskBar_buttonsCombine%" == "always" (
+  call %stringBuilder_build% always          
+) else if "%interface_taskBar_buttonsCombine%" == "when is full" (
+  call %stringBuilder_build% when is full    
+) else if "%interface_taskBar_buttonsCombine%" == "never" (
+  call %stringBuilder_build% never           
+) else call %stringBuilder_build% %option_error%
+echo.    %stringBuilder_string%
+
+echo.    ^(3^) Task view button                    %interface_taskBar_taskViewButton%
 echo.
 echo.    Note: These features require to restart Windows Explorer.
 echo.    ^(E^) Restart Windows Explorer
@@ -565,7 +673,7 @@ echo.^(i^) Group Policy Editor - Setup Menu
 echo.
 echo.
 echo.^(^>^) Choose action:
-echo.    ^(1^) Setup/repair gpedit.msc         %setup_gpeditMSC_gpeditFile%
+echo.    ^(1^) Setup/repair gpedit.msc             %setup_gpeditMSC_gpeditFile%
 echo.
 echo.    ^(0^) Go back
 echo.
@@ -611,8 +719,8 @@ echo.^(i^) Windows Update ^(wuauserv^) - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to enable/disable Windows Update:
-echo.    ^(1^) Windows Update distributions               %services_windowsUpdate_updateDistributions%
-echo.    ^(2^) Windows Update Center ^(wuauserv^)           %services_windowsUpdate_updateCenter%
+echo.    ^(1^) Update distributions                %services_windowsUpdate_updateDistributions%
+echo.    ^(2^) Update Center ^(wuauserv^)            %services_windowsUpdate_updateCenter%
 echo.
 echo.    ^(0^) Go back
 echo.
@@ -667,7 +775,7 @@ echo.^(i^) Software Protection Platform Service ^(sppsvc^) - Restore Menu
 echo.
 echo.
 echo.^(^>^) Choose action:
-echo.    ^(1^) Restore service         %services_sppsvc_service%
+echo.    ^(1^) Restore service                     %services_sppsvc_service%
 echo.
 echo.    Note: This feature requires to reboot your computer two times.
 echo.          The computer will automatically reboot after the next system start.
@@ -721,14 +829,55 @@ echo.^(i^) Windows Administrative Tools - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to config Windows Administrative Tools:
-echo.    ^(1^) Task Manager           %tools_administrativeTools_taskManager%
-echo.    ^(2^) Control Panel          %tools_administrativeTools_controlPanel%
-echo.    ^(3^) Run ^(Win + R^)          %tools_administrativeTools_runDialog%
+
+set stringBuilder_string=^(1^) Task Manager                       
+if "%tools_administrativeTools_taskManager%" == "enabled" (
+  call %stringBuilder_build% %option_enabled%
+) else if "%tools_administrativeTools_taskManager%" == "disabled" (
+  call %stringBuilder_build% %option_disabled%
+) else call %stringBuilder_build% %option_error%
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
-  echo.    ^(4^) Registry Tools         %tools_administrativeTools_registryTools%
-  echo.    ^(5^) Command Prompt         %tools_administrativeTools_cmd%
-  echo.    ^(6^) Desktop                %tools_administrativeTools_desktop%
+  call %stringBuilder_build%    ^(4^) Registry Tools                     
+  if "%tools_administrativeTools_registryTools%" == "enabled" (
+    call %stringBuilder_build% %option_enabled%
+  ) else if "%tools_administrativeTools_registryTools%" == "disabled" (
+    call %stringBuilder_build% %option_disabled%
+  ) else call %stringBuilder_build% %option_error%
 )
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=^(2^) Control Panel                      
+if "%tools_administrativeTools_controlPanel%" == "enabled" (
+  call %stringBuilder_build% %option_enabled%
+) else if "%tools_administrativeTools_controlPanel%" == "disabled" (
+  call %stringBuilder_build% %option_disabled%
+) else call %stringBuilder_build% %option_error%
+if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
+  call %stringBuilder_build%    ^(5^) Command Prompt                     
+  if "%tools_administrativeTools_cmd%" == "enabled" (
+    call %stringBuilder_build% %option_enabled%
+  ) else if "%tools_administrativeTools_cmd%" == "disabled" (
+    call %stringBuilder_build% %option_disabled%
+  ) else call %stringBuilder_build% %option_error%
+)
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=^(3^) Run ^(Win + R^)                      
+if "%tools_administrativeTools_runDialog%" == "enabled" (
+  call %stringBuilder_build% %option_enabled%
+) else if "%tools_administrativeTools_runDialog%" == "disabled" (
+  call %stringBuilder_build% %option_disabled%
+) else call %stringBuilder_build% %option_error%
+if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
+  call %stringBuilder_build%    ^(6^) Desktop                            
+  if "%tools_administrativeTools_desktop%" == "enabled" (
+    call %stringBuilder_build% %option_enabled%
+  ) else if "%tools_administrativeTools_desktop%" == "disabled" (
+    call %stringBuilder_build% %option_disabled%
+  ) else call %stringBuilder_build% %option_error%
+)
+echo.    %stringBuilder_string%
+
 echo.
 echo.    Note: These features require to update group policy.
 echo.    ^(U^) Update group policy
@@ -819,9 +968,9 @@ echo.^(i^) Template - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to config template:
-echo.    ^(1^) Option         %option%
-echo.    ^(2^) Option         %option%
-echo.    ^(3^) Option         %option%
+echo.    ^(1^) Option                              %option%
+echo.    ^(2^) Option                              %option%
+echo.    ^(3^) Option                              %option%
 echo.
 echo.    ^(0^) Go back
 echo.
@@ -1013,7 +1162,7 @@ if "%1" == "interface_taskBar" (
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand') do if "%%i" == "0x0" set interface_taskBar_peopleBand=hidden
 
   set interface_taskBar_commandPromptOnWinX=PowerShell
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX') do if "%%i" == "0x1" set interface_taskBar_commandPromptOnWinX=Command Prompt ^(cmd^)
+  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX') do if "%%i" == "0x1" set interface_taskBar_commandPromptOnWinX=Command Prompt
 
   set interface_taskBar_taskViewButton=shown
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowTaskViewButton') do if "%%i" == "0x0" set interface_taskBar_taskViewButton=hidden
@@ -1108,14 +1257,14 @@ exit /b
 
 
 :logo
-mode con:cols=124 lines=42
+mode con:cols=124 lines=38
 title [MikronT] Ten Tweaker
 color 0b
 cls
 echo.
 echo.
 echo.    [MikronT] ==^> Ten Tweaker
-echo.                  Beta v0.96
+echo.                  Beta v0.97
 rem echo.                  Release v1.0
 echo.   ===========================
 echo.     See other here:
