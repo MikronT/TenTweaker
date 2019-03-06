@@ -16,7 +16,7 @@ for /f "tokens=1,2,3,4,* delims=- " %%i in ("%*") do (
   set %%l
 )
 
-if "%key_main_registryMergeCompleted%" NEQ "true" (
+if "%key_main_registryMerge%" NEQ "true" (
   reg export HKCU\Console\%%SystemRoot%%_system32_cmd.exe temp\consoleSettings.reg /y>nul 2>nul
   reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v CodePage         /t REG_DWORD /d 65001      /f>nul 2>nul
   reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v ColorTable00     /t REG_DWORD /d 0          /f>nul 2>nul
@@ -27,7 +27,7 @@ if "%key_main_registryMergeCompleted%" NEQ "true" (
   reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v ScreenBufferSize /t REG_DWORD /d 2329006a   /f>nul 2>nul
   reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v WindowSize       /t REG_DWORD /d 1e006a     /f>nul 2>nul
 
-  start "" cmd /c "%~dpnx0" --key_main_registryMergeCompleted=true
+  start "" cmd /c "%~dpnx0" --key_main_registryMerge=true
   exit
 ) else if exist temp\consoleSettings.reg (
   reg delete HKCU\Console\%%SystemRoot%%_system32_cmd.exe /va /f
@@ -39,7 +39,7 @@ if "%key_main_registryMergeCompleted%" NEQ "true" (
 
 
 call :logo
-echo.^(^i^) Ten Tweaker is running...
+echo.^(i^) Ten Tweaker is running...
 echo.
 timeout /nobreak /t 1 >nul
 
@@ -60,7 +60,7 @@ if "%key_main_reboot%" == "services_sppsvc" (
 
 
 call :logo
-echo.^(^i^) The work is completed^!
+echo.^(i^) The work is completed^!
 echo.
 timeout /nobreak /t 1 >nul
 
@@ -146,7 +146,7 @@ goto :main_menu
 call :main_variables interface_desktopObjects
 
 call :logo
-echo.^(^i^) Desktop Objects - Control Menu
+echo.^(i^) Desktop Objects - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to show/hide desktop object:
@@ -216,7 +216,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%interface_languag
 ) else set error_interface_languageKeySequence=0
 
 call :logo
-echo.^(^i^) Language Key Sequence - Control Menu
+echo.^(i^) Language Key Sequence - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to change key sequence:
@@ -281,7 +281,7 @@ goto :interface_languageKeySequence
 call :main_variables interface_suggestions
 
 call :logo
-echo.^(^i^) Input Suggestions - Control Menu
+echo.^(i^) Input Suggestions - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to enable/disable input suggestions:
@@ -334,7 +334,7 @@ goto :interface_suggestions
 call :main_variables interface_explorer
 
 call :logo
-echo.^(^i^) Windows Explorer - Control Menu
+echo.^(i^) Windows Explorer - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to config Windows Explorer:
@@ -422,7 +422,7 @@ goto :interface_explorer
 call :main_variables interface_taskBar
 
 call :logo
-echo.^(^i^) Windows Task Bar - Control Menu
+echo.^(i^) Windows Task Bar - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to config Windows Task Bar:
@@ -491,7 +491,7 @@ goto :interface_taskBar
 call :main_variables setup_office
 
 call :logo
-echo.^(^i^) Microsoft Office Professional+ 2016 - Setup Menu
+echo.^(i^) Microsoft Office Professional+ 2016 - Setup Menu
 echo.
 echo.
 echo.^(^>^) Choose action:
@@ -514,16 +514,16 @@ set command=%errorLevel%
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%command%" == "1" (
   call :logo
   if not exist "%setup_office_setupISO%" (
-    echo.^(^i^) Downloading Microsoft Office Professional Plus 2016 Setup
+    echo.^(i^) Downloading Microsoft Office Professional Plus 2016 Setup
     files\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=3 "%setup_office_setupURL%" --output-document="%setup_office_setupISO%"
     timeout /nobreak /t 1 >nul
   )
 
-  echo.^(^i^) Mounting iso file...
+  echo.^(i^) Mounting iso file...
   start /wait /b powershell.exe "Mount-DiskImage ""%~dp0%setup_office_setupISO%"""
   timeout /nobreak /t 1 >nul
 
-  echo.^(^i^) Setup...
+  echo.^(i^) Setup...
   for /f "skip=3" %%i in ('powershell.exe "Get-DiskImage """%~dp0%setup_office_setupISO%""" | Get-Volume | Select-Object {$_.DriveLetter}"') do start /wait %%i:\O16Setup.exe
   timeout /nobreak /t 1 >nul
 
@@ -534,7 +534,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%command%" == "1" 
     goto :setup_office_setup
   )
 
-  echo.^(^i^) Unmounting iso file...
+  echo.^(i^) Unmounting iso file...
   start /wait /b powershell.exe "Dismount-DiskImage ""%~dp0%setup_office_setupISO%"""
   timeout /nobreak /t 1 >nul
 )
@@ -561,7 +561,7 @@ goto :setup_office
 call :main_variables setup_gpeditMSC
 
 call :logo
-echo.^(^i^) Group Policy Editor - Setup Menu
+echo.^(i^) Group Policy Editor - Setup Menu
 echo.
 echo.
 echo.^(^>^) Choose action:
@@ -607,7 +607,7 @@ for /f "delims=" %%i in ('dir /a:-d /b %WinDir%\SoftwareDistribution\Download') 
 call :main_variables services_windowsUpdate
 
 call :logo
-echo.^(^i^) Windows Update ^(wuauserv^) - Control Menu
+echo.^(i^) Windows Update ^(wuauserv^) - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to enable/disable Windows Update:
@@ -663,7 +663,7 @@ goto :services_windowsUpdate
 call :main_variables services_sppsvc
 
 call :logo
-echo.^(^i^) Software Protection Platform Service ^(sppsvc^) - Restore Menu
+echo.^(i^) Software Protection Platform Service ^(sppsvc^) - Restore Menu
 echo.
 echo.
 echo.^(^>^) Choose action:
@@ -717,7 +717,7 @@ call :main_variables tools_administrativeTools
 if "%error_main_variables_disabledRegistryTools%" == "1" set key_tools_administrativeTools_hiddenOptions=enabled
 
 call :logo
-echo.^(^i^) Windows Administrative Tools - Control Menu
+echo.^(i^) Windows Administrative Tools - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to config Windows Administrative Tools:
@@ -815,7 +815,7 @@ goto :tools_administrativeTools
 call :main_variables template
 
 call :logo
-echo.^(^i^) Template - Control Menu
+echo.^(i^) Template - Control Menu
 echo.
 echo.
 echo.^(^>^) Choose action to config template:
@@ -1160,7 +1160,7 @@ exit /b
 
 :reboot_computer
 call :logo
-echo.^(^i^) Reboot Menu
+echo.^(i^) Reboot Menu
 echo.
 echo.
 echo.^(^>^) Choose action:

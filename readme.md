@@ -38,7 +38,7 @@ Console tweaker for Windows 10 with some useful options.
 ## Keys
 | Key Name                                | Options         | Description                                                                  |
 |-----------------------------------------|-----------------|------------------------------------------------------------------------------|
-| main_registryMergeCompleted             | true            | to skip registry parameters merge (not recommended)                          |
+| main_registryMerge                      | true            | to skip registry parameters merge (not recommended)                          |
 | main_eula                               | hidden          | hides eula start message                                                     |
 | main_reboot                             | services_sppsvc | shows reboot dialog, but specifically this option used for restore sppsvc    |
 | tools_administrativeTools_hiddenOptions | enabled         | enables hidden options for administrative tools menu (can kill your Windows) |
