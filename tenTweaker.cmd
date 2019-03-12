@@ -2,7 +2,11 @@
 chcp 65001>nul
 
 net session>nul 2>nul
-if %errorLevel% GEQ 1 goto :startAsAdmin
+if %errorLevel% GEQ 1 (
+  echo.^(^!^) Please, run as Admin^!
+  timeout /nobreak /t 3 >nul
+  exit
+)
 
 %~d0
 cd "%~dp0"
@@ -33,6 +37,8 @@ if "%key_main_registryMerge%" NEQ "true" (
   reg delete HKCU\Console\%%SystemRoot%%_system32_cmd.exe /va /f
   reg import temp\consoleSettings.reg >nul
 )
+
+set module_wget=files\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=3
 
 set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
 set option_enabled=enabled         
@@ -631,7 +637,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%command%" == "1" 
   call :logo
   if not exist "%setup_office_setupISO%" (
     echo.^(i^) Downloading Microsoft Office Professional Plus 2016 Setup
-    files\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=3 "%setup_office_setupURL%" --output-document="%setup_office_setupISO%"
+    %module_wget% "%setup_office_setupURL%" --output-document="%setup_office_setupISO%"
     timeout /nobreak /t 1 >nul
   )
 
@@ -1342,16 +1348,5 @@ if "%command%" == "2" ( set command= & exit /b )
 
 echo.    ^(^!^) Rebooting...
 shutdown /r /t 3
-timeout /nobreak /t 3 >nul
-exit
-
-
-
-
-
-
-
-:startAsAdmin
-echo.^(^!^) Please, run as Admin^!
 timeout /nobreak /t 3 >nul
 exit
