@@ -645,7 +645,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%command%" == "1" 
   )
 
   echo.^(i^) Mounting iso file...
-  start /wait /b powershell.exe "Mount-DiskImage ""%~dp0%setup_office_setupISO%"""
+  start /wait /min powershell.exe "Mount-DiskImage ""%~dp0%setup_office_setupISO%"""
   timeout /nobreak /t 1 >nul
 
   echo.^(i^) Setup...
@@ -653,7 +653,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%command%" == "1" 
   timeout /nobreak /t 1 >nul
 
   echo.^(i^) Unmounting iso file...
-  start /wait /b powershell.exe "Dismount-DiskImage ""%~dp0%setup_office_setupISO%"""
+  start /wait /min powershell.exe "Dismount-DiskImage ""%~dp0%setup_office_setupISO%"""
   timeout /nobreak /t 1 >nul
 )
 
@@ -720,7 +720,7 @@ goto :setup_gpeditMSC
 
 :services_windowsUpdate
 set services_windowsUpdate_updateDistributions=unlocked
-for /f "delims=" %%i in ('dir /a:-d /b %WinDir%\SoftwareDistribution\Download') do if "%%i" == "Download" set services_windowsUpdate_updateDistributions=locked
+for /f "delims=" %%i in ('dir /a:-d /b "%WinDir%\SoftwareDistribution\Download"') do if "%%i" == "Download" set services_windowsUpdate_updateDistributions=locked
 
 call :main_variables services_windowsUpdate
 
