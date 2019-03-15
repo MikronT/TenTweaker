@@ -250,7 +250,9 @@ goto :interface_desktopObjects
 :interface_languageKeySequence
 call :main_variables interface_languageKeySequence
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%interface_languageKeySequence_inputLanguageSwitch%" == "%interface_languageKeySequence_keyboardLayoutSwitch%" (
-  set error_interface_languageKeySequence=1
+  if "%interface_languageKeySequence_inputLanguageSwitch%" NEQ "Not assigned" (
+    set error_interface_languageKeySequence=1
+  ) else set error_interface_languageKeySequence=0
 ) else set error_interface_languageKeySequence=0
 
 call :logo
@@ -292,10 +294,6 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
     if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "Left Alt + Shift" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 4 /f >nul
     if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "Grave accent (`)" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 3 /f >nul
   )
-
-  if "%interface_languageKeySequence_inputLanguageSwitch%" == "%interface_languageKeySequence_keyboardLayoutSwitch%" (
-    set error_interface_languageKeySequence=1
-  ) else set error_interface_languageKeySequence=0
 )
 
 if "%command%" == "3" if "%error_interface_languageKeySequence%" NEQ "1" ( set command= & exit /b )
