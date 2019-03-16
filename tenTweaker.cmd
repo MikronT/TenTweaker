@@ -34,8 +34,8 @@ if "%key_main_registryMerge%" NEQ "true" (
   start "" cmd /c "%~dpnx0" --key_main_registryMerge=true
   exit
 ) else if exist temp\consoleSettings.reg (
-  reg delete HKCU\Console\%%SystemRoot%%_system32_cmd.exe /va /f
-  reg import temp\consoleSettings.reg >nul
+  reg delete HKCU\Console\%%SystemRoot%%_system32_cmd.exe /va /f >nul 2>nul
+  reg import temp\consoleSettings.reg >nul 2>nul
 )
 
 set module_wget=files\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=3
@@ -57,8 +57,11 @@ echo.
 timeout /nobreak /t 1 >nul
 
 if "%key_main_reboot%" == "services_sppsvc" (
-  for /l %%i in (10,-1,1) do sc start sppsvc
-  for /l %%i in (4,-1,1) do reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v tenTweaker_services_sppsvc /f
+  for /l %%i in (4,-1,1)  do reg import files\services_sppsvc_registry.reg >nul 2>nul
+  for /l %%i in (10,-1,1) do sc start sppsvc >nul 2>nul
+  for /l %%i in (4,-1,1)  do reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v tenTweaker_services_sppsvc /f >nul 2>nul
+  timeout /nobreak /t 1 >nul
+  call :reboot_computer force
 ) else (
   if "%key_main_eula%" NEQ "hidden" (
     echo.^(^!^) The author is not responsible for any possible damage to the computer^!
@@ -804,8 +807,8 @@ set command=%errorLevel%
 
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   if "%command%" == "1" (
-    for /l %%i in (4,-1,1) do reg import files\services_sppsvc_registry.reg >nul
-    for /l %%i in (10,-1,1) do sc start sppsvc
+    for /l %%i in (4,-1,1) do reg import files\services_sppsvc_registry.reg >nul 2>nul
+    for /l %%i in (10,-1,1) do sc start sppsvc >nul 2>nul
   )
 
   if "%command%" == "2" (
@@ -1231,8 +1234,8 @@ if "%1" == "services_sppsvc" (
 
 
 if "%1" == "tools_administrativeTools" (
-  set tools_administrativeTools_taskManager=enabled
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr') do if "%%i" == "0x1" set tools_administrativeTools_taskManager=disabled
+  set tools_administrativeTools_desktop=enabled
+  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoDesktop') do if "%%i" == "0x1" set tools_administrativeTools_desktop=disabled
 
   set tools_administrativeTools_controlPanel=enabled
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoControlPanel') do if "%%i" == "0x1" set tools_administrativeTools_controlPanel=disabled
@@ -1246,8 +1249,9 @@ if "%1" == "tools_administrativeTools" (
     set tools_administrativeTools_cmd=enabled
     for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableCMD') do if "%%i" == "0x1" set tools_administrativeTools_cmd=disabled
 
-    set tools_administrativeTools_desktop=enabled
-    for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoDesktop') do if "%%i" == "0x1" set tools_administrativeTools_desktop=disabled
+    set tools_administrativeTools_taskManager=enabled
+    for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr') do if "%%i" == "0x1" set tools_administrativeTools_taskManager=disabled
+
   )
 )
 exit /b
@@ -1318,6 +1322,8 @@ exit /b
 
 
 :reboot_computer
+if "%*" == "force" ( shutdown /r /t 7 & exit )
+
 call :logo
 echo.^(i^) Reboot Menu
 echo.
@@ -1336,7 +1342,7 @@ set command=%errorLevel%
 
 if "%command%" == "2" ( set command= & exit /b )
 
-echo.    ^(^!^) Rebooting...
-shutdown /r /t 3
-timeout /nobreak /t 3 >nul
+echo.^(^!^) Rebooting...
+shutdown /r /t 5
+timeout /nobreak /t 5 >nul
 exit
