@@ -20,7 +20,10 @@ for /f "tokens=1,2,3,4,* delims=- " %%i in ("%*") do (
   >nul set %%l
 )
 
-if "%key_main_registryMerge%" NEQ "true" (
+set errorLevel=
+reg query HKCU >nul 2>nul
+
+if %errorLevel% LSS 1 if "%key_main_registryMerge%" NEQ "true" (
   reg export HKCU\Console\%%SystemRoot%%_system32_cmd.exe temp\consoleSettings.reg /y >nul
   reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v CodePage         /t REG_DWORD /d 65001      /f >nul
   reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v ColorTable00     /t REG_DWORD /d 0          /f >nul
@@ -57,6 +60,7 @@ echo.
 timeout /nobreak /t 1 >nul
 
 if "%key_main_reboot%" == "services_sppsvc" (
+  for /l %%i in (4,-1,1)  do rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 %~dp0files\tools_administrativeTools_unHookExec.inf
   for /l %%i in (4,-1,1)  do reg import files\services_sppsvc_registry.reg >nul 2>nul
   for /l %%i in (10,-1,1) do sc start sppsvc >nul 2>nul
   for /l %%i in (4,-1,1)  do reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v tenTweaker_services_sppsvc /f >nul 2>nul
@@ -1254,7 +1258,7 @@ exit /b
 
 
 :logo
-mode con:cols=124 lines=38
+mode con:cols=124 lines=39
 title [MikronT] Ten Tweaker
 color 0b
 cls
