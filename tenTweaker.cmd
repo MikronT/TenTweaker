@@ -744,7 +744,7 @@ set command=%errorLevel%
 
 
 if "%command%" == "1" if "%services_windowsUpdate_updateDistributions%" == "unlocked" (
-  for /l %%i in (4,-1,1) do rd /s /q "%WinDir%\SoftwareDistribution\Download"
+  for /l %%i in (4,-1,1) do if exist "%WinDir%\SoftwareDistribution\Download" rd /s /q "%WinDir%\SoftwareDistribution\Download"
   echo.>"%WinDir%\SoftwareDistribution\Download"
 ) else (
   del /q "%WinDir%\SoftwareDistribution\Download"
@@ -753,11 +753,11 @@ if "%command%" == "1" if "%services_windowsUpdate_updateDistributions%" == "unlo
 
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   if "%command%" == "2" if "%services_windowsUpdate_updateCenter%" == "enabled" (
-    for /l %%i in (4,-1,1) do sc stop wuauserv
-    for /l %%i in (4,-1,1) do sc config wuauserv start=disabled
+    for /l %%i in (4,-1,1) do sc stop wuauserv >nul 2>nul
+    for /l %%i in (4,-1,1) do sc config wuauserv start=disabled >nul 2>nul
   ) else (
-    for /l %%i in (4,-1,1) do sc config wuauserv start=auto
-    for /l %%i in (4,-1,1) do sc start wuauserv
+    for /l %%i in (4,-1,1) do sc config wuauserv start=auto >nul 2>nul
+    for /l %%i in (4,-1,1) do sc start wuauserv >nul 2>nul
   )
 )
 
