@@ -1265,9 +1265,8 @@ cls
 echo.
 echo.
 echo.    [MikronT] ==^> Ten Tweaker
-echo.                  Beta v0.97
-rem echo.                  Release v1.0
-echo.   ===========================
+echo.                  Release v1.0
+echo.   ============================
 echo.     See other here:
 echo.         github.com/MikronT
 echo.
