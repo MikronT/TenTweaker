@@ -14,10 +14,10 @@ cd "%~dp0"
 if not exist temp md temp
 
 for /f "tokens=1,2,3,4,* delims=- " %%i in ("%*") do (
-  set %%i
-  set %%j
-  set %%k
-  set %%l
+  >nul set %%i
+  >nul set %%j
+  >nul set %%k
+  >nul set %%l
 )
 
 if "%key_main_registryMerge%" NEQ "true" (
@@ -919,7 +919,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
 
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
   if "%command%" == "4" if "%tools_administrativeTools_registryTools%" == "enabled" (
-    reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableRegistryTools /t REG_DWORD /d 1 /f >nul
+    for /l %%i in (4,-1,1) do reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableRegistryTools /t REG_DWORD /d 1 /f >nul
   ) else for /l %%i in (4,-1,1) do rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 %~dp0files\tools_administrativeTools_unHookExec.inf
 
   if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
@@ -932,12 +932,12 @@ if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
     ) else for /l %%i in (4,-1,1) do reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr /t REG_DWORD /d 0 /f >nul
   )
 
-  if "%command%" == "7" for /l %%i in (4,-1,1) do gpupdate /force >nul
+  if "%command%" == "7" gpupdate /force >nul
   if "%command%" == "8" call :restart_explorer
   if "%command%" == "9" call :reboot_computer
   if "%command%" == "10" ( set command= & exit /b )
 ) else (
-  if "%command%" == "4" for /l %%i in (4,-1,1) do gpupdate /force >nul
+  if "%command%" == "4" gpupdate /force >nul
   if "%command%" == "5" call :restart_explorer
   if "%command%" == "6" ( set command= & exit /b )
 )
@@ -1012,7 +1012,7 @@ goto :template
 
 :main_variables
 set errorLevel=
-reg query HKCU >nul
+reg query HKCU >nul 2>nul
 
 if %errorLevel% GEQ 1 (
   set interface_desktopObjects_thisPC=[error]
