@@ -68,22 +68,7 @@ if "%key_main_reboot%" == "services_sppsvc" (
     echo.^(^?^) Are you sure^? ^(Enter or close^)
     pause>nul
   )
-  goto :main_menu
 )
-
-
-
-
-
-call :logo
-echo.^(i^) The work is completed^!
-echo.
-timeout /nobreak /t 1 >nul
-
-echo.^(^?^) Reboot now^? ^(Enter or close^)
-pause>nul
-call :reboot_computer
-exit
 
 
 
@@ -893,12 +878,10 @@ if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
 echo.    %stringBuilder_string%
 
 echo.
-echo.    Note: These features require to update group policy.
+echo.    Note: Features ^(2^) and ^(3^) require to update group policy.
 echo.    ^(U^) Update group policy
 echo.
-if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
-  echo.    Note: Features ^(3^), ^(5^) and ^(6^) require to restart Windows Explorer.
-) else echo.    Note: Feature ^(3^) requires to restart Windows Explorer.
+echo.    Note: Feature ^(1^) requires to restart Windows Explorer.
 echo.    ^(E^) Restart Windows Explorer
 echo.
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
