@@ -41,7 +41,7 @@ if %errorLevel% LSS 1 if "%key_main_registryMerge%" NEQ "true" (
   reg import temp\consoleSettings.reg >nul 2>nul
 )
 
-set module_wget=files\wget.exe --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate --tries=3
+set module_wget=files\wget.exe --quiet --no-check-certificate --tries=1
 
 set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
 set option_enabled=enabled         
@@ -628,7 +628,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%command%" == "1" 
   if exist "%setup_office_setupISO%" del /q "%setup_office_setupISO%"
 
   echo.^(i^) Downloading Microsoft Office Professional Plus 2016 Setup
-  %module_wget% "%setup_office_setupURL%" --output-document="%setup_office_setupISO%"
+  %module_wget% --show-progress --progress=bar:force:noscroll "%setup_office_setupURL%" --output-document="%setup_office_setupISO%"
   timeout /nobreak /t 1 >nul
 
   for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir "%~dp0%setup_office_setupISO%"') do if "%%i" == "1" if "%%j" == "0" (
