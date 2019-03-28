@@ -13,7 +13,7 @@ cd "%~dp0"
 
 if not exist temp md temp
 
-for /f "tokens=1,2,3,4,* delims=- " %%i in ("%*") do (
+for /f "tokens=1-4,* delims=- " %%i in ("%*") do (
   >nul set %%i
   >nul set %%j
   >nul set %%k
@@ -119,7 +119,7 @@ echo.    ^(4^) Windows Explorer                                      Services
 echo.    ^(5^) Windows Task Bar                                        ^(8^) Windows Update ^(wuauserv^)
 echo.                                                                ^(9^) Software Protection Platform Service ^(sppsvc^)
 echo.  Tools
-echo.    ^(A^) Manage Administrative Tools
+echo.    ^(A^) Administrative Tools
 echo.    ^(B^) System Resource Checker
 echo.
 echo.
