@@ -41,6 +41,13 @@ if %errorLevel% LSS 1 if "%key_main_registryMerge%" NEQ "true" (
   reg import temp\consoleSettings.reg >nul 2>nul
 )
 
+set version=1.1
+
+for /f "tokens=1-2 delims=." %%i in ("%version%") do (
+  set version_level1=%%i
+  set version_level2=%%j
+)
+
 set module_wget=files\wget.exe --quiet --no-check-certificate --tries=1
 
 set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
@@ -49,6 +56,11 @@ set option_disabled=disabled
 set option_shown=shown           
 set option_hidden=hidden          
 set option_error=[error]         
+
+set update_version_output=temp\TenTweaker.version
+set update_version_url=https://drive.google.com/uc?export=download^^^&id=1ZeM5bnX0fWs7njKL2ZTeYc2ctv0FmGRs
+
+
 
 
 
@@ -66,6 +78,14 @@ if "%key_main_reboot%" == "services_sppsvc" (
   timeout /nobreak /t 1 >nul
   call :reboot_computer force
 ) else (
+  %module_wget% "%update_version_url%" --output-document="%update_version_output%"
+
+  for /f "tokens=1-2 delims=." %%l in (%update_version_output%) do (
+           if "%%l" NEQ "" if %%l GTR %version_level1% ( set update_available=true
+    ) else if "%%m" NEQ "" if %%m GTR %version_level2% ( set update_available=true
+    )
+  )
+
   if "%key_main_eula%" NEQ "hidden" (
     echo.^(^!^) The author is not responsible for any possible damage to the computer^!
     echo.^(^?^) Are you sure^? ^(Enter or close^)
@@ -107,6 +127,13 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools main_menu
+if "%update_available%" == "true" (
+  echo.    ^(^!^) An update for Ten Tweaker is now available^!
+  echo.        Download it here: github.com/MikronT/TenTweaker/releases/latest
+  echo.
+  echo.
+  echo.
+)
 choice /c 123456789A0 /n /m "> "
 set command=%errorLevel%
 
@@ -1264,7 +1291,7 @@ cls
 echo.
 echo.
 echo.    [MikronT] ==^> Ten Tweaker
-echo.                  Release v1.0
+echo.                  Release v%version%
 echo.   ============================
 echo.     See other here:
 echo.         github.com/MikronT
