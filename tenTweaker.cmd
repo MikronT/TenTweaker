@@ -57,7 +57,6 @@ set option_error=[error]
 call :logo
 echo.^(i^) Ten Tweaker is running...
 echo.
-timeout /nobreak /t 1 >nul
 
 if "%key_main_reboot%" == "services_sppsvc" (
   for /l %%i in (4,-1,1)  do rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 %~dp0files\tools_administrativeTools_unHookExec.inf
