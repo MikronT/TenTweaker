@@ -344,13 +344,14 @@ echo.^(^>^) Choose action to enable/disable input suggestions:
 echo.    ^(1^) Auto Suggest                        %interface_suggestions_autoSuggest%
 echo.    ^(2^) Append Completion                   %interface_suggestions_appendCompletion%
 echo.    ^(3^) Start Track Progs                   %interface_suggestions_startTrackProgs%
+echo.    ^(4^) Suggestions when typing             %interface_suggestions_suggestionsWhenTyping%
 echo.
 echo.    ^(0^) Go back
 echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
-choice /c 1230 /n /m "> "
+choice /c 12340 /n /m "> "
 set command=%errorLevel%
 
 
@@ -367,9 +368,13 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   if "%command%" == "3" if "%interface_suggestions_startTrackProgs%" == "disabled" (
     reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs /t REG_DWORD /d 1 /f >nul
   ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs /t REG_DWORD /d 0 /f >nul
+
+  if "%command%" == "4" if "%interface_suggestions_suggestionsWhenTyping%" == "disabled" (
+    reg add HKCU\Software\Microsoft\Input\Settings /v EnableHwkbTextPrediction /t REG_DWORD /d 1 /f >nul
+  ) else reg add HKCU\Software\Microsoft\Input\Settings /v EnableHwkbTextPrediction /t REG_DWORD /d 0 /f >nul
 )
 
-if "%command%" == "4" ( set command= & exit /b )
+if "%command%" == "5" ( set command= & exit /b )
 goto :interface_suggestions
 
 
@@ -1098,6 +1103,7 @@ if %errorLevel% GEQ 1 (
   set interface_suggestions_autoSuggest=[error]
   set interface_suggestions_appendCompletion=[error]
   set interface_suggestions_startTrackProgs=[error]
+  set interface_suggestions_suggestionsWhenTyping=[error]
 
   set interface_explorer_fileExtensions=[error]
   set interface_explorer_hiddenFiles=[error]
@@ -1186,6 +1192,9 @@ if "%1" == "interface_suggestions" (
 
   set interface_suggestions_startTrackProgs=disabled
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs') do if "%%i" == "0x1" set interface_suggestions_startTrackProgs=enabled
+
+  set interface_suggestions_suggestionsWhenTyping=disabled
+  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Input\Settings /v EnableHwkbTextPrediction') do if "%%i" == "0x1" set interface_suggestions_suggestionsWhenTyping=enabled
 )
 
 
