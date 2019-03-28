@@ -32,6 +32,7 @@ Console tweaker for Windows 10 with some useful options.
   - restore Software Protection Platform Service (sppsvc)
 - Tools
   - manage Windows Administrative Tools
+  - run System Resource Checker
 
 
 

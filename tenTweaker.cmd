@@ -120,6 +120,7 @@ echo.    ^(5^) Windows Task Bar                                        ^(8^) Win
 echo.                                                                ^(9^) Software Protection Platform Service ^(sppsvc^)
 echo.  Tools
 echo.    ^(A^) Manage Administrative Tools
+echo.    ^(B^) System Resource Checker
 echo.
 echo.
 echo.    ^(0^) Exit
@@ -134,7 +135,7 @@ if "%update_available%" == "true" (
   echo.
   echo.
 )
-choice /c 123456789A0 /n /m "> "
+choice /c 123456789AB0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -152,8 +153,9 @@ if "%command%" == "8" call :services_windowsUpdate
 if "%command%" == "9" call :services_sppsvc
 
 if "%command%" == "10" call :tools_administrativeTools
+if "%command%" == "11" call :tools_systemResourceChecker
 
-if "%command%" == "11" (
+if "%command%" == "12" (
   rd /s /q temp
   exit /b
 )
@@ -972,6 +974,45 @@ if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
   if "%command%" == "6" ( set command= & exit /b )
 )
 goto :tools_administrativeTools
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:tools_systemResourceChecker
+call :logo
+echo.^(i^) System Resource Checker - Restore Menu
+echo.
+echo.
+echo.^(^>^) Choose action:
+echo.    ^(1^) Run System Resource Scan and automatically repair all files with problems
+echo.
+echo.    Note: This feature requires to reboot your computer.
+echo.    ^(R^) Reboot computer
+echo.
+echo.    ^(0^) Go back
+echo.
+echo.
+echo.
+choice /c 1R0 /n /m "> "
+set command=%errorLevel%
+
+
+
+if "%command%" == "1" for /l %%i in (4,-1,1) do sfc /scannow
+if "%command%" == "2" call :reboot_computer
+if "%command%" == "3" ( set command= & exit /b )
+goto :tools_systemResourceChecker
 
 
 
