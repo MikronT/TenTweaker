@@ -62,7 +62,6 @@ set update_version_output=temp\%program_name_nbs%.version
 set update_version_url=https://drive.google.com/uc?export=download^^^&id=1ZeM5bnX0fWs7njKL2ZTeYc2ctv0FmGRs
 
 set language=default
-if exist settings.ini for /f "eol=# delims=" %%i in (settings.ini) do set %%i
 call :language_import
 
 
@@ -71,6 +70,7 @@ call :language_import
 
 
 
+if exist settings.ini for /f "eol=# delims=" %%i in (settings.ini) do set %%i
 if "%language%" NEQ "english" if "%language%" NEQ "russian" if "%language%" NEQ "ukrainian" call :language_menu force
 call :language_import
 
