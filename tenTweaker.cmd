@@ -43,6 +43,7 @@ if %errorLevel% LSS 1 if "%key_main_registryMerge%" NEQ "true" (
 
 set program_name=Ten Tweaker
 set program_name_nbs=tenTweaker
+
 set program_version=1.2
 set program_version_level1=0
 set program_version_level2=0
@@ -1363,6 +1364,14 @@ exit /b
 
 
 
+
+
+
+
+
+
+
+
 :errorMessage_main_variables_disabledRegistryTools
 echo.    ^(^!^) Registry Tools are disabled^!
 echo.        If you see [error] than this feature state cannot be shown or changed^!
@@ -1378,11 +1387,27 @@ exit /b
 
 
 
+
+
+
+
+
+
+
+
 :restart_explorer
 taskkill /f /im explorer.exe >nul
 timeout /nobreak /t 1 >nul
 start "" "%winDir%\explorer.exe"
 exit /b
+
+
+
+
+
+
+
+
 
 
 
