@@ -192,18 +192,18 @@ goto :main_menu
 call :main_variables interface_desktopObjects
 
 call :logo
-echo.^(i^) Desktop Objects - Control Menu
+echo.%language_interface_desktopObjects01%
 echo.
 echo.
-echo.^(^>^) Choose action to show/hide desktop object:
+echo.%language_interface_desktopObjects02%
 
-set stringBuilder_string=^(1^) This PC                            
+set stringBuilder_string=%language_interface_desktopObjects03%
 if "%interface_desktopObjects_thisPC%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_desktopObjects_thisPC%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    ^(4^) User Folder                        
+call %stringBuilder_build%    %language_interface_desktopObjects04%
 if "%interface_desktopObjects_userFolder%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_desktopObjects_userFolder%" == "hidden" (
@@ -211,13 +211,13 @@ if "%interface_desktopObjects_userFolder%" == "shown" (
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=^(2^) Recycle Bin                        
+set stringBuilder_string=%language_interface_desktopObjects05%
 if "%interface_desktopObjects_recycleBin%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_desktopObjects_recycleBin%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    ^(5^) Network                            
+call %stringBuilder_build%    %language_interface_desktopObjects06%
 if "%interface_desktopObjects_network%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_desktopObjects_network%" == "hidden" (
@@ -225,12 +225,12 @@ if "%interface_desktopObjects_network%" == "shown" (
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-echo.    ^(3^) Control Panel                       %interface_desktopObjects_controlPanel%
+echo.    %language_interface_desktopObjects07% %interface_desktopObjects_controlPanel%
 echo.
-echo.    Note: These features require to restart Windows Explorer.
-echo.    ^(E^) Restart Windows Explorer
+echo.    %language_interface_desktopObjects08%
+echo.    %language_interface_desktopObjects09%
 echo.
-echo.    ^(0^) Go back
+echo.    %language_goBack%
 echo.
 echo.
 echo.
@@ -1060,7 +1060,7 @@ echo.    ^(2^) Русский
 echo.    ^(3^) Українська
 if "%1" NEQ "force" (
   echo.
-  echo.    ^(0^) %language_goBack%
+  echo.    %language_goBack%
 )
 echo.
 echo.
@@ -1406,7 +1406,7 @@ exit /b
 
 
 :language_import_english
-set language_goBack=Go back
+set language_goBack=^^(0^^) Go back
 set language_stringBuilder_option_enabled=enabled         
 set language_stringBuilder_option_disabled=disabled        
 set language_stringBuilder_option_shown=shown           
@@ -1422,36 +1422,47 @@ set language_eula1=The author is not responsible for any possible damage to the 
 set language_eula2=Are you sure^^? ^^(Press Enter or close^^)
 
 set language_main_menu01=  Interface                                                   Setup
-set language_main_menu02=    ^(1^) Desktop objects ^(This PC etc^)                           ^(6^) Setup Office Professional+ 2016
-set language_main_menu03=    ^(2^) Language key sequence ^(Ctrl + Shift^)                    ^(7^) Setup/restore gpedit.msc
-set language_main_menu04=    ^(3^) Input suggestions and auto completion
-set language_main_menu05=    ^(4^) Windows Explorer                                      Services
-set language_main_menu06=    ^(5^) Windows Task Bar                                        ^(8^) Windows Update ^(wuauserv^)
-set language_main_menu07=                                                                ^(9^) Software Protection Platform Service ^(sppsvc^)
+set language_main_menu02=    ^^(1^^) Desktop objects ^^(This PC etc^^)                           ^^(6^^) Setup Office Professional+ 2016
+set language_main_menu03=    ^^(2^^) Language key sequence ^^(Ctrl + Shift^^)                    ^^(7^^) Setup/restore gpedit.msc
+set language_main_menu04=    ^^(3^^) Input suggestions and auto completion
+set language_main_menu05=    ^^(4^^) Windows Explorer                                      Services
+set language_main_menu06=    ^^(5^^) Windows Task Bar                                        ^^(8^^) Windows Update ^^(wuauserv^^)
+set language_main_menu07=                                                                ^^(9^^) Software Protection Platform Service ^^(sppsvc^^)
 set language_main_menu08=  Tools
-set language_main_menu09=    ^(A^) Administrative tools
-set language_main_menu10=    ^(B^) System Resource Checker
+set language_main_menu09=    ^^(A^^) Administrative tools
+set language_main_menu10=    ^^(B^^) System Resource Checker
 set language_main_menu11=
 set language_main_menu12=
-set language_main_menu13=    ^(Z^) Language
-set language_main_menu14=    ^(0^) Exit
+set language_main_menu13=    ^^(Z^^) Language
+set language_main_menu14=    ^^(0^^) Exit
 
 set language_language_menu1=Language - Selection Menu
 set language_language_menu2=Choose language:
 
-set language_errorMessage_main_variables_disabledRegistryTools1=Registry Tools are disabled^!
-set language_errorMessage_main_variables_disabledRegistryTools2=If you see [error] than this feature state cannot be shown or changed^!
+set language_interface_desktopObjects01=^^(i^^) Desktop Objects - Control Menu
+set language_interface_desktopObjects02=^^(^^^>^^) Choose action to show/hide desktop object:
+set language_interface_desktopObjects03=^^(1^^) This PC                            
+set language_interface_desktopObjects04=^^(4^^) User Folder                        
+set language_interface_desktopObjects05=^^(2^^) Recycle Bin                        
+set language_interface_desktopObjects06=^^(5^^) Network                            
+set language_interface_desktopObjects07=^^(3^^) Control Panel                      
+set language_interface_desktopObjects08=Note: These features require to restart Windows Explorer.
+set language_interface_desktopObjects09=^^(E^^) Restart Windows Explorer
+set language_interface_desktopObjects10=
+
+set language_errorMessage_main_variables_disabledRegistryTools1=Registry Tools are disabled^^!
+set language_errorMessage_main_variables_disabledRegistryTools2=If you see [error] than this feature state cannot be shown or changed^^!
 set language_errorMessage_main_variables_disabledRegistryTools3=To fix it you must enable Registry Tools in ^^(A^^) menu ^^(with hidden options^^)^^!
 set language_errorMessage_main_variables_disabledRegistryTools4=Please, back to main menu and read this error message again.
 
-set language_message_update_available1=An update for %program_name% is now available^!
+set language_message_update_available1=An update for %program_name% is now available^^!
 set language_message_update_available2=Download it here:
 exit /b
 
 
 
 :language_import_russian
-set language_goBack=Назад
+set language_goBack=^^(0^^) Назад
 set language_stringBuilder_option_enabled=включено        
 set language_stringBuilder_option_disabled=отключено       
 set language_stringBuilder_option_shown=показано        
@@ -1467,36 +1478,36 @@ set language_eula1=Автор не несет ответственности з�
 set language_eula2=Вы уверены^^? ^^(Нажмите Enter или закройте^^)
 
 set language_main_menu01=  Интерфейс                                                   Настройка
-set language_main_menu02=    ^(1^) Объекты рабочего стола ^(Этот ПК и другие^)               ^(6^) Установить Офис Профессиональный+ 2016
-set language_main_menu03=    ^(2^) Сочетания клавиш смены языка ^(Ctrl + Shift^)             ^(7^) Установить/восстановить gpedit.msc
-set language_main_menu04=    ^(3^) Предложения при вводе и автозаполнение
-set language_main_menu05=    ^(4^) Windows Проводник                                     Службы
-set language_main_menu06=    ^(5^) Windows Панель Задач                                    ^(8^) Обновление Windows ^(wuauserv^)
-set language_main_menu07=                                                                ^(9^) Служба Платформы Защиты ПО ^(sppsvc^)
+set language_main_menu02=    ^^(1^^) Объекты рабочего стола ^^(Этот ПК и другие^^)               ^^(6^^) Установить Офис Профессиональный+ 2016
+set language_main_menu03=    ^^(2^^) Сочетания клавиш смены языка ^^(Ctrl + Shift^^)             ^^(7^^) Установить/восстановить gpedit.msc
+set language_main_menu04=    ^^(3^^) Предложения при вводе и автозаполнение
+set language_main_menu05=    ^^(4^^) Windows Проводник                                     Службы
+set language_main_menu06=    ^^(5^^) Windows Панель Задач                                    ^^(8^^) Обновление Windows ^^(wuauserv^^)
+set language_main_menu07=                                                                ^^(9^^) Служба Платформы Защиты ПО ^^(sppsvc^^)
 set language_main_menu08=  Инструменты
-set language_main_menu09=    ^(A^) Административные инструменты
-set language_main_menu10=    ^(B^) Проверка системных ресурсов
+set language_main_menu09=    ^^(A^^) Административные инструменты
+set language_main_menu10=    ^^(B^^) Проверка системных ресурсов
 set language_main_menu11=
 set language_main_menu12=
-set language_main_menu13=    ^(Z^) Язык
-set language_main_menu14=    ^(0^) Выход
+set language_main_menu13=    ^^(Z^^) Язык
+set language_main_menu14=    ^^(0^^) Выход
 
 set language_language_menu1=Язык - Меню Выбора
 set language_language_menu2=Выберите язык:
 
-set language_errorMessage_main_variables_disabledRegistryTools1=Инструменты реестра отключены^!
-set language_errorMessage_main_variables_disabledRegistryTools2=Если вы видите [ошибка], то это состояние функции не может быть показано или изменено^!
+set language_errorMessage_main_variables_disabledRegistryTools1=Инструменты реестра отключены^^!
+set language_errorMessage_main_variables_disabledRegistryTools2=Если вы видите [ошибка], то это состояние функции не может быть показано или изменено^^!
 set language_errorMessage_main_variables_disabledRegistryTools3=Чтобы это исправить, вы должны включить инструменты реестра в меню ^^(A^^) ^^(со скрытыми параметрами^^)^^!
 set language_errorMessage_main_variables_disabledRegistryTools4=Пожалуйста, вернитесь в главное меню и прочитайте это сообщение об ошибке еще раз.
 
-set language_message_update_available1=Доступно обновление для %program_name%^!
+set language_message_update_available1=Доступно обновление для %program_name%^^!
 set language_message_update_available2=Загрузите его здесь:
 exit /b
 
 
 
 :language_import_ukrainian
-set language_goBack=Назад
+set language_goBack=^^(0^^) Назад
 set language_stringBuilder_option_enabled=увімкнено       
 set language_stringBuilder_option_disabled=вимкнено        
 set language_stringBuilder_option_shown=показано        
@@ -1512,29 +1523,29 @@ set language_eula1=Автор не несе відповідальності з�
 set language_eula2=Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
 
 set language_main_menu01=  Інтерфейс                                                   Налаштування
-set language_main_menu02=    ^(1^) Об'єкти робочого столу ^(Цей ПК та інші^)                 ^(6^) Установити Офіс Професійний+ 2016
-set language_main_menu03=    ^(2^) Комбінації клавіш зміни мови ^(Ctrl + Shift^)             ^(7^) Установити/відновити gpedit.msc
-set language_main_menu04=    ^(3^) Пропозиції при введенні та автозаповнення
-set language_main_menu05=    ^(4^) Windows Провідник                                     Служби
-set language_main_menu06=    ^(5^) Windows Панель Завдань                                  ^(8^) Оновлення Windows ^(wuauserv^)
-set language_main_menu07=                                                                ^(9^) Служба Платформи Захисту ПО ^(sppsvc^)
+set language_main_menu02=    ^^(1^^) Об'єкти робочого столу ^^(Цей ПК та інші^^)                 ^^(6^^) Установити Офіс Професійний+ 2016
+set language_main_menu03=    ^^(2^^) Комбінації клавіш зміни мови ^^(Ctrl + Shift^^)             ^^(7^^) Установити/відновити gpedit.msc
+set language_main_menu04=    ^^(3^^) Пропозиції при введенні та автозаповнення
+set language_main_menu05=    ^^(4^^) Windows Провідник                                     Служби
+set language_main_menu06=    ^^(5^^) Windows Панель Завдань                                  ^^(8^^) Оновлення Windows ^^(wuauserv^^)
+set language_main_menu07=                                                                ^^(9^^) Служба Платформи Захисту ПО ^^(sppsvc^^)
 set language_main_menu08=  Інструменти
-set language_main_menu09=    ^(A^) Адміністративні інструменти
-set language_main_menu10=    ^(B^) Перевірка системних ресурсів
+set language_main_menu09=    ^^(A^^) Адміністративні інструменти
+set language_main_menu10=    ^^(B^^) Перевірка системних ресурсів
 set language_main_menu11=
 set language_main_menu12=
-set language_main_menu13=    ^(Z^) Мова
-set language_main_menu14=    ^(0^) Вихід
+set language_main_menu13=    ^^(Z^^) Мова
+set language_main_menu14=    ^^(0^^) Вихід
 
 set language_language_menu1=Мова - Меню Вибору
 set language_language_menu2=Виберіть мову:
 
-set language_errorMessage_main_variables_disabledRegistryTools1=Інструменти реєстру відключені^!
-set language_errorMessage_main_variables_disabledRegistryTools2=Якщо ви бачите [помилка], то це стан формальної процедури не може показано або змінено^!
+set language_errorMessage_main_variables_disabledRegistryTools1=Інструменти реєстру відключені^^!
+set language_errorMessage_main_variables_disabledRegistryTools2=Якщо ви бачите [помилка], то це стан формальної процедури не може показано або змінено^^!
 set language_errorMessage_main_variables_disabledRegistryTools3=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^^(A^^) ^^(з прихованими параметрами^^)^^!
 set language_errorMessage_main_variables_disabledRegistryTools4=Будь ласка, поверніться в головне меню і прочитайте це повідомлення про помилку ще раз.
 
-set language_message_update_available1=Доступно оновлення для %program_name%^!
+set language_message_update_available1=Доступно оновлення для %program_name%^^!
 set language_message_update_available2=Завантажте його тут:
 exit /b
 
