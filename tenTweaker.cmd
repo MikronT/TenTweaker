@@ -67,11 +67,17 @@ set stringBuilder_option_error=[error]
 set update_version_output=temp\%program_name_nbs%.version
 set update_version_url=https://drive.google.com/uc?export=download^^^&id=1ZeM5bnX0fWs7njKL2ZTeYc2ctv0FmGRs
 
+set language=default
+if exist settings.ini for /f "eol=# delims=" %%i in (settings.ini) do set %%i
+call :language_import
 
 
 
 
 
+
+
+call :language_import
 
 call :logo
 echo.^(i^) %program_name% is running...
@@ -95,8 +101,8 @@ if "%key_main_reboot%" == "services_sppsvc" (
   )
 
   if "%key_main_eula%" NEQ "hidden" (
-    echo.^(^!^) The author is not responsible for any possible damage to the computer^!
-    echo.^(^?^) Are you sure^? ^(Enter or close^)
+    echo.%language_eula1%
+    echo.%language_eula2%
     pause>nul
   )
 )
@@ -1341,6 +1347,64 @@ exit /b
 
 
 
+:language_import
+if "%language%" == "default"   call :language_import_english
+
+if "%language%" == "english"   call :language_import_english
+if "%language%" == "russian"   call :language_import_russian
+if "%language%" == "ukrainian" call :language_import_ukrainian
+exit /b
+
+
+
+:language_import_english
+set language_logo_programVersion=Release v%program_version%
+set language_logo_delimiter=============================
+set language_logo_otherPrograms=See other programs here:
+
+set language_running=^(i^) %program_name% is running...
+set language_eula1=^^(^^!^^) The author is not responsible for any possible damage to the computer^^!
+set language_eula2=^^(^^?^^) Are you sure^^? ^^(Press Enter or close^^)
+exit /b
+
+
+
+:language_import_russian
+set language_logo_programVersion=Релиз v%program_version%
+set language_logo_delimiter====================================
+set language_logo_otherPrograms=Смотрите другие программы здесь:
+
+set language_running=^(i^) %program_name% запускается...
+set language_eula1=^^(^^!^^) Автор не несет ответственности за возможные повреждения компьютера^^!
+set language_eula2=^^(^^?^^) Вы уверены^^? ^^(Нажмите Enter или закройте^^)
+exit /b
+
+
+
+:language_import_ukrainian
+set language_logo_programVersion=Реліз v%program_version%
+set language_logo_delimiter===============================
+set language_logo_otherPrograms=Дивіться інші програми тут:
+
+set language_running=^(i^) %program_name% запускається...
+set language_eula1=^^(^^!^^) Автор не несе відповідальності за можливі пошкодження комп'ютера^^!
+set language_eula2=^^(^^?^^) Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
+exit /b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :logo
 mode con:cols=124 lines=39
 title [MikronT] %program_name%
@@ -1349,9 +1413,9 @@ cls
 echo.
 echo.
 echo.    [MikronT] ==^> %program_name%
-echo.                  Release v%program_version%
-echo.   ============================
-echo.     See other here:
+echo.                  %language_logo_programVersion%
+echo.   %language_logo_delimiter%
+echo.     %language_logo_otherPrograms%
 echo.         github.com/MikronT
 echo.
 echo.
