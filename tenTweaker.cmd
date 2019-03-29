@@ -77,11 +77,11 @@ call :language_import
 
 
 
-if "%language%" NEQ "english" if "%language%" NEQ "russian" if "%language%" NEQ "ukrainian" call :language_selection force
+if "%language%" NEQ "english" if "%language%" NEQ "russian" if "%language%" NEQ "ukrainian" call :language_menu force
 call :language_import
 
 call :logo
-call echo.%language_running%
+echo.^(i^) %language_running%
 echo.
 
 if "%key_main_reboot%" == "services_sppsvc" (
@@ -102,8 +102,8 @@ if "%key_main_reboot%" == "services_sppsvc" (
   )
 
   if "%key_main_eula%" NEQ "hidden" (
-    echo.%language_eula1%
-    echo.%language_eula2%
+    echo.^(^!^) %language_eula1%
+    echo.^(^?^) %language_eula2%
     pause>nul
   )
 )
@@ -172,7 +172,7 @@ if "%command%" == "10" call :tools_administrativeTools
 if "%command%" == "11" call :tools_systemResourceChecker
 
 if "%command%" == "12" (
-  call :language_selection
+  call :language_menu
   call :language_import
 )
 
@@ -1054,19 +1054,21 @@ goto :tools_systemResourceChecker
 
 
 
-:language_selection
+:language_menu
 call :logo
-echo.^(i^) Language - Selection Menu
+echo.^(i^) %language_language_menu1%
 echo.
 echo.
-echo.^(^>^) Choose language:
+if "%1" NEQ "force" (
+  echo.^(^>^) %language_language_menu2%
+) else echo.^(^>^) Choose language:
 echo.
 echo.    ^(1^) English
 echo.    ^(2^) Русский
 echo.    ^(3^) Українська
 if "%1" NEQ "force" (
   echo.
-  echo.    ^(0^) Go back
+  echo.    ^(0^) %language_goBack%
 )
 echo.
 echo.
@@ -1412,37 +1414,52 @@ exit /b
 
 
 :language_import_english
-set language_logo_programVersion=Release v%program_version%
-set language_logo_delimiter=============================
-set language_logo_otherPrograms=See other programs here:
+set language_goBack=Go back
 
-set language_running=^(i^) %program_name% is running...
-set language_eula1=^^(^^!^^) The author is not responsible for any possible damage to the computer^^!
-set language_eula2=^^(^^?^^) Are you sure^^? ^^(Press Enter or close^^)
+set language_logo1=Release v%program_version%
+set language_logo2=============================
+set language_logo3=See other programs here:
+
+set language_running=%program_name% is running...
+set language_eula1=The author is not responsible for any possible damage to the computer^^!
+set language_eula2=Are you sure^^? ^^(Press Enter or close^^)
+
+set language_language_menu1=Language - Selection Menu
+set language_language_menu2=Choose language:
 exit /b
 
 
 
 :language_import_russian
-set language_logo_programVersion=Релиз v%program_version%
-set language_logo_delimiter====================================
-set language_logo_otherPrograms=Смотрите другие программы здесь:
+set language_goBack=Назад
 
-set language_running=^(i^) %program_name% запускается...
-set language_eula1=^^(^^!^^) Автор не несет ответственности за возможные повреждения компьютера^^!
-set language_eula2=^^(^^?^^) Вы уверены^^? ^^(Нажмите Enter или закройте^^)
+set language_logo1=Релиз v%program_version%
+set language_logo2====================================
+set language_logo3=Смотрите другие программы здесь:
+
+set language_running=%program_name% запускается...
+set language_eula1=Автор не несет ответственности за возможные повреждения компьютера^^!
+set language_eula2=Вы уверены^^? ^^(Нажмите Enter или закройте^^)
+
+set language_language_menu1=Язык - Меню Выбора
+set language_language_menu2=Выберите язык:
 exit /b
 
 
 
 :language_import_ukrainian
-set language_logo_programVersion=Реліз v%program_version%
-set language_logo_delimiter===============================
-set language_logo_otherPrograms=Дивіться інші програми тут:
+set language_goBack=Назад
 
-set language_running=^(i^) %program_name% запускається...
-set language_eula1=^^(^^!^^) Автор не несе відповідальності за можливі пошкодження комп'ютера^^!
-set language_eula2=^^(^^?^^) Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
+set language_logo1=Реліз v%program_version%
+set language_logo2===============================
+set language_logo3=Дивіться інші програми тут:
+
+set language_running=%program_name% запускається...
+set language_eula1=Автор не несе відповідальності за можливі пошкодження комп'ютера^^!
+set language_eula2=Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
+
+set language_language_menu1=Мова - Меню Вибору
+set language_language_menu2=Виберіть мову:
 exit /b
 
 
@@ -1467,9 +1484,9 @@ cls
 echo.
 echo.
 echo.    [MikronT] ==^> %program_name%
-echo.                  %language_logo_programVersion%
-echo.   %language_logo_delimiter%
-echo.     %language_logo_otherPrograms%
+echo.                  %language_logo1%
+echo.   %language_logo2%
+echo.     %language_logo3%
 echo.         github.com/MikronT
 echo.
 echo.
