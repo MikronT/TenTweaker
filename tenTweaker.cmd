@@ -139,10 +139,8 @@ echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools main_menu
 if "%update_available%" == "true" (
-  echo.    ^(^!^) An update for %program_name% is now available^!
-  echo.        Download it here: github.com/MikronT/TenTweaker/releases/latest
-  echo.
-  echo.
+  echo.    ^(^!^) %language_message_update_available1%
+  echo.        %language_message_update_available2% github.com/MikronT/TenTweaker/releases/latest
   echo.
 )
 choice /c 123456789ABZ0 /n /m "> "
@@ -1445,6 +1443,9 @@ set language_errorMessage_main_variables_disabledRegistryTools1=Registry Tools a
 set language_errorMessage_main_variables_disabledRegistryTools2=If you see [error] than this feature state cannot be shown or changed^!
 set language_errorMessage_main_variables_disabledRegistryTools3=To fix it you must enable Registry Tools in ^^(A^^) menu ^^(with hidden options^^)^^!
 set language_errorMessage_main_variables_disabledRegistryTools4=Please, back to main menu and read this error message again.
+
+set language_message_update_available1=An update for %program_name% is now available^!
+set language_message_update_available2=Download it here:
 exit /b
 
 
@@ -1487,6 +1488,9 @@ set language_errorMessage_main_variables_disabledRegistryTools1=Инструме
 set language_errorMessage_main_variables_disabledRegistryTools2=Если вы видите [ошибка], то это состояние функции не может быть показано или изменено^!
 set language_errorMessage_main_variables_disabledRegistryTools3=Чтобы это исправить, вы должны включить инструменты реестра в меню ^^(A^^) ^^(со скрытыми параметрами^^)^^!
 set language_errorMessage_main_variables_disabledRegistryTools4=Пожалуйста, вернитесь в главное меню и прочитайте это сообщение об ошибке еще раз.
+
+set language_message_update_available1=Доступно обновление для %program_name%^!
+set language_message_update_available2=Загрузите его здесь:
 exit /b
 
 
@@ -1529,6 +1533,9 @@ set language_errorMessage_main_variables_disabledRegistryTools1=Інструме
 set language_errorMessage_main_variables_disabledRegistryTools2=Якщо ви бачите [помилка], то це стан формальної процедури не може показано або змінено^!
 set language_errorMessage_main_variables_disabledRegistryTools3=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^^(A^^) ^^(з прихованими параметрами^^)^^!
 set language_errorMessage_main_variables_disabledRegistryTools4=Будь ласка, поверніться в головне меню і прочитайте це повідомлення про помилку ще раз.
+
+set language_message_update_available1=Доступно оновлення для %program_name%^!
+set language_message_update_available2=Завантажте його тут:
 exit /b
 
 
