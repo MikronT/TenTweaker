@@ -126,20 +126,20 @@ if "%key_main_reboot%" == "services_sppsvc" (
 call :main_variables
 
 call :logo
-echo.  Interface                                                   Setup
-echo.    ^(1^) Desktop objects ^(This PC etc^)                           ^(6^) Setup Office Professional+ 2016
-echo.    ^(2^) Language key sequence ^(Ctrl + Shift^)                    ^(7^) Setup/restore gpedit.msc
-echo.    ^(3^) Input suggestions and auto completion
-echo.    ^(4^) Windows Explorer                                      Services
-echo.    ^(5^) Windows Task Bar                                        ^(8^) Windows Update ^(wuauserv^)
-echo.                                                                ^(9^) Software Protection Platform Service ^(sppsvc^)
-echo.  Tools
-echo.    ^(A^) Administrative Tools
-echo.    ^(B^) System Resource Checker
-echo.
-echo.
-echo.    ^(Z^) Language
-echo.    ^(0^) Exit
+echo.%language_main_menu01%
+echo.%language_main_menu02%
+echo.%language_main_menu03%
+echo.%language_main_menu04%
+echo.%language_main_menu05%
+echo.%language_main_menu06%
+echo.%language_main_menu07%
+echo.%language_main_menu08%
+echo.%language_main_menu09%
+echo.%language_main_menu10%
+echo.%language_main_menu11%
+echo.%language_main_menu12%
+echo.%language_main_menu13%
+echo.%language_main_menu14%
 echo.
 echo.
 echo.
@@ -1424,6 +1424,21 @@ set language_running=%program_name% is running...
 set language_eula1=The author is not responsible for any possible damage to the computer^^!
 set language_eula2=Are you sure^^? ^^(Press Enter or close^^)
 
+set language_main_menu01=  Interface                                                   Setup
+set language_main_menu02=    ^(1^) Desktop objects ^(This PC etc^)                           ^(6^) Setup Office Professional+ 2016
+set language_main_menu03=    ^(2^) Language key sequence ^(Ctrl + Shift^)                    ^(7^) Setup/restore gpedit.msc
+set language_main_menu04=    ^(3^) Input suggestions and auto completion
+set language_main_menu05=    ^(4^) Windows Explorer                                      Services
+set language_main_menu06=    ^(5^) Windows Task Bar                                        ^(8^) Windows Update ^(wuauserv^)
+set language_main_menu07=                                                                ^(9^) Software Protection Platform Service ^(sppsvc^)
+set language_main_menu08=  Tools
+set language_main_menu09=    ^(A^) Administrative tools
+set language_main_menu10=    ^(B^) System Resource Checker
+set language_main_menu11=
+set language_main_menu12=
+set language_main_menu13=    ^(Z^) Language
+set language_main_menu14=    ^(0^) Exit
+
 set language_language_menu1=Language - Selection Menu
 set language_language_menu2=Choose language:
 exit /b
@@ -1441,6 +1456,21 @@ set language_running=%program_name% запускается...
 set language_eula1=Автор не несет ответственности за возможные повреждения компьютера^^!
 set language_eula2=Вы уверены^^? ^^(Нажмите Enter или закройте^^)
 
+set language_main_menu01=  Интерфейс                                                   Настройка
+set language_main_menu02=    ^(1^) Объекты рабочего стола ^(Этот ПК и другие^)               ^(6^) Установить Офис Профессиональный+ 2016
+set language_main_menu03=    ^(2^) Сочетания клавиш смены языка ^(Ctrl + Shift^)             ^(7^) Установить/восстановить gpedit.msc
+set language_main_menu04=    ^(3^) Предложения при вводе и автозаполнение
+set language_main_menu05=    ^(4^) Windows Проводник                                     Службы
+set language_main_menu06=    ^(5^) Windows Панель Задач                                    ^(8^) Обновление Windows ^(wuauserv^)
+set language_main_menu07=                                                                ^(9^) Служба Платформы Защиты ПО ^(sppsvc^)
+set language_main_menu08=  Инструменты
+set language_main_menu09=    ^(A^) Административные инструменты
+set language_main_menu10=    ^(B^) Проверка системных ресурсов
+set language_main_menu11=
+set language_main_menu12=
+set language_main_menu13=    ^(Z^) Язык
+set language_main_menu14=    ^(0^) Выход
+
 set language_language_menu1=Язык - Меню Выбора
 set language_language_menu2=Выберите язык:
 exit /b
@@ -1457,6 +1487,21 @@ set language_logo3=Дивіться інші програми тут:
 set language_running=%program_name% запускається...
 set language_eula1=Автор не несе відповідальності за можливі пошкодження комп'ютера^^!
 set language_eula2=Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
+
+set language_main_menu01=  Інтерфейс                                                   Налаштування
+set language_main_menu02=    ^(1^) Об'єкти робочого столу ^(Цей ПК та інші^)                 ^(6^) Установити Офіс Професійний+ 2016
+set language_main_menu03=    ^(2^) Комбінації клавіш зміни мови ^(Ctrl + Shift^)             ^(7^) Установити/відновити gpedit.msc
+set language_main_menu04=    ^(3^) Пропозиції при введенні та автозаповнення
+set language_main_menu05=    ^(4^) Windows Провідник                                     Служби
+set language_main_menu06=    ^(5^) Windows Панель Завдань                                  ^(8^) Оновлення Windows ^(wuauserv^)
+set language_main_menu07=                                                                ^(9^) Служба Платформи Захисту ПО ^(sppsvc^)
+set language_main_menu08=  Інструменти
+set language_main_menu09=    ^(A^) Адміністративні інструменти
+set language_main_menu10=    ^(B^) Перевірка системних ресурсів
+set language_main_menu11=
+set language_main_menu12=
+set language_main_menu13=    ^(Z^) Мова
+set language_main_menu14=    ^(0^) Вихід
 
 set language_language_menu1=Мова - Меню Вибору
 set language_language_menu2=Виберіть мову:
