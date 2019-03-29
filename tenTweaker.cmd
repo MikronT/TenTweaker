@@ -41,23 +41,29 @@ if %errorLevel% LSS 1 if "%key_main_registryMerge%" NEQ "true" (
   reg import temp\consoleSettings.reg >nul 2>nul
 )
 
-set version=1.1
+set program_name=Ten Tweaker
+set program_name_nbs=tenTweaker
+set program_version=1.2
+set program_version_level1=0
+set program_version_level2=0
+set program_version_level3=0
 
-for /f "tokens=1-2 delims=." %%i in ("%version%") do (
-  set version_level1=%%i
-  set version_level2=%%j
+for /f "tokens=1-3 delims=." %%i in ("%program_version%") do (
+  if "%%i" NEQ "" set program_version_level1=%%i
+  if "%%j" NEQ "" set program_version_level2=%%j
+  if "%%k" NEQ "" set program_version_level3=%%k
 )
 
 set module_wget=files\wget.exe --quiet --no-check-certificate --tries=1
 
 set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
-set option_enabled=enabled         
-set option_disabled=disabled        
-set option_shown=shown           
-set option_hidden=hidden          
-set option_error=[error]         
+set stringBuilder_option_enabled=enabled         
+set stringBuilder_option_disabled=disabled        
+set stringBuilder_option_shown=shown           
+set stringBuilder_option_hidden=hidden          
+set stringBuilder_option_error=[error]         
 
-set update_version_output=temp\TenTweaker.version
+set update_version_output=temp\%program_name_nbs%.version
 set update_version_url=https://drive.google.com/uc?export=download^^^&id=1ZeM5bnX0fWs7njKL2ZTeYc2ctv0FmGRs
 
 
@@ -67,22 +73,23 @@ set update_version_url=https://drive.google.com/uc?export=download^^^&id=1ZeM5bn
 
 
 call :logo
-echo.^(i^) Ten Tweaker is running...
+echo.^(i^) %program_name% is running...
 echo.
 
 if "%key_main_reboot%" == "services_sppsvc" (
   for /l %%i in (4,-1,1)  do rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 %~dp0files\tools_administrativeTools_unHookExec.inf
   for /l %%i in (4,-1,1)  do reg import files\services_sppsvc_registry.reg >nul 2>nul
   for /l %%i in (10,-1,1) do sc start sppsvc >nul 2>nul
-  for /l %%i in (4,-1,1)  do reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v tenTweaker_services_sppsvc /f >nul 2>nul
+  for /l %%i in (4,-1,1)  do reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %program_name_nbs%_services_sppsvc /f >nul 2>nul
   timeout /nobreak /t 1 >nul
   call :reboot_computer force
 ) else (
   %module_wget% "%update_version_url%" --output-document="%update_version_output%"
 
-  for /f "tokens=1-2 delims=." %%l in (%update_version_output%) do (
-           if "%%l" NEQ "" if %%l GTR %version_level1% ( set update_available=true
-    ) else if "%%m" NEQ "" if %%m GTR %version_level2% ( set update_available=true
+  for /f "tokens=1-3 delims=." %%l in (%update_version_output%) do (
+           if "%%l" NEQ "" if %%l GTR %program_version_level1% ( set update_available=true
+    ) else if "%%m" NEQ "" if %%m GTR %program_version_level2% ( set update_available=true
+    ) else if "%%n" NEQ "" if %%m GTR %program_version_level3% ( set update_available=true
     )
   )
 
@@ -129,7 +136,7 @@ echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools main_menu
 if "%update_available%" == "true" (
-  echo.    ^(^!^) An update for Ten Tweaker is now available^!
+  echo.    ^(^!^) An update for %program_name% is now available^!
   echo.        Download it here: github.com/MikronT/TenTweaker/releases/latest
   echo.
   echo.
@@ -186,30 +193,30 @@ echo.^(^>^) Choose action to show/hide desktop object:
 
 set stringBuilder_string=^(1^) This PC                            
 if "%interface_desktopObjects_thisPC%" == "shown" (
-  call %stringBuilder_build% %option_shown%
+  call %stringBuilder_build% %stringBuilder_option_shown%
 ) else if "%interface_desktopObjects_thisPC%" == "hidden" (
-  call %stringBuilder_build% %option_hidden%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_hidden%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 call %stringBuilder_build%    ^(4^) User Folder                        
 if "%interface_desktopObjects_userFolder%" == "shown" (
-  call %stringBuilder_build% %option_shown%
+  call %stringBuilder_build% %stringBuilder_option_shown%
 ) else if "%interface_desktopObjects_userFolder%" == "hidden" (
-  call %stringBuilder_build% %option_hidden%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_hidden%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
 set stringBuilder_string=^(2^) Recycle Bin                        
 if "%interface_desktopObjects_recycleBin%" == "shown" (
-  call %stringBuilder_build% %option_shown%
+  call %stringBuilder_build% %stringBuilder_option_shown%
 ) else if "%interface_desktopObjects_recycleBin%" == "hidden" (
-  call %stringBuilder_build% %option_hidden%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_hidden%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 call %stringBuilder_build%    ^(5^) Network                            
 if "%interface_desktopObjects_network%" == "shown" (
-  call %stringBuilder_build% %option_shown%
+  call %stringBuilder_build% %stringBuilder_option_shown%
 ) else if "%interface_desktopObjects_network%" == "hidden" (
-  call %stringBuilder_build% %option_hidden%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_hidden%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
 echo.    ^(3^) Control Panel                       %interface_desktopObjects_controlPanel%
@@ -402,58 +409,58 @@ echo.^(^>^) Choose action to config Windows Explorer:
 
 set stringBuilder_string=^(1^) File extensions                    
 if "%interface_explorer_fileExtensions%" == "shown" (
-  call %stringBuilder_build% %option_shown%
+  call %stringBuilder_build% %stringBuilder_option_shown%
 ) else if "%interface_explorer_fileExtensions%" == "hidden" (
-  call %stringBuilder_build% %option_hidden%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_hidden%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 call %stringBuilder_build%    ^(6^) Ribbon ^(option bar^)                
 if "%interface_explorer_ribbon%" == "shown" (
-  call %stringBuilder_build% %option_shown%
+  call %stringBuilder_build% %stringBuilder_option_shown%
 ) else if "%interface_explorer_ribbon%" == "hidden" (
-  call %stringBuilder_build% %option_hidden%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_hidden%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
 set stringBuilder_string=^(2^) Hidden files                       
 if "%interface_explorer_hiddenFiles%" == "shown" (
-  call %stringBuilder_build% %option_shown%
+  call %stringBuilder_build% %stringBuilder_option_shown%
 ) else if "%interface_explorer_hiddenFiles%" == "hidden" (
-  call %stringBuilder_build% %option_hidden%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_hidden%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 call %stringBuilder_build%    ^(7^) Expand to open folder              
 if "%interface_explorer_expandToCurrentFolder%" == "enabled" (
-  call %stringBuilder_build% %option_enabled%
+  call %stringBuilder_build% %stringBuilder_option_enabled%
 ) else if "%interface_explorer_expandToCurrentFolder%" == "disabled" (
-  call %stringBuilder_build% %option_disabled%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_disabled%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
 set stringBuilder_string=^(3^) Hidden protected system files      
 if "%interface_explorer_hiddenProtectedSystemFiles%" == "shown" (
-  call %stringBuilder_build% %option_shown%
+  call %stringBuilder_build% %stringBuilder_option_shown%
 ) else if "%interface_explorer_hiddenProtectedSystemFiles%" == "hidden" (
-  call %stringBuilder_build% %option_hidden%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_hidden%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 call %stringBuilder_build%    ^(8^) Status bar                         
 if "%interface_explorer_statusBar%" == "shown" (
-  call %stringBuilder_build% %option_shown%
+  call %stringBuilder_build% %stringBuilder_option_shown%
 ) else if "%interface_explorer_statusBar%" == "hidden" (
-  call %stringBuilder_build% %option_hidden%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_hidden%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
 set stringBuilder_string=^(4^) Empty drives                       
 if "%interface_explorer_emptyDrives%" == "shown" (
-  call %stringBuilder_build% %option_shown%
+  call %stringBuilder_build% %stringBuilder_option_shown%
 ) else if "%interface_explorer_emptyDrives%" == "hidden" (
-  call %stringBuilder_build% %option_hidden%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_hidden%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 call %stringBuilder_build%    ^(9^) File info tip                      
 if "%interface_explorer_fileInfoTip%" == "shown" (
-  call %stringBuilder_build% %option_shown%
+  call %stringBuilder_build% %stringBuilder_option_shown%
 ) else if "%interface_explorer_fileInfoTip%" == "hidden" (
-  call %stringBuilder_build% %option_hidden%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_hidden%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
 echo.    ^(5^) Folder merge conflicts              %interface_explorer_folderMergeConflicts%
@@ -539,16 +546,16 @@ echo.^(^>^) Choose action to config Windows Task Bar:
 
 set stringBuilder_string=^(1^) Peaple band                        
 if "%interface_taskBar_peopleBand%" == "shown" (
-  call %stringBuilder_build% %option_shown%
+  call %stringBuilder_build% %stringBuilder_option_shown%
 ) else if "%interface_taskBar_peopleBand%" == "hidden" (
-  call %stringBuilder_build% %option_hidden%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_hidden%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 call %stringBuilder_build%    ^(4^) Small icons                        
 if "%interface_taskBar_smallIcons%" == "enabled" (
-  call %stringBuilder_build% %option_enabled%
+  call %stringBuilder_build% %stringBuilder_option_enabled%
 ) else if "%interface_taskBar_smallIcons%" == "disabled" (
-  call %stringBuilder_build% %option_disabled%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_disabled%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
 set stringBuilder_string=^(2^) Command prompt on Win + X          
@@ -556,7 +563,7 @@ if "%interface_taskBar_commandPromptOnWinX%" == "PowerShell" (
   call %stringBuilder_build% PowerShell      
 ) else if "%interface_taskBar_commandPromptOnWinX%" == "Command Prompt" (
   call %stringBuilder_build% Command Prompt  
-) else call %stringBuilder_build% %option_error%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 call %stringBuilder_build%    ^(5^) Buttons combine                    
 if "%interface_taskBar_buttonsCombine%" == "always" (
   call %stringBuilder_build% always          
@@ -564,7 +571,7 @@ if "%interface_taskBar_buttonsCombine%" == "always" (
   call %stringBuilder_build% when is full    
 ) else if "%interface_taskBar_buttonsCombine%" == "never" (
   call %stringBuilder_build% never           
-) else call %stringBuilder_build% %option_error%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
 echo.    ^(3^) Task view button                    %interface_taskBar_taskViewButton%
@@ -834,7 +841,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   )
 
   if "%command%" == "2" (
-    reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v tenTweaker_services_sppsvc /t REG_SZ /d "%~dpnx0 --key_main_reboot=services_sppsvc" /f >nul
+    reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %program_name_nbs%_services_sppsvc /t REG_SZ /d "%~dpnx0 --key_main_reboot=services_sppsvc" /f >nul
     call :reboot_computer
   )
 )
@@ -868,49 +875,49 @@ echo.^(^>^) Choose action to config Windows Administrative Tools:
 
 set stringBuilder_string=^(1^) Desktop                            
 if "%tools_administrativeTools_desktop%" == "enabled" (
-  call %stringBuilder_build% %option_enabled%
+  call %stringBuilder_build% %stringBuilder_option_enabled%
 ) else if "%tools_administrativeTools_desktop%" == "disabled" (
-  call %stringBuilder_build% %option_disabled%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_disabled%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
   call %stringBuilder_build%    ^(4^) Registry Tools                     
   if "%tools_administrativeTools_registryTools%" == "enabled" (
-    call %stringBuilder_build% %option_enabled%
+    call %stringBuilder_build% %stringBuilder_option_enabled%
   ) else if "%tools_administrativeTools_registryTools%" == "disabled" (
-    call %stringBuilder_build% %option_disabled%
-  ) else call %stringBuilder_build% %option_error%
+    call %stringBuilder_build% %stringBuilder_option_disabled%
+  ) else call %stringBuilder_build% %stringBuilder_option_error%
 )
 echo.    %stringBuilder_string%
 
 set stringBuilder_string=^(2^) Control Panel                      
 if "%tools_administrativeTools_controlPanel%" == "enabled" (
-  call %stringBuilder_build% %option_enabled%
+  call %stringBuilder_build% %stringBuilder_option_enabled%
 ) else if "%tools_administrativeTools_controlPanel%" == "disabled" (
-  call %stringBuilder_build% %option_disabled%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_disabled%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
   call %stringBuilder_build%    ^(5^) Command Prompt                     
   if "%tools_administrativeTools_cmd%" == "enabled" (
-    call %stringBuilder_build% %option_enabled%
+    call %stringBuilder_build% %stringBuilder_option_enabled%
   ) else if "%tools_administrativeTools_cmd%" == "disabled" (
-    call %stringBuilder_build% %option_disabled%
-  ) else call %stringBuilder_build% %option_error%
+    call %stringBuilder_build% %stringBuilder_option_disabled%
+  ) else call %stringBuilder_build% %stringBuilder_option_error%
 )
 echo.    %stringBuilder_string%
 
 set stringBuilder_string=^(3^) Run ^(Win + R^)                      
 if "%tools_administrativeTools_runDialog%" == "enabled" (
-  call %stringBuilder_build% %option_enabled%
+  call %stringBuilder_build% %stringBuilder_option_enabled%
 ) else if "%tools_administrativeTools_runDialog%" == "disabled" (
-  call %stringBuilder_build% %option_disabled%
-) else call %stringBuilder_build% %option_error%
+  call %stringBuilder_build% %stringBuilder_option_disabled%
+) else call %stringBuilder_build% %stringBuilder_option_error%
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
   call %stringBuilder_build%    ^(6^) Task Manager                       
   if "%tools_administrativeTools_taskManager%" == "enabled" (
-    call %stringBuilder_build% %option_enabled%
+    call %stringBuilder_build% %stringBuilder_option_enabled%
   ) else if "%tools_administrativeTools_taskManager%" == "disabled" (
-    call %stringBuilder_build% %option_disabled%
-  ) else call %stringBuilder_build% %option_error%
+    call %stringBuilder_build% %stringBuilder_option_disabled%
+  ) else call %stringBuilder_build% %stringBuilder_option_error%
 )
 echo.    %stringBuilder_string%
 
@@ -1014,7 +1021,7 @@ set command=%errorLevel%
 
 
 
-if "%command%" == "1" for /l %%i in (4,-1,1) do sfc /scannow
+if "%command%" == "1" for /l %%i in (3,-1,1) do sfc /scannow
 if "%command%" == "2" call :reboot_computer
 if "%command%" == "3" ( set command= & exit /b )
 goto :tools_systemResourceChecker
@@ -1335,13 +1342,13 @@ exit /b
 
 :logo
 mode con:cols=124 lines=39
-title [MikronT] Ten Tweaker
+title [MikronT] %program_name%
 color 0b
 cls
 echo.
 echo.
-echo.    [MikronT] ==^> Ten Tweaker
-echo.                  Release v%version%
+echo.    [MikronT] ==^> %program_name%
+echo.                  Release v%program_version%
 echo.   ============================
 echo.     See other here:
 echo.         github.com/MikronT

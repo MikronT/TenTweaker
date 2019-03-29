@@ -9,7 +9,7 @@
 [![Status: Pre-Release](https://img.shields.io/badge/Status-Pre--Release-yellow.svg?style=for-the-badge)](#)
 -->
 
-### Version name: *Release v1.1*
+### Version name: *Release v1.2*
 
 Console tweaker for Windows 10 with some useful options.
 
@@ -18,21 +18,21 @@ Console tweaker for Windows 10 with some useful options.
 
 
 ## Features
-- Interface
-  - add or remove desktop objects (This PC, Recycle Bin etc.)
-  - configure language key sequence
-  - configure input suggestions and auto completion
-  - configure Windows Explorer (file extensions, hidden files etc.)
-  - configure Windows Task Bar
-- Setup
-  - setup Microsoft Office Professional Plus 2016
-  - setup/restore Group Policy Editor (gpedit.msc) for Windows 10 Home
-- Services
-  - manage Windows Update (wuaserv)
-  - restore Software Protection Platform Service (sppsvc)
+- Interface Config
+  - Desktop objects (This PC, Recycle Bin etc.)
+  - Language key sequence
+  - Input suggestions and auto completion
+  - Windows Explorer (file extensions, hidden files etc.)
+  - Windows Task Bar
+- Setup/Restore
+  - Microsoft Office Professional Plus 2016
+  - Group Policy Editor (gpedit.msc) for Windows 10 Home
+- Services Management
+  - Windows Update (wuaserv)
+  - Software Protection Platform Service (sppsvc)
 - Tools
-  - manage Windows Administrative Tools
-  - run System Resource Checker
+  - Windows Administrative Tools
+  - System Resource Checker
 
 
 
@@ -72,6 +72,7 @@ Note: you can combine the keys as you wish.
 ## Version History
 | Date       | Version      |
 |------------|--------------|
+| 29.03.2019 | Release v1.2 |
 | 28.03.2019 | Release v1.1 |
 | 15.03.2019 | Release v1.0 |
 | 06.03.2019 | Beta v0.97   |
