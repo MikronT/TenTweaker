@@ -1440,6 +1440,11 @@ set language_main_menu14=    ^(0^) Exit
 
 set language_language_menu1=Language - Selection Menu
 set language_language_menu2=Choose language:
+
+set language_errorMessage_main_variables_disabledRegistryTools1=Registry Tools are disabled^!
+set language_errorMessage_main_variables_disabledRegistryTools2=If you see [error] than this feature state cannot be shown or changed^!
+set language_errorMessage_main_variables_disabledRegistryTools3=To fix it you must enable Registry Tools in ^^(A^^) menu ^^(with hidden options^^)^^!
+set language_errorMessage_main_variables_disabledRegistryTools4=Please, back to main menu and read this error message again.
 exit /b
 
 
@@ -1477,6 +1482,11 @@ set language_main_menu14=    ^(0^) Выход
 
 set language_language_menu1=Язык - Меню Выбора
 set language_language_menu2=Выберите язык:
+
+set language_errorMessage_main_variables_disabledRegistryTools1=Инструменты реестра отключены^!
+set language_errorMessage_main_variables_disabledRegistryTools2=Если вы видите [ошибка], то это состояние функции не может быть показано или изменено^!
+set language_errorMessage_main_variables_disabledRegistryTools3=Чтобы это исправить, вы должны включить инструменты реестра в меню ^^(A^^) ^^(со скрытыми параметрами^^)^^!
+set language_errorMessage_main_variables_disabledRegistryTools4=Пожалуйста, вернитесь в главное меню и прочитайте это сообщение об ошибке еще раз.
 exit /b
 
 
@@ -1514,6 +1524,11 @@ set language_main_menu14=    ^(0^) Вихід
 
 set language_language_menu1=Мова - Меню Вибору
 set language_language_menu2=Виберіть мову:
+
+set language_errorMessage_main_variables_disabledRegistryTools1=Інструменти реєстру відключені^!
+set language_errorMessage_main_variables_disabledRegistryTools2=Якщо ви бачите [помилка], то це стан формальної процедури не може показано або змінено^!
+set language_errorMessage_main_variables_disabledRegistryTools3=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^^(A^^) ^^(з прихованими параметрами^^)^^!
+set language_errorMessage_main_variables_disabledRegistryTools4=Будь ласка, поверніться в головне меню і прочитайте це повідомлення про помилку ще раз.
 exit /b
 
 
@@ -1562,11 +1577,11 @@ exit /b
 
 
 :errorMessage_main_variables_disabledRegistryTools
-echo.    ^(^!^) Registry Tools are disabled^!
-echo.        If you see [error] than this feature state cannot be shown or changed^!
+echo.    ^(^!^) %language_errorMessage_main_variables_disabledRegistryTools1%
+echo.        %language_errorMessage_main_variables_disabledRegistryTools2%
 if "%1" == "main_menu" (
-  echo.        To fix it you must enable Registry Tools in ^(A^) menu ^(with hidden options^)^!
-) else echo.        Please, back to main menu and read this error message again.
+  echo.        %language_errorMessage_main_variables_disabledRegistryTools3%
+) else echo.        %language_errorMessage_main_variables_disabledRegistryTools4%
 echo.
 exit /b
 
