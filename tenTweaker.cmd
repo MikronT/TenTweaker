@@ -138,6 +138,7 @@ echo.    ^(A^) Administrative Tools
 echo.    ^(B^) System Resource Checker
 echo.
 echo.
+echo.    ^(Z^) Language
 echo.    ^(0^) Exit
 echo.
 echo.
@@ -150,7 +151,7 @@ if "%update_available%" == "true" (
   echo.
   echo.
 )
-choice /c 123456789AB0 /n /m "> "
+choice /c 123456789ABZ0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -171,6 +172,11 @@ if "%command%" == "10" call :tools_administrativeTools
 if "%command%" == "11" call :tools_systemResourceChecker
 
 if "%command%" == "12" (
+  call :language_selection
+  call :language_import
+)
+
+if "%command%" == "13" (
   rd /s /q temp
   exit /b
 )
