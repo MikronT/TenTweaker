@@ -42,7 +42,7 @@ if %errorLevel% LSS 1 if "%key_main_registryMerge%" NEQ "true" (
 )
 
 set program_name=Ten Tweaker
-set program_name_nbs=tenTweaker
+set program_name_ns=tenTweaker
 
 set program_version=1.2
 set program_version_level1=0
@@ -58,7 +58,7 @@ for /f "tokens=1-3 delims=." %%i in ("%program_version%") do (
 set module_wget=files\wget.exe --quiet --no-check-certificate --tries=1
 set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
 
-set update_version_output=temp\%program_name_nbs%.version
+set update_version_output=temp\%program_name_ns%.version
 set update_version_url=https://drive.google.com/uc?export=download^^^&id=1ZeM5bnX0fWs7njKL2ZTeYc2ctv0FmGRs
 
 set language=default
@@ -82,7 +82,7 @@ if "%key_main_reboot%" == "services_sppsvc" (
   for /l %%i in (4,-1,1)  do rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 %~dp0files\tools_administrativeTools_unHookExec.inf
   for /l %%i in (4,-1,1)  do reg import files\services_sppsvc_registry.reg >nul 2>nul
   for /l %%i in (10,-1,1) do sc start sppsvc >nul 2>nul
-  for /l %%i in (4,-1,1)  do reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %program_name_nbs%_services_sppsvc /f >nul 2>nul
+  for /l %%i in (4,-1,1)  do reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %program_name_ns%_services_sppsvc /f >nul 2>nul
   timeout /nobreak /t 1 >nul
   call :reboot_computer force
 ) else (
@@ -847,7 +847,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   )
 
   if "%command%" == "2" (
-    reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %program_name_nbs%_services_sppsvc /t REG_SZ /d "%~dpnx0 --key_main_reboot=services_sppsvc" /f >nul
+    reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %program_name_ns%_services_sppsvc /t REG_SZ /d "%~dpnx0 --key_main_reboot=services_sppsvc" /f >nul
     call :reboot_computer
   )
 )
