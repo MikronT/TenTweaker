@@ -77,10 +77,11 @@ call :language_import
 
 
 
+if "%language%" NEQ "english" if "%language%" NEQ "russian" if "%language%" NEQ "ukrainian" call :language_selection force
 call :language_import
 
 call :logo
-echo.^(i^) %program_name% is running...
+call echo.%language_running%
 echo.
 
 if "%key_main_reboot%" == "services_sppsvc" (
@@ -1032,6 +1033,53 @@ if "%command%" == "1" for /l %%i in (3,-1,1) do sfc /scannow
 if "%command%" == "2" call :reboot_computer
 if "%command%" == "3" ( set command= & exit /b )
 goto :tools_systemResourceChecker
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:language_selection
+call :logo
+echo.^(i^) Language - Selection Menu
+echo.
+echo.
+echo.^(^>^) Choose language:
+echo.
+echo.    ^(1^) English
+echo.    ^(2^) Русский
+echo.    ^(3^) Українська
+if "%1" NEQ "force" (
+  echo.
+  echo.    ^(0^) Go back
+)
+echo.
+echo.
+echo.
+if "%1" NEQ "force" (
+  if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
+  choice /c 1230 /n /m "> "
+) else choice /c 123 /n /m "> "
+set command=%errorLevel%
+
+
+
+if "%command%" == "1" set language=english
+if "%command%" == "2" set language=russian
+if "%command%" == "3" set language=ukrainian
+
+echo.# %program_name% Settings #>settings.ini
+echo.language=%language%>>settings.ini
+exit /b
 
 
 
