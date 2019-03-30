@@ -97,8 +97,8 @@ if "%key_main_reboot%" == "services_sppsvc" (
   )
 
   if "%key_main_eula%" NEQ "hidden" if "%setting_eula%" NEQ "true" (
-    echo.%language_eula1%
-    echo.%language_eula2%
+    echo.%language_eula01%
+    echo.%language_eula02%
     pause>nul
     set setting_eula=true
   )
@@ -1051,11 +1051,11 @@ goto :tools_systemResourceChecker
 
 :language_menu
 call :logo
-echo.^(i^) %language_language_menu1%
+echo.%language_language_menu01%
 echo.
 echo.
 if "%1" NEQ "force" (
-  echo.^(^>^) %language_language_menu2%
+  echo.%language_language_menu02%
 ) else echo.^(^>^) Choose language:
 echo.    ^(1^) English
 echo.    ^(2^) Русский
@@ -1414,13 +1414,13 @@ set language_stringBuilder_option_shown=shown
 set language_stringBuilder_option_hidden=hidden          
 set language_stringBuilder_option_error=[error]         
 
-set language_logo1=Release v%program_version%
-set language_logo2=============================
-set language_logo3=See other programs here:
+set language_logo01=Release v%program_version%
+set language_logo02=============================
+set language_logo03=See other programs here:
 
 set language_running=^^(i^^) %program_name% is running...
-set language_eula1=^^(^^!^^) The author is not responsible for any possible damage to the computer^^!
-set language_eula2=^^(^^?^^) Are you sure^^? ^^(Press Enter or close^^)
+set language_eula01=^^(^^!^^) The author is not responsible for any possible damage to the computer^^!
+set language_eula02=^^(^^?^^) Are you sure^^? ^^(Press Enter or close^^)
 
 set language_main_menu01=  Interface                                                   Setup
 set language_main_menu02=    ^^(1^^) Desktop objects ^^(This PC etc^^)                           ^^(6^^) Setup Office Professional+ 2016
@@ -1437,9 +1437,6 @@ set language_main_menu12=
 set language_main_menu13=    ^^(Z^^) Language
 set language_main_menu14=    ^^(0^^) Exit
 
-set language_language_menu1=Language - Selection Menu
-set language_language_menu2=Choose language:
-
 set language_interface_desktopObjects01=^^(i^^) Desktop Objects - Control Menu
 set language_interface_desktopObjects02=^^(^^^>^^) Choose action to show/hide desktop object:
 set language_interface_desktopObjects03=^^(1^^) This PC                            
@@ -1449,13 +1446,16 @@ set language_interface_desktopObjects06=^^(5^^) Network
 set language_interface_desktopObjects07=^^(3^^) Control Panel                      
 set language_interface_desktopObjects08=Note: These features require to restart Windows Explorer.
 
-set language_errorMessage_main_variables_disabledRegistryTools1=Registry Tools are disabled^^!
-set language_errorMessage_main_variables_disabledRegistryTools2=If you see [error] than this feature state cannot be shown or changed^^!
-set language_errorMessage_main_variables_disabledRegistryTools3=To fix it you must enable Registry Tools in ^^(A^^) menu ^^(with hidden options^^)^^!
-set language_errorMessage_main_variables_disabledRegistryTools4=Please, back to main menu and read this error message again.
+set language_language_menu01=^^(i^^) Language - Selection Menu
+set language_language_menu02=^^(^^^>^^) Choose language:
 
-set language_message_update_available1=^^(^^!^^) An update for %program_name% is now available^^!
-set language_message_update_available2=Download it here:
+set language_errorMessage_main_variables_disabledRegistryTools01=Registry Tools are disabled^^!
+set language_errorMessage_main_variables_disabledRegistryTools02=If you see [error] than this feature state cannot be shown or changed^^!
+set language_errorMessage_main_variables_disabledRegistryTools03=To fix it you must enable Registry Tools in ^^(A^^) menu ^^(with hidden options^^)^^!
+set language_errorMessage_main_variables_disabledRegistryTools04=Please, back to main menu and read this error message again.
+
+set language_message_update_available01=^^(^^!^^) An update for %program_name% is now available^^!
+set language_message_update_available02=Download it here:
 
 set language_menuItem_restartExplorer=^^(E^^) Restart Windows Explorer
 exit /b
@@ -1472,13 +1472,13 @@ set language_stringBuilder_option_shown=показано
 set language_stringBuilder_option_hidden=скрыто          
 set language_stringBuilder_option_error=[ошибка]        
 
-set language_logo1=Релиз v%program_version%
-set language_logo2====================================
-set language_logo3=Смотрите другие программы здесь:
+set language_logo01=Релиз v%program_version%
+set language_logo02====================================
+set language_logo03=Смотрите другие программы здесь:
 
 set language_running=^^(i^^) %program_name% запускается...
-set language_eula1=^^(^^!^^) Автор не несет ответственности за возможные повреждения компьютера^^!
-set language_eula2=^^(^^?^^) Вы уверены^^? ^^(Нажмите Enter или закройте^^)
+set language_eula01=^^(^^!^^) Автор не несет ответственности за возможные повреждения компьютера^^!
+set language_eula02=^^(^^?^^) Вы уверены^^? ^^(Нажмите Enter или закройте^^)
 
 set language_main_menu01=  Интерфейс                                                   Настройка
 set language_main_menu02=    ^^(1^^) Объекты рабочего стола ^^(Этот ПК и другие^^)               ^^(6^^) Установить Офис Профессиональный+ 2016
@@ -1495,9 +1495,6 @@ set language_main_menu12=
 set language_main_menu13=    ^^(Z^^) Язык
 set language_main_menu14=    ^^(0^^) Выход
 
-set language_language_menu1=Язык - Меню Выбора
-set language_language_menu2=Выберите язык:
-
 set language_interface_desktopObjects01=^^(i^^) Объекты Рабочего Стола - Меню Управления
 set language_interface_desktopObjects02=^^(^^^>^^) Выберите действие, чтобы показать / скрыть объект рабочего стола:
 set language_interface_desktopObjects03=^^(1^^) Этот ПК                            
@@ -1507,13 +1504,16 @@ set language_interface_desktopObjects06=^^(5^^) Сеть
 set language_interface_desktopObjects07=^^(3^^) Панель управления                  
 set language_interface_desktopObjects08=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
-set language_errorMessage_main_variables_disabledRegistryTools1=Инструменты реестра отключены^^!
-set language_errorMessage_main_variables_disabledRegistryTools2=Если вы видите [ошибка], то это состояние функции не может быть показано или изменено^^!
-set language_errorMessage_main_variables_disabledRegistryTools3=Чтобы это исправить, вы должны включить инструменты реестра в меню ^^(A^^) ^^(со скрытыми параметрами^^)^^!
-set language_errorMessage_main_variables_disabledRegistryTools4=Пожалуйста, вернитесь в главное меню и прочитайте это сообщение об ошибке еще раз.
+set language_language_menu01=^^(i^^) Язык - Меню Выбора
+set language_language_menu02=^^(^^^>^^) Выберите язык:
 
-set language_message_update_available1=^^(^^!^^) Доступно обновление для %program_name%^^!
-set language_message_update_available2=Загрузите его здесь:
+set language_errorMessage_main_variables_disabledRegistryTools01=Инструменты реестра отключены^^!
+set language_errorMessage_main_variables_disabledRegistryTools02=Если вы видите [ошибка], то это состояние функции не может быть показано или изменено^^!
+set language_errorMessage_main_variables_disabledRegistryTools03=Чтобы это исправить, вы должны включить инструменты реестра в меню ^^(A^^) ^^(со скрытыми параметрами^^)^^!
+set language_errorMessage_main_variables_disabledRegistryTools04=Пожалуйста, вернитесь в главное меню и прочитайте это сообщение об ошибке еще раз.
+
+set language_message_update_available01=^^(^^!^^) Доступно обновление для %program_name%^^!
+set language_message_update_available02=Загрузите его здесь:
 
 set language_menuItem_restartExplorer=^^(E^^) Перезагрузить Проводник Windows
 exit /b
@@ -1530,13 +1530,13 @@ set language_stringBuilder_option_shown=показано
 set language_stringBuilder_option_hidden=сховано         
 set language_stringBuilder_option_error=[помилка]       
 
-set language_logo1=Реліз v%program_version%
-set language_logo2===============================
-set language_logo3=Дивіться інші програми тут:
+set language_logo01=Реліз v%program_version%
+set language_logo02===============================
+set language_logo03=Дивіться інші програми тут:
 
 set language_running=^^(i^^) %program_name% запускається...
-set language_eula1=^^(^^!^^) Автор не несе відповідальності за можливі пошкодження комп'ютера^^!
-set language_eula2=^^(^^?^^) Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
+set language_eula01=^^(^^!^^) Автор не несе відповідальності за можливі пошкодження комп'ютера^^!
+set language_eula02=^^(^^?^^) Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
 
 set language_main_menu01=  Інтерфейс                                                   Налаштування
 set language_main_menu02=    ^^(1^^) Об'єкти робочого столу ^^(Цей ПК та інші^^)                 ^^(6^^) Установити Офіс Професійний+ 2016
@@ -1553,9 +1553,6 @@ set language_main_menu12=
 set language_main_menu13=    ^^(Z^^) Мова
 set language_main_menu14=    ^^(0^^) Вихід
 
-set language_language_menu1=Мова - Меню Вибору
-set language_language_menu2=Виберіть мову:
-
 set language_interface_desktopObjects01=^^(i^^) Об'єкти Робочого Столу - Меню Управління
 set language_interface_desktopObjects02=^^(^^^>^^) Виберіть дію, щоб показати/приховати об'єкт робочого столу:
 set language_interface_desktopObjects03=^^(1^^) Цей ПК                             
@@ -1565,13 +1562,16 @@ set language_interface_desktopObjects06=^^(5^^) Мережа
 set language_interface_desktopObjects07=^^(3^^) Панель управління                  
 set language_interface_desktopObjects08=Примітка: Ці функції потребують перезапуску Провідника Windows.
 
-set language_errorMessage_main_variables_disabledRegistryTools1=Інструменти реєстру відключені^^!
-set language_errorMessage_main_variables_disabledRegistryTools2=Якщо ви бачите [помилка], то це стан формальної процедури не може показано або змінено^^!
-set language_errorMessage_main_variables_disabledRegistryTools3=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^^(A^^) ^^(з прихованими параметрами^^)^^!
-set language_errorMessage_main_variables_disabledRegistryTools4=Будь ласка, поверніться в головне меню і прочитайте це повідомлення про помилку ще раз.
+set language_language_menu01=^^(i^^) Мова - Меню Вибору
+set language_language_menu02=^^(^^^>^^) Виберіть мову:
 
-set language_message_update_available1=^^(^^!^^) Доступно оновлення для %program_name%^^!
-set language_message_update_available2=Завантажте його тут:
+set language_errorMessage_main_variables_disabledRegistryTools01=Інструменти реєстру відключені^^!
+set language_errorMessage_main_variables_disabledRegistryTools02=Якщо ви бачите [помилка], то це стан формальної процедури не може показано або змінено^^!
+set language_errorMessage_main_variables_disabledRegistryTools03=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^^(A^^) ^^(з прихованими параметрами^^)^^!
+set language_errorMessage_main_variables_disabledRegistryTools04=Будь ласка, поверніться в головне меню і прочитайте це повідомлення про помилку ще раз.
+
+set language_message_update_available01=^^(^^!^^) Доступно оновлення для %program_name%^^!
+set language_message_update_available02=Завантажте його тут:
 
 set language_menuItem_restartExplorer=^^(E^^) Перезавантажити Провідник Windows
 exit /b
@@ -1618,9 +1618,9 @@ cls
 echo.
 echo.
 echo.    [MikronT] ==^> %program_name%
-echo.                  %language_logo1%
-echo.   %language_logo2%
-echo.     %language_logo3%
+echo.                  %language_logo01%
+echo.   %language_logo02%
+echo.     %language_logo03%
 echo.         github.com/MikronT
 echo.
 echo.
@@ -1642,11 +1642,11 @@ exit /b
 
 
 :errorMessage_main_variables_disabledRegistryTools
-echo.    ^(^!^) %language_errorMessage_main_variables_disabledRegistryTools1%
-echo.        %language_errorMessage_main_variables_disabledRegistryTools2%
+echo.    ^(^!^) %language_errorMessage_main_variables_disabledRegistryTools01%
+echo.        %language_errorMessage_main_variables_disabledRegistryTools02%
 if "%1" == "main_menu" (
-  echo.        %language_errorMessage_main_variables_disabledRegistryTools3%
-) else echo.        %language_errorMessage_main_variables_disabledRegistryTools4%
+  echo.        %language_errorMessage_main_variables_disabledRegistryTools03%
+) else echo.        %language_errorMessage_main_variables_disabledRegistryTools04%
 echo.
 exit /b
 
