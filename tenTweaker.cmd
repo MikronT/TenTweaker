@@ -75,7 +75,7 @@ if "%language%" NEQ "english" if "%language%" NEQ "russian" if "%language%" NEQ 
 call :language_import
 
 call :logo
-echo.^(i^) %language_running%
+echo.%language_running%
 echo.
 
 if "%key_main_reboot%" == "services_sppsvc" (
@@ -96,8 +96,8 @@ if "%key_main_reboot%" == "services_sppsvc" (
   )
 
   if "%key_main_eula%" NEQ "hidden" (
-    echo.^(^!^) %language_eula1%
-    echo.^(^?^) %language_eula2%
+    echo.%language_eula1%
+    echo.%language_eula2%
     pause>nul
   )
 )
@@ -139,7 +139,7 @@ echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools main_menu
 if "%update_available%" == "true" (
-  echo.    ^(^!^) %language_message_update_available1%
+  echo.    %language_message_update_available1%
   echo.        %language_message_update_available2% github.com/MikronT/TenTweaker/releases/latest
   echo.
 )
@@ -1405,6 +1405,8 @@ exit /b
 
 
 
+
+
 :language_import_english
 set language_goBack=^^(0^^) Go back
 set language_stringBuilder_option_enabled=enabled         
@@ -1417,9 +1419,9 @@ set language_logo1=Release v%program_version%
 set language_logo2=============================
 set language_logo3=See other programs here:
 
-set language_running=%program_name% is running...
-set language_eula1=The author is not responsible for any possible damage to the computer^^!
-set language_eula2=Are you sure^^? ^^(Press Enter or close^^)
+set language_running=^^(i^^) %program_name% is running...
+set language_eula1=^^(^^!^^) The author is not responsible for any possible damage to the computer^^!
+set language_eula2=^^(^^?^^) Are you sure^^? ^^(Press Enter or close^^)
 
 set language_main_menu01=  Interface                                                   Setup
 set language_main_menu02=    ^^(1^^) Desktop objects ^^(This PC etc^^)                           ^^(6^^) Setup Office Professional+ 2016
@@ -1455,9 +1457,11 @@ set language_errorMessage_main_variables_disabledRegistryTools2=If you see [erro
 set language_errorMessage_main_variables_disabledRegistryTools3=To fix it you must enable Registry Tools in ^^(A^^) menu ^^(with hidden options^^)^^!
 set language_errorMessage_main_variables_disabledRegistryTools4=Please, back to main menu and read this error message again.
 
-set language_message_update_available1=An update for %program_name% is now available^^!
+set language_message_update_available1=^^(^^!^^) An update for %program_name% is now available^^!
 set language_message_update_available2=Download it here:
 exit /b
+
+
 
 
 
@@ -1473,9 +1477,9 @@ set language_logo1=Релиз v%program_version%
 set language_logo2====================================
 set language_logo3=Смотрите другие программы здесь:
 
-set language_running=%program_name% запускается...
-set language_eula1=Автор не несет ответственности за возможные повреждения компьютера^^!
-set language_eula2=Вы уверены^^? ^^(Нажмите Enter или закройте^^)
+set language_running=^^(i^^) %program_name% запускается...
+set language_eula1=^^(^^!^^) Автор не несет ответственности за возможные повреждения компьютера^^!
+set language_eula2=^^(^^?^^) Вы уверены^^? ^^(Нажмите Enter или закройте^^)
 
 set language_main_menu01=  Интерфейс                                                   Настройка
 set language_main_menu02=    ^^(1^^) Объекты рабочего стола ^^(Этот ПК и другие^^)               ^^(6^^) Установить Офис Профессиональный+ 2016
@@ -1500,9 +1504,11 @@ set language_errorMessage_main_variables_disabledRegistryTools2=Если вы в
 set language_errorMessage_main_variables_disabledRegistryTools3=Чтобы это исправить, вы должны включить инструменты реестра в меню ^^(A^^) ^^(со скрытыми параметрами^^)^^!
 set language_errorMessage_main_variables_disabledRegistryTools4=Пожалуйста, вернитесь в главное меню и прочитайте это сообщение об ошибке еще раз.
 
-set language_message_update_available1=Доступно обновление для %program_name%^^!
+set language_message_update_available1=^^(^^!^^) Доступно обновление для %program_name%^^!
 set language_message_update_available2=Загрузите его здесь:
 exit /b
+
+
 
 
 
@@ -1518,9 +1524,9 @@ set language_logo1=Реліз v%program_version%
 set language_logo2===============================
 set language_logo3=Дивіться інші програми тут:
 
-set language_running=%program_name% запускається...
-set language_eula1=Автор не несе відповідальності за можливі пошкодження комп'ютера^^!
-set language_eula2=Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
+set language_running=^^(i^^) %program_name% запускається...
+set language_eula1=^^(^^!^^) Автор не несе відповідальності за можливі пошкодження комп'ютера^^!
+set language_eula2=^^(^^?^^) Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
 
 set language_main_menu01=  Інтерфейс                                                   Налаштування
 set language_main_menu02=    ^^(1^^) Об'єкти робочого столу ^^(Цей ПК та інші^^)                 ^^(6^^) Установити Офіс Професійний+ 2016
@@ -1545,7 +1551,7 @@ set language_errorMessage_main_variables_disabledRegistryTools2=Якщо ви б
 set language_errorMessage_main_variables_disabledRegistryTools3=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^^(A^^) ^^(з прихованими параметрами^^)^^!
 set language_errorMessage_main_variables_disabledRegistryTools4=Будь ласка, поверніться в головне меню і прочитайте це повідомлення про помилку ще раз.
 
-set language_message_update_available1=Доступно оновлення для %program_name%^^!
+set language_message_update_available1=^^(^^!^^) Доступно оновлення для %program_name%^^!
 set language_message_update_available2=Завантажте його тут:
 exit /b
 
