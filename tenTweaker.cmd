@@ -61,6 +61,7 @@ set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
 set update_version_output=temp\%program_name_ns%.version
 set update_version_url=https://drive.google.com/uc?export=download^^^&id=1ZeM5bnX0fWs7njKL2ZTeYc2ctv0FmGRs
 
+set setting_eula=false
 set setting_language=default
 call :language_import
 
@@ -95,10 +96,11 @@ if "%key_main_reboot%" == "services_sppsvc" (
     )
   )
 
-  if "%key_main_eula%" NEQ "hidden" (
+  if "%key_main_eula%" NEQ "hidden" if "%setting_eula%" NEQ "true" (
     echo.%language_eula1%
     echo.%language_eula2%
     pause>nul
+    set setting_eula=true
   )
 )
 
@@ -1590,6 +1592,7 @@ exit /b
 
 :settings_save
 echo.# %program_name% Settings #>settings.ini
+echo.eula=%setting_eula%>>settings.ini
 echo.language=%setting_language%>>settings.ini
 exit /b
 
