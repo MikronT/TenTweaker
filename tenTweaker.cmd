@@ -612,18 +612,18 @@ goto :interface_explorer
 call :main_variables interface_taskBar
 
 call :logo
-echo.^(i^) Windows Task Bar - Control Menu
+echo.%language_interface_taskBar01%
 echo.
 echo.
-echo.^(^>^) Choose action to config Windows Task Bar:
+echo.%language_interface_taskBar02%
 
-set stringBuilder_string=^(1^) Peaple band                        
+set stringBuilder_string=%language_interface_taskBar03%
 if "%interface_taskBar_peopleBand%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_taskBar_peopleBand%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    ^(4^) Small icons                        
+call %stringBuilder_build%    %language_interface_taskBar04%
 if "%interface_taskBar_smallIcons%" == "enabled" (
   call %stringBuilder_build% %language_stringBuilder_option_enabled%
 ) else if "%interface_taskBar_smallIcons%" == "disabled" (
@@ -631,26 +631,33 @@ if "%interface_taskBar_smallIcons%" == "enabled" (
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=^(2^) Command prompt on Win + X          
-if "%interface_taskBar_commandPromptOnWinX%" == "PowerShell" (
-  call %stringBuilder_build% PowerShell      
-) else if "%interface_taskBar_commandPromptOnWinX%" == "Command Prompt" (
-  call %stringBuilder_build% Command Prompt  
+set stringBuilder_string=%language_interface_taskBar05%
+if "%interface_taskBar_commandPromptOnWinX%" == "powerShell" (
+  call %stringBuilder_build% %language_stringBuilder_option_powerShell%
+) else if "%interface_taskBar_commandPromptOnWinX%" == "commandPrompt" (
+  call %stringBuilder_build% %language_stringBuilder_option_commandPrompt%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    ^(5^) Buttons combine                    
+call %stringBuilder_build%    %language_interface_taskBar06%
 if "%interface_taskBar_buttonsCombine%" == "always" (
-  call %stringBuilder_build% always          
+  call %stringBuilder_build% %language_stringBuilder_option_always%
 ) else if "%interface_taskBar_buttonsCombine%" == "when is full" (
-  call %stringBuilder_build% when is full    
+  call %stringBuilder_build% %language_stringBuilder_option_whenIsFull%
 ) else if "%interface_taskBar_buttonsCombine%" == "never" (
-  call %stringBuilder_build% never           
+  call %stringBuilder_build% %language_stringBuilder_option_never%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-echo.    ^(3^) Task view button                    %interface_taskBar_taskViewButton%
+set stringBuilder_string=%language_interface_taskBar07%
+if "%interface_taskBar_taskViewButton%" == "shown" (
+  call %stringBuilder_build% %language_stringBuilder_option_shown%
+) else if "%interface_taskBar_taskViewButton%" == "hidden" (
+  call %stringBuilder_build% %language_stringBuilder_option_hidden%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
 echo.
-echo.    Note: These features require to restart Windows Explorer.
-echo.    ^(E^) Restart Windows Explorer
+echo.    %language_interface_taskBar08%
+echo.    %language_menuItem_restartExplorer%
 echo.
 echo.    %language_menuItem_goBack%
 echo.
@@ -667,7 +674,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
     reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand /t REG_DWORD /d 0 /f >nul
   ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand /t REG_DWORD /d 1 /f >nul
 
-  if "%command%" == "2" if "%interface_taskBar_commandPromptOnWinX%" == "PowerShell" (
+  if "%command%" == "2" if "%interface_taskBar_commandPromptOnWinX%" == "powerShell" (
     reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX /t REG_DWORD /d 1 /f >nul
   ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX /t REG_DWORD /d 0 /f >nul
 
@@ -1361,8 +1368,8 @@ if "%1" == "interface_taskBar" (
   set interface_taskBar_peopleBand=shown
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand') do if "%%i" == "0x0" set interface_taskBar_peopleBand=hidden
 
-  set interface_taskBar_commandPromptOnWinX=PowerShell
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX') do if "%%i" == "0x1" set interface_taskBar_commandPromptOnWinX=Command Prompt
+  set interface_taskBar_commandPromptOnWinX=powerShell
+  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX') do if "%%i" == "0x1" set interface_taskBar_commandPromptOnWinX=commandPrompt
 
   set interface_taskBar_taskViewButton=shown
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowTaskViewButton') do if "%%i" == "0x0" set interface_taskBar_taskViewButton=hidden
@@ -1472,15 +1479,20 @@ exit /b
 set language_menuItem_goBack=^^(0^^) Go back
 set language_menuItem_restartExplorer=^^(E^^) Restart Windows Explorer
 
-set        language_stringBuilder_option_error=[error]           
-set      language_stringBuilder_option_enabled=enabled           
-set     language_stringBuilder_option_disabled=disabled          
-set        language_stringBuilder_option_shown=shown             
-set       language_stringBuilder_option_hidden=hidden            
-set  language_stringBuilder_option_notAssigned=not assigned      
-set    language_stringBuilder_option_ctrlShift=Ctrl + Shift      
-set language_stringBuilder_option_leftAltShift=left Alt + Shift  
-set  language_stringBuilder_option_graveAccent=grave accent ^^(`^^)  
+set         language_stringBuilder_option_error=[error]           
+set       language_stringBuilder_option_enabled=enabled           
+set      language_stringBuilder_option_disabled=disabled          
+set         language_stringBuilder_option_shown=shown             
+set        language_stringBuilder_option_hidden=hidden            
+set   language_stringBuilder_option_notAssigned=not assigned      
+set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
+set  language_stringBuilder_option_leftAltShift=left Alt + Shift  
+set   language_stringBuilder_option_graveAccent=grave accent ^^(`^^)  
+set    language_stringBuilder_option_powerShell=PowerShell        
+set language_stringBuilder_option_commandPrompt=Command Prompt    
+set        language_stringBuilder_option_always=always            
+set    language_stringBuilder_option_whenIsFull=when is full      
+set         language_stringBuilder_option_never=never             
 
 set language_logo01=Release v%program_version%
 set language_logo02=============================
@@ -1539,6 +1551,15 @@ set language_interface_explorer10=^^(9^^) File info tip
 set language_interface_explorer11=^^(5^^) Folder merge conflicts            
 set language_interface_explorer12=Note: These features require to restart Windows Explorer.
 
+set language_interface_taskBar01=^^(i^^) Windows Task Bar - Control Menu
+set language_interface_taskBar02=^^(^^^>^^) Choose action to config Windows Task Bar:
+set language_interface_taskBar03=^^(1^^) People band                       
+set language_interface_taskBar04=^^(4^^) Small icons                       
+set language_interface_taskBar05=^^(2^^) Command prompt on Win + X         
+set language_interface_taskBar06=^^(5^^) Buttons combine                   
+set language_interface_taskBar07=^^(3^^) Task view button                  
+set language_interface_taskBar08=Note: These features require to restart Windows Explorer.
+
 set language_language_menu01=^^(i^^) Language - Selection Menu
 set language_language_menu02=^^(^^^>^^) Choose language:
 
@@ -1561,15 +1582,20 @@ exit /b
 set language_menuItem_goBack=^^(0^^) Назад
 set language_menuItem_restartExplorer=^^(E^^) Перезагрузить Проводник Windows
 
-set        language_stringBuilder_option_error=[ошибка]          
-set      language_stringBuilder_option_enabled=включено          
-set     language_stringBuilder_option_disabled=отключено         
-set        language_stringBuilder_option_shown=показано          
-set       language_stringBuilder_option_hidden=скрыто            
-set  language_stringBuilder_option_notAssigned=не призначено     
-set    language_stringBuilder_option_ctrlShift=Ctrl + Shift      
-set language_stringBuilder_option_leftAltShift=левый Alt + Shift 
-set  language_stringBuilder_option_graveAccent=ударение ^^(`^^)      
+set         language_stringBuilder_option_error=[ошибка]          
+set       language_stringBuilder_option_enabled=включено          
+set      language_stringBuilder_option_disabled=отключено         
+set         language_stringBuilder_option_shown=показано          
+set        language_stringBuilder_option_hidden=скрыто            
+set   language_stringBuilder_option_notAssigned=не призначено     
+set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
+set  language_stringBuilder_option_leftAltShift=левый Alt + Shift 
+set   language_stringBuilder_option_graveAccent=ударение ^^(`^^)      
+set    language_stringBuilder_option_powerShell=PowerShell        
+set language_stringBuilder_option_commandPrompt=Командная Строка  
+set        language_stringBuilder_option_always=всегда            
+set    language_stringBuilder_option_whenIsFull=когда полон       
+set         language_stringBuilder_option_never=никогда           
 
 set language_logo01=Релиз v%program_version%
 set language_logo02====================================
@@ -1628,6 +1654,15 @@ set language_interface_explorer10=^^(9^^) Информация о файле
 set language_interface_explorer11=^^(5^^) Конфликты слияния папок           
 set language_interface_explorer12=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
+set language_interface_taskBar01=^^(i^^) Панель Задач Windows - Меню Управления
+set language_interface_taskBar02=^^(^^^>^^) Выберите действие, чтобы настроить Панель Задач Windows:
+set language_interface_taskBar03=^^(1^^) Полоса людей                      
+set language_interface_taskBar04=^^(4^^) Маленькие иконки                  
+set language_interface_taskBar05=^^(2^^) Командная строка при Win + X      
+set language_interface_taskBar06=^^(5^^) Совмещение кнопок                 
+set language_interface_taskBar07=^^(3^^) Кнопка просмотра задач            
+set language_interface_taskBar08=Примечание: Эти функции требуют перезапуска Проводника Windows.
+
 set language_language_menu01=^^(i^^) Язык - Меню Выбора
 set language_language_menu02=^^(^^^>^^) Выберите язык:
 
@@ -1650,15 +1685,20 @@ exit /b
 set language_menuItem_goBack=^^(0^^) Назад
 set language_menuItem_restartExplorer=^^(E^^) Перезавантажити Провідник Windows
 
-set        language_stringBuilder_option_error=[помилка]         
-set      language_stringBuilder_option_enabled=увімкнено         
-set     language_stringBuilder_option_disabled=вимкнено          
-set        language_stringBuilder_option_shown=показано          
-set       language_stringBuilder_option_hidden=сховано           
-set  language_stringBuilder_option_notAssigned=не визначено      
-set    language_stringBuilder_option_ctrlShift=Ctrl + Shift      
-set language_stringBuilder_option_leftAltShift=лівий Alt + Shift 
-set  language_stringBuilder_option_graveAccent=наголос ^^(`^^)       
+set         language_stringBuilder_option_error=[помилка]         
+set       language_stringBuilder_option_enabled=увімкнено         
+set      language_stringBuilder_option_disabled=вимкнено          
+set         language_stringBuilder_option_shown=показано          
+set        language_stringBuilder_option_hidden=сховано           
+set   language_stringBuilder_option_notAssigned=не визначено      
+set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
+set  language_stringBuilder_option_leftAltShift=лівий Alt + Shift 
+set   language_stringBuilder_option_graveAccent=наголос ^^(`^^)       
+set    language_stringBuilder_option_powerShell=PowerShell        
+set language_stringBuilder_option_commandPrompt=Командний Рядок   
+set        language_stringBuilder_option_always=завжди            
+set    language_stringBuilder_option_whenIsFull=коли повний       
+set         language_stringBuilder_option_never=ніколи            
 
 set language_logo01=Реліз v%program_version%
 set language_logo02===============================
@@ -1716,6 +1756,15 @@ set language_interface_explorer09=^^(4^^) Порожні диски
 set language_interface_explorer10=^^(9^^) Інформація про файл               
 set language_interface_explorer11=^^(5^^) Конфлікти об'єднання папок        
 set language_interface_explorer12=Примітка: Ці функції потребують перезапуску Провідника Windows.
+
+set language_interface_taskBar01=^^(i^^) Панель Завдань Windows - Меню Управління
+set language_interface_taskBar02=^^(^^^>^^) Виберіть дію, щоб налаштувати Панель Завдань Windows:
+set language_interface_taskBar03=^^(1^^) Полоса людей                      
+set language_interface_taskBar04=^^(4^^) Маленькі іконки                   
+set language_interface_taskBar05=^^(2^^) Командний рядок при Win + X       
+set language_interface_taskBar06=^^(5^^) Зміщення кнопок                   
+set language_interface_taskBar07=^^(3^^) Кнопка перегляду завдань          
+set language_interface_taskBar08=Примітка: Ці функції потребують перезапуску Провідника Windows.
 
 set language_language_menu01=^^(i^^) Мова - Меню Вибору
 set language_language_menu02=^^(^^^>^^) Виберіть мову:
