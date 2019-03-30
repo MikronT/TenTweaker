@@ -228,7 +228,7 @@ echo.    %stringBuilder_string%
 echo.    %language_interface_desktopObjects07% %interface_desktopObjects_controlPanel%
 echo.
 echo.    %language_interface_desktopObjects08%
-echo.    %language_interface_desktopObjects09%
+echo.    %language_menuItem_restartExplorer%
 echo.
 echo.    %language_goBack%
 echo.
@@ -1449,8 +1449,6 @@ set language_interface_desktopObjects05=^^(2^^) Recycle Bin
 set language_interface_desktopObjects06=^^(5^^) Network                            
 set language_interface_desktopObjects07=^^(3^^) Control Panel                      
 set language_interface_desktopObjects08=Note: These features require to restart Windows Explorer.
-set language_interface_desktopObjects09=^^(E^^) Restart Windows Explorer
-set language_interface_desktopObjects10=
 
 set language_errorMessage_main_variables_disabledRegistryTools1=Registry Tools are disabled^^!
 set language_errorMessage_main_variables_disabledRegistryTools2=If you see [error] than this feature state cannot be shown or changed^^!
@@ -1459,6 +1457,8 @@ set language_errorMessage_main_variables_disabledRegistryTools4=Please, back to 
 
 set language_message_update_available1=^^(^^!^^) An update for %program_name% is now available^^!
 set language_message_update_available2=Download it here:
+
+set language_menuItem_restartExplorer=^^(E^^) Restart Windows Explorer
 exit /b
 
 
@@ -1499,6 +1499,15 @@ set language_main_menu14=    ^^(0^^) Выход
 set language_language_menu1=Язык - Меню Выбора
 set language_language_menu2=Выберите язык:
 
+set language_interface_desktopObjects01=^^(i^^) Объекты Рабочего Стола - Меню Управления
+set language_interface_desktopObjects02=^^(^^^>^^) Выберите действие, чтобы показать / скрыть объект рабочего стола:
+set language_interface_desktopObjects03=^^(1^^) Этот ПК                            
+set language_interface_desktopObjects04=^^(4^^) Папка пользователя                 
+set language_interface_desktopObjects05=^^(2^^) Корзина                            
+set language_interface_desktopObjects06=^^(5^^) Сеть                               
+set language_interface_desktopObjects07=^^(3^^) Панель управления                  
+set language_interface_desktopObjects08=Примечание: Эти функции требуют перезапуска Проводника Windows.
+
 set language_errorMessage_main_variables_disabledRegistryTools1=Инструменты реестра отключены^^!
 set language_errorMessage_main_variables_disabledRegistryTools2=Если вы видите [ошибка], то это состояние функции не может быть показано или изменено^^!
 set language_errorMessage_main_variables_disabledRegistryTools3=Чтобы это исправить, вы должны включить инструменты реестра в меню ^^(A^^) ^^(со скрытыми параметрами^^)^^!
@@ -1506,6 +1515,8 @@ set language_errorMessage_main_variables_disabledRegistryTools4=Пожалуйс
 
 set language_message_update_available1=^^(^^!^^) Доступно обновление для %program_name%^^!
 set language_message_update_available2=Загрузите его здесь:
+
+set language_menuItem_restartExplorer=^^(E^^) Перезагрузить Проводник Windows
 exit /b
 
 
@@ -1546,6 +1557,15 @@ set language_main_menu14=    ^^(0^^) Вихід
 set language_language_menu1=Мова - Меню Вибору
 set language_language_menu2=Виберіть мову:
 
+set language_interface_desktopObjects01=^^(i^^) Об'єкти Робочого Столу - Меню Управління
+set language_interface_desktopObjects02=^^(^^^>^^) Виберіть дію, щоб показати/приховати об'єкт робочого стола:
+set language_interface_desktopObjects03=^^(1^^) Цей ПК                             
+set language_interface_desktopObjects04=^^(4^^) Папка користувача                  
+set language_interface_desktopObjects05=^^(2^^) Кошик                              
+set language_interface_desktopObjects06=^^(5^^) Мережа                             
+set language_interface_desktopObjects07=^^(3^^) Панель управління                  
+set language_interface_desktopObjects08=Примітка: Ці функції потребують перезапуску Провідника Windows.
+
 set language_errorMessage_main_variables_disabledRegistryTools1=Інструменти реєстру відключені^^!
 set language_errorMessage_main_variables_disabledRegistryTools2=Якщо ви бачите [помилка], то це стан формальної процедури не може показано або змінено^^!
 set language_errorMessage_main_variables_disabledRegistryTools3=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^^(A^^) ^^(з прихованими параметрами^^)^^!
@@ -1553,6 +1573,8 @@ set language_errorMessage_main_variables_disabledRegistryTools4=Будь лас�
 
 set language_message_update_available1=^^(^^!^^) Доступно оновлення для %program_name%^^!
 set language_message_update_available2=Завантажте його тут:
+
+set language_menuItem_restartExplorer=^^(E^^) Перезавантажити Провідник Windows
 exit /b
 
 
