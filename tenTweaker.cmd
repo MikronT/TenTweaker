@@ -468,18 +468,18 @@ goto :interface_suggestions
 call :main_variables interface_explorer
 
 call :logo
-echo.^(i^) Windows Explorer - Control Menu
+echo.%language_interface_explorer01%
 echo.
 echo.
-echo.^(^>^) Choose action to config Windows Explorer:
+echo.%language_interface_explorer02%
 
-set stringBuilder_string=^(1^) File extensions                    
+set stringBuilder_string=%language_interface_explorer03%
 if "%interface_explorer_fileExtensions%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_explorer_fileExtensions%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    ^(6^) Ribbon ^(option bar^)                
+call %stringBuilder_build%    %language_interface_explorer04%
 if "%interface_explorer_ribbon%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_explorer_ribbon%" == "hidden" (
@@ -487,13 +487,13 @@ if "%interface_explorer_ribbon%" == "shown" (
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=^(2^) Hidden files                       
+set stringBuilder_string=%language_interface_explorer05%
 if "%interface_explorer_hiddenFiles%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_explorer_hiddenFiles%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    ^(7^) Expand to open folder              
+call %stringBuilder_build%    %language_interface_explorer06%
 if "%interface_explorer_expandToCurrentFolder%" == "enabled" (
   call %stringBuilder_build% %language_stringBuilder_option_enabled%
 ) else if "%interface_explorer_expandToCurrentFolder%" == "disabled" (
@@ -501,13 +501,13 @@ if "%interface_explorer_expandToCurrentFolder%" == "enabled" (
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=^(3^) Hidden protected system files      
+set stringBuilder_string=%language_interface_explorer07%
 if "%interface_explorer_hiddenProtectedSystemFiles%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_explorer_hiddenProtectedSystemFiles%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    ^(8^) Status bar                         
+call %stringBuilder_build%    %language_interface_explorer08%
 if "%interface_explorer_statusBar%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_explorer_statusBar%" == "hidden" (
@@ -515,13 +515,13 @@ if "%interface_explorer_statusBar%" == "shown" (
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=^(4^) Empty drives                       
+set stringBuilder_string=%language_interface_explorer09%
 if "%interface_explorer_emptyDrives%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_explorer_emptyDrives%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    ^(9^) File info tip                      
+call %stringBuilder_build%    %language_interface_explorer10%
 if "%interface_explorer_fileInfoTip%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_explorer_fileInfoTip%" == "hidden" (
@@ -529,11 +529,18 @@ if "%interface_explorer_fileInfoTip%" == "shown" (
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-echo.    ^(5^) Folder merge conflicts              %interface_explorer_folderMergeConflicts%
+set stringBuilder_string=%language_interface_explorer11%
+if "%interface_explorer_folderMergeConflicts%" == "shown" (
+  call %stringBuilder_build% %language_stringBuilder_option_shown%
+) else if "%interface_explorer_folderMergeConflicts%" == "hidden" (
+  call %stringBuilder_build% %language_stringBuilder_option_hidden%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
 echo.
 echo.
-echo.    Note: These features require to restart Windows Explorer.
-echo.    ^(E^) Restart Windows Explorer
+echo.    %language_interface_explorer12%
+echo.    %language_menuItem_restartExplorer%
 echo.
 echo.    %language_menuItem_goBack%
 echo.
@@ -1519,6 +1526,19 @@ set language_interface_suggestions04=^^(2^^) Append completion
 set language_interface_suggestions05=^^(3^^) Start track progs                 
 set language_interface_suggestions06=^^(4^^) Suggestions when typing           
 
+set language_interface_explorer01=^^(i^^) Windows Explorer - Control Menu
+set language_interface_explorer02=^^(^^^>^^) Choose action to config Windows Explorer:
+set language_interface_explorer03=^^(1^^) File extensions                   
+set language_interface_explorer04=^^(6^^) Ribbon ^^(option bar^^)               
+set language_interface_explorer05=^^(2^^) Hidden files                      
+set language_interface_explorer06=^^(7^^) Expand to open folder             
+set language_interface_explorer07=^^(3^^) Protected system files            
+set language_interface_explorer08=^^(8^^) Status bar                        
+set language_interface_explorer09=^^(4^^) Empty drives                      
+set language_interface_explorer10=^^(9^^) File info tip                     
+set language_interface_explorer11=^^(5^^) Folder merge conflicts            
+set language_interface_explorer12=Note: These features require to restart Windows Explorer.
+
 set language_language_menu01=^^(i^^) Language - Selection Menu
 set language_language_menu02=^^(^^^>^^) Choose language:
 
@@ -1595,6 +1615,19 @@ set language_interface_suggestions04=^^(2^^) Автозаполнение
 set language_interface_suggestions05=^^(3^^) Запустить трекинг програм         
 set language_interface_suggestions06=^^(4^^) Предложения при наборе текста     
 
+set language_interface_explorer01=^^(i^^) Проводник Windows - Меню Управления
+set language_interface_explorer02=^^(^^^>^^) Выберите действие, чтобы настроить Проводник Windows:
+set language_interface_explorer03=^^(1^^) Расширения файлов                 
+set language_interface_explorer04=^^(6^^) Лента ^^(панель опций^^)              
+set language_interface_explorer05=^^(2^^) Скрытые файлы                     
+set language_interface_explorer06=^^(7^^) Развернуть к открытой папке       
+set language_interface_explorer07=^^(3^^) Защищенные системные файлы        
+set language_interface_explorer08=^^(8^^) Статус бар                        
+set language_interface_explorer09=^^(4^^) Пустые диски                      
+set language_interface_explorer10=^^(9^^) Информация о файле                
+set language_interface_explorer11=^^(5^^) Конфликты слияния папок           
+set language_interface_explorer12=Примечание: Эти функции требуют перезапуска Проводника Windows.
+
 set language_language_menu01=^^(i^^) Язык - Меню Выбора
 set language_language_menu02=^^(^^^>^^) Выберите язык:
 
@@ -1670,6 +1703,19 @@ set language_interface_suggestions03=^^(1^^) Авто пропозиції
 set language_interface_suggestions04=^^(2^^) Автозаповнення                    
 set language_interface_suggestions05=^^(3^^) Запустити трекінг програм         
 set language_interface_suggestions06=^^(4^^) Пропозиції при наборі тексту      
+
+set language_interface_explorer01=^^(i^^) Провідник Windows - Меню Управління
+set language_interface_explorer02=^^(^^^>^^) Виберіть дію, щоб налаштувати Провідник Windows:
+set language_interface_explorer03=^^(1^^) Розширення файлів                 
+set language_interface_explorer04=^^(6^^) Стрічка ^^(панель опцій^^)            
+set language_interface_explorer05=^^(2^^) Приховані файли                   
+set language_interface_explorer06=^^(7^^) Розгорнути до відкритої папки     
+set language_interface_explorer07=^^(3^^) Захищені системні файли           
+set language_interface_explorer08=^^(8^^) Рядок стану                       
+set language_interface_explorer09=^^(4^^) Порожні диски                     
+set language_interface_explorer10=^^(9^^) Інформація про файл               
+set language_interface_explorer11=^^(5^^) Конфлікти об'єднання папок        
+set language_interface_explorer12=Примітка: Ці функції потребують перезапуску Провідника Windows.
 
 set language_language_menu01=^^(i^^) Мова - Меню Вибору
 set language_language_menu02=^^(^^^>^^) Виберіть мову:
