@@ -61,7 +61,7 @@ set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
 set update_version_output=temp\%program_name_ns%.version
 set update_version_url=https://drive.google.com/uc?export=download^^^&id=1ZeM5bnX0fWs7njKL2ZTeYc2ctv0FmGRs
 
-set language=default
+set setting_language=default
 call :language_import
 
 
@@ -70,8 +70,8 @@ call :language_import
 
 
 
-if exist settings.ini for /f "eol=# delims=" %%i in (settings.ini) do set %%i
-if "%language%" NEQ "english" if "%language%" NEQ "russian" if "%language%" NEQ "ukrainian" call :language_menu force
+if exist settings.ini for /f "eol=# delims=" %%i in (settings.ini) do set setting_%%i
+if "%setting_language%" NEQ "english" if "%setting_language%" NEQ "russian" if "%setting_language%" NEQ "ukrainian" call :language_menu force
 call :language_import
 
 call :logo
@@ -118,6 +118,7 @@ if "%key_main_reboot%" == "services_sppsvc" (
 
 :main_menu
 call :main_variables
+call :settings_save
 
 call :logo
 echo.%language_main_menu01%
@@ -1072,12 +1073,9 @@ set command=%errorLevel%
 
 
 
-if "%command%" == "1" set language=english
-if "%command%" == "2" set language=russian
-if "%command%" == "3" set language=ukrainian
-
-echo.# %program_name% Settings #>settings.ini
-echo.language=%language%>>settings.ini
+if "%command%" == "1" set setting_language=english
+if "%command%" == "2" set setting_language=russian
+if "%command%" == "3" set setting_language=ukrainian
 exit /b
 
 
@@ -1395,11 +1393,11 @@ exit /b
 
 
 :language_import
-if "%language%" == "default"   call :language_import_english
+if "%setting_language%" == "default"   call :language_import_english
 
-if "%language%" == "english"   call :language_import_english
-if "%language%" == "russian"   call :language_import_russian
-if "%language%" == "ukrainian" call :language_import_ukrainian
+if "%setting_language%" == "english"   call :language_import_english
+if "%setting_language%" == "russian"   call :language_import_russian
+if "%setting_language%" == "ukrainian" call :language_import_ukrainian
 exit /b
 
 
@@ -1574,6 +1572,25 @@ set language_message_update_available1=^^(^^!^^) Доступно оновлен
 set language_message_update_available2=Завантажте його тут:
 
 set language_menuItem_restartExplorer=^^(E^^) Перезавантажити Провідник Windows
+exit /b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:settings_save
+echo.# %program_name% Settings #>settings.ini
+echo.language=%setting_language%>>settings.ini
 exit /b
 
 
