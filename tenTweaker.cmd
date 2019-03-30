@@ -1465,15 +1465,15 @@ exit /b
 set language_menuItem_goBack=^^(0^^) Go back
 set language_menuItem_restartExplorer=^^(E^^) Restart Windows Explorer
 
-set        language_stringBuilder_option_error=[error]         
-set      language_stringBuilder_option_enabled=enabled         
-set     language_stringBuilder_option_disabled=disabled        
-set        language_stringBuilder_option_shown=shown           
-set       language_stringBuilder_option_hidden=hidden          
-set  language_stringBuilder_option_notAssigned=not assigned    
-set    language_stringBuilder_option_ctrlShift=Ctrl + Shift    
-set language_stringBuilder_option_leftAltShift=left Alt + Shift
-set  language_stringBuilder_option_graveAccent=grave accent ^^(`^^)
+set        language_stringBuilder_option_error=[error]           
+set      language_stringBuilder_option_enabled=enabled           
+set     language_stringBuilder_option_disabled=disabled          
+set        language_stringBuilder_option_shown=shown             
+set       language_stringBuilder_option_hidden=hidden            
+set  language_stringBuilder_option_notAssigned=not assigned      
+set    language_stringBuilder_option_ctrlShift=Ctrl + Shift      
+set language_stringBuilder_option_leftAltShift=left Alt + Shift  
+set  language_stringBuilder_option_graveAccent=grave accent ^^(`^^)  
 
 set language_logo01=Release v%program_version%
 set language_logo02=============================
@@ -1483,13 +1483,13 @@ set language_running=^^(i^^) %program_name% is running...
 set language_eula01=^^(^^!^^) The author is not responsible for any possible damage to the computer^^!
 set language_eula02=^^(^^?^^) Are you sure^^? ^^(Press Enter or close^^)
 
-set language_main_menu01=  Interface                                                   Setup
-set language_main_menu02=    ^^(1^^) Desktop objects ^^(This PC etc^^)                           ^^(6^^) Setup Office Professional+ 2016
-set language_main_menu03=    ^^(2^^) Language key sequence ^^(Ctrl + Shift^^)                    ^^(7^^) Setup/restore gpedit.msc
+set language_main_menu01=  Interface                                                    Setup
+set language_main_menu02=    ^^(1^^) Desktop objects ^^(This PC etc^^)                            ^^(6^^) Setup Office Professional+ 2016
+set language_main_menu03=    ^^(2^^) Language key sequence ^^(Ctrl + Shift^^)                     ^^(7^^) Setup/restore gpedit.msc
 set language_main_menu04=    ^^(3^^) Input suggestions and auto completion
-set language_main_menu05=    ^^(4^^) Windows Explorer                                      Services
-set language_main_menu06=    ^^(5^^) Windows Task Bar                                        ^^(8^^) Windows Update ^^(wuauserv^^)
-set language_main_menu07=                                                                ^^(9^^) Software Protection Platform Service ^^(sppsvc^^)
+set language_main_menu05=    ^^(4^^) Windows Explorer                                       Services
+set language_main_menu06=    ^^(5^^) Windows Task Bar                                         ^^(8^^) Windows Update ^^(wuauserv^^)
+set language_main_menu07=                                                                 ^^(9^^) Software Protection Platform Service ^^(sppsvc^^)
 set language_main_menu08=  Tools
 set language_main_menu09=    ^^(A^^) Administrative tools
 set language_main_menu10=    ^^(B^^) System Resource Checker
@@ -1500,24 +1500,24 @@ set language_main_menu14=    ^^(0^^) Exit
 
 set language_interface_desktopObjects01=^^(i^^) Desktop Objects - Control Menu
 set language_interface_desktopObjects02=^^(^^^>^^) Choose action to show/hide desktop object:
-set language_interface_desktopObjects03=^^(1^^) This PC                            
-set language_interface_desktopObjects04=^^(4^^) User Folder                        
-set language_interface_desktopObjects05=^^(2^^) Recycle Bin                        
-set language_interface_desktopObjects06=^^(5^^) Network                            
-set language_interface_desktopObjects07=^^(3^^) Control Panel                      
+set language_interface_desktopObjects03=^^(1^^) This PC                           
+set language_interface_desktopObjects04=^^(4^^) User Folder                       
+set language_interface_desktopObjects05=^^(2^^) Recycle Bin                       
+set language_interface_desktopObjects06=^^(5^^) Network                           
+set language_interface_desktopObjects07=^^(3^^) Control Panel                     
 set language_interface_desktopObjects08=Note: These features require to restart Windows Explorer.
 
 set language_interface_languageKeySequence01=^^(i^^) Language Key Sequence - Control Menu
 set language_interface_languageKeySequence02=^^(^^^>^^) Choose action to change key sequence:
-set language_interface_languageKeySequence03=^^(1^^) Input language                     
-set language_interface_languageKeySequence04=^^(2^^) Keyboard layout                    
+set language_interface_languageKeySequence03=^^(1^^) Input language                    
+set language_interface_languageKeySequence04=^^(2^^) Keyboard layout                   
 
 set language_interface_suggestions01=^^(i^^) Input Suggestions - Control Menu
 set language_interface_suggestions02=^^(^^^>^^) Choose action to enable/disable input suggestions:
-set language_interface_suggestions03=^^(1^^) Auto suggest                       
-set language_interface_suggestions04=^^(2^^) Append completion                  
-set language_interface_suggestions05=^^(3^^) Start track progs                  
-set language_interface_suggestions06=^^(4^^) Suggestions when typing            
+set language_interface_suggestions03=^^(1^^) Auto suggest                      
+set language_interface_suggestions04=^^(2^^) Append completion                 
+set language_interface_suggestions05=^^(3^^) Start track progs                 
+set language_interface_suggestions06=^^(4^^) Suggestions when typing           
 
 set language_language_menu01=^^(i^^) Language - Selection Menu
 set language_language_menu02=^^(^^^>^^) Choose language:
@@ -1541,15 +1541,15 @@ exit /b
 set language_menuItem_goBack=^^(0^^) Назад
 set language_menuItem_restartExplorer=^^(E^^) Перезагрузить Проводник Windows
 
-set        language_stringBuilder_option_error=[ошибка]        
-set      language_stringBuilder_option_enabled=включено        
-set     language_stringBuilder_option_disabled=отключено       
-set        language_stringBuilder_option_shown=показано        
-set       language_stringBuilder_option_hidden=скрыто          
-set  language_stringBuilder_option_notAssigned=не призначено   
-set    language_stringBuilder_option_ctrlShift=Ctrl + Shift    
-set language_stringBuilder_option_leftAltShift=left Alt + Shift
-set  language_stringBuilder_option_graveAccent=ударение ^^(`^^)    
+set        language_stringBuilder_option_error=[ошибка]          
+set      language_stringBuilder_option_enabled=включено          
+set     language_stringBuilder_option_disabled=отключено         
+set        language_stringBuilder_option_shown=показано          
+set       language_stringBuilder_option_hidden=скрыто            
+set  language_stringBuilder_option_notAssigned=не призначено     
+set    language_stringBuilder_option_ctrlShift=Ctrl + Shift      
+set language_stringBuilder_option_leftAltShift=левый Alt + Shift 
+set  language_stringBuilder_option_graveAccent=ударение ^^(`^^)      
 
 set language_logo01=Релиз v%program_version%
 set language_logo02====================================
@@ -1559,13 +1559,13 @@ set language_running=^^(i^^) %program_name% запускается...
 set language_eula01=^^(^^!^^) Автор не несет ответственности за возможные повреждения компьютера^^!
 set language_eula02=^^(^^?^^) Вы уверены^^? ^^(Нажмите Enter или закройте^^)
 
-set language_main_menu01=  Интерфейс                                                   Настройка
-set language_main_menu02=    ^^(1^^) Объекты рабочего стола ^^(Этот ПК и другие^^)               ^^(6^^) Установить Офис Профессиональный+ 2016
-set language_main_menu03=    ^^(2^^) Сочетания клавиш смены языка ^^(Ctrl + Shift^^)             ^^(7^^) Установить/восстановить gpedit.msc
+set language_main_menu01=  Интерфейс                                                    Настройка
+set language_main_menu02=    ^^(1^^) Объекты рабочего стола ^^(Этот ПК и другие^^)                ^^(6^^) Установить Офис Профессиональный+ 2016
+set language_main_menu03=    ^^(2^^) Сочетания клавиш смены языка ^^(Ctrl + Shift^^)              ^^(7^^) Установить/восстановить gpedit.msc
 set language_main_menu04=    ^^(3^^) Предложения при вводе и автозаполнение
-set language_main_menu05=    ^^(4^^) Windows Проводник                                     Службы
-set language_main_menu06=    ^^(5^^) Windows Панель Задач                                    ^^(8^^) Обновление Windows ^^(wuauserv^^)
-set language_main_menu07=                                                                ^^(9^^) Служба Платформы Защиты ПО ^^(sppsvc^^)
+set language_main_menu05=    ^^(4^^) Windows Проводник                                      Службы
+set language_main_menu06=    ^^(5^^) Windows Панель Задач                                     ^^(8^^) Обновление Windows ^^(wuauserv^^)
+set language_main_menu07=                                                                 ^^(9^^) Служба Платформы Защиты ПО ^^(sppsvc^^)
 set language_main_menu08=  Инструменты
 set language_main_menu09=    ^^(A^^) Административные инструменты
 set language_main_menu10=    ^^(B^^) Проверка системных ресурсов
@@ -1576,24 +1576,24 @@ set language_main_menu14=    ^^(0^^) Выход
 
 set language_interface_desktopObjects01=^^(i^^) Объекты Рабочего Стола - Меню Управления
 set language_interface_desktopObjects02=^^(^^^>^^) Выберите действие, чтобы показать / скрыть объект рабочего стола:
-set language_interface_desktopObjects03=^^(1^^) Этот ПК                            
-set language_interface_desktopObjects04=^^(4^^) Папка пользователя                 
-set language_interface_desktopObjects05=^^(2^^) Корзина                            
-set language_interface_desktopObjects06=^^(5^^) Сеть                               
-set language_interface_desktopObjects07=^^(3^^) Панель управления                  
+set language_interface_desktopObjects03=^^(1^^) Этот ПК                           
+set language_interface_desktopObjects04=^^(4^^) Папка пользователя                
+set language_interface_desktopObjects05=^^(2^^) Корзина                           
+set language_interface_desktopObjects06=^^(5^^) Сеть                              
+set language_interface_desktopObjects07=^^(3^^) Панель управления                 
 set language_interface_desktopObjects08=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
 set language_interface_languageKeySequence01=^^(i^^) Сочетания Клавиш Смены Языка - Меню Управления
 set language_interface_languageKeySequence02=^^(^^^>^^) Выберите действие, чтобы изменить последовательность клавиш:
-set language_interface_languageKeySequence03=^^(1^^) Язык ввода                         
-set language_interface_languageKeySequence04=^^(2^^) Раскладка клавиатуры               
+set language_interface_languageKeySequence03=^^(1^^) Язык ввода                        
+set language_interface_languageKeySequence04=^^(2^^) Раскладка клавиатуры              
 
 set language_interface_suggestions01=^^(i^^) Предложения При Вводе - Меню Управления
 set language_interface_suggestions02=^^(^^^>^^) Выберите действие, чтобы включить/отключить предложения ввода:
-set language_interface_suggestions03=^^(1^^) Авто предложения                   
-set language_interface_suggestions04=^^(2^^) Автозаполнение                     
-set language_interface_suggestions05=^^(3^^) Запустить трекинг програм          
-set language_interface_suggestions06=^^(4^^) Предложения при наборе текста      
+set language_interface_suggestions03=^^(1^^) Авто предложения                  
+set language_interface_suggestions04=^^(2^^) Автозаполнение                    
+set language_interface_suggestions05=^^(3^^) Запустить трекинг програм         
+set language_interface_suggestions06=^^(4^^) Предложения при наборе текста     
 
 set language_language_menu01=^^(i^^) Язык - Меню Выбора
 set language_language_menu02=^^(^^^>^^) Выберите язык:
@@ -1617,15 +1617,15 @@ exit /b
 set language_menuItem_goBack=^^(0^^) Назад
 set language_menuItem_restartExplorer=^^(E^^) Перезавантажити Провідник Windows
 
-set        language_stringBuilder_option_error=[помилка]       
-set      language_stringBuilder_option_enabled=увімкнено       
-set     language_stringBuilder_option_disabled=вимкнено        
-set        language_stringBuilder_option_shown=показано        
-set       language_stringBuilder_option_hidden=сховано         
-set  language_stringBuilder_option_notAssigned=не визначено    
-set    language_stringBuilder_option_ctrlShift=Ctrl + Shift    
-set language_stringBuilder_option_leftAltShift=left Alt + Shift
-set  language_stringBuilder_option_graveAccent=наголос ^^(`^^)     
+set        language_stringBuilder_option_error=[помилка]         
+set      language_stringBuilder_option_enabled=увімкнено         
+set     language_stringBuilder_option_disabled=вимкнено          
+set        language_stringBuilder_option_shown=показано          
+set       language_stringBuilder_option_hidden=сховано           
+set  language_stringBuilder_option_notAssigned=не визначено      
+set    language_stringBuilder_option_ctrlShift=Ctrl + Shift      
+set language_stringBuilder_option_leftAltShift=лівий Alt + Shift 
+set  language_stringBuilder_option_graveAccent=наголос ^^(`^^)       
 
 set language_logo01=Реліз v%program_version%
 set language_logo02===============================
@@ -1635,13 +1635,13 @@ set language_running=^^(i^^) %program_name% запускається...
 set language_eula01=^^(^^!^^) Автор не несе відповідальності за можливі пошкодження комп'ютера^^!
 set language_eula02=^^(^^?^^) Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
 
-set language_main_menu01=  Інтерфейс                                                   Налаштування
-set language_main_menu02=    ^^(1^^) Об'єкти робочого столу ^^(Цей ПК та інші^^)                 ^^(6^^) Установити Офіс Професійний+ 2016
-set language_main_menu03=    ^^(2^^) Комбінації клавіш зміни мови ^^(Ctrl + Shift^^)             ^^(7^^) Установити/відновити gpedit.msc
+set language_main_menu01=  Інтерфейс                                                    Налаштування
+set language_main_menu02=    ^^(1^^) Об'єкти робочого столу ^^(Цей ПК та інші^^)                  ^^(6^^) Установити Офіс Професійний+ 2016
+set language_main_menu03=    ^^(2^^) Комбінації клавіш зміни мови ^^(Ctrl + Shift^^)              ^^(7^^) Установити/відновити gpedit.msc
 set language_main_menu04=    ^^(3^^) Пропозиції при введенні та автозаповнення
-set language_main_menu05=    ^^(4^^) Windows Провідник                                     Служби
-set language_main_menu06=    ^^(5^^) Windows Панель Завдань                                  ^^(8^^) Оновлення Windows ^^(wuauserv^^)
-set language_main_menu07=                                                                ^^(9^^) Служба Платформи Захисту ПО ^^(sppsvc^^)
+set language_main_menu05=    ^^(4^^) Windows Провідник                                      Служби
+set language_main_menu06=    ^^(5^^) Windows Панель Завдань                                   ^^(8^^) Оновлення Windows ^^(wuauserv^^)
+set language_main_menu07=                                                                 ^^(9^^) Служба Платформи Захисту ПО ^^(sppsvc^^)
 set language_main_menu08=  Інструменти
 set language_main_menu09=    ^^(A^^) Адміністративні інструменти
 set language_main_menu10=    ^^(B^^) Перевірка системних ресурсів
@@ -1652,24 +1652,24 @@ set language_main_menu14=    ^^(0^^) Вихід
 
 set language_interface_desktopObjects01=^^(i^^) Об'єкти Робочого Столу - Меню Управління
 set language_interface_desktopObjects02=^^(^^^>^^) Виберіть дію, щоб показати/приховати об'єкт робочого столу:
-set language_interface_desktopObjects03=^^(1^^) Цей ПК                             
-set language_interface_desktopObjects04=^^(4^^) Папка користувача                  
-set language_interface_desktopObjects05=^^(2^^) Кошик                              
-set language_interface_desktopObjects06=^^(5^^) Мережа                             
-set language_interface_desktopObjects07=^^(3^^) Панель управління                  
+set language_interface_desktopObjects03=^^(1^^) Цей ПК                            
+set language_interface_desktopObjects04=^^(4^^) Папка користувача                 
+set language_interface_desktopObjects05=^^(2^^) Кошик                             
+set language_interface_desktopObjects06=^^(5^^) Мережа                            
+set language_interface_desktopObjects07=^^(3^^) Панель управління                 
 set language_interface_desktopObjects08=Примітка: Ці функції потребують перезапуску Провідника Windows.
 
 set language_interface_languageKeySequence01=^^(i^^) Комбінації Клавіш Зміни Мови - Меню Управління
 set language_interface_languageKeySequence02=^^(^^^>^^) Виберіть дію, щоб змінити комбінації клавіш:
-set language_interface_languageKeySequence03=^^(1^^) Мова введення                      
-set language_interface_languageKeySequence04=^^(2^^) Розкладка клавіатури               
+set language_interface_languageKeySequence03=^^(1^^) Мова введення                     
+set language_interface_languageKeySequence04=^^(2^^) Розкладка клавіатури              
 
 set language_interface_suggestions01=^^(i^^) Пропозиції При Введенні - Меню Управління
 set language_interface_suggestions02=^^(^^^>^^) Виберіть дію, щоб включити/відключити пропозиції введення:
-set language_interface_suggestions03=^^(1^^) Авто пропозиції                    
-set language_interface_suggestions04=^^(2^^) Автозаповнення                     
-set language_interface_suggestions05=^^(3^^) Запустити трекінг програм          
-set language_interface_suggestions06=^^(4^^) Пропозиції при наборі тексту       
+set language_interface_suggestions03=^^(1^^) Авто пропозиції                   
+set language_interface_suggestions04=^^(2^^) Автозаповнення                    
+set language_interface_suggestions05=^^(3^^) Запустити трекінг програм         
+set language_interface_suggestions06=^^(4^^) Пропозиції при наборі тексту      
 
 set language_language_menu01=^^(i^^) Мова - Меню Вибору
 set language_language_menu02=^^(^^^>^^) Виберіть мову:
