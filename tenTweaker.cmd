@@ -228,7 +228,14 @@ if "%interface_desktopObjects_network%" == "shown" (
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-echo.    %language_interface_desktopObjects07% %interface_desktopObjects_controlPanel%
+set stringBuilder_string=%language_interface_desktopObjects07%
+if "%interface_desktopObjects_controlPanel%" == "shown" (
+  call %stringBuilder_build% %language_stringBuilder_option_shown%
+) else if "%interface_desktopObjects_controlPanel%" == "hidden" (
+  call %stringBuilder_build% %language_stringBuilder_option_hidden%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
 echo.
 echo.    %language_interface_desktopObjects08%
 echo.    %language_menuItem_restartExplorer%
@@ -286,7 +293,7 @@ goto :interface_desktopObjects
 :interface_languageKeySequence
 call :main_variables interface_languageKeySequence
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%interface_languageKeySequence_inputLanguageSwitch%" == "%interface_languageKeySequence_keyboardLayoutSwitch%" (
-  if "%interface_languageKeySequence_inputLanguageSwitch%" NEQ "Not assigned" (
+  if "%interface_languageKeySequence_inputLanguageSwitch%" NEQ "notAssigned" (
     set error_interface_languageKeySequence_twoIdenticalCombinations=1
   ) else set error_interface_languageKeySequence_twoIdenticalCombinations=0
 ) else set error_interface_languageKeySequence_twoIdenticalCombinations=0
@@ -296,8 +303,31 @@ echo.%language_interface_languageKeySequence01%
 echo.
 echo.
 echo.%language_interface_languageKeySequence02%
-echo.    %language_interface_languageKeySequence03% %interface_languageKeySequence_inputLanguageSwitch%
-echo.    %language_interface_languageKeySequence04% %interface_languageKeySequence_keyboardLayoutSwitch%
+
+set stringBuilder_string=%language_interface_languageKeySequence03%
+if "%interface_languageKeySequence_inputLanguageSwitch%" == "notAssigned" (
+  call %stringBuilder_build% %language_stringBuilder_option_notAssigned%
+) else if "%interface_languageKeySequence_inputLanguageSwitch%" == "ctrlShift" (
+  call %stringBuilder_build% %language_stringBuilder_option_ctrlShift%
+) else if "%interface_languageKeySequence_inputLanguageSwitch%" == "leftAltShift" (
+  call %stringBuilder_build% %language_stringBuilder_option_leftAltShift%
+) else if "%interface_languageKeySequence_inputLanguageSwitch%" == "graveAccent" (
+  call %stringBuilder_build% %language_stringBuilder_option_graveAccent%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_interface_languageKeySequence04%
+if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "notAssigned" (
+  call %stringBuilder_build% %language_stringBuilder_option_notAssigned%
+) else if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "ctrlShift" (
+  call %stringBuilder_build% %language_stringBuilder_option_ctrlShift%
+) else if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "leftAltShift" (
+  call %stringBuilder_build% %language_stringBuilder_option_leftAltShift%
+) else if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "graveAccent" (
+  call %stringBuilder_build% %language_stringBuilder_option_graveAccent%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
 echo.
 echo.    %language_menuItem_goBack%
 echo.
@@ -316,17 +346,17 @@ set command=%errorLevel%
 
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   if "%command%" == "1" (
-    if "%interface_languageKeySequence_inputLanguageSwitch%" == "Not assigned" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "2" /f >nul
-    if "%interface_languageKeySequence_inputLanguageSwitch%" == "Ctrl + Shift" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "1" /f >nul
-    if "%interface_languageKeySequence_inputLanguageSwitch%" == "Left Alt + Shift" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "4" /f >nul
-    if "%interface_languageKeySequence_inputLanguageSwitch%" == "Grave accent (`)" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "3" /f >nul
+    if "%interface_languageKeySequence_inputLanguageSwitch%" == "notAssigned" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "2" /f >nul
+    if "%interface_languageKeySequence_inputLanguageSwitch%" == "ctrlShift" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "1" /f >nul
+    if "%interface_languageKeySequence_inputLanguageSwitch%" == "leftAltShift" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "4" /f >nul
+    if "%interface_languageKeySequence_inputLanguageSwitch%" == "graveAccent" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "3" /f >nul
   )
 
   if "%command%" == "2" (
-    if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "Not assigned" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 2 /f >nul
-    if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "Ctrl + Shift" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 1 /f >nul
-    if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "Left Alt + Shift" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 4 /f >nul
-    if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "Grave accent (`)" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 3 /f >nul
+    if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "notAssigned" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 2 /f >nul
+    if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "ctrlShift" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 1 /f >nul
+    if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "leftAltShift" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 4 /f >nul
+    if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "graveAccent" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 3 /f >nul
   )
 )
 
@@ -351,14 +381,43 @@ goto :interface_languageKeySequence
 call :main_variables interface_suggestions
 
 call :logo
-echo.^(i^) Input Suggestions - Control Menu
+echo.%language_interface_suggestions01%
 echo.
 echo.
-echo.^(^>^) Choose action to enable/disable input suggestions:
-echo.    ^(1^) Auto Suggest                        %interface_suggestions_autoSuggest%
-echo.    ^(2^) Append Completion                   %interface_suggestions_appendCompletion%
-echo.    ^(3^) Start Track Progs                   %interface_suggestions_startTrackProgs%
-echo.    ^(4^) Suggestions when typing             %interface_suggestions_suggestionsWhenTyping%
+echo.%language_interface_suggestions02%
+
+set stringBuilder_string=%language_interface_suggestions03%
+if "%interface_suggestions_autoSuggest%" == "enabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_enabled%
+) else if "%interface_suggestions_autoSuggest%" == "disabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_disabled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_interface_suggestions04%
+if "%interface_suggestions_appendCompletion%" == "enabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_enabled%
+) else if "%interface_suggestions_appendCompletion%" == "disabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_disabled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_interface_suggestions05%
+if "%interface_suggestions_startTrackProgs%" == "enabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_enabled%
+) else if "%interface_suggestions_startTrackProgs%" == "disabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_disabled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_interface_suggestions06%
+if "%interface_suggestions_suggestionsWhenTyping%" == "enabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_enabled%
+) else if "%interface_suggestions_suggestionsWhenTyping%" == "disabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_disabled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
 echo.
 echo.    %language_menuItem_goBack%
 echo.
@@ -1221,18 +1280,18 @@ if "%1" == "interface_desktopObjects" (
 
 
 if "%1" == "interface_languageKeySequence" (
-  set interface_languageKeySequence_inputLanguageSwitch=Left Alt + Shift
+  set interface_languageKeySequence_inputLanguageSwitch=leftAltShift
   for /f "skip=2 tokens=4,* delims= " %%i in ('reg query "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey"') do (
-    if "%%i" == "3" set interface_languageKeySequence_inputLanguageSwitch=Not assigned
-    if "%%i" == "2" set interface_languageKeySequence_inputLanguageSwitch=Ctrl + Shift
-    if "%%i" == "4" set interface_languageKeySequence_inputLanguageSwitch=Grave accent ^(`^)
+    if "%%i" == "3" set interface_languageKeySequence_inputLanguageSwitch=notAssigned
+    if "%%i" == "2" set interface_languageKeySequence_inputLanguageSwitch=ctrlShift
+    if "%%i" == "4" set interface_languageKeySequence_inputLanguageSwitch=graveAccent
   )
 
-  set interface_languageKeySequence_keyboardLayoutSwitch=Ctrl + Shift
+  set interface_languageKeySequence_keyboardLayoutSwitch=ctrlShift
   for /f "skip=2 tokens=4,* delims= " %%i in ('reg query "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey"') do (
-    if "%%i" == "3" set interface_languageKeySequence_keyboardLayoutSwitch=Not assigned
-    if "%%i" == "1" set interface_languageKeySequence_keyboardLayoutSwitch=Left Alt + Shift
-    if "%%i" == "4" set interface_languageKeySequence_keyboardLayoutSwitch=Grave accent ^(`^)
+    if "%%i" == "3" set interface_languageKeySequence_keyboardLayoutSwitch=notAssigned
+    if "%%i" == "1" set interface_languageKeySequence_keyboardLayoutSwitch=leftAltShift
+    if "%%i" == "4" set interface_languageKeySequence_keyboardLayoutSwitch=graveAccent
   )
 )
 
@@ -1406,11 +1465,15 @@ exit /b
 set language_menuItem_goBack=^^(0^^) Go back
 set language_menuItem_restartExplorer=^^(E^^) Restart Windows Explorer
 
-set language_stringBuilder_option_enabled=enabled         
-set language_stringBuilder_option_disabled=disabled        
-set language_stringBuilder_option_shown=shown           
-set language_stringBuilder_option_hidden=hidden          
-set language_stringBuilder_option_error=[error]         
+set        language_stringBuilder_option_error=[error]         
+set      language_stringBuilder_option_enabled=enabled         
+set     language_stringBuilder_option_disabled=disabled        
+set        language_stringBuilder_option_shown=shown           
+set       language_stringBuilder_option_hidden=hidden          
+set  language_stringBuilder_option_notAssigned=not assigned    
+set    language_stringBuilder_option_ctrlShift=Ctrl + Shift    
+set language_stringBuilder_option_leftAltShift=left Alt + Shift
+set  language_stringBuilder_option_graveAccent=grave accent ^^(`^^)
 
 set language_logo01=Release v%program_version%
 set language_logo02=============================
@@ -1478,11 +1541,15 @@ exit /b
 set language_menuItem_goBack=^^(0^^) Назад
 set language_menuItem_restartExplorer=^^(E^^) Перезагрузить Проводник Windows
 
-set language_stringBuilder_option_enabled=включено        
-set language_stringBuilder_option_disabled=отключено       
-set language_stringBuilder_option_shown=показано        
-set language_stringBuilder_option_hidden=скрыто          
-set language_stringBuilder_option_error=[ошибка]        
+set        language_stringBuilder_option_error=[ошибка]        
+set      language_stringBuilder_option_enabled=включено        
+set     language_stringBuilder_option_disabled=отключено       
+set        language_stringBuilder_option_shown=показано        
+set       language_stringBuilder_option_hidden=скрыто          
+set  language_stringBuilder_option_notAssigned=не призначено   
+set    language_stringBuilder_option_ctrlShift=Ctrl + Shift    
+set language_stringBuilder_option_leftAltShift=left Alt + Shift
+set  language_stringBuilder_option_graveAccent=ударение ^^(`^^)    
 
 set language_logo01=Релиз v%program_version%
 set language_logo02====================================
@@ -1550,11 +1617,15 @@ exit /b
 set language_menuItem_goBack=^^(0^^) Назад
 set language_menuItem_restartExplorer=^^(E^^) Перезавантажити Провідник Windows
 
-set language_stringBuilder_option_enabled=увімкнено       
-set language_stringBuilder_option_disabled=вимкнено        
-set language_stringBuilder_option_shown=показано        
-set language_stringBuilder_option_hidden=сховано         
-set language_stringBuilder_option_error=[помилка]       
+set        language_stringBuilder_option_error=[помилка]       
+set      language_stringBuilder_option_enabled=увімкнено       
+set     language_stringBuilder_option_disabled=вимкнено        
+set        language_stringBuilder_option_shown=показано        
+set       language_stringBuilder_option_hidden=сховано         
+set  language_stringBuilder_option_notAssigned=не визначено    
+set    language_stringBuilder_option_ctrlShift=Ctrl + Shift    
+set language_stringBuilder_option_leftAltShift=left Alt + Shift
+set  language_stringBuilder_option_graveAccent=наголос ^^(`^^)     
 
 set language_logo01=Реліз v%program_version%
 set language_logo02===============================
