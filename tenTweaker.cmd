@@ -308,8 +308,6 @@ if "%error_interface_languageKeySequence_twoIdenticalCombinations%" == "1" (
   color 0c
   echo.    ^(^!^) Can not be two identical key combinations^!
   echo.
-  echo.
-  echo.
 ) else color 0b
 choice /c 120 /n /m "> "
 set command=%errorLevel%
@@ -661,8 +659,6 @@ if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main
 if "%error_setup_office%" == "1" (
   color 0c
   echo.    ^(^!^) Download error^! Server not respond or no Internet connection^!
-  echo.
-  echo.
   echo.
   set error_setup_office=0
 ) else color 0b
