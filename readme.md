@@ -36,6 +36,17 @@ Console tweaker for Windows 10 with some useful options.
 
 
 
+## Localization
+Available languages:
+- English
+- Russian
+- Ukrainian
+
+### Translations
+You can also help me with localization to your language.
+
+
+
 ## Keys
 | Key Name                                | Options         | Description                                                                  |
 |-----------------------------------------|-----------------|------------------------------------------------------------------------------|
