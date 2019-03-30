@@ -233,7 +233,7 @@ echo.
 echo.    %language_interface_desktopObjects08%
 echo.    %language_menuItem_restartExplorer%
 echo.
-echo.    %language_goBack%
+echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
@@ -299,7 +299,7 @@ echo.^(^>^) Choose action to change key sequence:
 echo.    ^(1^) Input language                      %interface_languageKeySequence_inputLanguageSwitch%
 echo.    ^(2^) Keyboard layout                     %interface_languageKeySequence_keyboardLayoutSwitch%
 echo.
-echo.    %language_goBack%
+echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
@@ -360,7 +360,7 @@ echo.    ^(2^) Append Completion                   %interface_suggestions_append
 echo.    ^(3^) Start Track Progs                   %interface_suggestions_startTrackProgs%
 echo.    ^(4^) Suggestions when typing             %interface_suggestions_suggestionsWhenTyping%
 echo.
-echo.    %language_goBack%
+echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
@@ -476,7 +476,7 @@ echo.
 echo.    Note: These features require to restart Windows Explorer.
 echo.    ^(E^) Restart Windows Explorer
 echo.
-echo.    %language_goBack%
+echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
@@ -586,7 +586,7 @@ echo.
 echo.    Note: These features require to restart Windows Explorer.
 echo.    ^(E^) Restart Windows Explorer
 echo.
-echo.    %language_goBack%
+echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
@@ -651,7 +651,7 @@ echo.
 echo.    Note: This feature requires to reboot your computer.
 echo.    ^(R^) Reboot computer
 echo.
-echo.    %language_goBack%
+echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
@@ -723,7 +723,7 @@ echo.
 echo.^(^>^) Choose action:
 echo.    ^(1^) Setup/repair gpedit.msc             %setup_gpeditMSC_gpeditFile%
 echo.
-echo.    %language_goBack%
+echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
@@ -770,7 +770,7 @@ echo.^(^>^) Choose action to enable/disable Windows Update:
 echo.    ^(1^) Update distributions                %services_windowsUpdate_updateDistributions%
 echo.    ^(2^) Update Center ^(wuauserv^)            %services_windowsUpdate_updateCenter%
 echo.
-echo.    %language_goBack%
+echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
@@ -829,7 +829,7 @@ echo.    Note: This feature requires to reboot your computer two times.
 echo.          The computer will automatically reboot after the next system start.
 echo.    ^(R^) Reboot computer
 echo.
-echo.    %language_goBack%
+echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
@@ -938,7 +938,7 @@ if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
   echo.    ^(R^) Reboot computer
   echo.
 )
-echo.    %language_goBack%
+echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
@@ -1017,7 +1017,7 @@ echo.
 echo.    Note: This feature requires to reboot your computer.
 echo.    ^(R^) Reboot computer
 echo.
-echo.    %language_goBack%
+echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
@@ -1058,7 +1058,7 @@ echo.    ^(2^) Русский
 echo.    ^(3^) Українська
 if "%1" NEQ "force" (
   echo.
-  echo.    %language_goBack%
+  echo.    %language_menuItem_goBack%
 )
 echo.
 echo.
@@ -1102,7 +1102,7 @@ echo.    ^(1^) Option                              %option%
 echo.    ^(2^) Option                              %option%
 echo.    ^(3^) Option                              %option%
 echo.
-echo.    %language_goBack%
+echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
@@ -1403,7 +1403,9 @@ exit /b
 
 
 :language_import_english
-set language_goBack=^^(0^^) Go back
+set language_menuItem_goBack=^^(0^^) Go back
+set language_menuItem_restartExplorer=^^(E^^) Restart Windows Explorer
+
 set language_stringBuilder_option_enabled=enabled         
 set language_stringBuilder_option_disabled=disabled        
 set language_stringBuilder_option_shown=shown           
@@ -1452,8 +1454,6 @@ set language_errorMessage_main_variables_disabledRegistryTools04=Please, back to
 
 set language_message_update_available01=^^(^^!^^) An update for %program_name% is now available^^!
 set language_message_update_available02=Download it here:
-
-set language_menuItem_restartExplorer=^^(E^^) Restart Windows Explorer
 exit /b
 
 
@@ -1461,7 +1461,9 @@ exit /b
 
 
 :language_import_russian
-set language_goBack=^^(0^^) Назад
+set language_menuItem_goBack=^^(0^^) Назад
+set language_menuItem_restartExplorer=^^(E^^) Перезагрузить Проводник Windows
+
 set language_stringBuilder_option_enabled=включено        
 set language_stringBuilder_option_disabled=отключено       
 set language_stringBuilder_option_shown=показано        
@@ -1510,8 +1512,6 @@ set language_errorMessage_main_variables_disabledRegistryTools04=Пожалуй�
 
 set language_message_update_available01=^^(^^!^^) Доступно обновление для %program_name%^^!
 set language_message_update_available02=Загрузите его здесь:
-
-set language_menuItem_restartExplorer=^^(E^^) Перезагрузить Проводник Windows
 exit /b
 
 
@@ -1519,7 +1519,9 @@ exit /b
 
 
 :language_import_ukrainian
-set language_goBack=^^(0^^) Назад
+set language_menuItem_goBack=^^(0^^) Назад
+set language_menuItem_restartExplorer=^^(E^^) Перезавантажити Провідник Windows
+
 set language_stringBuilder_option_enabled=увімкнено       
 set language_stringBuilder_option_disabled=вимкнено        
 set language_stringBuilder_option_shown=показано        
@@ -1568,8 +1570,6 @@ set language_errorMessage_main_variables_disabledRegistryTools04=Будь лас
 
 set language_message_update_available01=^^(^^!^^) Доступно оновлення для %program_name%^^!
 set language_message_update_available02=Завантажте його тут:
-
-set language_menuItem_restartExplorer=^^(E^^) Перезавантажити Провідник Windows
 exit /b
 
 
@@ -1690,7 +1690,7 @@ echo.
 echo.^(^>^) Choose action:
 echo.    ^(1^) Reboot now
 echo.
-echo.    %language_goBack%
+echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
