@@ -292,12 +292,12 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%interface_languag
 ) else set error_interface_languageKeySequence_twoIdenticalCombinations=0
 
 call :logo
-echo.^(i^) Language Key Sequence - Control Menu
+echo.%language_interface_languageKeySequence01%
 echo.
 echo.
-echo.^(^>^) Choose action to change key sequence:
-echo.    ^(1^) Input language                      %interface_languageKeySequence_inputLanguageSwitch%
-echo.    ^(2^) Keyboard layout                     %interface_languageKeySequence_keyboardLayoutSwitch%
+echo.%language_interface_languageKeySequence02%
+echo.    %language_interface_languageKeySequence03% %interface_languageKeySequence_inputLanguageSwitch%
+echo.    %language_interface_languageKeySequence04% %interface_languageKeySequence_keyboardLayoutSwitch%
 echo.
 echo.    %language_menuItem_goBack%
 echo.
@@ -306,7 +306,7 @@ echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
 if "%error_interface_languageKeySequence_twoIdenticalCombinations%" == "1" (
   color 0c
-  echo.    ^(^!^) Can not be two identical key combinations^!
+  echo.    %language_errorMessage_interface_languageKeySequence_twoIdenticalCombinations%
   echo.
 ) else color 0b
 choice /c 120 /n /m "> "
@@ -1444,6 +1444,11 @@ set language_interface_desktopObjects06=^^(5^^) Network
 set language_interface_desktopObjects07=^^(3^^) Control Panel                      
 set language_interface_desktopObjects08=Note: These features require to restart Windows Explorer.
 
+set language_interface_languageKeySequence01=^^(i^^) Language Key Sequence - Control Menu
+set language_interface_languageKeySequence02=^^(^^^>^^) Choose action to change key sequence:
+set language_interface_languageKeySequence03=^(1^) Input language                     
+set language_interface_languageKeySequence04=^(2^) Keyboard layout                    
+
 set language_language_menu01=^^(i^^) Language - Selection Menu
 set language_language_menu02=^^(^^^>^^) Choose language:
 
@@ -1451,6 +1456,8 @@ set language_errorMessage_main_variables_disabledRegistryTools01=Registry Tools 
 set language_errorMessage_main_variables_disabledRegistryTools02=If you see [error] than this feature state cannot be shown or changed^^!
 set language_errorMessage_main_variables_disabledRegistryTools03=To fix it you must enable Registry Tools in ^^(A^^) menu ^^(with hidden options^^)^^!
 set language_errorMessage_main_variables_disabledRegistryTools04=Please, back to main menu and read this error message again.
+
+set language_errorMessage_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Can not be two identical key combinations^^!
 
 set language_message_update_available01=^^(^^!^^) An update for %program_name% is now available^^!
 set language_message_update_available02=Download it here:
@@ -1502,6 +1509,11 @@ set language_interface_desktopObjects06=^^(5^^) Сеть
 set language_interface_desktopObjects07=^^(3^^) Панель управления                  
 set language_interface_desktopObjects08=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
+set language_interface_languageKeySequence01=^^(i^^) Сочетания Клавиш Смены Языка - Меню Управления
+set language_interface_languageKeySequence02=^^(^^^>^^) Выберите действие, чтобы изменить последовательность клавиш:
+set language_interface_languageKeySequence03=^(1^) Язык ввода                         
+set language_interface_languageKeySequence04=^(2^) Раскладка клавиатуры               
+
 set language_language_menu01=^^(i^^) Язык - Меню Выбора
 set language_language_menu02=^^(^^^>^^) Выберите язык:
 
@@ -1509,6 +1521,8 @@ set language_errorMessage_main_variables_disabledRegistryTools01=Инструм�
 set language_errorMessage_main_variables_disabledRegistryTools02=Если вы видите [ошибка], то это состояние функции не может быть показано или изменено^^!
 set language_errorMessage_main_variables_disabledRegistryTools03=Чтобы это исправить, вы должны включить инструменты реестра в меню ^^(A^^) ^^(со скрытыми параметрами^^)^^!
 set language_errorMessage_main_variables_disabledRegistryTools04=Пожалуйста, вернитесь в главное меню и прочитайте это сообщение об ошибке еще раз.
+
+set language_errorMessage_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Не может быть двух одинаковых комбинаций клавиш^^!
 
 set language_message_update_available01=^^(^^!^^) Доступно обновление для %program_name%^^!
 set language_message_update_available02=Загрузите его здесь:
@@ -1560,6 +1574,11 @@ set language_interface_desktopObjects06=^^(5^^) Мережа
 set language_interface_desktopObjects07=^^(3^^) Панель управління                  
 set language_interface_desktopObjects08=Примітка: Ці функції потребують перезапуску Провідника Windows.
 
+set language_interface_languageKeySequence01=^^(i^^) Комбінації Клавіш Зміни Мови - Меню Управління
+set language_interface_languageKeySequence02=^^(^^^>^^) Виберіть дію, щоб змінити комбінації клавіш:
+set language_interface_languageKeySequence03=^(1^) Мова введення                      
+set language_interface_languageKeySequence04=^(2^) Розкладка клавіатури               
+
 set language_language_menu01=^^(i^^) Мова - Меню Вибору
 set language_language_menu02=^^(^^^>^^) Виберіть мову:
 
@@ -1567,6 +1586,8 @@ set language_errorMessage_main_variables_disabledRegistryTools01=Інструм�
 set language_errorMessage_main_variables_disabledRegistryTools02=Якщо ви бачите [помилка], то це стан формальної процедури не може показано або змінено^^!
 set language_errorMessage_main_variables_disabledRegistryTools03=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^^(A^^) ^^(з прихованими параметрами^^)^^!
 set language_errorMessage_main_variables_disabledRegistryTools04=Будь ласка, поверніться в головне меню і прочитайте це повідомлення про помилку ще раз.
+
+set language_errorMessage_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Не може бути двох ідентичних комбінацій клавіш^^!
 
 set language_message_update_available01=^^(^^!^^) Доступно оновлення для %program_name%^^!
 set language_message_update_available02=Завантажте його тут:
