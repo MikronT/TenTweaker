@@ -287,9 +287,9 @@ goto :interface_desktopObjects
 call :main_variables interface_languageKeySequence
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%interface_languageKeySequence_inputLanguageSwitch%" == "%interface_languageKeySequence_keyboardLayoutSwitch%" (
   if "%interface_languageKeySequence_inputLanguageSwitch%" NEQ "Not assigned" (
-    set error_interface_languageKeySequence=1
-  ) else set error_interface_languageKeySequence=0
-) else set error_interface_languageKeySequence=0
+    set error_interface_languageKeySequence_twoIdenticalCombinations=1
+  ) else set error_interface_languageKeySequence_twoIdenticalCombinations=0
+) else set error_interface_languageKeySequence_twoIdenticalCombinations=0
 
 call :logo
 echo.^(i^) Language Key Sequence - Control Menu
@@ -304,7 +304,7 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
-if "%error_interface_languageKeySequence%" == "1" (
+if "%error_interface_languageKeySequence_twoIdenticalCombinations%" == "1" (
   color 0c
   echo.    ^(^!^) Can not be two identical key combinations^!
   echo.
@@ -332,7 +332,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   )
 )
 
-if "%command%" == "3" if "%error_interface_languageKeySequence%" NEQ "1" ( set command= & exit /b )
+if "%command%" == "3" if "%error_interface_languageKeySequence_twoIdenticalCombinations%" NEQ "1" ( set command= & exit /b )
 goto :interface_languageKeySequence
 
 
