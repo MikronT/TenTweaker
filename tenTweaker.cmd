@@ -1054,7 +1054,6 @@ echo.
 if "%1" NEQ "force" (
   echo.^(^>^) %language_language_menu2%
 ) else echo.^(^>^) Choose language:
-echo.
 echo.    ^(1^) English
 echo.    ^(2^) Русский
 echo.    ^(3^) Українська
@@ -1558,7 +1557,7 @@ set language_language_menu1=Мова - Меню Вибору
 set language_language_menu2=Виберіть мову:
 
 set language_interface_desktopObjects01=^^(i^^) Об'єкти Робочого Столу - Меню Управління
-set language_interface_desktopObjects02=^^(^^^>^^) Виберіть дію, щоб показати/приховати об'єкт робочого стола:
+set language_interface_desktopObjects02=^^(^^^>^^) Виберіть дію, щоб показати/приховати об'єкт робочого столу:
 set language_interface_desktopObjects03=^^(1^^) Цей ПК                             
 set language_interface_desktopObjects04=^^(4^^) Папка користувача                  
 set language_interface_desktopObjects05=^^(2^^) Кошик                              
