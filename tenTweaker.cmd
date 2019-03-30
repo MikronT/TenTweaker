@@ -1446,8 +1446,15 @@ set language_interface_desktopObjects08=Note: These features require to restart 
 
 set language_interface_languageKeySequence01=^^(i^^) Language Key Sequence - Control Menu
 set language_interface_languageKeySequence02=^^(^^^>^^) Choose action to change key sequence:
-set language_interface_languageKeySequence03=^(1^) Input language                     
-set language_interface_languageKeySequence04=^(2^) Keyboard layout                    
+set language_interface_languageKeySequence03=^^(1^^) Input language                     
+set language_interface_languageKeySequence04=^^(2^^) Keyboard layout                    
+
+set language_interface_suggestions01=^^(i^^) Input Suggestions - Control Menu
+set language_interface_suggestions02=^^(^^^>^^) Choose action to enable/disable input suggestions:
+set language_interface_suggestions03=^^(1^^) Auto suggest                       
+set language_interface_suggestions04=^^(2^^) Append completion                  
+set language_interface_suggestions05=^^(3^^) Start track progs                  
+set language_interface_suggestions06=^^(4^^) Suggestions when typing            
 
 set language_language_menu01=^^(i^^) Language - Selection Menu
 set language_language_menu02=^^(^^^>^^) Choose language:
@@ -1511,8 +1518,15 @@ set language_interface_desktopObjects08=Примечание: Эти функц�
 
 set language_interface_languageKeySequence01=^^(i^^) Сочетания Клавиш Смены Языка - Меню Управления
 set language_interface_languageKeySequence02=^^(^^^>^^) Выберите действие, чтобы изменить последовательность клавиш:
-set language_interface_languageKeySequence03=^(1^) Язык ввода                         
-set language_interface_languageKeySequence04=^(2^) Раскладка клавиатуры               
+set language_interface_languageKeySequence03=^^(1^^) Язык ввода                         
+set language_interface_languageKeySequence04=^^(2^^) Раскладка клавиатуры               
+
+set language_interface_suggestions01=^^(i^^) Предложения При Вводе - Меню Управления
+set language_interface_suggestions02=^^(^^^>^^) Выберите действие, чтобы включить/отключить предложения ввода:
+set language_interface_suggestions03=^^(1^^) Авто предложения                   
+set language_interface_suggestions04=^^(2^^) Автозаполнение                     
+set language_interface_suggestions05=^^(3^^) Запустить трекинг програм          
+set language_interface_suggestions06=^^(4^^) Предложения при наборе текста      
 
 set language_language_menu01=^^(i^^) Язык - Меню Выбора
 set language_language_menu02=^^(^^^>^^) Выберите язык:
@@ -1576,8 +1590,15 @@ set language_interface_desktopObjects08=Примітка: Ці функції п
 
 set language_interface_languageKeySequence01=^^(i^^) Комбінації Клавіш Зміни Мови - Меню Управління
 set language_interface_languageKeySequence02=^^(^^^>^^) Виберіть дію, щоб змінити комбінації клавіш:
-set language_interface_languageKeySequence03=^(1^) Мова введення                      
-set language_interface_languageKeySequence04=^(2^) Розкладка клавіатури               
+set language_interface_languageKeySequence03=^^(1^^) Мова введення                      
+set language_interface_languageKeySequence04=^^(2^^) Розкладка клавіатури               
+
+set language_interface_suggestions01=^^(i^^) Пропозиції При Введенні - Меню Управління
+set language_interface_suggestions02=^^(^^^>^^) Виберіть дію, щоб включити/відключити пропозиції введення:
+set language_interface_suggestions03=^^(1^^) Авто пропозиції                    
+set language_interface_suggestions04=^^(2^^) Автозаповнення                     
+set language_interface_suggestions05=^^(3^^) Запустити трекінг програм          
+set language_interface_suggestions06=^^(4^^) Пропозиції при наборі тексту       
 
 set language_language_menu01=^^(i^^) Мова - Меню Вибору
 set language_language_menu02=^^(^^^>^^) Виберіть мову:
