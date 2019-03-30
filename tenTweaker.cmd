@@ -656,11 +656,11 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
-if "%error_setup_office%" == "1" (
+if "%error_setup_office_downloadError%" == "1" (
   color 0c
   echo.    ^(^!^) Download error^! Server not respond or no Internet connection^!
   echo.
-  set error_setup_office=0
+  set error_setup_office_downloadError=0
 ) else color 0b
 choice /c 1R0 /n /m "> "
 set command=%errorLevel%
@@ -677,7 +677,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%command%" == "1" 
   timeout /nobreak /t 1 >nul
 
   for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir "%~dp0%setup_office_setupISO%"') do if "%%i" == "1" if "%%j" == "0" (
-    set error_setup_office=1
+    set error_setup_office_downloadError=1
     goto :setup_office
   )
 
