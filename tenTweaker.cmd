@@ -299,7 +299,7 @@ echo.^(^>^) Choose action to change key sequence:
 echo.    ^(1^) Input language                      %interface_languageKeySequence_inputLanguageSwitch%
 echo.    ^(2^) Keyboard layout                     %interface_languageKeySequence_keyboardLayoutSwitch%
 echo.
-echo.    ^(0^) Go back
+echo.    %language_goBack%
 echo.
 echo.
 echo.
@@ -362,7 +362,7 @@ echo.    ^(2^) Append Completion                   %interface_suggestions_append
 echo.    ^(3^) Start Track Progs                   %interface_suggestions_startTrackProgs%
 echo.    ^(4^) Suggestions when typing             %interface_suggestions_suggestionsWhenTyping%
 echo.
-echo.    ^(0^) Go back
+echo.    %language_goBack%
 echo.
 echo.
 echo.
@@ -478,7 +478,7 @@ echo.
 echo.    Note: These features require to restart Windows Explorer.
 echo.    ^(E^) Restart Windows Explorer
 echo.
-echo.    ^(0^) Go back
+echo.    %language_goBack%
 echo.
 echo.
 echo.
@@ -588,7 +588,7 @@ echo.
 echo.    Note: These features require to restart Windows Explorer.
 echo.    ^(E^) Restart Windows Explorer
 echo.
-echo.    ^(0^) Go back
+echo.    %language_goBack%
 echo.
 echo.
 echo.
@@ -653,7 +653,7 @@ echo.
 echo.    Note: This feature requires to reboot your computer.
 echo.    ^(R^) Reboot computer
 echo.
-echo.    ^(0^) Go back
+echo.    %language_goBack%
 echo.
 echo.
 echo.
@@ -727,7 +727,7 @@ echo.
 echo.^(^>^) Choose action:
 echo.    ^(1^) Setup/repair gpedit.msc             %setup_gpeditMSC_gpeditFile%
 echo.
-echo.    ^(0^) Go back
+echo.    %language_goBack%
 echo.
 echo.
 echo.
@@ -774,7 +774,7 @@ echo.^(^>^) Choose action to enable/disable Windows Update:
 echo.    ^(1^) Update distributions                %services_windowsUpdate_updateDistributions%
 echo.    ^(2^) Update Center ^(wuauserv^)            %services_windowsUpdate_updateCenter%
 echo.
-echo.    ^(0^) Go back
+echo.    %language_goBack%
 echo.
 echo.
 echo.
@@ -833,7 +833,7 @@ echo.    Note: This feature requires to reboot your computer two times.
 echo.          The computer will automatically reboot after the next system start.
 echo.    ^(R^) Reboot computer
 echo.
-echo.    ^(0^) Go back
+echo.    %language_goBack%
 echo.
 echo.
 echo.
@@ -942,7 +942,7 @@ if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
   echo.    ^(R^) Reboot computer
   echo.
 )
-echo.    ^(0^) Go back
+echo.    %language_goBack%
 echo.
 echo.
 echo.
@@ -1021,7 +1021,7 @@ echo.
 echo.    Note: This feature requires to reboot your computer.
 echo.    ^(R^) Reboot computer
 echo.
-echo.    ^(0^) Go back
+echo.    %language_goBack%
 echo.
 echo.
 echo.
@@ -1106,7 +1106,7 @@ echo.    ^(1^) Option                              %option%
 echo.    ^(2^) Option                              %option%
 echo.    ^(3^) Option                              %option%
 echo.
-echo.    ^(0^) Go back
+echo.    %language_goBack%
 echo.
 echo.
 echo.
@@ -1694,7 +1694,7 @@ echo.
 echo.^(^>^) Choose action:
 echo.    ^(1^) Reboot now
 echo.
-echo.    ^(0^) Go back
+echo.    %language_goBack%
 echo.
 echo.
 echo.
