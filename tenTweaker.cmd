@@ -908,7 +908,7 @@ echo.    ^(1^) Restore service                     %services_sppsvc_service%
 echo.
 echo.    Note: This feature requires to reboot your computer two times.
 echo.          The computer will automatically reboot after the next system start.
-echo.    ^(R^) Reboot computer
+echo.    %language_menuItem_rebootComputer%
 echo.
 echo.    %language_menuItem_goBack%
 echo.
@@ -1009,14 +1009,14 @@ echo.    %stringBuilder_string%
 
 echo.
 echo.    Note: Features ^(2^) and ^(3^) require to update group policy.
-echo.    ^(U^) Update group policy
+echo.    %language_menuItem_updateGroupPolicy%
 echo.
 echo.    Note: Feature ^(1^) requires to restart Windows Explorer.
-echo.    ^(E^) Restart Windows Explorer
+echo.    %language_menuItem_restartExplorer%
 echo.
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
   echo.    Note: Feature ^(5^) requires to reboot your computer.
-  echo.    ^(R^) Reboot computer
+  echo.    %language_menuItem_rebootComputer%
   echo.
 )
 echo.    %language_menuItem_goBack%
@@ -1096,7 +1096,7 @@ echo.^(^>^) Choose action:
 echo.    ^(1^) Run System Resource Scan and automatically repair all files with problems
 echo.
 echo.    Note: This feature requires to reboot your computer.
-echo.    ^(R^) Reboot computer
+echo.    %language_menuItem_rebootComputer%
 echo.
 echo.    %language_menuItem_goBack%
 echo.
@@ -1487,6 +1487,7 @@ exit /b
 set language_menuItem_goBack=^^(0^^) Go back
 set language_menuItem_rebootComputer=^^(R^^) Reboot computer
 set language_menuItem_restartExplorer=^^(E^^) Restart Windows Explorer
+set language_menuItem_updateGroupPolicy=^^(U^^) Update group policy
 
 set         language_stringBuilder_option_error=[error]           
 set       language_stringBuilder_option_enabled=enabled           
@@ -1608,6 +1609,7 @@ exit /b
 set language_menuItem_goBack=^^(0^^) Назад
 set language_menuItem_rebootComputer=^^(R^^) Перезагрузить компьютер
 set language_menuItem_restartExplorer=^^(E^^) Перезагрузить Проводник Windows
+set language_menuItem_updateGroupPolicy=^^(U^^) Обновить групповую политику
 
 set         language_stringBuilder_option_error=[ошибка]          
 set       language_stringBuilder_option_enabled=включено          
@@ -1729,6 +1731,7 @@ exit /b
 set language_menuItem_goBack=^^(0^^) Назад
 set language_menuItem_rebootComputer=^^(R^^) Перезавантажити комп'ютер
 set language_menuItem_restartExplorer=^^(E^^) Перезавантажити Провідник Windows
+set language_menuItem_updateGroupPolicy=^^(U^^) Оновити групову політику
 
 set         language_stringBuilder_option_error=[помилка]         
 set       language_stringBuilder_option_enabled=увімкнено         
