@@ -844,12 +844,27 @@ for /f "delims=" %%i in ('dir /a:-d /b "%WinDir%\SoftwareDistribution\Download"'
 call :main_variables services_windowsUpdate
 
 call :logo
-echo.^(i^) Windows Update ^(wuauserv^) - Control Menu
+echo.%language_services_windowsUpdate01%
 echo.
 echo.
-echo.^(^>^) Choose action to enable/disable Windows Update:
-echo.    ^(1^) Update distributions                %services_windowsUpdate_updateDistributions%
-echo.    ^(2^) Update Center ^(wuauserv^)            %services_windowsUpdate_updateCenter%
+echo.%language_services_windowsUpdate02%
+
+set stringBuilder_string=%language_services_windowsUpdate03%
+if "%services_windowsUpdate_updateDistributions%" == "locked" (
+  call %stringBuilder_build% %language_stringBuilder_option_locked%
+) else if "%services_windowsUpdate_updateDistributions%" == "unlocked" (
+  call %stringBuilder_build% %language_stringBuilder_option_unlocked%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_services_windowsUpdate04%
+if "%services_windowsUpdate_updateDistributions%" == "enabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_enabled%
+) else if "%services_windowsUpdate_updateDistributions%" == "disabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_disabled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
 echo.
 echo.    %language_menuItem_goBack%
 echo.
@@ -900,14 +915,22 @@ goto :services_windowsUpdate
 call :main_variables services_sppsvc
 
 call :logo
-echo.^(i^) Software Protection Platform Service ^(sppsvc^) - Restore Menu
+echo.%language_services_sppsvc01%
 echo.
 echo.
-echo.^(^>^) Choose action:
-echo.    ^(1^) Restore service                     %services_sppsvc_service%
+echo.%language_services_sppsvc02%
+
+set stringBuilder_string=%language_services_sppsvc03%
+if "%services_sppsvc_service%" == "enabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_enabled%
+) else if "%services_sppsvc_service%" == "disabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_disabled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
 echo.
-echo.    Note: This feature requires to reboot your computer two times.
-echo.          The computer will automatically reboot after the next system start.
+echo.    %language_services_sppsvc04%
+echo.    %language_services_sppsvc05%
 echo.    %language_menuItem_rebootComputer%
 echo.
 echo.    %language_menuItem_goBack%
@@ -1502,6 +1525,8 @@ set    language_stringBuilder_option_whenIsFull=when is full
 set         language_stringBuilder_option_never=never             
 set         language_stringBuilder_option_exist=exist             
 set      language_stringBuilder_option_notExist=not exist         
+set        language_stringBuilder_option_locked=locked            
+set      language_stringBuilder_option_unlocked=unlocked          
 
 set language_logo01=Release v%program_version%
 set language_logo02=============================
@@ -1582,17 +1607,6 @@ set language_setup_gpeditMSC01=^^(i^^) Group Policy Editor - Setup Menu
 set language_setup_gpeditMSC02=^^(^^^>^^) Choose action:
 set language_setup_gpeditMSC03=^^(1^^) Setup/repair gpedit.msc           
 
-set language_services_windowsUpdate01=
-set language_services_windowsUpdate02=
-set language_services_windowsUpdate03=
-set language_services_windowsUpdate04=
-
-set language_services_sppsvc01=
-set language_services_sppsvc02=
-set language_services_sppsvc03=
-set language_services_sppsvc04=
-set language_services_sppsvc05=
-
 set language_tools_administrativeTools01=
 set language_tools_administrativeTools02=
 set language_tools_administrativeTools03=
@@ -1604,6 +1618,17 @@ set language_tools_administrativeTools08=
 set language_tools_administrativeTools09=
 set language_tools_administrativeTools10=
 set language_tools_administrativeTools11=
+set language_services_windowsUpdate01=^^(i^^) Windows Update ^^(wuauserv^^) - Control Menu
+set language_services_windowsUpdate02=^^(^^^>^^) Choose action to enable/disable Windows Update:
+set language_services_windowsUpdate03=^^(1^^) Update distributions              
+set language_services_windowsUpdate04=^^(2^^) Update Center ^^(wuauserv^^)          
+
+set language_services_sppsvc01=^^(i^^) Software Protection Platform Service ^^(sppsvc^^) - Restore Menu
+set language_services_sppsvc02=^^(^^^>^^) Choose action:
+set language_services_sppsvc03=^^(1^^) Restore service                   
+set language_services_sppsvc04=Note: This feature requires to reboot your computer two times.
+set language_services_sppsvc05=      The computer will automatically reboot after the next system start.
+
 
 set language_tools_systemResourceChecker01=
 set language_tools_systemResourceChecker02=
@@ -1652,6 +1677,8 @@ set    language_stringBuilder_option_whenIsFull=когда полон
 set         language_stringBuilder_option_never=никогда           
 set         language_stringBuilder_option_exist=существует        
 set      language_stringBuilder_option_notExist=не существует     
+set        language_stringBuilder_option_locked=заблокировано     
+set      language_stringBuilder_option_unlocked=розблокировано    
 
 set language_logo01=Релиз v%program_version%
 set language_logo02====================================
@@ -1732,6 +1759,17 @@ set language_setup_gpeditMSC01=^^(i^^) Редактор Групповых По�
 set language_setup_gpeditMSC02=^^(^^^>^^) Выберите действие:
 set language_setup_gpeditMSC03=^^(1^^) Установить/восстановить           
 
+set language_services_windowsUpdate01=^^(i^^) Обновление Windows ^^(wuauserv^^) - Меню Управления
+set language_services_windowsUpdate02=^^(^^^>^^) Выберите действие, чтобы включить/отключить обновления Windows:
+set language_services_windowsUpdate03=^^(1^^) Дистрибутивы обновлений           
+set language_services_windowsUpdate04=^^(2^^) Центр обновлений ^^(wuauserv^^)       
+
+set language_services_sppsvc01=^^(i^^) Служба Платформы Защиты Програмного Обеспечения ^^(sppsvc^^) - Меню Восстановления
+set language_services_sppsvc02=^^(^^^>^^) Выберите действие:
+set language_services_sppsvc03=^^(1^^) Восстановить службу               
+set language_services_sppsvc04=Примечание: Эта функция требует двух перезагрузок Вашего компьютера.
+set language_services_sppsvc05=      Ваш компьютер автоматически перезагрузится после следущего старта системы.
+
 set language_language_menu01=^^(i^^) Язык - Меню Выбора
 set language_language_menu02=^^(^^^>^^) Выберите язык:
 
@@ -1774,6 +1812,8 @@ set    language_stringBuilder_option_whenIsFull=коли повний
 set         language_stringBuilder_option_never=ніколи            
 set         language_stringBuilder_option_exist=існує             
 set      language_stringBuilder_option_notExist=не існує          
+set        language_stringBuilder_option_locked=заблоковано       
+set      language_stringBuilder_option_unlocked=розблоковано      
 
 set language_logo01=Реліз v%program_version%
 set language_logo02===============================
@@ -1853,6 +1893,17 @@ set language_setup_office08=^^(i^^) Відключення iso файлу
 set language_setup_gpeditMSC01=^^(i^^) Редактор Групових Політик - Меню Налаштування
 set language_setup_gpeditMSC02=^^(^^^>^^) Виберіть дію:
 set language_setup_gpeditMSC03=^^(1^^) Установити/відновити              
+
+set language_services_windowsUpdate01=^^(i^^) Оновлення Windows ^^(wuauserv^^) - Меню Управління
+set language_services_windowsUpdate02=^^(^^^>^^) Виберіть дію, щоб увімкнути/вимкнути оновлення Windows:
+set language_services_windowsUpdate03=^^(1^^) Дистрибутиви оновлень             
+set language_services_windowsUpdate04=^^(2^^) Центр оновлень ^^(wuauserv^^)         
+
+set language_services_sppsvc01=^^(i^^) Служба Платформи Захисту Програмного Забезпечення ^^(sppsvc^^) - Меню Відновлення
+set language_services_sppsvc02=^^(^^^>^^) Виберіть дію:
+set language_services_sppsvc03=^^(1^^) Відновити службу                  
+set language_services_sppsvc04=Примітка: Ця функція потребує двох перезавантажень Вашого комп'ютера.
+set language_services_sppsvc05=      Ваш комп'ютер автоматично перезавантажиться після наступного старту системи.
 
 set language_language_menu01=^^(i^^) Мова - Меню Вибору
 set language_language_menu02=^^(^^^>^^) Виберіть мову:
