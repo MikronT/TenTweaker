@@ -790,11 +790,19 @@ goto :setup_office
 call :main_variables setup_gpeditMSC
 
 call :logo
-echo.^(i^) Group Policy Editor - Setup Menu
+echo.%language_setup_gpeditMSC01%
 echo.
 echo.
-echo.^(^>^) Choose action:
-echo.    ^(1^) Setup/repair gpedit.msc             %setup_gpeditMSC_gpeditFile%
+echo.%language_setup_gpeditMSC02%
+
+set stringBuilder_string=%language_setup_gpeditMSC03%
+if "%setup_gpeditMSC_gpeditFile%" == "exist" (
+  call %stringBuilder_build% %language_stringBuilder_option_exist%
+) else if "%setup_gpeditMSC_gpeditFile%" == "notExist" (
+  call %stringBuilder_build% %language_stringBuilder_option_notExist%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
 echo.
 echo.    %language_menuItem_goBack%
 echo.
@@ -1400,7 +1408,7 @@ if "%1" == "setup_office" (
 if "%1" == "setup_gpeditMSC" (
   set setup_gpeditMSC_packagesList=temp\setup_gpeditMSC_packagesList.txt
 
-  set setup_gpeditMSC_gpeditFile=not exist
+  set setup_gpeditMSC_gpeditFile=notExist
   for /f "delims=" %%i in ('dir /a:-d /b "%winDir%\System32\gpedit.msc"') do if "%%i" == "gpedit.msc" set setup_gpeditMSC_gpeditFile=exist
 )
 
@@ -1494,6 +1502,8 @@ set language_stringBuilder_option_commandPrompt=Command Prompt
 set        language_stringBuilder_option_always=always            
 set    language_stringBuilder_option_whenIsFull=when is full      
 set         language_stringBuilder_option_never=never             
+set         language_stringBuilder_option_exist=exist             
+set      language_stringBuilder_option_notExist=not exist         
 
 set language_logo01=Release v%program_version%
 set language_logo02=============================
@@ -1570,6 +1580,10 @@ set language_setup_office06=^^(i^^) Mounting iso file
 set language_setup_office07=^^(i^^) Setup
 set language_setup_office08=^^(i^^) Unmounting iso file
 
+set language_setup_gpeditMSC01=^^(i^^) Group Policy Editor - Setup Menu
+set language_setup_gpeditMSC02=^^(^^^>^^) Choose action:
+set language_setup_gpeditMSC03=^^(1^^) Setup/repair gpedit.msc           
+
 set language_language_menu01=^^(i^^) Language - Selection Menu
 set language_language_menu02=^^(^^^>^^) Choose language:
 
@@ -1609,6 +1623,8 @@ set language_stringBuilder_option_commandPrompt=Командная Строка
 set        language_stringBuilder_option_always=всегда            
 set    language_stringBuilder_option_whenIsFull=когда полон       
 set         language_stringBuilder_option_never=никогда           
+set         language_stringBuilder_option_exist=существует        
+set      language_stringBuilder_option_notExist=не существует     
 
 set language_logo01=Релиз v%program_version%
 set language_logo02====================================
@@ -1678,12 +1694,16 @@ set language_interface_taskBar08=Примечание: Эти функции т�
 
 set language_setup_office01=^^(i^^) Microsoft Офис Профессиональный+ 2016 - Меню Настройки
 set language_setup_office02=^^(^^^>^^) Выберите действие:
-set language_setup_office03=^^(1^^) Запустить настройку
+set language_setup_office03=^^(1^^) Запустить установку
 set language_setup_office04=Примечание: Эта функция требует перезагрузки Вашего компьютера.
 set language_setup_office05=^^(i^^) Загрузка Microsoft Офис Профессиональный+ 2016
 set language_setup_office06=^^(i^^) Подключение iso файла
-set language_setup_office07=^^(i^^) Настройка
+set language_setup_office07=^^(i^^) Установка
 set language_setup_office08=^^(i^^) Отключение iso файла
+
+set language_setup_gpeditMSC01=^^(i^^) Редактор Групповых Политик - Меню Настройки
+set language_setup_gpeditMSC02=^^(^^^>^^) Выберите действие:
+set language_setup_gpeditMSC03=^^(1^^) Установить/восстановить           
 
 set language_language_menu01=^^(i^^) Язык - Меню Выбора
 set language_language_menu02=^^(^^^>^^) Выберите язык:
@@ -1724,6 +1744,8 @@ set language_stringBuilder_option_commandPrompt=Командний Рядок
 set        language_stringBuilder_option_always=завжди            
 set    language_stringBuilder_option_whenIsFull=коли повний       
 set         language_stringBuilder_option_never=ніколи            
+set         language_stringBuilder_option_exist=існує             
+set      language_stringBuilder_option_notExist=не існує          
 
 set language_logo01=Реліз v%program_version%
 set language_logo02===============================
@@ -1793,12 +1815,16 @@ set language_interface_taskBar08=Примітка: Ці функції потр�
 
 set language_setup_office01=^^(i^^) Microsoft Офіс Професійний+ 2016 - Меню Налаштування
 set language_setup_office02=^^(^^^>^^) Виберіть дію:
-set language_setup_office03=^^(1^^) Запустити налаштування
+set language_setup_office03=^^(1^^) Запустити встановлення
 set language_setup_office04=Примітка: Ця функція потребує перезавантаження Вашого комп'ютера.
 set language_setup_office05=^^(i^^) Завантаження Microsoft Офіс Професійний+ 2016
 set language_setup_office06=^^(i^^) Підключення iso файлу
-set language_setup_office07=^^(i^^) Налаштування
+set language_setup_office07=^^(i^^) Встановлення
 set language_setup_office08=^^(i^^) Відключення iso файлу
+
+set language_setup_gpeditMSC01=^^(i^^) Редактор Групових Політик - Меню Налаштування
+set language_setup_gpeditMSC02=^^(^^^>^^) Виберіть дію:
+set language_setup_gpeditMSC03=^^(1^^) Установити/відновити              
 
 set language_language_menu01=^^(i^^) Мова - Меню Вибору
 set language_language_menu02=^^(^^^>^^) Виберіть мову:
