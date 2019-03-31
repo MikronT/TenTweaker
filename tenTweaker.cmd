@@ -977,19 +977,19 @@ call :main_variables tools_administrativeTools
 if "%error_main_variables_disabledRegistryTools%" == "1" set key_tools_administrativeTools_hiddenOptions=enabled
 
 call :logo
-echo.^(i^) Windows Administrative Tools - Control Menu
+echo.%language_tools_administrativeTools01%
 echo.
 echo.
-echo.^(^>^) Choose action to config Windows Administrative Tools:
+echo.%language_tools_administrativeTools02%
 
-set stringBuilder_string=^(1^) Desktop                            
+set stringBuilder_string=%language_tools_administrativeTools03%
 if "%tools_administrativeTools_desktop%" == "enabled" (
   call %stringBuilder_build% %language_stringBuilder_option_enabled%
 ) else if "%tools_administrativeTools_desktop%" == "disabled" (
   call %stringBuilder_build% %language_stringBuilder_option_disabled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
-  call %stringBuilder_build%    ^(4^) Registry Tools                     
+  call %stringBuilder_build%    %language_tools_administrativeTools04%
   if "%tools_administrativeTools_registryTools%" == "enabled" (
     call %stringBuilder_build% %language_stringBuilder_option_enabled%
   ) else if "%tools_administrativeTools_registryTools%" == "disabled" (
@@ -998,14 +998,14 @@ if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
 )
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=^(2^) Control Panel                      
+set stringBuilder_string=%language_tools_administrativeTools05%
 if "%tools_administrativeTools_controlPanel%" == "enabled" (
   call %stringBuilder_build% %language_stringBuilder_option_enabled%
 ) else if "%tools_administrativeTools_controlPanel%" == "disabled" (
   call %stringBuilder_build% %language_stringBuilder_option_disabled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
-  call %stringBuilder_build%    ^(5^) Command Prompt                     
+  call %stringBuilder_build%    %language_tools_administrativeTools06%
   if "%tools_administrativeTools_cmd%" == "enabled" (
     call %stringBuilder_build% %language_stringBuilder_option_enabled%
   ) else if "%tools_administrativeTools_cmd%" == "disabled" (
@@ -1014,14 +1014,14 @@ if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
 )
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=^(3^) Run ^(Win + R^)                      
+set stringBuilder_string=%language_tools_administrativeTools07%
 if "%tools_administrativeTools_runDialog%" == "enabled" (
   call %stringBuilder_build% %language_stringBuilder_option_enabled%
 ) else if "%tools_administrativeTools_runDialog%" == "disabled" (
   call %stringBuilder_build% %language_stringBuilder_option_disabled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
-  call %stringBuilder_build%    ^(6^) Task Manager                       
+  call %stringBuilder_build%    %language_tools_administrativeTools08%
   if "%tools_administrativeTools_taskManager%" == "enabled" (
     call %stringBuilder_build% %language_stringBuilder_option_enabled%
   ) else if "%tools_administrativeTools_taskManager%" == "disabled" (
@@ -1031,14 +1031,14 @@ if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
 echo.    %stringBuilder_string%
 
 echo.
-echo.    Note: Features ^(2^) and ^(3^) require to update group policy.
+echo.    %language_tools_administrativeTools09%
 echo.    %language_menuItem_updateGroupPolicy%
 echo.
-echo.    Note: Feature ^(1^) requires to restart Windows Explorer.
+echo.    %language_tools_administrativeTools10%
 echo.    %language_menuItem_restartExplorer%
 echo.
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
-  echo.    Note: Feature ^(5^) requires to reboot your computer.
+  echo.    %language_tools_administrativeTools11%
   echo.    %language_menuItem_rebootComputer%
   echo.
 )
@@ -1048,7 +1048,7 @@ echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
-  echo.    ^(^!^) Warning^! Hidden Options are shown^! They can kill your PC^!
+  echo.    %language_message_tools_administrativeTools_hiddenOptions%
   echo.
   choice /c 123456UER0 /n /m "> "
 ) else choice /c 123UE0 /n /m "> "
@@ -1607,17 +1607,6 @@ set language_setup_gpeditMSC01=^^(i^^) Group Policy Editor - Setup Menu
 set language_setup_gpeditMSC02=^^(^^^>^^) Choose action:
 set language_setup_gpeditMSC03=^^(1^^) Setup/repair gpedit.msc           
 
-set language_tools_administrativeTools01=
-set language_tools_administrativeTools02=
-set language_tools_administrativeTools03=
-set language_tools_administrativeTools04=
-set language_tools_administrativeTools05=
-set language_tools_administrativeTools06=
-set language_tools_administrativeTools07=
-set language_tools_administrativeTools08=
-set language_tools_administrativeTools09=
-set language_tools_administrativeTools10=
-set language_tools_administrativeTools11=
 set language_services_windowsUpdate01=^^(i^^) Windows Update ^^(wuauserv^^) - Control Menu
 set language_services_windowsUpdate02=^^(^^^>^^) Choose action to enable/disable Windows Update:
 set language_services_windowsUpdate03=^^(1^^) Update distributions              
@@ -1629,6 +1618,17 @@ set language_services_sppsvc03=^^(1^^) Restore service
 set language_services_sppsvc04=Note: This feature requires to reboot your computer two times.
 set language_services_sppsvc05=      The computer will automatically reboot after the next system start.
 
+set language_tools_administrativeTools01=^^(i^^) Windows Administrative Tools - Control Menu
+set language_tools_administrativeTools02=^^(^^^>^^) Choose action to config Windows Administrative Tools:
+set language_tools_administrativeTools03=^^(1^^) Desktop                           
+set language_tools_administrativeTools04=^^(4^^) Registry Tools                    
+set language_tools_administrativeTools05=^^(2^^) Control Panel                     
+set language_tools_administrativeTools06=^^(5^^) Command Prompt                    
+set language_tools_administrativeTools07=^^(3^^) Run ^^(Win + R^^)                     
+set language_tools_administrativeTools08=^^(6^^) Task Manager                      
+set language_tools_administrativeTools09=Note: Features ^^(2^^) and ^^(3^^) require to update group policy.
+set language_tools_administrativeTools10=Note: Feature ^^(1^^) requires to restart Windows Explorer.
+set language_tools_administrativeTools11=Note: Feature ^^(5^^) requires to reboot your computer.
 
 set language_tools_systemResourceChecker01=
 set language_tools_systemResourceChecker02=
@@ -1649,6 +1649,8 @@ set language_message_error_setup_office_download=^^(^^!^^) Download error^^! Ser
 
 set language_message_update_available01=^^(^^!^^) An update for %program_name% is now available^^!
 set language_message_update_available02=Download it here:
+
+set language_message_tools_administrativeTools_hiddenOptions=^^(^^!^^) Warning^^! Hidden options are shown^^! They can damage your computer^^!
 exit /b
 
 
@@ -1770,6 +1772,18 @@ set language_services_sppsvc03=^^(1^^) Восстановить службу
 set language_services_sppsvc04=Примечание: Эта функция требует двух перезагрузок Вашего компьютера.
 set language_services_sppsvc05=      Ваш компьютер автоматически перезагрузится после следущего старта системы.
 
+set language_tools_administrativeTools01=^^(i^^) Административные Инструменты Windows - Меню Управления
+set language_tools_administrativeTools02=^^(^^^>^^) Выберите действие, чтобы настроить Административные Инструменты Windows:
+set language_tools_administrativeTools03=^^(1^^) Рабочий Стол                      
+set language_tools_administrativeTools04=^^(4^^) Инструменты Реестра               
+set language_tools_administrativeTools05=^^(2^^) Панель Управления                 
+set language_tools_administrativeTools06=^^(5^^) Командная Строка                  
+set language_tools_administrativeTools07=^^(3^^) Выполнить ^^(Win + R^^)               
+set language_tools_administrativeTools08=^^(6^^) Диспетчер Задач                   
+set language_tools_administrativeTools09=Примечание: Функции ^^(2^^) и ^^(3^^) требуют обновить групповую политику.
+set language_tools_administrativeTools10=Примечание: Функция ^^(1^^) требует перезапуска Проводника Windows.
+set language_tools_administrativeTools11=Примечание: Функция ^^(5^^) требует перезагрузки Вашего компьютера.
+
 set language_language_menu01=^^(i^^) Язык - Меню Выбора
 set language_language_menu02=^^(^^^>^^) Выберите язык:
 
@@ -1784,6 +1798,8 @@ set language_message_error_setup_office_download=^^(^^!^^) Ошибка загр
 
 set language_message_update_available01=^^(^^!^^) Доступно обновление для %program_name%^^!
 set language_message_update_available02=Загрузите его здесь:
+
+set language_message_tools_administrativeTools_hiddenOptions=^^(^^!^^) Предупреждение^^! Скрытые параметры отображаются^^! Они могут повредить Ваш компьютер^^!
 exit /b
 
 
@@ -1905,6 +1921,18 @@ set language_services_sppsvc03=^^(1^^) Відновити службу
 set language_services_sppsvc04=Примітка: Ця функція потребує двох перезавантажень Вашого комп'ютера.
 set language_services_sppsvc05=      Ваш комп'ютер автоматично перезавантажиться після наступного старту системи.
 
+set language_tools_administrativeTools01=^^(i^^) Адміністративні Інструменти Windows - Меню Управління
+set language_tools_administrativeTools02=^^(^^^>^^) Виберіть дію, щоб налаштувати Адміністративні Інструменти Windows:
+set language_tools_administrativeTools03=^^(1^^) Робочий Стіл                      
+set language_tools_administrativeTools04=^^(4^^) Інструменти Реєстру               
+set language_tools_administrativeTools05=^^(2^^) Панель Управління                 
+set language_tools_administrativeTools06=^^(5^^) Командний Рядок                   
+set language_tools_administrativeTools07=^^(3^^) Виконати ^^(Win + R^^)                
+set language_tools_administrativeTools08=^^(6^^) Диспетчер Завдань                 
+set language_tools_administrativeTools09=Примітка: Функції ^^(2^^) и ^^(3^^) потребують оновити групову політику.
+set language_tools_administrativeTools10=Примітка: Функція ^^(1^^) потребує перезапуску Провідника Windows.
+set language_tools_administrativeTools11=Примітка: Функція ^^(5^^) потребує перезавантаження Вашого комп'ютера.
+
 set language_language_menu01=^^(i^^) Мова - Меню Вибору
 set language_language_menu02=^^(^^^>^^) Виберіть мову:
 
@@ -1919,6 +1947,8 @@ set language_message_error_setup_office_download=^^(^^!^^) Помилка зав
 
 set language_message_update_available01=^^(^^!^^) Доступно оновлення для %program_name%^^!
 set language_message_update_available02=Завантажте його тут:
+
+set language_message_tools_administrativeTools_hiddenOptions=^^(^^!^^) Попередження^^! Приховані параметри відображаються^^! Вони можуть пошкодити Ваш комп'ютер^^!
 exit /b
 
 
