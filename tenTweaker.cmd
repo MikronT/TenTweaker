@@ -1707,7 +1707,7 @@ set language_main_menu14=    ^^(0^^) Выход
 
 set language_interface_desktopObjects01=^^(i^^) Объекты Рабочего Стола - Меню Управления
 set language_interface_desktopObjects02=^^(^^^>^^) Выберите действие, чтобы показать / скрыть объект рабочего стола:
-set language_interface_desktopObjects03=^^(1^^) Этот ПК                           
+set language_interface_desktopObjects03=^^(1^^) Этот компьютер                    
 set language_interface_desktopObjects04=^^(4^^) Папка пользователя                
 set language_interface_desktopObjects05=^^(2^^) Корзина                           
 set language_interface_desktopObjects06=^^(5^^) Сеть                              
@@ -1856,7 +1856,7 @@ set language_main_menu14=    ^^(0^^) Вихід
 
 set language_interface_desktopObjects01=^^(i^^) Об'єкти Робочого Столу - Меню Управління
 set language_interface_desktopObjects02=^^(^^^>^^) Виберіть дію, щоб показати/приховати об'єкт робочого столу:
-set language_interface_desktopObjects03=^^(1^^) Цей ПК                            
+set language_interface_desktopObjects03=^^(1^^) Цей комп'ютер                     
 set language_interface_desktopObjects04=^^(4^^) Папка користувача                 
 set language_interface_desktopObjects05=^^(2^^) Кошик                             
 set language_interface_desktopObjects06=^^(5^^) Мережа                            
