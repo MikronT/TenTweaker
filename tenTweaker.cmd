@@ -715,14 +715,14 @@ goto :interface_taskBar
 call :main_variables setup_office
 
 call :logo
-echo.^(i^) Microsoft Office Professional+ 2016 - Setup Menu
+echo.%language_setup_office01%
 echo.
 echo.
-echo.^(^>^) Choose action:
-echo.    ^(1^) Run setup
+echo.%language_setup_office02%
+echo.    %language_setup_office03%
 echo.
-echo.    Note: This feature requires to reboot your computer.
-echo.    ^(R^) Reboot computer
+echo.    %language_setup_office04%
+echo.    %language_menuItem_rebootComputer%
 echo.
 echo.    %language_menuItem_goBack%
 echo.
@@ -731,7 +731,7 @@ echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
 if "%error_setup_office_download%" == "1" (
   color 0c
-  echo.    ^(^!^) Download error^! Server not respond or no Internet connection^!
+  echo.    %language_message_error_setup_office_download%
   echo.
   set error_setup_office_download=0
 ) else color 0b
@@ -745,7 +745,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%command%" == "1" 
   call :logo
   if exist "%setup_office_setupISO%" del /q "%setup_office_setupISO%"
 
-  echo.^(i^) Downloading Microsoft Office Professional Plus 2016 Setup
+  echo.%language_setup_office05%
   %module_wget% --show-progress --progress=bar:force:noscroll "%setup_office_setupURL%" --output-document="%setup_office_setupISO%"
   timeout /nobreak /t 1 >nul
 
@@ -754,16 +754,16 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%command%" == "1" 
     goto :setup_office
   )
 
-  echo.^(i^) Mounting iso file...
+  echo.%language_setup_office06%
   start /wait /min powershell.exe "Mount-DiskImage ""%~dp0%setup_office_setupISO%"""
   timeout /nobreak /t 1 >nul
 
-  echo.^(i^) Setup...
+  echo.%language_setup_office07%
   start /wait /min powershell.exe "Get-DiskImage """%~dp0%setup_office_setupISO%""" | Get-Volume | Select-Object {$_.DriveLetter} | Out-File -FilePath """%~dp0temp\return_diskImage""" -Encoding ASCII"
   for /f "skip=3 delims= " %%i in (temp\return_diskImage) do start /wait %%i:\O16Setup.exe
   timeout /nobreak /t 1 >nul
 
-  echo.^(i^) Unmounting iso file...
+  echo.%language_setup_office08%
   start /wait /min powershell.exe "Dismount-DiskImage ""%~dp0%setup_office_setupISO%"""
   timeout /nobreak /t 1 >nul
 )
@@ -1477,6 +1477,7 @@ exit /b
 
 :language_import_english
 set language_menuItem_goBack=^^(0^^) Go back
+set language_menuItem_rebootComputer=^^(R^^) Reboot computer
 set language_menuItem_restartExplorer=^^(E^^) Restart Windows Explorer
 
 set         language_stringBuilder_option_error=[error]           
@@ -1560,6 +1561,15 @@ set language_interface_taskBar06=^^(5^^) Buttons combine
 set language_interface_taskBar07=^^(3^^) Task view button                  
 set language_interface_taskBar08=Note: These features require to restart Windows Explorer.
 
+set language_setup_office01=^^(i^^) Microsoft Office Professional+ 2016 - Setup Menu
+set language_setup_office02=^^(^^^>^^) Choose action:
+set language_setup_office03=^^(1^^) Run setup
+set language_setup_office04=Note: This feature requires to reboot your computer.
+set language_setup_office05=^^(i^^) Downloading Microsoft Office Professional+ 2016
+set language_setup_office06=^^(i^^) Mounting iso file
+set language_setup_office07=^^(i^^) Setup
+set language_setup_office08=^^(i^^) Unmounting iso file
+
 set language_language_menu01=^^(i^^) Language - Selection Menu
 set language_language_menu02=^^(^^^>^^) Choose language:
 
@@ -1582,6 +1592,7 @@ exit /b
 
 :language_import_russian
 set language_menuItem_goBack=^^(0^^) Назад
+set language_menuItem_rebootComputer=^^(R^^) Перезагрузить компьютер
 set language_menuItem_restartExplorer=^^(E^^) Перезагрузить Проводник Windows
 
 set         language_stringBuilder_option_error=[ошибка]          
@@ -1665,6 +1676,15 @@ set language_interface_taskBar06=^^(5^^) Совмещение кнопок
 set language_interface_taskBar07=^^(3^^) Кнопка просмотра задач            
 set language_interface_taskBar08=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
+set language_setup_office01=^^(i^^) Microsoft Офис Профессиональный+ 2016 - Меню Настройки
+set language_setup_office02=^^(^^^>^^) Выберите действие:
+set language_setup_office03=^^(1^^) Запустить настройку
+set language_setup_office04=Примечание: Эта функция требует перезагрузки Вашего компьютера.
+set language_setup_office05=^^(i^^) Загрузка Microsoft Офис Профессиональный+ 2016
+set language_setup_office06=^^(i^^) Подключение iso файла
+set language_setup_office07=^^(i^^) Настройка
+set language_setup_office08=^^(i^^) Отключение iso файла
+
 set language_language_menu01=^^(i^^) Язык - Меню Выбора
 set language_language_menu02=^^(^^^>^^) Выберите язык:
 
@@ -1687,6 +1707,7 @@ exit /b
 
 :language_import_ukrainian
 set language_menuItem_goBack=^^(0^^) Назад
+set language_menuItem_rebootComputer=^^(R^^) Перезавантажити комп'ютер
 set language_menuItem_restartExplorer=^^(E^^) Перезавантажити Провідник Windows
 
 set         language_stringBuilder_option_error=[помилка]         
@@ -1769,6 +1790,15 @@ set language_interface_taskBar05=^^(2^^) Командний рядок при Wi
 set language_interface_taskBar06=^^(5^^) Зміщення кнопок                   
 set language_interface_taskBar07=^^(3^^) Кнопка перегляду завдань          
 set language_interface_taskBar08=Примітка: Ці функції потребують перезапуску Провідника Windows.
+
+set language_setup_office01=^^(i^^) Microsoft Офіс Професійний+ 2016 - Меню Налаштування
+set language_setup_office02=^^(^^^>^^) Виберіть дію:
+set language_setup_office03=^^(1^^) Запустити налаштування
+set language_setup_office04=Примітка: Ця функція потребує перезавантаження Вашого комп'ютера.
+set language_setup_office05=^^(i^^) Завантаження Microsoft Офіс Професійний+ 2016
+set language_setup_office06=^^(i^^) Підключення iso файлу
+set language_setup_office07=^^(i^^) Налаштування
+set language_setup_office08=^^(i^^) Відключення iso файлу
 
 set language_language_menu01=^^(i^^) Мова - Меню Вибору
 set language_language_menu02=^^(^^^>^^) Виберіть мову:
