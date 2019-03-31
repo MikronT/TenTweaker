@@ -1112,13 +1112,13 @@ goto :tools_administrativeTools
 
 :tools_systemResourceChecker
 call :logo
-echo.^(i^) System Resource Checker - Restore Menu
+echo.%language_tools_systemResourceChecker01%
 echo.
 echo.
-echo.^(^>^) Choose action:
-echo.    ^(1^) Run System Resource Scan and automatically repair all files with problems
+echo.%language_tools_systemResourceChecker02%
+echo.    %language_tools_systemResourceChecker03%
 echo.
-echo.    Note: This feature requires to reboot your computer.
+echo.    %language_tools_systemResourceChecker04%
 echo.    %language_menuItem_rebootComputer%
 echo.
 echo.    %language_menuItem_goBack%
@@ -1630,10 +1630,10 @@ set language_tools_administrativeTools09=Note: Features ^^(2^^) and ^^(3^^) requ
 set language_tools_administrativeTools10=Note: Feature ^^(1^^) requires to restart Windows Explorer.
 set language_tools_administrativeTools11=Note: Feature ^^(5^^) requires to reboot your computer.
 
-set language_tools_systemResourceChecker01=
-set language_tools_systemResourceChecker02=
-set language_tools_systemResourceChecker03=
-set language_tools_systemResourceChecker04=
+set language_tools_systemResourceChecker01=^^(i^^) System Resource Checker - Restore Menu
+set language_tools_systemResourceChecker02=^^(^^^>^^) Choose action:
+set language_tools_systemResourceChecker03=^^(1^^) Run System Resource Scan and automatically repair all files with problems
+set language_tools_systemResourceChecker04=Note: This feature requires to reboot your computer.
 
 set language_language_menu01=^^(i^^) Language - Selection Menu
 set language_language_menu02=^^(^^^>^^) Choose language:
@@ -1784,6 +1784,11 @@ set language_tools_administrativeTools09=Примечание: Функции ^^
 set language_tools_administrativeTools10=Примечание: Функция ^^(1^^) требует перезапуска Проводника Windows.
 set language_tools_administrativeTools11=Примечание: Функция ^^(5^^) требует перезагрузки Вашего компьютера.
 
+set language_tools_systemResourceChecker01=^^(i^^) Проверка Системных Ресурсов - Меню Восстановления
+set language_tools_systemResourceChecker02=^^(^^^>^^) Выберите действие:
+set language_tools_systemResourceChecker03=^^(1^^) Запустить проверку системных ресурсов и автоматически исправить все файлы с проблемами
+set language_tools_systemResourceChecker04=Примечание: Эта функция требует перезагрузки Вашего компьютера.
+
 set language_language_menu01=^^(i^^) Язык - Меню Выбора
 set language_language_menu02=^^(^^^>^^) Выберите язык:
 
@@ -1932,6 +1937,11 @@ set language_tools_administrativeTools08=^^(6^^) Диспетчер Завдан
 set language_tools_administrativeTools09=Примітка: Функції ^^(2^^) и ^^(3^^) потребують оновити групову політику.
 set language_tools_administrativeTools10=Примітка: Функція ^^(1^^) потребує перезапуску Провідника Windows.
 set language_tools_administrativeTools11=Примітка: Функція ^^(5^^) потребує перезавантаження Вашого комп'ютера.
+
+set language_tools_systemResourceChecker01=^^(i^^) Перевірка Системних Ресурсів - Меню Відновлення
+set language_tools_systemResourceChecker02=^^(^^^>^^) Виберіть дію:
+set language_tools_systemResourceChecker03=^^(1^^) Запустити перевірку системних ресурсів та автоматично виправити всі файли з проблемами
+set language_tools_systemResourceChecker04=Примітка: Ця функція потребує перезавантаження Вашого комп'ютера.
 
 set language_language_menu01=^^(i^^) Мова - Меню Вибору
 set language_language_menu02=^^(^^^>^^) Виберіть мову:
