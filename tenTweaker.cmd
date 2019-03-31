@@ -858,9 +858,9 @@ if "%services_windowsUpdate_updateDistributions%" == "locked" (
 echo.    %stringBuilder_string%
 
 set stringBuilder_string=%language_services_windowsUpdate04%
-if "%services_windowsUpdate_updateDistributions%" == "enabled" (
+if "%services_windowsUpdate_updateCenter%" == "enabled" (
   call %stringBuilder_build% %language_stringBuilder_option_enabled%
-) else if "%services_windowsUpdate_updateDistributions%" == "disabled" (
+) else if "%services_windowsUpdate_updateCenter%" == "disabled" (
   call %stringBuilder_build% %language_stringBuilder_option_disabled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -1770,7 +1770,7 @@ set language_services_sppsvc01=^^(i^^) Служба Платформы Защи�
 set language_services_sppsvc02=^^(^^^>^^) Выберите действие:
 set language_services_sppsvc03=^^(1^^) Восстановить службу               
 set language_services_sppsvc04=Примечание: Эта функция требует двух перезагрузок Вашего компьютера.
-set language_services_sppsvc05=      Ваш компьютер автоматически перезагрузится после следущего старта системы.
+set language_services_sppsvc05=            Ваш компьютер автоматически перезагрузится после следущего старта системы.
 
 set language_tools_administrativeTools01=^^(i^^) Административные Инструменты Windows - Меню Управления
 set language_tools_administrativeTools02=^^(^^^>^^) Выберите действие, чтобы настроить Административные Инструменты Windows:
@@ -1919,7 +1919,7 @@ set language_services_sppsvc01=^^(i^^) Служба Платформи Захи�
 set language_services_sppsvc02=^^(^^^>^^) Виберіть дію:
 set language_services_sppsvc03=^^(1^^) Відновити службу                  
 set language_services_sppsvc04=Примітка: Ця функція потребує двох перезавантажень Вашого комп'ютера.
-set language_services_sppsvc05=      Ваш комп'ютер автоматично перезавантажиться після наступного старту системи.
+set language_services_sppsvc05=          Ваш комп'ютер автоматично перезавантажиться після наступного старту системи.
 
 set language_tools_administrativeTools01=^^(i^^) Адміністративні Інструменти Windows - Меню Управління
 set language_tools_administrativeTools02=^^(^^^>^^) Виберіть дію, щоб налаштувати Адміністративні Інструменти Windows:
