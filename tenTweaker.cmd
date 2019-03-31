@@ -1131,9 +1131,7 @@ call :logo
 echo.%language_language_menu01%
 echo.
 echo.
-if "%1" NEQ "force" (
-  echo.%language_language_menu02%
-) else echo.^(^>^) Choose language:
+echo.%language_language_menu02%
 echo.    ^(1^) English
 echo.    ^(2^) Русский
 echo.    ^(3^) Українська
@@ -1145,7 +1143,6 @@ echo.
 echo.
 echo.
 if "%1" NEQ "force" (
-  if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
   choice /c 1230 /n /m "> "
 ) else choice /c 123 /n /m "> "
 set command=%errorLevel%
