@@ -1660,6 +1660,11 @@ set language_tools_systemResourceChecker04=Note: This feature requires to reboot
 set language_language_menu01=^^(i^^) Language - Selection Menu
 set language_language_menu02=^^(^^^>^^) Choose language:
 
+set language_reboot_computer01=^^(i^^) Reboot Menu
+set language_reboot_computer02=^^(^^^>^^) Choose action:
+set language_reboot_computer03=^^(1^^) Reboot now
+set language_reboot_computer04=^^(^^!^^) Rebooting...
+
 set language_message_error_main_variables_disabledRegistryTools01=Registry Tools are disabled^^!
 set language_message_error_main_variables_disabledRegistryTools02=If you see [error] than this feature state cannot be shown or changed^^!
 set language_message_error_main_variables_disabledRegistryTools03=To fix it you must enable Registry Tools in ^^(A^^) menu ^^(with hidden options^^)^^!
@@ -1813,6 +1818,11 @@ set language_tools_systemResourceChecker04=Примечание: Эта функ
 
 set language_language_menu01=^^(i^^) Язык - Меню Выбора
 set language_language_menu02=^^(^^^>^^) Выберите язык:
+
+set language_reboot_computer01=^^(i^^) Меню Перезагрузки
+set language_reboot_computer02=^^(^^^>^^) Выберите действие:
+set language_reboot_computer03=^^(1^^) Перезагрузить сейчас
+set language_reboot_computer04=^^(^^!^^) Перезагрузка...
 
 set language_message_error_main_variables_disabledRegistryTools01=Инструменты реестра отключены^^!
 set language_message_error_main_variables_disabledRegistryTools02=Если вы видите [ошибка], то это состояние функции не может быть показано или изменено^^!
@@ -1968,6 +1978,11 @@ set language_tools_systemResourceChecker04=Примітка: Ця функція
 set language_language_menu01=^^(i^^) Мова - Меню Вибору
 set language_language_menu02=^^(^^^>^^) Виберіть мову:
 
+set language_reboot_computer01=^^(i^^) Меню Перезавантаження
+set language_reboot_computer02=^^(^^^>^^) Виберіть дію:
+set language_reboot_computer03=^^(1^^) Перезавантажити зараз
+set language_reboot_computer04=^^(^^!^^) Перезавантаження...
+
 set language_message_error_main_variables_disabledRegistryTools01=Інструменти реєстру відключені^^!
 set language_message_error_main_variables_disabledRegistryTools02=Якщо ви бачите [помилка], то це стан формальної процедури не може показано або змінено^^!
 set language_message_error_main_variables_disabledRegistryTools03=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^^(A^^) ^^(з прихованими параметрами^^)^^!
@@ -2095,11 +2110,11 @@ exit /b
 if "%*" == "force" ( shutdown /r /t 7 & exit )
 
 call :logo
-echo.^(i^) Reboot Menu
+echo.%language_reboot_computer01%
 echo.
 echo.
-echo.^(^>^) Choose action:
-echo.    ^(1^) Reboot now
+echo.%language_reboot_computer02%
+echo.    %language_reboot_computer03%
 echo.
 echo.    %language_menuItem_goBack%
 echo.
@@ -2112,7 +2127,7 @@ set command=%errorLevel%
 
 if "%command%" == "2" ( set command= & exit /b )
 
-echo.^(^!^) Rebooting...
+echo.%language_reboot_computer04%
 shutdown /r /t 5
 timeout /nobreak /t 5 >nul
 exit
