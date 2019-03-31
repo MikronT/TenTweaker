@@ -1195,13 +1195,35 @@ exit /b
 call :main_variables template
 
 call :logo
-echo.^(i^) Template - Control Menu
+echo.%language_template01%
 echo.
 echo.
-echo.^(^>^) Choose action to config template:
-echo.    ^(1^) Option                              %option%
-echo.    ^(2^) Option                              %option%
-echo.    ^(3^) Option                              %option%
+echo.%language_template02%
+
+set stringBuilder_string=%language_template03%
+if "%option%" == "state1" (
+  call %stringBuilder_build% %language_stringBuilder_option_state1%
+) else if "%option%" == "state2" (
+  call %stringBuilder_build% %language_stringBuilder_option_state2%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_template04%
+if "%option%" == "state1" (
+  call %stringBuilder_build% %language_stringBuilder_option_state1%
+) else if "%option%" == "state2" (
+  call %stringBuilder_build% %language_stringBuilder_option_state2%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_template05%
+if "%option%" == "state1" (
+  call %stringBuilder_build% %language_stringBuilder_option_state1%
+) else if "%option%" == "state2" (
+  call %stringBuilder_build% %language_stringBuilder_option_state2%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
 echo.
 echo.    %language_menuItem_goBack%
 echo.
