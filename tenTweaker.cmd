@@ -1582,6 +1582,34 @@ set language_setup_gpeditMSC01=^^(i^^) Group Policy Editor - Setup Menu
 set language_setup_gpeditMSC02=^^(^^^>^^) Choose action:
 set language_setup_gpeditMSC03=^^(1^^) Setup/repair gpedit.msc           
 
+set language_services_windowsUpdate01=
+set language_services_windowsUpdate02=
+set language_services_windowsUpdate03=
+set language_services_windowsUpdate04=
+
+set language_services_sppsvc01=
+set language_services_sppsvc02=
+set language_services_sppsvc03=
+set language_services_sppsvc04=
+set language_services_sppsvc05=
+
+set language_tools_administrativeTools01=
+set language_tools_administrativeTools02=
+set language_tools_administrativeTools03=
+set language_tools_administrativeTools04=
+set language_tools_administrativeTools05=
+set language_tools_administrativeTools06=
+set language_tools_administrativeTools07=
+set language_tools_administrativeTools08=
+set language_tools_administrativeTools09=
+set language_tools_administrativeTools10=
+set language_tools_administrativeTools11=
+
+set language_tools_systemResourceChecker01=
+set language_tools_systemResourceChecker02=
+set language_tools_systemResourceChecker03=
+set language_tools_systemResourceChecker04=
+
 set language_language_menu01=^^(i^^) Language - Selection Menu
 set language_language_menu02=^^(^^^>^^) Choose language:
 
