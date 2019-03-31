@@ -140,7 +140,7 @@ echo.%language_main_menu14%
 echo.
 echo.
 echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools main_menu
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools main_menu
 if "%update_available%" == "true" (
   echo.    %language_message_update_available1%
   echo.        %language_message_update_available2% github.com/MikronT/TenTweaker/releases/latest
@@ -244,7 +244,7 @@ echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
 choice /c 12345E0 /n /m "> "
 set command=%errorLevel%
 
@@ -333,10 +333,10 @@ echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
 if "%error_interface_languageKeySequence_twoIdenticalCombinations%" == "1" (
   color 0c
-  echo.    %language_errorMessage_interface_languageKeySequence_twoIdenticalCombinations%
+  echo.    %language_message_error_interface_languageKeySequence_twoIdenticalCombinations%
   echo.
 ) else color 0b
 choice /c 120 /n /m "> "
@@ -423,7 +423,7 @@ echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
 choice /c 12340 /n /m "> "
 set command=%errorLevel%
 
@@ -546,7 +546,7 @@ echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
 choice /c 123456789E0 /n /m "> "
 set command=%errorLevel%
 
@@ -663,7 +663,7 @@ echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
 choice /c 12345E0 /n /m "> "
 set command=%errorLevel%
 
@@ -728,12 +728,12 @@ echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
-if "%error_setup_office_downloadError%" == "1" (
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
+if "%error_setup_office_download%" == "1" (
   color 0c
   echo.    ^(^!^) Download error^! Server not respond or no Internet connection^!
   echo.
-  set error_setup_office_downloadError=0
+  set error_setup_office_download=0
 ) else color 0b
 choice /c 1R0 /n /m "> "
 set command=%errorLevel%
@@ -750,7 +750,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%command%" == "1" 
   timeout /nobreak /t 1 >nul
 
   for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir "%~dp0%setup_office_setupISO%"') do if "%%i" == "1" if "%%j" == "0" (
-    set error_setup_office_downloadError=1
+    set error_setup_office_download=1
     goto :setup_office
   )
 
@@ -800,7 +800,7 @@ echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
 choice /c 10 /n /m "> "
 set command=%errorLevel%
 
@@ -847,7 +847,7 @@ echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
 choice /c 120 /n /m "> "
 set command=%errorLevel%
 
@@ -906,7 +906,7 @@ echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
 choice /c 1R0 /n /m "> "
 set command=%errorLevel%
 
@@ -1015,7 +1015,7 @@ echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
   echo.    ^(^!^) Warning^! Hidden Options are shown^! They can kill your PC^!
   echo.
@@ -1137,7 +1137,7 @@ echo.
 echo.
 echo.
 if "%1" NEQ "force" (
-  if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
+  if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
   choice /c 1230 /n /m "> "
 ) else choice /c 123 /n /m "> "
 set command=%errorLevel%
@@ -1179,7 +1179,7 @@ echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :errorMessage_main_variables_disabledRegistryTools
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
 choice /c 1230 /n /m "> "
 set command=%errorLevel%
 
@@ -1563,12 +1563,14 @@ set language_interface_taskBar08=Note: These features require to restart Windows
 set language_language_menu01=^^(i^^) Language - Selection Menu
 set language_language_menu02=^^(^^^>^^) Choose language:
 
-set language_errorMessage_main_variables_disabledRegistryTools01=Registry Tools are disabled^^!
-set language_errorMessage_main_variables_disabledRegistryTools02=If you see [error] than this feature state cannot be shown or changed^^!
-set language_errorMessage_main_variables_disabledRegistryTools03=To fix it you must enable Registry Tools in ^^(A^^) menu ^^(with hidden options^^)^^!
-set language_errorMessage_main_variables_disabledRegistryTools04=Please, back to main menu and read this error message again.
+set language_message_error_main_variables_disabledRegistryTools01=Registry Tools are disabled^^!
+set language_message_error_main_variables_disabledRegistryTools02=If you see [error] than this feature state cannot be shown or changed^^!
+set language_message_error_main_variables_disabledRegistryTools03=To fix it you must enable Registry Tools in ^^(A^^) menu ^^(with hidden options^^)^^!
+set language_message_error_main_variables_disabledRegistryTools04=Please, back to main menu and read this error message again.
 
-set language_errorMessage_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Can not be two identical key combinations^^!
+set language_message_error_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Can not be two identical key combinations^^!
+
+set language_message_error_setup_office_download=^^(^^!^^) Download error^^! Server not respond or no Internet connection^^!
 
 set language_message_update_available01=^^(^^!^^) An update for %program_name% is now available^^!
 set language_message_update_available02=Download it here:
@@ -1666,12 +1668,14 @@ set language_interface_taskBar08=Примечание: Эти функции т�
 set language_language_menu01=^^(i^^) Язык - Меню Выбора
 set language_language_menu02=^^(^^^>^^) Выберите язык:
 
-set language_errorMessage_main_variables_disabledRegistryTools01=Инструменты реестра отключены^^!
-set language_errorMessage_main_variables_disabledRegistryTools02=Если вы видите [ошибка], то это состояние функции не может быть показано или изменено^^!
-set language_errorMessage_main_variables_disabledRegistryTools03=Чтобы это исправить, вы должны включить инструменты реестра в меню ^^(A^^) ^^(со скрытыми параметрами^^)^^!
-set language_errorMessage_main_variables_disabledRegistryTools04=Пожалуйста, вернитесь в главное меню и прочитайте это сообщение об ошибке еще раз.
+set language_message_error_main_variables_disabledRegistryTools01=Инструменты реестра отключены^^!
+set language_message_error_main_variables_disabledRegistryTools02=Если вы видите [ошибка], то это состояние функции не может быть показано или изменено^^!
+set language_message_error_main_variables_disabledRegistryTools03=Чтобы это исправить, вы должны включить инструменты реестра в меню ^^(A^^) ^^(со скрытыми параметрами^^)^^!
+set language_message_error_main_variables_disabledRegistryTools04=Пожалуйста, вернитесь в главное меню и прочитайте это сообщение об ошибке еще раз.
 
-set language_errorMessage_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Не может быть двух одинаковых комбинаций клавиш^^!
+set language_message_error_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Не может быть двух одинаковых комбинаций клавиш^^!
+
+set language_message_error_setup_office_download=^^(^^!^^) Ошибка загрузки^^! Сервер не отвечает или нет подключения к Интернету^!
 
 set language_message_update_available01=^^(^^!^^) Доступно обновление для %program_name%^^!
 set language_message_update_available02=Загрузите его здесь:
@@ -1769,12 +1773,14 @@ set language_interface_taskBar08=Примітка: Ці функції потр�
 set language_language_menu01=^^(i^^) Мова - Меню Вибору
 set language_language_menu02=^^(^^^>^^) Виберіть мову:
 
-set language_errorMessage_main_variables_disabledRegistryTools01=Інструменти реєстру відключені^^!
-set language_errorMessage_main_variables_disabledRegistryTools02=Якщо ви бачите [помилка], то це стан формальної процедури не може показано або змінено^^!
-set language_errorMessage_main_variables_disabledRegistryTools03=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^^(A^^) ^^(з прихованими параметрами^^)^^!
-set language_errorMessage_main_variables_disabledRegistryTools04=Будь ласка, поверніться в головне меню і прочитайте це повідомлення про помилку ще раз.
+set language_message_error_main_variables_disabledRegistryTools01=Інструменти реєстру відключені^^!
+set language_message_error_main_variables_disabledRegistryTools02=Якщо ви бачите [помилка], то це стан формальної процедури не може показано або змінено^^!
+set language_message_error_main_variables_disabledRegistryTools03=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^^(A^^) ^^(з прихованими параметрами^^)^^!
+set language_message_error_main_variables_disabledRegistryTools04=Будь ласка, поверніться в головне меню і прочитайте це повідомлення про помилку ще раз.
 
-set language_errorMessage_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Не може бути двох ідентичних комбінацій клавіш^^!
+set language_message_error_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Не може бути двох ідентичних комбінацій клавіш^^!
+
+set language_message_error_setup_office_download=^^(^^!^^) Помилка завантаження^^! Сервер не відповідає або немає підключення до Інтернету^!
 
 set language_message_update_available01=^^(^^!^^) Доступно оновлення для %program_name%^^!
 set language_message_update_available02=Завантажте його тут:
@@ -1845,12 +1851,12 @@ exit /b
 
 
 
-:errorMessage_main_variables_disabledRegistryTools
-echo.    ^(^!^) %language_errorMessage_main_variables_disabledRegistryTools01%
-echo.        %language_errorMessage_main_variables_disabledRegistryTools02%
+:message_error_main_variables_disabledRegistryTools
+echo.    ^(^!^) %language_message_error_main_variables_disabledRegistryTools01%
+echo.        %language_message_error_main_variables_disabledRegistryTools02%
 if "%1" == "main_menu" (
-  echo.        %language_errorMessage_main_variables_disabledRegistryTools03%
-) else echo.        %language_errorMessage_main_variables_disabledRegistryTools04%
+  echo.        %language_message_error_main_variables_disabledRegistryTools03%
+) else echo.        %language_message_error_main_variables_disabledRegistryTools04%
 echo.
 exit /b
 
