@@ -146,7 +146,7 @@ if "%update_available%" == "true" (
   echo.        %language_message_update_available2% github.com/MikronT/TenTweaker/releases/latest
   echo.
 )
-choice /c 123456789ABZ0 /n /m "> "
+choice /c 123456789ABL0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -245,7 +245,7 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-choice /c 12345E0 /n /m "> "
+choice /c 12345Y0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -547,7 +547,7 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-choice /c 123456789E0 /n /m "> "
+choice /c 123456789Y0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -664,7 +664,7 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-choice /c 12345E0 /n /m "> "
+choice /c 12345Y0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -735,7 +735,7 @@ if "%error_setup_office_download%" == "1" (
   echo.
   set error_setup_office_download=0
 ) else color 0b
-choice /c 1R0 /n /m "> "
+choice /c 1Z0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -938,7 +938,7 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-choice /c 1R0 /n /m "> "
+choice /c 1Z0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -1050,8 +1050,8 @@ if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_mai
 if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
   echo.    %language_message_tools_administrativeTools_hiddenOptions%
   echo.
-  choice /c 123456UER0 /n /m "> "
-) else choice /c 123UE0 /n /m "> "
+  choice /c 123456XYZ0 /n /m "> "
+) else choice /c 123XY0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -1125,7 +1125,7 @@ echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
-choice /c 1R0 /n /m "> "
+choice /c 1Z0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -1527,9 +1527,9 @@ exit /b
 
 :language_import_english
 set language_menuItem_goBack=^^(0^^) Go back
-set language_menuItem_rebootComputer=^^(R^^) Reboot computer
-set language_menuItem_restartExplorer=^^(E^^) Restart Windows Explorer
-set language_menuItem_updateGroupPolicy=^^(U^^) Update group policy
+set language_menuItem_rebootComputer=^^(Z^^) Reboot computer
+set language_menuItem_restartExplorer=^^(Y^^) Restart Windows Explorer
+set language_menuItem_updateGroupPolicy=^^(X^^) Update group policy
 
 set         language_stringBuilder_option_error=[error]           
 set       language_stringBuilder_option_enabled=enabled           
@@ -1570,7 +1570,7 @@ set language_main_menu09=    ^^(A^^) Administrative tools
 set language_main_menu10=    ^^(B^^) System Resource Checker
 set language_main_menu11=
 set language_main_menu12=
-set language_main_menu13=    ^^(Z^^) Language
+set language_main_menu13=    ^^(L^^) Language
 set language_main_menu14=    ^^(0^^) Exit
 
 set language_interface_desktopObjects01=^^(i^^) Desktop Objects - Control Menu
@@ -1686,9 +1686,9 @@ exit /b
 
 :language_import_russian
 set language_menuItem_goBack=^^(0^^) Назад
-set language_menuItem_rebootComputer=^^(R^^) Перезагрузить компьютер
-set language_menuItem_restartExplorer=^^(E^^) Перезагрузить Проводник Windows
-set language_menuItem_updateGroupPolicy=^^(U^^) Обновить групповую политику
+set language_menuItem_rebootComputer=^^(Z^^) Перезагрузить компьютер
+set language_menuItem_restartExplorer=^^(Y^^) Перезагрузить Проводник Windows
+set language_menuItem_updateGroupPolicy=^^(X^^) Обновить групповую политику
 
 set         language_stringBuilder_option_error=[ошибка]          
 set       language_stringBuilder_option_enabled=включено          
@@ -1729,7 +1729,7 @@ set language_main_menu09=    ^^(A^^) Административные инстр
 set language_main_menu10=    ^^(B^^) Проверка системных ресурсов
 set language_main_menu11=
 set language_main_menu12=
-set language_main_menu13=    ^^(Z^^) Язык
+set language_main_menu13=    ^^(L^^) Язык
 set language_main_menu14=    ^^(0^^) Выход
 
 set language_interface_desktopObjects01=^^(i^^) Объекты Рабочего Стола - Меню Управления
@@ -1845,9 +1845,9 @@ exit /b
 
 :language_import_ukrainian
 set language_menuItem_goBack=^^(0^^) Назад
-set language_menuItem_rebootComputer=^^(R^^) Перезавантажити комп'ютер
-set language_menuItem_restartExplorer=^^(E^^) Перезавантажити Провідник Windows
-set language_menuItem_updateGroupPolicy=^^(U^^) Оновити групову політику
+set language_menuItem_rebootComputer=^^(Z^^) Перезавантажити комп'ютер
+set language_menuItem_restartExplorer=^^(Y^^) Перезавантажити Провідник Windows
+set language_menuItem_updateGroupPolicy=^^(X^^) Оновити групову політику
 
 set         language_stringBuilder_option_error=[помилка]         
 set       language_stringBuilder_option_enabled=увімкнено         
@@ -1888,7 +1888,7 @@ set language_main_menu09=    ^^(A^^) Адміністративні інстру
 set language_main_menu10=    ^^(B^^) Перевірка системних ресурсів
 set language_main_menu11=
 set language_main_menu12=
-set language_main_menu13=    ^^(Z^^) Мова
+set language_main_menu13=    ^^(L^^) Мова
 set language_main_menu14=    ^^(0^^) Вихід
 
 set language_interface_desktopObjects01=^^(i^^) Об'єкти Робочого Столу - Меню Управління
