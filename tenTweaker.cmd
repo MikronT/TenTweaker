@@ -541,40 +541,12 @@ echo.
 echo.%language_interface_explorer12%
 
 set stringBuilder_string=%language_interface_explorer13%
-if "%interface_explorer_thisPC_3DObjects%" == "shown" (
-  call %stringBuilder_build% %language_stringBuilder_option_shown%
-) else if "%interface_explorer_thisPC_3DObjects%" == "hidden" (
-  call %stringBuilder_build% %language_stringBuilder_option_hidden%
-) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    %language_interface_explorer14%
-if "%interface_explorer_thisPC_music%" == "shown" (
-  call %stringBuilder_build% %language_stringBuilder_option_shown%
-) else if "%interface_explorer_thisPC_music%" == "hidden" (
-  call %stringBuilder_build% %language_stringBuilder_option_hidden%
-) else call %stringBuilder_build% %language_stringBuilder_option_error%
-echo.    %stringBuilder_string%
-
-set stringBuilder_string=%language_interface_explorer15%
 if "%interface_explorer_thisPC_desktop%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_explorer_thisPC_desktop%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    %language_interface_explorer16%
-if "%interface_explorer_thisPC_oneDrive%" == "shown" (
-  call %stringBuilder_build% %language_stringBuilder_option_shown%
-) else if "%interface_explorer_thisPC_oneDrive%" == "hidden" (
-  call %stringBuilder_build% %language_stringBuilder_option_hidden%
-) else call %stringBuilder_build% %language_stringBuilder_option_error%
-echo.    %stringBuilder_string%
-
-set stringBuilder_string=%language_interface_explorer17%
-if "%interface_explorer_thisPC_documents%" == "shown" (
-  call %stringBuilder_build% %language_stringBuilder_option_shown%
-) else if "%interface_explorer_thisPC_documents%" == "hidden" (
-  call %stringBuilder_build% %language_stringBuilder_option_hidden%
-) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    %language_interface_explorer18%
+call %stringBuilder_build%    %language_interface_explorer14%
 if "%interface_explorer_thisPC_pictures%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_explorer_thisPC_pictures%" == "hidden" (
@@ -582,16 +554,44 @@ if "%interface_explorer_thisPC_pictures%" == "shown" (
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=%language_interface_explorer19%
+set stringBuilder_string=%language_interface_explorer15%
+if "%interface_explorer_thisPC_documents%" == "shown" (
+  call %stringBuilder_build% %language_stringBuilder_option_shown%
+) else if "%interface_explorer_thisPC_documents%" == "hidden" (
+  call %stringBuilder_build% %language_stringBuilder_option_hidden%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_interface_explorer16%
+if "%interface_explorer_thisPC_videos%" == "shown" (
+  call %stringBuilder_build% %language_stringBuilder_option_shown%
+) else if "%interface_explorer_thisPC_videos%" == "hidden" (
+  call %stringBuilder_build% %language_stringBuilder_option_hidden%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_interface_explorer17%
 if "%interface_explorer_thisPC_downloads%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
 ) else if "%interface_explorer_thisPC_downloads%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    %language_interface_explorer20%
-if "%interface_explorer_thisPC_videos%" == "shown" (
+call %stringBuilder_build%    %language_interface_explorer18%
+if "%interface_explorer_thisPC_3DObjects%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
-) else if "%interface_explorer_thisPC_videos%" == "hidden" (
+) else if "%interface_explorer_thisPC_3DObjects%" == "hidden" (
+  call %stringBuilder_build% %language_stringBuilder_option_hidden%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_interface_explorer19%
+if "%interface_explorer_thisPC_music%" == "shown" (
+  call %stringBuilder_build% %language_stringBuilder_option_shown%
+) else if "%interface_explorer_thisPC_music%" == "hidden" (
+  call %stringBuilder_build% %language_stringBuilder_option_hidden%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_interface_explorer20%
+if "%interface_explorer_thisPC_oneDrive%" == "shown" (
+  call %stringBuilder_build% %language_stringBuilder_option_shown%
+) else if "%interface_explorer_thisPC_oneDrive%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -658,37 +658,37 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
     reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowInfoTip /t REG_DWORD /d 0 /f >nul
   ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowInfoTip /t REG_DWORD /d 1 /f >nul
 
-  if "%command%" == "10" if "%interface_explorer_thisPC_3DObjects%" == "shown" (
-    reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A} /f >nul
-  ) else reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A} /f >nul
-
-  if "%command%" == "11" if "%interface_explorer_thisPC_desktop%" == "shown" (
+  if "%command%" == "10" if "%interface_explorer_thisPC_desktop%" == "shown" (
     reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641} /f >nul
   ) else reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641} /f >nul
 
-  if "%command%" == "12" if "%interface_explorer_thisPC_documents%" == "shown" (
+  if "%command%" == "11" if "%interface_explorer_thisPC_documents%" == "shown" (
     reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{d3162b92-9365-467a-956b-92703aca08af} /f >nul
   ) else reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{d3162b92-9365-467a-956b-92703aca08af} /f >nul
 
-  if "%command%" == "13" if "%interface_explorer_thisPC_downloads%" == "shown" (
+  if "%command%" == "12" if "%interface_explorer_thisPC_downloads%" == "shown" (
     reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088e3905-0323-4b02-9826-5d99428e115f} /f >nul
   ) else reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088e3905-0323-4b02-9826-5d99428e115f} /f >nul
 
-  if "%command%" == "14" if "%interface_explorer_thisPC_music%" == "shown" (
+  if "%command%" == "13" if "%interface_explorer_thisPC_music%" == "shown" (
     reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de} /f >nul
   ) else reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de} /f >nul
 
-  if "%command%" == "15" if "%interface_explorer_thisPC_oneDrive%" == "shown" (
-    reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{018d5c66-4533-4307-9b53-224de2ed1fe6} /f >nul
-  ) else reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{018d5c66-4533-4307-9b53-224de2ed1fe6} /f >nul
-
-  if "%command%" == "16" if "%interface_explorer_thisPC_pictures%" == "shown" (
+  if "%command%" == "14" if "%interface_explorer_thisPC_pictures%" == "shown" (
     reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24ad3ad4-a569-4530-98e1-ab02f9417aa8} /f >nul
   ) else reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24ad3ad4-a569-4530-98e1-ab02f9417aa8} /f >nul
 
-  if "%command%" == "17" if "%interface_explorer_thisPC_videos%" == "shown" (
+  if "%command%" == "15" if "%interface_explorer_thisPC_videos%" == "shown" (
     reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a} /f >nul
   ) else reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a} /f >nul
+
+  if "%command%" == "16" if "%interface_explorer_thisPC_3DObjects%" == "shown" (
+    reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A} /f >nul
+  ) else reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A} /f >nul
+
+  if "%command%" == "17" if "%interface_explorer_thisPC_oneDrive%" == "shown" (
+    reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{018d5c66-4533-4307-9b53-224de2ed1fe6} /f >nul
+  ) else reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{018d5c66-4533-4307-9b53-224de2ed1fe6} /f >nul
 
   if "%command%" == "18" if "%interface_explorer_autoFolderTypeDiscovery%" == "enabled" (
     reg add "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /v FolderType /t REG_SZ /d NotSpecified /f >nul
@@ -1521,9 +1521,6 @@ if "%1" == "interface_explorer" (
   set interface_explorer_fileInfoTip=shown
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowInfoTip') do if "%%i" == "0x0" set interface_explorer_fileInfoTip=hidden
 
-  set interface_explorer_thisPC_3DObjects=shown
-  for /f "delims=" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace ^| find /i /c "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"') do if "%%i" == "0" set interface_explorer_thisPC_3DObjects=hidden
-
   set interface_explorer_thisPC_desktop=shown
   for /f "delims=" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace ^| find /i /c "{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}"') do if "%%i" == "0" set interface_explorer_thisPC_desktop=hidden
 
@@ -1536,14 +1533,17 @@ if "%1" == "interface_explorer" (
   set interface_explorer_thisPC_music=shown
   for /f "delims=" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace ^| find /i /c "{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}"') do if "%%i" == "0" set interface_explorer_thisPC_music=hidden
 
-  set interface_explorer_thisPC_oneDrive=shown
-  for /f "delims=" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace ^| find /i /c "{018d5c66-4533-4307-9b53-224de2ed1fe6}"') do if "%%i" == "0" set interface_explorer_thisPC_oneDrive=hidden
-
   set interface_explorer_thisPC_pictures=shown
   for /f "delims=" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace ^| find /i /c "{24ad3ad4-a569-4530-98e1-ab02f9417aa8}"') do if "%%i" == "0" set interface_explorer_thisPC_pictures=hidden
 
   set interface_explorer_thisPC_videos=shown
   for /f "delims=" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace ^| find /i /c "{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}"') do if "%%i" == "0" set interface_explorer_thisPC_videos=hidden
+
+  set interface_explorer_thisPC_3DObjects=shown
+  for /f "delims=" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace ^| find /i /c "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"') do if "%%i" == "0" set interface_explorer_thisPC_3DObjects=hidden
+
+  set interface_explorer_thisPC_oneDrive=shown
+  for /f "delims=" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace ^| find /i /c "{018d5c66-4533-4307-9b53-224de2ed1fe6}"') do if "%%i" == "0" set interface_explorer_thisPC_oneDrive=hidden
 
   set interface_explorer_autoFolderTypeDiscovery=enabled
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /v FolderType') do if "%%i" == "NotSpecified" set interface_explorer_autoFolderTypeDiscovery=disabled
@@ -1745,14 +1745,14 @@ set language_interface_explorer09=^^(4^^) Empty drives
 set language_interface_explorer10=^^(9^^) File info tip                     
 set language_interface_explorer11=^^(5^^) Folder merge conflicts            
 set language_interface_explorer12=    This PC objects ^^(and in navigation bar^^):
-set language_interface_explorer13=^^(A^^) 3DObjects                         
-set language_interface_explorer14=^^(E^^) Music                             
-set language_interface_explorer15=^^(B^^) Desktop                           
-set language_interface_explorer16=^^(F^^) OneDrive                          
-set language_interface_explorer17=^^(C^^) Documents                         
-set language_interface_explorer18=^^(G^^) Pictures                          
-set language_interface_explorer19=^^(D^^) Downloads                         
-set language_interface_explorer20=^^(H^^) Videos                            
+set language_interface_explorer13=^^(A^^) Desktop                           
+set language_interface_explorer14=^^(E^^) Pictures                          
+set language_interface_explorer15=^^(B^^) Documents                         
+set language_interface_explorer16=^^(F^^) Videos                            
+set language_interface_explorer17=^^(C^^) Downloads                         
+set language_interface_explorer18=^^(G^^) 3DObjects                         
+set language_interface_explorer19=^^(D^^) Music                             
+set language_interface_explorer20=^^(H^^) OneDrive                          
 set language_interface_explorer21=^^(I^^) Auto folder type discovery        
 set language_interface_explorer22=Note: These features require to restart Windows Explorer.
 
@@ -1914,14 +1914,14 @@ set language_interface_explorer09=^^(4^^) Пустые диски
 set language_interface_explorer10=^^(9^^) Информация о файле                
 set language_interface_explorer11=^^(5^^) Конфликты слияния папок           
 set language_interface_explorer12=    Объекты Этого компьютера ^^(и в панели навигации^^):
-set language_interface_explorer13=^^(A^^) 3D Объекты                        
-set language_interface_explorer14=^^(E^^) Музыка                            
-set language_interface_explorer15=^^(B^^) Рабочий Стол                      
-set language_interface_explorer16=^^(F^^) OneDrive                          
-set language_interface_explorer17=^^(C^^) Документы                         
-set language_interface_explorer18=^^(G^^) Картинки                          
-set language_interface_explorer19=^^(D^^) Загрузки                          
-set language_interface_explorer20=^^(H^^) Видео                             
+set language_interface_explorer13=^^(A^^) Рабочий Стол                      
+set language_interface_explorer14=^^(E^^) Картинки                          
+set language_interface_explorer15=^^(B^^) Документы                         
+set language_interface_explorer16=^^(F^^) Видео                             
+set language_interface_explorer17=^^(C^^) Загрузки                          
+set language_interface_explorer18=^^(G^^) 3D Объекты                        
+set language_interface_explorer19=^^(D^^) Музыка                            
+set language_interface_explorer20=^^(H^^) OneDrive                          
 set language_interface_explorer21=^^(I^^) Авто определение типа папки       
 set language_interface_explorer22=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
@@ -2083,14 +2083,14 @@ set language_interface_explorer09=^^(4^^) Порожні диски
 set language_interface_explorer10=^^(9^^) Інформація про файл               
 set language_interface_explorer11=^^(5^^) Конфлікти об'єднання папок        
 set language_interface_explorer12=    Об'єкти Цього комп'ютера ^^(і в панелі навігації^^):
-set language_interface_explorer13=^^(A^^) 3D Об'єкти                        
-set language_interface_explorer14=^^(E^^) Музика                            
-set language_interface_explorer15=^^(B^^) Робочий Стіл                      
-set language_interface_explorer16=^^(F^^) OneDrive                          
-set language_interface_explorer17=^^(C^^) Документи                         
-set language_interface_explorer18=^^(G^^) Зображення                        
-set language_interface_explorer19=^^(D^^) Завантаження                      
-set language_interface_explorer20=^^(H^^) Відео                             
+set language_interface_explorer13=^^(A^^) Робочий Стіл                      
+set language_interface_explorer14=^^(E^^) Зображення                        
+set language_interface_explorer15=^^(B^^) Документи                         
+set language_interface_explorer16=^^(F^^) Відео                             
+set language_interface_explorer17=^^(C^^) Завантаження                      
+set language_interface_explorer18=^^(G^^) 3D Об'єкти                        
+set language_interface_explorer19=^^(D^^) Музика                            
+set language_interface_explorer20=^^(H^^) OneDrive                          
 set language_interface_explorer21=^^(I^^) Авто визначення типу папки        
 set language_interface_explorer22=Примітка: Ці функції потребують перезапуску Провідника Windows.
 
