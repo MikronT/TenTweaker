@@ -44,7 +44,7 @@ if %errorLevel% LSS 1 if "%key_main_registryMerge%" NEQ "true" (
 set program_name=Ten Tweaker
 set program_name_ns=tenTweaker
 
-set program_version=1.2
+set program_version=2.0
 set program_version_level1=0
 set program_version_level2=0
 set program_version_level3=0
@@ -142,8 +142,8 @@ echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools main_menu
 if "%update_available%" == "true" (
-  echo.    %language_message_update_available1%
-  echo.        %language_message_update_available2% github.com/MikronT/TenTweaker/releases/latest
+  echo.    %language_message_update_available01%
+  echo.        %language_message_update_available02% github.com/MikronT/TenTweaker/releases/latest
   echo.
 )
 choice /c 123456789ABL0 /n /m "> "
@@ -1744,7 +1744,7 @@ set language_interface_explorer08=^^(8^^) Status bar
 set language_interface_explorer09=^^(4^^) Empty drives                      
 set language_interface_explorer10=^^(9^^) File info tip                     
 set language_interface_explorer11=^^(5^^) Folder merge conflicts            
-set language_interface_explorer12=    This PC objects ^^(and in navigation bar^^):
+set language_interface_explorer12=    This PC and navigation bar objects:
 set language_interface_explorer13=^^(A^^) Desktop                           
 set language_interface_explorer14=^^(E^^) Pictures                          
 set language_interface_explorer15=^^(B^^) Documents                         
@@ -1913,7 +1913,7 @@ set language_interface_explorer08=^^(8^^) Статус бар
 set language_interface_explorer09=^^(4^^) Пустые диски                      
 set language_interface_explorer10=^^(9^^) Информация о файле                
 set language_interface_explorer11=^^(5^^) Конфликты слияния папок           
-set language_interface_explorer12=    Объекты Этого компьютера ^^(и в панели навигации^^):
+set language_interface_explorer12=    Объекты Этого компьютера и панели навигации:
 set language_interface_explorer13=^^(A^^) Рабочий Стол                      
 set language_interface_explorer14=^^(E^^) Картинки                          
 set language_interface_explorer15=^^(B^^) Документы                         
@@ -2082,7 +2082,7 @@ set language_interface_explorer08=^^(8^^) Рядок стану
 set language_interface_explorer09=^^(4^^) Порожні диски                     
 set language_interface_explorer10=^^(9^^) Інформація про файл               
 set language_interface_explorer11=^^(5^^) Конфлікти об'єднання папок        
-set language_interface_explorer12=    Об'єкти Цього комп'ютера ^^(і в панелі навігації^^):
+set language_interface_explorer12=    Об'єкти Цього комп'ютера і панелі навігації:
 set language_interface_explorer13=^^(A^^) Робочий Стіл                      
 set language_interface_explorer14=^^(E^^) Зображення                        
 set language_interface_explorer15=^^(B^^) Документи                         
