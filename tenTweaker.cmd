@@ -589,9 +589,9 @@ if "%interface_explorer_thisPC_music%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_interface_explorer20%
-if "%interface_explorer_thisPC_oneDrive%" == "shown" (
+if "%interface_explorer_oneDriveInNavbar%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
-) else if "%interface_explorer_thisPC_oneDrive%" == "hidden" (
+) else if "%interface_explorer_oneDriveInNavbar%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -686,9 +686,9 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
     reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A} /f >nul
   ) else reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A} /f >nul
 
-  if "%command%" == "17" if "%interface_explorer_thisPC_oneDrive%" == "shown" (
-    reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{018d5c66-4533-4307-9b53-224de2ed1fe6} /f >nul
-  ) else reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{018d5c66-4533-4307-9b53-224de2ed1fe6} /f >nul
+  if "%command%" == "17" if "%interface_explorer_oneDriveInNavbar%" == "shown" (
+    reg add HKCR\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6} /v System.IsPinnedToNameSpaceTree /t REG_DWORD /d 0 /f >nul
+  ) else reg add HKCR\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6} /v System.IsPinnedToNameSpaceTree /t REG_DWORD /d 1 /f >nul
 
   if "%command%" == "18" if "%interface_explorer_autoFolderTypeDiscovery%" == "enabled" (
     reg add "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /v FolderType /t REG_SZ /d NotSpecified /f >nul
@@ -1406,7 +1406,7 @@ if %errorLevel% GEQ 1 (
   set interface_explorer_thisPC_pictures=error
   set interface_explorer_thisPC_videos=error
   set interface_explorer_thisPC_3DObjects=error
-  set interface_explorer_thisPC_oneDrive=error
+  set interface_explorer_oneDriveInNavbar=error
   set interface_explorer_autoFolderTypeDiscovery=error
 
   set interface_taskBar_peopleBand=error
@@ -1542,8 +1542,8 @@ if "%1" == "interface_explorer" (
   set interface_explorer_thisPC_3DObjects=shown
   for /f "delims=" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace ^| find /i /c "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"') do if "%%i" == "0" set interface_explorer_thisPC_3DObjects=hidden
 
-  set interface_explorer_thisPC_oneDrive=shown
-  for /f "delims=" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace ^| find /i /c "{018d5c66-4533-4307-9b53-224de2ed1fe6}"') do if "%%i" == "0" set interface_explorer_thisPC_oneDrive=hidden
+  set interface_explorer_oneDriveInNavbar=shown
+  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCR\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6} /v System.IsPinnedToNameSpaceTree') do if "%%i" == "0x0" set interface_explorer_oneDriveInNavbar=hidden
 
   set interface_explorer_autoFolderTypeDiscovery=enabled
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /v FolderType') do if "%%i" == "NotSpecified" set interface_explorer_autoFolderTypeDiscovery=disabled
