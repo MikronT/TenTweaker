@@ -1376,48 +1376,55 @@ set errorLevel=
 reg query HKCU >nul 2>nul
 
 if %errorLevel% GEQ 1 (
-  set interface_desktopObjects_thisPC=[error]
-  set interface_desktopObjects_recycleBin=[error]
-  set interface_desktopObjects_controlPanel=[error]
-  set interface_desktopObjects_userFolder=[error]
-  set interface_desktopObjects_network=[error]
+  set interface_desktopObjects_thisPC=error
+  set interface_desktopObjects_recycleBin=error
+  set interface_desktopObjects_controlPanel=error
+  set interface_desktopObjects_userFolder=error
+  set interface_desktopObjects_network=error
 
-  set interface_languageKeySequence_inputLanguageSwitch=[error]
-  set interface_languageKeySequence_keyboardLayoutSwitch=[error]
+  set interface_languageKeySequence_inputLanguageSwitch=error
+  set interface_languageKeySequence_keyboardLayoutSwitch=error
 
-  set interface_suggestions_autoSuggest=[error]
-  set interface_suggestions_appendCompletion=[error]
-  set interface_suggestions_startTrackProgs=[error]
-  set interface_suggestions_suggestionsWhenTyping=[error]
+  set interface_suggestions_autoSuggest=error
+  set interface_suggestions_appendCompletion=error
+  set interface_suggestions_startTrackProgs=error
+  set interface_suggestions_suggestionsWhenTyping=error
 
-  set interface_explorer_fileExtensions=[error]
-  set interface_explorer_hiddenFiles=[error]
-  set interface_explorer_hiddenProtectedSystemFiles=[error]
-  set interface_explorer_emptyDrives=[error]
-  set interface_explorer_folderMergeConflicts=[error]
-  set interface_explorer_ribbon=[error]
-  set interface_explorer_expandToCurrentFolder=[error]
-  set interface_explorer_statusBar=[error]
-  set interface_explorer_fileInfoTip=[error]
+  set interface_explorer_fileExtensions=error
+  set interface_explorer_hiddenFiles=error
+  set interface_explorer_hiddenProtectedSystemFiles=error
+  set interface_explorer_emptyDrives=error
+  set interface_explorer_folderMergeConflicts=error
+  set interface_explorer_ribbon=error
+  set interface_explorer_expandToCurrentFolder=error
+  set interface_explorer_statusBar=error
+  set interface_explorer_fileInfoTip=error
+  set interface_explorer_thisPC_desktop=error
+  set interface_explorer_thisPC_documents=error
+  set interface_explorer_thisPC_downloads=error
+  set interface_explorer_thisPC_music=error
+  set interface_explorer_thisPC_pictures=error
+  set interface_explorer_thisPC_videos=error
+  set interface_explorer_thisPC_3DObjects=error
+  set interface_explorer_thisPC_oneDrive=error
+  set interface_explorer_autoFolderTypeDiscovery=error
 
-  set interface_taskBar_peopleBand=[error]
-  set interface_taskBar_commandPromptOnWinX=[error]
-  set interface_taskBar_taskViewButton=[error]
-  set interface_taskBar_smallIcons=[error]
-  set interface_taskBar_buttonsCombine=[error]
+  set interface_taskBar_peopleBand=error
+  set interface_taskBar_commandPromptOnWinX=error
+  set interface_taskBar_taskViewButton=error
+  set interface_taskBar_smallIcons=error
+  set interface_taskBar_buttonsCombine=error
 
-  set setup_gpeditMSC_gpeditFile=[error]
+  set services_windowsUpdate_updateCenter=error
 
-  set services_windowsUpdate_updateCenter=[error]
+  set services_sppsvc_service=error
 
-  set services_sppsvc_service=[error]
-
-  set tools_administrativeTools_taskManager=[error]
-  set tools_administrativeTools_controlPanel=[error]
-  set tools_administrativeTools_runDialog=[error]
+  set tools_administrativeTools_taskManager=error
+  set tools_administrativeTools_controlPanel=error
+  set tools_administrativeTools_runDialog=error
   set tools_administrativeTools_registryTools=disabled
-  set tools_administrativeTools_cmd=[error]
-  set tools_administrativeTools_desktop=[error]
+  set tools_administrativeTools_cmd=error
+  set tools_administrativeTools_desktop=error
 
   set error_main_variables_disabledRegistryTools=1
   exit /b
