@@ -1691,9 +1691,8 @@ set      language_stringBuilder_option_notExist=not exist
 set        language_stringBuilder_option_locked=locked            
 set      language_stringBuilder_option_unlocked=unlocked          
 
-set language_logo01=Release v%program_version%    
-set language_logo02=━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-set language_logo03=See other programs here:      
+set language_logo01=Release v%program_version%
+set language_logo02=See other programs here:
 
 set language_running=^^(i^^) %program_name% is running...
 set language_eula01=^^(^^!^^) The author is not responsible for any possible damage to the computer^^!
@@ -1861,8 +1860,7 @@ set        language_stringBuilder_option_locked=заблокировано
 set      language_stringBuilder_option_unlocked=розблокировано    
 
 set language_logo01=Релиз v%program_version%
-set language_logo02====================================
-set language_logo03=Смотрите другие программы здесь:
+set language_logo02=Смотрите другие программы здесь:
 
 set language_running=^^(i^^) %program_name% запускается...
 set language_eula01=^^(^^!^^) Автор не несет ответственности за возможные повреждения компьютера^^!
@@ -2030,8 +2028,7 @@ set        language_stringBuilder_option_locked=заблоковано
 set      language_stringBuilder_option_unlocked=розблоковано      
 
 set language_logo01=Реліз v%program_version%
-set language_logo02===============================
-set language_logo03=Дивіться інші програми тут:
+set language_logo02=Дивіться інші програми тут:
 
 set language_running=^^(i^^) %program_name% запускається...
 set language_eula01=^^(^^!^^) Автор не несе відповідальності за можливі пошкодження комп'ютера^^!
@@ -2212,8 +2209,8 @@ echo.
 echo.
 echo.    [MikronT] ==^> %program_name%
 echo.                  %language_logo01%
-echo.   %language_logo02%
-echo.     %language_logo03%
+echo.   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo.     %language_logo02%
 echo.         github.com/MikronT
 echo.
 echo.
@@ -2239,47 +2236,47 @@ mode con:cols=124 lines=39
 title [MikronT] %program_name%
 color 0b
 cls
-echo.
-echo.                                    ┃
 for /f "tokens=1-26,* delims=-" %%a in ("%*") do (
-  echo.    [MikronT] ==^> %program_name%       ┃   %%a
-  echo.                  %language_logo01%  ┃   %%b
-  echo.                                    ┃
-  echo.   %language_logo02%   ┃   %%c
-  echo.                                    ┃   %%d
-  echo.     %language_logo03% ┃   %%e
-  echo.         github.com/MikronT         ┃   %%f
-  echo.                                    ┃   %%g
-  echo.                                    ┃   %%h
-  echo.                                    ┃   %%i
-  echo.                                    ┃   %%g
-  echo.  Menu                              ┃   %%k
-  echo.                                    ┃   %%l
-  echo.  1  Interface                      ┃   %%m
-  echo.      • Desktop objects             ┃   %%n
-  echo.        Language key sequence       ┃   %%o
-  echo.        Input suggestions           ┃   %%p
-  echo.        Windows Explorer            ┃   %%q
-  echo.        Windows Taskbar             ┃   %%r
-  echo.  2  Instruments                    ┃   %%s
-  echo.  3  Setup                          ┃   %%t
-  echo.  4  Services                       ┃   %%u
-  echo.                                    ┃   %%v
-  echo.                                    ┃   %%w
-  echo.                                    ┃   %%x
-  echo.                                    ┃   %%y
-  echo.                                    ┃   %%z
+       echo.
+       echo.                                         ┃
+   echo.    [MikronT] ==^> %program_name%            ┃   %%a
+  echo.                  %language_logo01%           ┃   %%b
+       echo.                                         ┃
+       echo.   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   ┃   %%c
+       echo.                                         ┃   %%d
+              echo.     %language_logo02%            ┃   %%e
+       echo.         github.com/MikronT              ┃   %%f
+       echo.                                         ┃   %%g
+       echo.                                         ┃   %%h
+       echo.                                         ┃   %%i
+       echo.                                         ┃   %%g
+       echo.  Menu                                   ┃   %%k
+       echo.                                         ┃   %%l
+       echo.  1  Interface                           ┃   %%m
+       echo.      • Desktop objects                  ┃   %%n
+       echo.        Language key sequence            ┃   %%o
+       echo.        Input suggestions                ┃   %%p
+       echo.        Windows Explorer                 ┃   %%q
+       echo.        Windows Taskbar                  ┃   %%r
+       echo.  2  Instruments                         ┃   %%s
+       echo.  3  Setup                               ┃   %%t
+       echo.  4  Services                            ┃   %%u
+       echo.                                         ┃   %%v
+       echo.                                         ┃   %%w
+       echo.                                         ┃   %%x
+       echo.                                         ┃   %%y
+       echo.                                         ┃   %%z
+       echo.                                         ┃
+       echo.                                         ┃
+       echo.                                         ┃
+       echo.                                         ┃
+       echo.                                         ┃
+       echo.                                         ┃
+       echo.                                         ┃   %language_menuItem_goBack%
+       echo.                                         ┃
 )
-echo.                                    ┃
-echo.                                    ┃
-echo.                                    ┃
-echo.                                    ┃
-echo.                                    ┃
-echo.                                    ┃
-echo.                                    ┃   %language_menuItem_goBack%
-echo.                                    ┃
 for /f %%i in ('"prompt $h & echo on & for %%j in (1) do rem"') do set input_backspace=%%i
-choice /c 1230 /n /m "%input_backspace%                                    ┃   Enter the number or the letter of command > "
+choice /c 1230 /n /m "%input_backspace%                                         ┃   Enter the number or the letter of command > "
 exit /b
 
 
