@@ -87,8 +87,6 @@ if "%key_main_reboot%" == "services_sppsvc" (
   timeout /nobreak /t 1 >nul
   call :reboot_computer force
 ) else (
-  rem call :screenBuilder %language_interface_desktopObjects01%- - -%language_interface_desktopObjects02%- -%language_interface_desktopObjects03%-%language_interface_desktopObjects04%-%language_interface_desktopObjects05%-%language_interface_desktopObjects06%-%language_interface_desktopObjects07%- -%language_interface_desktopObjects08%
-
   %module_wget% "%update_version_url%" --output-document="%update_version_output%"
 
   for /f "tokens=1-3 delims=." %%l in (%update_version_output%) do (
@@ -2215,68 +2213,6 @@ echo.         github.com/MikronT
 echo.
 echo.
 echo.
-exit /b
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:screenBuilder
-mode con:cols=124 lines=39
-title [MikronT] %program_name%
-color 0b
-cls
-for /f "tokens=1-26,* delims=-" %%a in ("%*") do (
-       echo.
-       echo.                                         ┃
-   echo.    [MikronT] ==^> %program_name%            ┃   %%a
-  echo.                  %language_logo01%           ┃   %%b
-       echo.                                         ┃
-       echo.   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   ┃   %%c
-       echo.                                         ┃   %%d
-              echo.     %language_logo02%            ┃   %%e
-       echo.         github.com/MikronT              ┃   %%f
-       echo.                                         ┃   %%g
-       echo.                                         ┃   %%h
-       echo.                                         ┃   %%i
-       echo.                                         ┃   %%g
-       echo.  Menu                                   ┃   %%k
-       echo.                                         ┃   %%l
-       echo.  1  Interface                           ┃   %%m
-       echo.      • Desktop objects                  ┃   %%n
-       echo.        Language key sequence            ┃   %%o
-       echo.        Input suggestions                ┃   %%p
-       echo.        Windows Explorer                 ┃   %%q
-       echo.        Windows Taskbar                  ┃   %%r
-       echo.  2  Instruments                         ┃   %%s
-       echo.  3  Setup                               ┃   %%t
-       echo.  4  Services                            ┃   %%u
-       echo.                                         ┃   %%v
-       echo.                                         ┃   %%w
-       echo.                                         ┃   %%x
-       echo.                                         ┃   %%y
-       echo.                                         ┃   %%z
-       echo.                                         ┃
-       echo.                                         ┃
-       echo.                                         ┃
-       echo.                                         ┃
-       echo.                                         ┃
-       echo.                                         ┃
-       echo.                                         ┃   %language_menuItem_goBack%
-       echo.                                         ┃
-)
-for /f %%i in ('"prompt $h & echo on & for %%j in (1) do rem"') do set input_backspace=%%i
-choice /c 1230 /n /m "%input_backspace%                                         ┃   Enter the number or the letter of command > "
 exit /b
 
 
