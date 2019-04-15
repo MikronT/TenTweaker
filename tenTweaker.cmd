@@ -606,9 +606,9 @@ if "%interface_explorer_autoFolderTypeDiscovery%" == "enabled" (
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-echo.
-echo.
 echo.    %language_interface_explorer22%
+echo.
+echo.    %language_interface_explorer23%
 echo.    %language_menuItem_restartExplorer%
 echo.
 echo.    %language_menuItem_goBack%
@@ -1837,7 +1837,8 @@ set language_interface_explorer18=^^(G^^) 3DObjects
 set language_interface_explorer19=^^(D^^) Music                             
 set language_interface_explorer20=^^(H^^) OneDrive                          
 set language_interface_explorer21=^^(I^^) Auto folder type discovery        
-set language_interface_explorer22=Note: These features require to restart Windows Explorer.
+set language_interface_explorer22=^^(J^^) Hidden drives management
+set language_interface_explorer23=Note: These features require to restart Windows Explorer.
 
 set language_interface_taskBar01=^^(i^^) Windows Task Bar - Control Menu
 set language_interface_taskBar02=^^(^^^>^^) Choose action to config Windows Task Bar:
@@ -2005,7 +2006,8 @@ set language_interface_explorer18=^^(G^^) 3D Объекты
 set language_interface_explorer19=^^(D^^) Музыка                            
 set language_interface_explorer20=^^(H^^) OneDrive                          
 set language_interface_explorer21=^^(I^^) Авто определение типа папки       
-set language_interface_explorer22=Примечание: Эти функции требуют перезапуска Проводника Windows.
+set language_interface_explorer22=^^(J^^) Управление скрытыми дисками
+set language_interface_explorer23=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
 set language_interface_taskBar01=^^(i^^) Панель Задач Windows - Меню Управления
 set language_interface_taskBar02=^^(^^^>^^) Выберите действие, чтобы настроить Панель Задач Windows:
@@ -2173,7 +2175,8 @@ set language_interface_explorer18=^^(G^^) 3D Об'єкти
 set language_interface_explorer19=^^(D^^) Музика                            
 set language_interface_explorer20=^^(H^^) OneDrive                          
 set language_interface_explorer21=^^(I^^) Авто визначення типу папки        
-set language_interface_explorer22=Примітка: Ці функції потребують перезапуску Провідника Windows.
+set language_interface_explorer22=^^(J^^) Управління прихованими дисками
+set language_interface_explorer23=Примітка: Ці функції потребують перезапуску Провідника Windows.
 
 set language_interface_taskBar01=^^(i^^) Панель Завдань Windows - Меню Управління
 set language_interface_taskBar02=^^(^^^>^^) Виберіть дію, щоб налаштувати Панель Завдань Windows:
