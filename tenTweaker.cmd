@@ -928,6 +928,10 @@ set command=%errorLevel%
 :setup_office_setup
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%command%" == "1" (
   call :logo
+  echo.%language_setup_office01%
+  echo.
+  echo.
+
   if exist "%setup_office_setupISO%" del /q "%setup_office_setupISO%"
 
   echo.%language_setup_office05%
