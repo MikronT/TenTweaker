@@ -713,6 +713,86 @@ goto :interface_explorer
 
 
 
+:interface_explorer_hiddenDrivesManagement
+call :main_variables interface_explorer_hiddenDrivesManagement
+
+call :logo
+echo.%language_interface_explorer_hiddenDrivesManagement01%
+echo.
+echo.
+echo.%language_interface_explorer_hiddenDrivesManagement02%
+echo.%language_interface_explorer_hiddenDrivesManagement03%
+echo.    %language_interface_explorer_hiddenDrivesManagement04%
+echo.
+echo.    %language_interface_explorer_hiddenDrivesManagement05%
+echo.    %language_menuItem_restartExplorer%
+echo.
+echo.    %language_menuItem_goBack%
+echo.
+echo.
+echo.
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
+choice /c 1Y0 /n /m "> "
+set command=%errorLevel%
+
+
+
+
+if "%command%" == "1" call :interface_explorer_hiddenDrivesManagement_input
+if "%command%" == "2" call :restart_explorer
+if "%command%" == "3" ( set command= & exit /b )
+goto :interface_explorer_hiddenDrivesManagement
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:interface_explorer_hiddenDrivesManagement_input
+call :logo
+echo.%language_interface_explorer_hiddenDrivesManagement01%
+echo.
+echo.
+echo.%language_interface_explorer_hiddenDrivesManagement06%
+echo.    %language_interface_explorer_hiddenDrivesManagement07%
+echo.
+echo.    %language_menuItem_goBack%
+echo.
+echo.
+echo.
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
+set /p input=^> 
+
+
+
+if "%input%" == "0" ( set command= & exit /b )
+
+
+goto :interface_explorer_hiddenDrivesManagement_input
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :interface_taskBar
 call :main_variables interface_taskBar
 
