@@ -616,7 +616,7 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-choice /c 123456789ABCDEFGHIY0 /n /m "> "
+choice /c 123456789ABCDEFGHIJY0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -695,8 +695,9 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   ) else reg delete "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /v FolderType /f >nul
 )
 
-if "%command%" == "19" call :restart_explorer
-if "%command%" == "20" ( set command= & exit /b )
+if "%command%" == "19" call :interface_explorer_hiddenDrivesManagement
+if "%command%" == "20" call :restart_explorer
+if "%command%" == "21" ( set command= & exit /b )
 goto :interface_explorer
 
 
