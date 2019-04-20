@@ -606,9 +606,8 @@ if "%interface_explorer_autoFolderTypeDiscovery%" == "enabled" (
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-echo.    %language_interface_explorer22%
 echo.
-echo.    %language_interface_explorer23%
+echo.    %language_interface_explorer22%
 echo.    %language_menuItem_restartExplorer%
 echo.
 echo.    %language_menuItem_goBack%
@@ -616,7 +615,7 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-choice /c 123456789ABCDEFGHIJY0 /n /m "> "
+choice /c 123456789ABCDEFGHIY0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -695,90 +694,9 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   ) else reg delete "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /v FolderType /f >nul
 )
 
-if "%command%" == "19" call :interface_explorer_hiddenDrivesManagement
-if "%command%" == "20" call :restart_explorer
-if "%command%" == "21" ( set command= & exit /b )
+if "%command%" == "19" call :restart_explorer
+if "%command%" == "20" ( set command= & exit /b )
 goto :interface_explorer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:interface_explorer_hiddenDrivesManagement
-call :main_variables interface_explorer_hiddenDrivesManagement
-
-call :logo
-echo.%language_interface_explorer_hiddenDrivesManagement01%
-echo.
-echo.
-echo.%language_interface_explorer_hiddenDrivesManagement02%
-echo.%language_interface_explorer_hiddenDrivesManagement03%
-echo.    %language_interface_explorer_hiddenDrivesManagement04%
-echo.
-echo.    %language_interface_explorer_hiddenDrivesManagement05%
-echo.    %language_menuItem_restartExplorer%
-echo.
-echo.    %language_menuItem_goBack%
-echo.
-echo.
-echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-choice /c 1Y0 /n /m "> "
-set command=%errorLevel%
-
-
-
-
-if "%command%" == "1" call :interface_explorer_hiddenDrivesManagement_input
-if "%command%" == "2" call :restart_explorer
-if "%command%" == "3" ( set command= & exit /b )
-goto :interface_explorer_hiddenDrivesManagement
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:interface_explorer_hiddenDrivesManagement_input
-call :logo
-echo.%language_interface_explorer_hiddenDrivesManagement01%
-echo.
-echo.
-echo.%language_interface_explorer_hiddenDrivesManagement06%
-echo.    %language_interface_explorer_hiddenDrivesManagement07%
-echo.
-echo.    %language_menuItem_goBack%
-echo.
-echo.
-echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-set /p input=^> 
-
-
-
-if "%input%" == "0" ( set command= & exit /b )
-
-
-goto :interface_explorer_hiddenDrivesManagement_input
 
 
 
@@ -1838,8 +1756,7 @@ set language_interface_explorer18=^^(G^^) 3DObjects
 set language_interface_explorer19=^^(D^^) Music                             
 set language_interface_explorer20=^^(H^^) OneDrive                          
 set language_interface_explorer21=^^(I^^) Auto folder type discovery        
-set language_interface_explorer22=^^(J^^) Hidden drives management
-set language_interface_explorer23=Note: These features require to restart Windows Explorer.
+set language_interface_explorer22=Note: These features require to restart Windows Explorer.
 
 set language_interface_taskBar01=^^(i^^) Windows Task Bar - Control Menu
 set language_interface_taskBar02=^^(^^^>^^) Choose action to config Windows Task Bar:
@@ -2007,8 +1924,7 @@ set language_interface_explorer18=^^(G^^) 3D Объекты
 set language_interface_explorer19=^^(D^^) Музыка                            
 set language_interface_explorer20=^^(H^^) OneDrive                          
 set language_interface_explorer21=^^(I^^) Авто определение типа папки       
-set language_interface_explorer22=^^(J^^) Управление скрытыми дисками
-set language_interface_explorer23=Примечание: Эти функции требуют перезапуска Проводника Windows.
+set language_interface_explorer22=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
 set language_interface_taskBar01=^^(i^^) Панель Задач Windows - Меню Управления
 set language_interface_taskBar02=^^(^^^>^^) Выберите действие, чтобы настроить Панель Задач Windows:
@@ -2176,8 +2092,7 @@ set language_interface_explorer18=^^(G^^) 3D Об'єкти
 set language_interface_explorer19=^^(D^^) Музика                            
 set language_interface_explorer20=^^(H^^) OneDrive                          
 set language_interface_explorer21=^^(I^^) Авто визначення типу папки        
-set language_interface_explorer22=^^(J^^) Управління прихованими дисками
-set language_interface_explorer23=Примітка: Ці функції потребують перезапуску Провідника Windows.
+set language_interface_explorer22=Примітка: Ці функції потребують перезапуску Провідника Windows.
 
 set language_interface_taskBar01=^^(i^^) Панель Завдань Windows - Меню Управління
 set language_interface_taskBar02=^^(^^^>^^) Виберіть дію, щоб налаштувати Панель Завдань Windows:
