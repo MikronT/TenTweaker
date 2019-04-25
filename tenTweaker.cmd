@@ -1700,6 +1700,8 @@ set         language_stringBuilder_option_exist=exist
 set      language_stringBuilder_option_notExist=not exist         
 set        language_stringBuilder_option_locked=locked            
 set      language_stringBuilder_option_unlocked=unlocked          
+set     language_stringBuilder_option_installed=installed         
+set   language_stringBuilder_option_uninstalled=uninstalled       
 
 set   language_stringBuilder_option_notAssigned=not assigned      
 set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
@@ -1871,6 +1873,8 @@ set         language_stringBuilder_option_exist=существует
 set      language_stringBuilder_option_notExist=не существует     
 set        language_stringBuilder_option_locked=заблокировано     
 set      language_stringBuilder_option_unlocked=розблокировано    
+set     language_stringBuilder_option_installed=установлено       
+set   language_stringBuilder_option_uninstalled=не установлено    
 
 set   language_stringBuilder_option_notAssigned=не призначено     
 set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
@@ -2042,6 +2046,8 @@ set         language_stringBuilder_option_exist=існує
 set      language_stringBuilder_option_notExist=не існує          
 set        language_stringBuilder_option_locked=заблоковано       
 set      language_stringBuilder_option_unlocked=розблоковано      
+set     language_stringBuilder_option_installed=установлено       
+set   language_stringBuilder_option_uninstalled=не установлено    
 
 set   language_stringBuilder_option_notAssigned=не визначено      
 set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
