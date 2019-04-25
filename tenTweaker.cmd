@@ -825,6 +825,174 @@ echo.
 echo.
 echo.%language_programs_system02%
 
+set stringBuilder_string=%language_programs_system03%
+if "%programs_system_program_3DViewer%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_3DViewer%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system04%
+if "%programs_system_program_alarmsClock%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_alarmsClock%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system05%
+if "%programs_system_program_feedbackHub%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_feedbackHub%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system06%
+if "%programs_system_program_camera%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_camera%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system07%
+if "%programs_system_program_getHelp%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_getHelp%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system08%
+if "%programs_system_program_grooveMusic%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_grooveMusic%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system09%
+if "%programs_system_program_mailCalendar%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_mailCalendar%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system10%
+if "%programs_system_program_moviesTV%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_moviesTV%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system11%
+if "%programs_system_program_maps%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_maps%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system12%
+if "%programs_system_program_myOffice%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_myOffice%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system13%
+if "%programs_system_program_messaging%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_messaging%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system14%
+if "%programs_system_program_paint3D%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_paint3D%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system15%
+if "%programs_system_program_mobilePlans%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_mobilePlans%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system16%
+if "%programs_system_program_skype%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_skype%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system17%
+if "%programs_system_program_oneNote%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_oneNote%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system18%
+if "%programs_system_program_stickyNotes%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_stickyNotes%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system19%
+if "%programs_system_program_people%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_people%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system20%
+if "%programs_system_program_store%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_store%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system21%
+if "%programs_system_program_print3D%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_print3D%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system22%
+if "%programs_system_program_voiceRecorder%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_voiceRecorder%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system23%
+if "%programs_system_program_solitare%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_solitare%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system24%
+if "%programs_system_program_weather%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_weather%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system25%
+if "%programs_system_program_tips%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_tips%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system26%
+if "%programs_system_program_xbox%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_xbox%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
 echo.
 echo.    %language_menuItem_goBack%
 echo.
