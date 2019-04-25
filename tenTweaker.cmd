@@ -817,6 +817,20 @@ goto :interface_taskBar
 
 
 :programs_system
+call :main_variables programs_system
+
+call :logo
+echo.%language_programs_system01%
+echo.
+echo.
+echo.%language_programs_system02%
+
+echo.
+echo.    %language_menuItem_goBack%
+echo.
+echo.
+echo.
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
 goto :programs_system
 
 
