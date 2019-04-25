@@ -56,6 +56,7 @@ for /f "tokens=1-3 delims=." %%i in ("%program_version%") do (
 )
 
 set module_wget=files\wget.exe --quiet --no-check-certificate --tries=1
+set module_powershell=start /wait /min powershell.exe
 set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
 
 set update_version_output=temp\%program_name_ns%.version
@@ -1143,16 +1144,16 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%command%" == "1" 
   )
 
   echo.%language_programs_office06%
-  start /wait /min powershell.exe "Mount-DiskImage ""%~dp0%programs_office_setupISO%"""
+  %module_powershell% "Mount-DiskImage ""%~dp0%programs_office_setupISO%"""
   timeout /nobreak /t 1 >nul
 
   echo.%language_programs_office07%
-  start /wait /min powershell.exe "Get-DiskImage """%~dp0%programs_office_setupISO%""" | Get-Volume | Select-Object {$_.DriveLetter} | Out-File -FilePath """%~dp0temp\return_diskImage""" -Encoding ASCII"
+  %module_powershell% "Get-DiskImage """%~dp0%programs_office_setupISO%""" | Get-Volume | Select-Object {$_.DriveLetter} | Out-File -FilePath """%~dp0temp\return_diskImage""" -Encoding ASCII"
   for /f "skip=3 delims= " %%i in (temp\return_diskImage) do start /wait %%i:\O16Setup.exe
   timeout /nobreak /t 1 >nul
 
   echo.%language_programs_office08%
-  start /wait /min powershell.exe "Dismount-DiskImage ""%~dp0%programs_office_setupISO%"""
+  %module_powershell% "Dismount-DiskImage ""%~dp0%programs_office_setupISO%"""
   timeout /nobreak /t 1 >nul
 )
 
