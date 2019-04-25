@@ -1122,8 +1122,8 @@ goto :programs_system
 
 
 :programs_system_appxPackageManagement
-if "%1" == "add"    %module_powershell% ""
-if "%1" == "remove" %module_powershell% ""
+if "%1" == "add"    %module_powershell% "Add-AppxPackage -Path ((Get-AppxPackage -AllUsers -Name """*%2*""").InstallLocation + """\AppxManifest.xml""") -Register -DisableDevelopmentMode"
+if "%1" == "remove" %module_powershell% "Get-AppxPackage *%2* | Remove-AppxPackage"
 exit /b
 
 
