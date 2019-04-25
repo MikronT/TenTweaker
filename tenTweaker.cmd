@@ -44,7 +44,7 @@ if %errorLevel% LSS 1 if "%key_main_registryMerge%" NEQ "true" (
 set program_name=Ten Tweaker
 set program_name_ns=tenTweaker
 
-set program_version=2.0
+set program_version=2.1
 set program_version_level1=0
 set program_version_level2=0
 set program_version_level3=0
