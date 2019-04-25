@@ -831,6 +831,7 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
+choice /c 123456789ABCDEFGHIJKLMNO0 /n /m "> "
 set command=%errorLevel%
 
 
