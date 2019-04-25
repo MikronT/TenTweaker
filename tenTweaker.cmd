@@ -1122,9 +1122,14 @@ goto :programs_system
 
 
 :programs_system_appxPackageManagement
+if not exist temp\appxPackages md temp\appxPackages
+
 if "%1" == "check" (
-  %module_powershell% "Get-AppxPackage *Microsoft.%2* | Out-File -FilePath """%~dp0temp\return_%3""" -Encoding ASCII"
-  for /f "delims=" %%i in (temp\return_%3) do if "%%i" NEQ "" set %3=installed
+  %module_powershell% "Get-AppxPackage *Microsoft.%2* | Out-File -FilePath """%~dp0temp\appxPackages\return_%3""" -Encoding ASCII"
+  for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir "%~dp0temp\appxPackages\return_%3"') do if "%%i" == "1" if "%%j" NEQ "0" set %3=installed
+
+  rem %module_powershell% "Get-AppxPackage *Microsoft.%2* | Out-File -FilePath """%~dp0temp\appxPackages\return_%3""" -Encoding ASCII"
+  rem for /f "delims=" %%i in (temp\appxPackages\return_%3) do if "%%i" NEQ "" set %3=installed
 )
 
 if "%1" == "add"    %module_powershell% "Add-AppxPackage -Path ((Get-AppxPackage -AllUsers -Name """*Microsoft.%2*""").InstallLocation + """\AppxManifest.xml""") -Register -DisableDevelopmentMode"
