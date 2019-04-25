@@ -1696,19 +1696,22 @@ set       language_stringBuilder_option_enabled=enabled
 set      language_stringBuilder_option_disabled=disabled          
 set         language_stringBuilder_option_shown=shown             
 set        language_stringBuilder_option_hidden=hidden            
-set   language_stringBuilder_option_notAssigned=not assigned      
-set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
-set  language_stringBuilder_option_leftAltShift=left Alt + Shift  
-set   language_stringBuilder_option_graveAccent=grave accent ^^(`^^)  
-set    language_stringBuilder_option_powerShell=PowerShell        
-set language_stringBuilder_option_commandPrompt=Command Prompt    
-set        language_stringBuilder_option_always=always            
-set    language_stringBuilder_option_whenIsFull=when is full      
-set         language_stringBuilder_option_never=never             
 set         language_stringBuilder_option_exist=exist             
 set      language_stringBuilder_option_notExist=not exist         
 set        language_stringBuilder_option_locked=locked            
 set      language_stringBuilder_option_unlocked=unlocked          
+
+set   language_stringBuilder_option_notAssigned=not assigned      
+set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
+set  language_stringBuilder_option_leftAltShift=left Alt + Shift  
+set   language_stringBuilder_option_graveAccent=grave accent ^^(`^^)  
+
+set    language_stringBuilder_option_powerShell=PowerShell        
+set language_stringBuilder_option_commandPrompt=Command Prompt    
+
+set        language_stringBuilder_option_always=always            
+set    language_stringBuilder_option_whenIsFull=when is full      
+set         language_stringBuilder_option_never=never             
 
 set language_logo01=Release v%program_version%
 set language_logo02=See other programs here:
@@ -1864,19 +1867,22 @@ set       language_stringBuilder_option_enabled=включено
 set      language_stringBuilder_option_disabled=отключено         
 set         language_stringBuilder_option_shown=показано          
 set        language_stringBuilder_option_hidden=скрыто            
-set   language_stringBuilder_option_notAssigned=не призначено     
-set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
-set  language_stringBuilder_option_leftAltShift=левый Alt + Shift 
-set   language_stringBuilder_option_graveAccent=ударение ^^(`^^)      
-set    language_stringBuilder_option_powerShell=PowerShell        
-set language_stringBuilder_option_commandPrompt=Командная Строка  
-set        language_stringBuilder_option_always=всегда            
-set    language_stringBuilder_option_whenIsFull=когда полон       
-set         language_stringBuilder_option_never=никогда           
 set         language_stringBuilder_option_exist=существует        
 set      language_stringBuilder_option_notExist=не существует     
 set        language_stringBuilder_option_locked=заблокировано     
 set      language_stringBuilder_option_unlocked=розблокировано    
+
+set   language_stringBuilder_option_notAssigned=не призначено     
+set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
+set  language_stringBuilder_option_leftAltShift=левый Alt + Shift 
+set   language_stringBuilder_option_graveAccent=ударение ^^(`^^)      
+
+set    language_stringBuilder_option_powerShell=PowerShell        
+set language_stringBuilder_option_commandPrompt=Командная Строка  
+
+set        language_stringBuilder_option_always=всегда            
+set    language_stringBuilder_option_whenIsFull=когда полон       
+set         language_stringBuilder_option_never=никогда           
 
 set language_logo01=Релиз v%program_version%
 set language_logo02=Смотрите другие программы здесь:
@@ -2032,19 +2038,22 @@ set       language_stringBuilder_option_enabled=увімкнено
 set      language_stringBuilder_option_disabled=вимкнено          
 set         language_stringBuilder_option_shown=показано          
 set        language_stringBuilder_option_hidden=сховано           
-set   language_stringBuilder_option_notAssigned=не визначено      
-set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
-set  language_stringBuilder_option_leftAltShift=лівий Alt + Shift 
-set   language_stringBuilder_option_graveAccent=наголос ^^(`^^)       
-set    language_stringBuilder_option_powerShell=PowerShell        
-set language_stringBuilder_option_commandPrompt=Командний Рядок   
-set        language_stringBuilder_option_always=завжди            
-set    language_stringBuilder_option_whenIsFull=коли повний       
-set         language_stringBuilder_option_never=ніколи            
 set         language_stringBuilder_option_exist=існує             
 set      language_stringBuilder_option_notExist=не існує          
 set        language_stringBuilder_option_locked=заблоковано       
 set      language_stringBuilder_option_unlocked=розблоковано      
+
+set   language_stringBuilder_option_notAssigned=не визначено      
+set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
+set  language_stringBuilder_option_leftAltShift=лівий Alt + Shift 
+set   language_stringBuilder_option_graveAccent=наголос ^^(`^^)       
+
+set    language_stringBuilder_option_powerShell=PowerShell        
+set language_stringBuilder_option_commandPrompt=Командний Рядок   
+
+set        language_stringBuilder_option_always=завжди            
+set    language_stringBuilder_option_whenIsFull=коли повний       
+set         language_stringBuilder_option_never=ніколи            
 
 set language_logo01=Реліз v%program_version%
 set language_logo02=Дивіться інші програми тут:
