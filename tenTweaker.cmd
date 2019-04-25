@@ -1857,6 +1857,38 @@ if "%1" == "interface_taskBar" (
 
 
 
+if "%1" == "programs_system" (
+  set programs_system_program_3DViewer=installed
+  set programs_system_program_feedbackHub=installed
+  set programs_system_program_getHelp=installed
+  set programs_system_program_mailCalendar=installed
+  set programs_system_program_maps=installed
+  set programs_system_program_messaging=installed
+  set programs_system_program_mobilePlans=installed
+  set programs_system_program_oneNote=installed
+  set programs_system_program_people=installed
+  set programs_system_program_print3D=installed
+  set programs_system_program_solitare=installed
+  set programs_system_program_tips=installed
+
+  set programs_system_program_alarmsClock=installed
+  set programs_system_program_camera=installed
+  set programs_system_program_grooveMusic=installed
+  set programs_system_program_moviesTV=installed
+  set programs_system_program_myOffice=installed
+  set programs_system_program_paint3D=installed
+  set programs_system_program_skype=installed
+  set programs_system_program_stickyNotes=installed
+  set programs_system_program_store=installed
+  set programs_system_program_voiceRecorder=installed
+  set programs_system_program_weather=installed
+  set programs_system_program_xbox=installed
+)
+
+
+
+
+
 if "%1" == "programs_office" (
   set programs_office_setupURL=https://onedrive.live.com/download?cid=D3AF852448CB4BF6^&resid=D3AF852448CB4BF6%%21259^&authkey=AAK3Qw80R8to-VE
   set programs_office_setupISO=temp\programs_office_microsoftOfficeProfessionalPlus2016Setup.iso
