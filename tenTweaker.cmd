@@ -946,9 +946,6 @@ goto :setup_gpeditMSC
 
 
 :services_windowsUpdate
-set services_windowsUpdate_updateDistributions=unlocked
-for /f "delims=" %%i in ('dir /a:-d /b "%WinDir%\SoftwareDistribution\Download"') do if "%%i" == "Download" set services_windowsUpdate_updateDistributions=locked
-
 call :main_variables services_windowsUpdate
 
 call :logo
@@ -1601,6 +1598,9 @@ if "%1" == "setup_gpeditMSC" (
 
 
 if "%1" == "services_windowsUpdate" (
+  set services_windowsUpdate_updateDistributions=unlocked
+  for /f "delims=" %%i in ('dir /a:-d /b "%WinDir%\SoftwareDistribution\Download"') do if "%%i" == "Download" set services_windowsUpdate_updateDistributions=locked
+
   set services_windowsUpdate_updateCenter=enabled
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKLM\SYSTEM\ControlSet001\Services\wuauserv /v Start') do if "%%i" == "0x4" set services_windowsUpdate_updateCenter=disabled
 )
