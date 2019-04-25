@@ -1011,91 +1011,91 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "2" if "%programs_system_program_alarmsClock%" == "installed" (
+  if "%command%" == "2" if "%programs_system_program_feedbackHub%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "3" if "%programs_system_program_feedbackHub%" == "installed" (
+  if "%command%" == "3" if "%programs_system_program_getHelp%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "4" if "%programs_system_program_camera%" == "installed" (
+  if "%command%" == "4" if "%programs_system_program_mailCalendar%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "5" if "%programs_system_program_getHelp%" == "installed" (
+  if "%command%" == "5" if "%programs_system_program_maps%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "6" if "%programs_system_program_grooveMusic%" == "installed" (
+  if "%command%" == "6" if "%programs_system_program_messaging%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "7" if "%programs_system_program_mailCalendar%" == "installed" (
+  if "%command%" == "7" if "%programs_system_program_mobilePlans%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "8" if "%programs_system_program_moviesTV%" == "installed" (
+  if "%command%" == "8" if "%programs_system_program_oneNote%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "9" if "%programs_system_program_maps%" == "installed" (
+  if "%command%" == "9" if "%programs_system_program_people%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "10" if "%programs_system_program_myOffice%" == "installed" (
+  if "%command%" == "10" if "%programs_system_program_print3D%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "11" if "%programs_system_program_messaging%" == "installed" (
+  if "%command%" == "11" if "%programs_system_program_solitare%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "12" if "%programs_system_program_paint3D%" == "installed" (
+  if "%command%" == "12" if "%programs_system_program_tips%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "13" if "%programs_system_program_mobilePlans%" == "installed" (
+  if "%command%" == "13" if "%programs_system_program_alarmsClock%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "14" if "%programs_system_program_skype%" == "installed" (
+  if "%command%" == "14" if "%programs_system_program_camera%" == "installed" (
+    %appxMgmt% remove Microsoft.WindowsCamera
+  ) else %appxMgmt% add Microsoft.WindowsCamera
+
+  if "%command%" == "15" if "%programs_system_program_grooveMusic%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "15" if "%programs_system_program_oneNote%" == "installed" (
+  if "%command%" == "16" if "%programs_system_program_moviesTV%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "16" if "%programs_system_program_stickyNotes%" == "installed" (
+  if "%command%" == "17" if "%programs_system_program_myOffice%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "17" if "%programs_system_program_people%" == "installed" (
+  if "%command%" == "18" if "%programs_system_program_paint3D%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "18" if "%programs_system_program_store%" == "installed" (
+  if "%command%" == "19" if "%programs_system_program_skype%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "19" if "%programs_system_program_print3D%" == "installed" (
+  if "%command%" == "20" if "%programs_system_program_stickyNotes%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "20" if "%programs_system_program_voiceRecorder%" == "installed" (
+  if "%command%" == "21" if "%programs_system_program_store%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "21" if "%programs_system_program_solitare%" == "installed" (
+  if "%command%" == "22" if "%programs_system_program_voiceRecorder%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
-  if "%command%" == "22" if "%programs_system_program_weather%" == "installed" (
-    %appxMgmt% remove 
-  ) else %appxMgmt% add 
-
-  if "%command%" == "23" if "%programs_system_program_tips%" == "installed" (
+  if "%command%" == "23" if "%programs_system_program_weather%" == "installed" (
     %appxMgmt% remove 
   ) else %appxMgmt% add 
 
