@@ -831,6 +831,14 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
+set command=%errorLevel%
+
+
+
+if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
+)
+
+if "%command%" == "25" ( set command= & exit /b )
 goto :programs_system
 
 
