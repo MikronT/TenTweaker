@@ -1005,76 +1005,76 @@ set command=%errorLevel%
 
 
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
-  if "%command%" == "1" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "1" if "%programs_system_program_3DViewer%" == "installed" (
   ) else
 
-  if "%command%" == "2" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "2" if "%programs_system_program_alarmsClock%" == "installed" (
   ) else
 
-  if "%command%" == "3" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "3" if "%programs_system_program_feedbackHub%" == "installed" (
   ) else
 
-  if "%command%" == "4" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "4" if "%programs_system_program_camera%" == "installed" (
   ) else
 
-  if "%command%" == "5" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "5" if "%programs_system_program_getHelp%" == "installed" (
   ) else
 
-  if "%command%" == "6" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "6" if "%programs_system_program_grooveMusic%" == "installed" (
   ) else
 
-  if "%command%" == "7" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "7" if "%programs_system_program_mailCalendar%" == "installed" (
   ) else
 
-  if "%command%" == "8" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "8" if "%programs_system_program_moviesTV%" == "installed" (
   ) else
 
-  if "%command%" == "9" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "9" if "%programs_system_program_maps%" == "installed" (
   ) else
 
-  if "%command%" == "10" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "10" if "%programs_system_program_myOffice%" == "installed" (
   ) else
 
-  if "%command%" == "11" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "11" if "%programs_system_program_messaging%" == "installed" (
   ) else
 
-  if "%command%" == "12" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "12" if "%programs_system_program_paint3D%" == "installed" (
   ) else
 
-  if "%command%" == "13" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "13" if "%programs_system_program_mobilePlans%" == "installed" (
   ) else
 
-  if "%command%" == "14" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "14" if "%programs_system_program_skype%" == "installed" (
   ) else
 
-  if "%command%" == "15" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "15" if "%programs_system_program_oneNote%" == "installed" (
   ) else
 
-  if "%command%" == "16" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "16" if "%programs_system_program_stickyNotes%" == "installed" (
   ) else
 
-  if "%command%" == "17" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "17" if "%programs_system_program_people%" == "installed" (
   ) else
 
-  if "%command%" == "18" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "18" if "%programs_system_program_store%" == "installed" (
   ) else
 
-  if "%command%" == "19" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "19" if "%programs_system_program_print3D%" == "installed" (
   ) else
 
-  if "%command%" == "20" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "20" if "%programs_system_program_voiceRecorder%" == "installed" (
   ) else
 
-  if "%command%" == "21" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "21" if "%programs_system_program_solitare%" == "installed" (
   ) else
 
-  if "%command%" == "22" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "22" if "%programs_system_program_weather%" == "installed" (
   ) else
 
-  if "%command%" == "23" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "23" if "%programs_system_program_tips%" == "installed" (
   ) else
 
-  if "%command%" == "24" if "%programs_system_program_%" == "installed" (
+  if "%command%" == "24" if "%programs_system_program_xbox%" == "installed" (
   ) else
 )
 
