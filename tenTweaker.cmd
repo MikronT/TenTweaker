@@ -57,6 +57,7 @@ for /f "tokens=1-3 delims=." %%i in ("%program_version%") do (
 
 set module_wget=files\wget.exe --quiet --no-check-certificate --tries=1
 set module_powershell=start /wait /min powershell.exe
+set appxMgmt=call :programs_system_appxPackageManagement
 set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
 
 set update_version_output=temp\%program_name_ns%.version
@@ -1007,80 +1008,123 @@ set command=%errorLevel%
 
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   if "%command%" == "1" if "%programs_system_program_3DViewer%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "2" if "%programs_system_program_alarmsClock%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "3" if "%programs_system_program_feedbackHub%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "4" if "%programs_system_program_camera%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "5" if "%programs_system_program_getHelp%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "6" if "%programs_system_program_grooveMusic%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "7" if "%programs_system_program_mailCalendar%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "8" if "%programs_system_program_moviesTV%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "9" if "%programs_system_program_maps%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "10" if "%programs_system_program_myOffice%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "11" if "%programs_system_program_messaging%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "12" if "%programs_system_program_paint3D%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "13" if "%programs_system_program_mobilePlans%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "14" if "%programs_system_program_skype%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "15" if "%programs_system_program_oneNote%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "16" if "%programs_system_program_stickyNotes%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "17" if "%programs_system_program_people%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "18" if "%programs_system_program_store%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "19" if "%programs_system_program_print3D%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "20" if "%programs_system_program_voiceRecorder%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "21" if "%programs_system_program_solitare%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "22" if "%programs_system_program_weather%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "23" if "%programs_system_program_tips%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 
   if "%command%" == "24" if "%programs_system_program_xbox%" == "installed" (
-  ) else
+    %appxMgmt% remove 
+  ) else %appxMgmt% add 
 )
 
 if "%command%" == "25" ( set command= & exit /b )
 goto :programs_system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:programs_system_appxPackageManagement
+if "%1" == "add"    %module_powershell% ""
+if "%1" == "remove" %module_powershell% ""
+exit /b
 
 
 
