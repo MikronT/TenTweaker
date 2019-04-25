@@ -146,7 +146,7 @@ if "%update_available%" == "true" (
   echo.        %language_message_update_available02% github.com/MikronT/TenTweaker/releases/latest
   echo.
 )
-choice /c 123456789ABL0 /n /m "> "
+choice /c 123456789ABCL0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -157,21 +157,22 @@ if "%command%" == "3" call :interface_suggestions
 if "%command%" == "4" call :interface_explorer
 if "%command%" == "5" call :interface_taskBar
 
-if "%command%" == "6" call :setup_office
-if "%command%" == "7" call :setup_gpeditMSC
+if "%command%" == "6" call :programs_system
+if "%command%" == "7" call :programs_office
+if "%command%" == "8" call :programs_gpeditMSC
 
-if "%command%" == "8" call :services_windowsUpdate
-if "%command%" == "9" call :services_sppsvc
+if "%command%" == "9" call :services_windowsUpdate
+if "%command%" == "10" call :services_sppsvc
 
-if "%command%" == "10" call :tools_administrativeTools
-if "%command%" == "11" call :tools_systemResourceChecker
+if "%command%" == "11" call :tools_administrativeTools
+if "%command%" == "12" call :tools_systemResourceChecker
 
-if "%command%" == "12" (
+if "%command%" == "13" (
   call :language_menu
   call :language_import
 )
 
-if "%command%" == "13" (
+if "%command%" == "14" (
   rd /s /q temp
   exit /b
 )
@@ -1700,15 +1701,15 @@ set language_eula01=^^(^^!^^) The author is not responsible for any possible dam
 set language_eula02=^^(^^?^^) Are you sure^^? ^^(Press Enter or close^^)
 
 set language_main_menu01=  Interface                                                    Programs
-set language_main_menu02=    ^^(1^^) Desktop objects ^^(This PC etc^^)                            ^^(6^^) Setup Office Professional+ 2016
-set language_main_menu03=    ^^(2^^) Language key sequence ^^(Ctrl + Shift^^)                     ^^(7^^) Setup/restore gpedit.msc
-set language_main_menu04=    ^^(3^^) Input suggestions and auto completion
-set language_main_menu05=    ^^(4^^) Windows Explorer                                       Services
-set language_main_menu06=    ^^(5^^) Windows Task Bar                                         ^^(8^^) Windows Update ^^(wuauserv^^)
-set language_main_menu07=                                                                 ^^(9^^) Software Protection Platform Service ^^(sppsvc^^)
-set language_main_menu08=  Tools
-set language_main_menu09=    ^^(A^^) Administrative tools
-set language_main_menu10=    ^^(B^^) System Resource Checker
+set language_main_menu02=    ^^(1^^) Desktop objects ^^(This PC etc^^)                            ^^(6^^) System programs
+set language_main_menu03=    ^^(2^^) Language key sequence ^^(Ctrl + Shift^^)                     ^^(7^^) Setup Office Professional+ 2016
+set language_main_menu04=    ^^(3^^) Input suggestions and auto completion                    ^^(8^^) Setup/restore gpedit.msc
+set language_main_menu05=    ^^(4^^) Windows Explorer
+set language_main_menu06=    ^^(5^^) Windows Task Bar                                       Services
+set language_main_menu07=                                                                 ^^(9^^) Windows Update ^^(wuauserv^^)
+set language_main_menu08=  Tools                                                          ^^(A^^) Software Protection Platform Service ^^(sppsvc^^)
+set language_main_menu09=    ^^(B^^) Administrative tools
+set language_main_menu10=    ^^(C^^) System Resource Checker
 set language_main_menu11=
 set language_main_menu12=
 set language_main_menu13=    ^^(L^^) Language
@@ -1868,15 +1869,15 @@ set language_eula01=^^(^^!^^) Автор не несет ответственн�
 set language_eula02=^^(^^?^^) Вы уверены^^? ^^(Нажмите Enter или закройте^^)
 
 set language_main_menu01=  Интерфейс                                                    Программы
-set language_main_menu02=    ^^(1^^) Объекты рабочего стола ^^(Этот ПК и другие^^)                ^^(6^^) Установить Офис Профессиональный+ 2016
-set language_main_menu03=    ^^(2^^) Сочетания клавиш смены языка ^^(Ctrl + Shift^^)              ^^(7^^) Установить/восстановить gpedit.msc
-set language_main_menu04=    ^^(3^^) Предложения при вводе и автозаполнение
-set language_main_menu05=    ^^(4^^) Проводник Windows                                      Службы
-set language_main_menu06=    ^^(5^^) Панель Задач Windows                                     ^^(8^^) Обновление Windows ^^(wuauserv^^)
-set language_main_menu07=                                                                 ^^(9^^) Служба Платформы Защиты ПО ^^(sppsvc^^)
-set language_main_menu08=  Инструменты
-set language_main_menu09=    ^^(A^^) Административные инструменты
-set language_main_menu10=    ^^(B^^) Проверка системных ресурсов
+set language_main_menu02=    ^^(1^^) Объекты рабочего стола ^^(Этот ПК и другие^^)                ^^(6^^) Системные программы
+set language_main_menu03=    ^^(2^^) Сочетания клавиш смены языка ^^(Ctrl + Shift^^)              ^^(7^^) Установить Офис Профессиональный+ 2016
+set language_main_menu04=    ^^(3^^) Предложения при вводе и автозаполнение                   ^^(8^^) Установить/восстановить gpedit.msc
+set language_main_menu05=    ^^(4^^) Проводник Windows
+set language_main_menu06=    ^^(5^^) Панель Задач Windows                                   Службы
+set language_main_menu07=                                                                 ^^(9^^) Обновление Windows ^^(wuauserv^^)
+set language_main_menu08=  Инструменты                                                    ^^(A^^) Служба Платформы Защиты ПО ^^(sppsvc^^)
+set language_main_menu09=    ^^(B^^) Административные инструменты
+set language_main_menu10=    ^^(C^^) Проверка системных ресурсов
 set language_main_menu11=
 set language_main_menu12=
 set language_main_menu13=    ^^(L^^) Язык
@@ -2036,15 +2037,15 @@ set language_eula01=^^(^^!^^) Автор не несе відповідальн�
 set language_eula02=^^(^^?^^) Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
 
 set language_main_menu01=  Інтерфейс                                                    Програми
-set language_main_menu02=    ^^(1^^) Об'єкти робочого столу ^^(Цей ПК та інші^^)                  ^^(6^^) Установити Офіс Професійний+ 2016
-set language_main_menu03=    ^^(2^^) Комбінації клавіш зміни мови ^^(Ctrl + Shift^^)              ^^(7^^) Установити/відновити gpedit.msc
-set language_main_menu04=    ^^(3^^) Пропозиції при введенні та автозаповнення
-set language_main_menu05=    ^^(4^^) Провідник Windows                                      Служби
-set language_main_menu06=    ^^(5^^) Панель Завдань Windows                                   ^^(8^^) Оновлення Windows ^^(wuauserv^^)
-set language_main_menu07=                                                                 ^^(9^^) Служба Платформи Захисту ПО ^^(sppsvc^^)
-set language_main_menu08=  Інструменти
-set language_main_menu09=    ^^(A^^) Адміністративні інструменти
-set language_main_menu10=    ^^(B^^) Перевірка системних ресурсів
+set language_main_menu02=    ^^(1^^) Об'єкти робочого столу ^^(Цей ПК та інші^^)                  ^^(6^^) Системні програми
+set language_main_menu03=    ^^(2^^) Комбінації клавіш зміни мови ^^(Ctrl + Shift^^)              ^^(7^^) Установити Офіс Професійний+ 2016
+set language_main_menu04=    ^^(3^^) Пропозиції при введенні та автозаповнення                ^^(8^^) Установити/відновити gpedit.msc
+set language_main_menu05=    ^^(4^^) Провідник Windows
+set language_main_menu06=    ^^(5^^) Панель Завдань Windows                                 Служби
+set language_main_menu07=                                                                 ^^(9^^) Оновлення Windows ^^(wuauserv^^)
+set language_main_menu08=  Інструменти                                                    ^^(A^^) Служба Платформи Захисту ПО ^^(sppsvc^^)
+set language_main_menu09=    ^^(B^^) Адміністративні інструменти
+set language_main_menu10=    ^^(C^^) Перевірка системних ресурсів
 set language_main_menu11=
 set language_main_menu12=
 set language_main_menu13=    ^^(L^^) Мова
