@@ -1122,11 +1122,9 @@ goto :programs_system
 
 
 :programs_system_appxPackageManagement
-if not exist temp\appxPackages md temp\appxPackages
+if "%1" == "get" %module_powershell% "Get-AppxPackage *Microsoft.* | Out-File -FilePath """%~dp0temp\return_appxPackages""" -Encoding ASCII"
 
 if "%1" == "check" (
-  %module_powershell% "Get-AppxPackage *Microsoft.%2* | Out-File -FilePath """%~dp0temp\appxPackages\return_%3""" -Encoding ASCII"
-  for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir "%~dp0temp\appxPackages\return_%3"') do if "%%i" == "1" if "%%j" NEQ "0" set %3=installed
 
   rem %module_powershell% "Get-AppxPackage *Microsoft.%2* | Out-File -FilePath """%~dp0temp\appxPackages\return_%3""" -Encoding ASCII"
   rem for /f "delims=" %%i in (temp\appxPackages\return_%3) do if "%%i" NEQ "" set %3=installed
@@ -1914,6 +1912,8 @@ if "%1" == "interface_taskBar" (
 
 
 if "%1" == "programs_system" (
+  %appxMgmt% get
+
   set programs_system_program_3DViewer=uninstalled
   %appxMgmt% check Microsoft3DViewer programs_system_program_3DViewer
 
