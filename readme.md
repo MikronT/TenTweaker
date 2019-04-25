@@ -9,7 +9,7 @@
 [![Status: Pre-Release](https://img.shields.io/badge/Status-Pre--Release-yellow.svg?style=for-the-badge)](#)
 -->
 
-### Version name: *Release v2.0*
+### Version name: *Release v2.1*
 
 Console tweaker for Windows 10 with some useful options.
 
@@ -83,6 +83,7 @@ Note: you can combine the keys as you wish.
 ## Version History
 | Date       | Version      |
 |------------|--------------|
+| Preparing  | Release v2.1 |
 | 03.04.2019 | Release v2.0 |
 | 29.03.2019 | Release v1.2 |
 | 28.03.2019 | Release v1.1 |
