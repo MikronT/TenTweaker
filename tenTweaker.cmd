@@ -1122,7 +1122,13 @@ goto :programs_system
 
 
 :programs_system_appxPackageManagement
+if "%1" == "check" (
+  %module_powershell% "Get-AppxPackage *Microsoft.%2* | Out-File -FilePath """%~dp0temp\return_%3""" -Encoding ASCII"
+  for /f "delims=" %%i in (temp\return_%3) do if "%%i" NEQ "" set %3=installed
+)
+
 if "%1" == "add"    %module_powershell% "Add-AppxPackage -Path ((Get-AppxPackage -AllUsers -Name """*Microsoft.%2*""").InstallLocation + """\AppxManifest.xml""") -Register -DisableDevelopmentMode"
+
 if "%1" == "remove" %module_powershell% "Get-AppxPackage *Microsoft.%2* | Remove-AppxPackage"
 exit /b
 
@@ -1903,31 +1909,79 @@ if "%1" == "interface_taskBar" (
 
 
 if "%1" == "programs_system" (
-  set programs_system_program_3DViewer=installed
-  set programs_system_program_feedbackHub=installed
-  set programs_system_program_getHelp=installed
-  set programs_system_program_mailCalendar=installed
-  set programs_system_program_maps=installed
-  set programs_system_program_messaging=installed
-  set programs_system_program_mobilePlans=installed
-  set programs_system_program_oneNote=installed
-  set programs_system_program_people=installed
-  set programs_system_program_print3D=installed
-  set programs_system_program_solitare=installed
-  set programs_system_program_tips=installed
+  set programs_system_program_3DViewer=uninstalled
+  %appxMgmt% check Microsoft3DViewer programs_system_program_3DViewer
 
-  set programs_system_program_alarmsClock=installed
-  set programs_system_program_camera=installed
-  set programs_system_program_grooveMusic=installed
-  set programs_system_program_moviesTV=installed
-  set programs_system_program_myOffice=installed
-  set programs_system_program_paint3D=installed
-  set programs_system_program_skype=installed
-  set programs_system_program_stickyNotes=installed
-  set programs_system_program_store=installed
-  set programs_system_program_voiceRecorder=installed
-  set programs_system_program_weather=installed
-  set programs_system_program_xbox=installed
+  set programs_system_program_feedbackHub=uninstalled
+  %appxMgmt% check WindowsFeedbackHub programs_system_program_feedbackHub
+
+  set programs_system_program_getHelp=uninstalled
+  %appxMgmt% check GetHelp programs_system_program_getHelp
+
+  set programs_system_program_mailCalendar=uninstalled
+  %appxMgmt% check WindowsCommunicationsApps programs_system_program_mailCalendar
+
+  set programs_system_program_maps=uninstalled
+  %appxMgmt% check WindowsMaps programs_system_program_maps
+
+  set programs_system_program_messaging=uninstalled
+  %appxMgmt% check Messaging programs_system_program_messaging
+
+  set programs_system_program_mobilePlans=uninstalled
+  %appxMgmt% check OneConnect programs_system_program_mobilePlans
+
+  set programs_system_program_oneNote=uninstalled
+  %appxMgmt% check Office.OneNote programs_system_program_oneNote
+
+  set programs_system_program_people=uninstalled
+  %appxMgmt% check People programs_system_program_people
+
+  set programs_system_program_print3D=uninstalled
+  %appxMgmt% check Print3D programs_system_program_print3D
+
+  set programs_system_program_solitare=uninstalled
+  %appxMgmt% check MicrosoftSolitaireCollection programs_system_program_solitare
+
+  set programs_system_program_tips=uninstalled
+  %appxMgmt% check GetStarted programs_system_program_tips
+
+
+  set programs_system_program_alarmsClock=uninstalled
+  %appxMgmt% check WindowsAlarms programs_system_program_alarmsClock
+
+  set programs_system_program_camera=uninstalled
+  %appxMgmt% check WindowsCamera programs_system_program_camera
+
+  set programs_system_program_grooveMusic=uninstalled
+  %appxMgmt% check ZuneMusic programs_system_program_grooveMusic
+
+  set programs_system_program_moviesTV=uninstalled
+  %appxMgmt% check ZuneVideo programs_system_program_moviesTV
+
+  set programs_system_program_myOffice=uninstalled
+  %appxMgmt% check MicrosoftOfficeHub programs_system_program_myOffice
+
+  set programs_system_program_paint3D=uninstalled
+  %appxMgmt% check MSPaint programs_system_program_paint3D
+
+  set programs_system_program_skype=uninstalled
+  %appxMgmt% check SkypeApp programs_system_program_skype
+
+  set programs_system_program_stickyNotes=uninstalled
+  %appxMgmt% check MicrosoftStickyNotes programs_system_program_stickyNotes
+
+  set programs_system_program_store=uninstalled
+  %appxMgmt% check WindowsStore programs_system_program_store
+
+  set programs_system_program_voiceRecorder=uninstalled
+  %appxMgmt% check WindowsSoundRecorder programs_system_program_voiceRecorder
+
+  set programs_system_program_weather=uninstalled
+  %appxMgmt% check BingWeather programs_system_program_weather
+
+  set programs_system_program_xbox=uninstalled
+  %appxMgmt% check XboxApp programs_system_program_xbox
+
 )
 
 
