@@ -1790,6 +1790,9 @@ set language_interface_taskBar06=^^(5^^) Buttons combine
 set language_interface_taskBar07=^^(3^^) Task view button                  
 set language_interface_taskBar08=Note: These features require to restart Windows Explorer.
 
+set language_programs_system01=^^(i^^) System Programs - Control Menu
+set language_programs_system02=^^(^^^>^^) Choose action to install/uninstall system programs:
+
 set language_programs_office01=^^(i^^) Microsoft Office Professional+ 2016 - Setup Menu
 set language_programs_office02=^^(^^^>^^) Choose action:
 set language_programs_office03=^^(1^^) Run setup
