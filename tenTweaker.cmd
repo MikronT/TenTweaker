@@ -815,17 +815,17 @@ goto :interface_taskBar
 
 
 
-:setup_office
-call :main_variables setup_office
+:programs_office
+call :main_variables programs_office
 
 call :logo
-echo.%language_setup_office01%
+echo.%language_programs_office01%
 echo.
 echo.
-echo.%language_setup_office02%
-echo.    %language_setup_office03%
+echo.%language_programs_office02%
+echo.    %language_programs_office03%
 echo.
-echo.    %language_setup_office04%
+echo.    %language_programs_office04%
 echo.    %language_menuItem_rebootComputer%
 echo.
 echo.    %language_menuItem_goBack%
@@ -833,52 +833,52 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-if "%error_setup_office_download%" == "1" (
+if "%error_programs_office_download%" == "1" (
   color 0c
-  echo.    %language_message_error_setup_office_download%
+  echo.    %language_message_error_programs_office_download%
   echo.
-  set error_setup_office_download=0
+  set error_programs_office_download=0
 ) else color 0b
 choice /c 1Z0 /n /m "> "
 set command=%errorLevel%
 
 
 
-:setup_office_setup
+:programs_office_setup
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%command%" == "1" (
   call :logo
-  echo.%language_setup_office01%
+  echo.%language_programs_office01%
   echo.
   echo.
 
-  if exist "%setup_office_setupISO%" del /q "%setup_office_setupISO%"
+  if exist "%programs_office_setupISO%" del /q "%programs_office_setupISO%"
 
-  echo.%language_setup_office05%
-  %module_wget% --show-progress --progress=bar:force:noscroll "%setup_office_setupURL%" --output-document="%setup_office_setupISO%"
+  echo.%language_programs_office05%
+  %module_wget% --show-progress --progress=bar:force:noscroll "%programs_office_setupURL%" --output-document="%programs_office_setupISO%"
   timeout /nobreak /t 1 >nul
 
-  for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir "%~dp0%setup_office_setupISO%"') do if "%%i" == "1" if "%%j" == "0" (
-    set error_setup_office_download=1
-    goto :setup_office
+  for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir "%~dp0%programs_office_setupISO%"') do if "%%i" == "1" if "%%j" == "0" (
+    set error_programs_office_download=1
+    goto :programs_office
   )
 
-  echo.%language_setup_office06%
-  start /wait /min powershell.exe "Mount-DiskImage ""%~dp0%setup_office_setupISO%"""
+  echo.%language_programs_office06%
+  start /wait /min powershell.exe "Mount-DiskImage ""%~dp0%programs_office_setupISO%"""
   timeout /nobreak /t 1 >nul
 
-  echo.%language_setup_office07%
-  start /wait /min powershell.exe "Get-DiskImage """%~dp0%setup_office_setupISO%""" | Get-Volume | Select-Object {$_.DriveLetter} | Out-File -FilePath """%~dp0temp\return_diskImage""" -Encoding ASCII"
+  echo.%language_programs_office07%
+  start /wait /min powershell.exe "Get-DiskImage """%~dp0%programs_office_setupISO%""" | Get-Volume | Select-Object {$_.DriveLetter} | Out-File -FilePath """%~dp0temp\return_diskImage""" -Encoding ASCII"
   for /f "skip=3 delims= " %%i in (temp\return_diskImage) do start /wait %%i:\O16Setup.exe
   timeout /nobreak /t 1 >nul
 
-  echo.%language_setup_office08%
-  start /wait /min powershell.exe "Dismount-DiskImage ""%~dp0%setup_office_setupISO%"""
+  echo.%language_programs_office08%
+  start /wait /min powershell.exe "Dismount-DiskImage ""%~dp0%programs_office_setupISO%"""
   timeout /nobreak /t 1 >nul
 )
 
 if "%command%" == "2" call :reboot_computer
 if "%command%" == "3" ( set command= & exit /b )
-goto :setup_office
+goto :programs_office
 
 
 
@@ -894,19 +894,19 @@ goto :setup_office
 
 
 
-:setup_gpeditMSC
-call :main_variables setup_gpeditMSC
+:programs_gpeditMSC
+call :main_variables programs_gpeditMSC
 
 call :logo
-echo.%language_setup_gpeditMSC01%
+echo.%language_programs_gpeditMSC01%
 echo.
 echo.
-echo.%language_setup_gpeditMSC02%
+echo.%language_programs_gpeditMSC02%
 
-set stringBuilder_string=%language_setup_gpeditMSC03%
-if "%setup_gpeditMSC_gpeditFile%" == "exist" (
+set stringBuilder_string=%language_programs_gpeditMSC03%
+if "%programs_gpeditMSC_gpeditFile%" == "exist" (
   call %stringBuilder_build% %language_stringBuilder_option_exist%
-) else if "%setup_gpeditMSC_gpeditFile%" == "notExist" (
+) else if "%programs_gpeditMSC_gpeditFile%" == "notExist" (
   call %stringBuilder_build% %language_stringBuilder_option_notExist%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -924,12 +924,12 @@ set command=%errorLevel%
 
 if "%command%" == "2" ( set command= & exit /b )
 
-if "%error_main_variables_disabledRegistryTools%" == "1" goto :setup_gpeditMSC
+if "%error_main_variables_disabledRegistryTools%" == "1" goto :programs_gpeditMSC
 
-dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >%setup_gpeditMSC_packagesList%
-dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>%setup_gpeditMSC_packagesList%
-for /f %%i in ('findstr /i . %setup_gpeditMSC_packagesList% 2^>nul') do dism /online /norestart /add-package:"%systemRoot%\servicing\Packages\%%i"
-goto :setup_gpeditMSC
+dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >%programs_gpeditMSC_packagesList%
+dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>%programs_gpeditMSC_packagesList%
+for /f %%i in ('findstr /i . %programs_gpeditMSC_packagesList% 2^>nul') do dism /online /norestart /add-package:"%systemRoot%\servicing\Packages\%%i"
+goto :programs_gpeditMSC
 
 
 
@@ -1577,20 +1577,20 @@ if "%1" == "interface_taskBar" (
 
 
 
-if "%1" == "setup_office" (
-  set setup_office_setupURL=https://onedrive.live.com/download?cid=D3AF852448CB4BF6^&resid=D3AF852448CB4BF6%%21259^&authkey=AAK3Qw80R8to-VE
-  set setup_office_setupISO=temp\setup_office_microsoftOfficeProfessionalPlus2016Setup.iso
+if "%1" == "programs_office" (
+  set programs_office_setupURL=https://onedrive.live.com/download?cid=D3AF852448CB4BF6^&resid=D3AF852448CB4BF6%%21259^&authkey=AAK3Qw80R8to-VE
+  set programs_office_setupISO=temp\programs_office_microsoftOfficeProfessionalPlus2016Setup.iso
 )
 
 
 
 
 
-if "%1" == "setup_gpeditMSC" (
-  set setup_gpeditMSC_packagesList=temp\setup_gpeditMSC_packagesList.txt
+if "%1" == "programs_gpeditMSC" (
+  set programs_gpeditMSC_packagesList=temp\programs_gpeditMSC_packagesList.txt
 
-  set setup_gpeditMSC_gpeditFile=notExist
-  for /f "delims=" %%i in ('dir /a:-d /b "%winDir%\System32\gpedit.msc"') do if "%%i" == "gpedit.msc" set setup_gpeditMSC_gpeditFile=exist
+  set programs_gpeditMSC_gpeditFile=notExist
+  for /f "delims=" %%i in ('dir /a:-d /b "%winDir%\System32\gpedit.msc"') do if "%%i" == "gpedit.msc" set programs_gpeditMSC_gpeditFile=exist
 )
 
 
@@ -1699,7 +1699,7 @@ set language_running=^^(i^^) %program_name% is running...
 set language_eula01=^^(^^!^^) The author is not responsible for any possible damage to the computer^^!
 set language_eula02=^^(^^?^^) Are you sure^^? ^^(Press Enter or close^^)
 
-set language_main_menu01=  Interface                                                    Setup
+set language_main_menu01=  Interface                                                    Programs
 set language_main_menu02=    ^^(1^^) Desktop objects ^^(This PC etc^^)                            ^^(6^^) Setup Office Professional+ 2016
 set language_main_menu03=    ^^(2^^) Language key sequence ^^(Ctrl + Shift^^)                     ^^(7^^) Setup/restore gpedit.msc
 set language_main_menu04=    ^^(3^^) Input suggestions and auto completion
@@ -1767,18 +1767,18 @@ set language_interface_taskBar06=^^(5^^) Buttons combine
 set language_interface_taskBar07=^^(3^^) Task view button                  
 set language_interface_taskBar08=Note: These features require to restart Windows Explorer.
 
-set language_setup_office01=^^(i^^) Microsoft Office Professional+ 2016 - Setup Menu
-set language_setup_office02=^^(^^^>^^) Choose action:
-set language_setup_office03=^^(1^^) Run setup
-set language_setup_office04=Note: This feature requires to reboot your computer.
-set language_setup_office05=^^(i^^) Downloading Microsoft Office Professional+ 2016
-set language_setup_office06=^^(i^^) Mounting iso file
-set language_setup_office07=^^(i^^) Setup
-set language_setup_office08=^^(i^^) Unmounting iso file
+set language_programs_office01=^^(i^^) Microsoft Office Professional+ 2016 - Setup Menu
+set language_programs_office02=^^(^^^>^^) Choose action:
+set language_programs_office03=^^(1^^) Run setup
+set language_programs_office04=Note: This feature requires to reboot your computer.
+set language_programs_office05=^^(i^^) Downloading Microsoft Office Professional+ 2016
+set language_programs_office06=^^(i^^) Mounting iso file
+set language_programs_office07=^^(i^^) Setup
+set language_programs_office08=^^(i^^) Unmounting iso file
 
-set language_setup_gpeditMSC01=^^(i^^) Group Policy Editor - Setup Menu
-set language_setup_gpeditMSC02=^^(^^^>^^) Choose action:
-set language_setup_gpeditMSC03=^^(1^^) Setup/repair gpedit.msc           
+set language_programs_gpeditMSC01=^^(i^^) Group Policy Editor - Setup Menu
+set language_programs_gpeditMSC02=^^(^^^>^^) Choose action:
+set language_programs_gpeditMSC03=^^(1^^) Setup/repair gpedit.msc           
 
 set language_services_windowsUpdate01=^^(i^^) Windows Update ^^(wuauserv^^) - Control Menu
 set language_services_windowsUpdate02=^^(^^^>^^) Choose action to enable/disable Windows Update:
@@ -1823,7 +1823,7 @@ set language_message_error_main_variables_disabledRegistryTools04=Please, back t
 
 set language_message_error_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Can not be two identical key combinations^^!
 
-set language_message_error_setup_office_download=^^(^^!^^) Download error^^! Server not respond or no Internet connection^^!
+set language_message_error_programs_office_download=^^(^^!^^) Download error^^! Server not respond or no Internet connection^^!
 
 set language_message_update_available01=^^(^^!^^) An update for %program_name% is now available^^!
 set language_message_update_available02=Download it here:
@@ -1867,7 +1867,7 @@ set language_running=^^(i^^) %program_name% запускается...
 set language_eula01=^^(^^!^^) Автор не несет ответственности за возможные повреждения компьютера^^!
 set language_eula02=^^(^^?^^) Вы уверены^^? ^^(Нажмите Enter или закройте^^)
 
-set language_main_menu01=  Интерфейс                                                    Настройка
+set language_main_menu01=  Интерфейс                                                    Программы
 set language_main_menu02=    ^^(1^^) Объекты рабочего стола ^^(Этот ПК и другие^^)                ^^(6^^) Установить Офис Профессиональный+ 2016
 set language_main_menu03=    ^^(2^^) Сочетания клавиш смены языка ^^(Ctrl + Shift^^)              ^^(7^^) Установить/восстановить gpedit.msc
 set language_main_menu04=    ^^(3^^) Предложения при вводе и автозаполнение
@@ -1935,18 +1935,18 @@ set language_interface_taskBar06=^^(5^^) Совмещение кнопок
 set language_interface_taskBar07=^^(3^^) Кнопка просмотра задач            
 set language_interface_taskBar08=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
-set language_setup_office01=^^(i^^) Microsoft Офис Профессиональный+ 2016 - Меню Настройки
-set language_setup_office02=^^(^^^>^^) Выберите действие:
-set language_setup_office03=^^(1^^) Запустить установку
-set language_setup_office04=Примечание: Эта функция требует перезагрузки Вашего компьютера.
-set language_setup_office05=^^(i^^) Загрузка Microsoft Офис Профессиональный+ 2016
-set language_setup_office06=^^(i^^) Подключение iso файла
-set language_setup_office07=^^(i^^) Установка
-set language_setup_office08=^^(i^^) Отключение iso файла
+set language_programs_office01=^^(i^^) Microsoft Офис Профессиональный+ 2016 - Меню Настройки
+set language_programs_office02=^^(^^^>^^) Выберите действие:
+set language_programs_office03=^^(1^^) Запустить установку
+set language_programs_office04=Примечание: Эта функция требует перезагрузки Вашего компьютера.
+set language_programs_office05=^^(i^^) Загрузка Microsoft Офис Профессиональный+ 2016
+set language_programs_office06=^^(i^^) Подключение iso файла
+set language_programs_office07=^^(i^^) Установка
+set language_programs_office08=^^(i^^) Отключение iso файла
 
-set language_setup_gpeditMSC01=^^(i^^) Редактор Групповых Политик - Меню Настройки
-set language_setup_gpeditMSC02=^^(^^^>^^) Выберите действие:
-set language_setup_gpeditMSC03=^^(1^^) Установить/восстановить           
+set language_programs_gpeditMSC01=^^(i^^) Редактор Групповых Политик - Меню Настройки
+set language_programs_gpeditMSC02=^^(^^^>^^) Выберите действие:
+set language_programs_gpeditMSC03=^^(1^^) Установить/восстановить           
 
 set language_services_windowsUpdate01=^^(i^^) Обновление Windows ^^(wuauserv^^) - Меню Управления
 set language_services_windowsUpdate02=^^(^^^>^^) Выберите действие, чтобы включить/отключить обновления Windows:
@@ -1991,7 +1991,7 @@ set language_message_error_main_variables_disabledRegistryTools04=Пожалуй
 
 set language_message_error_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Не может быть двух одинаковых комбинаций клавиш^^!
 
-set language_message_error_setup_office_download=^^(^^!^^) Ошибка загрузки^^! Сервер не отвечает или нет подключения к Интернету^!
+set language_message_error_programs_office_download=^^(^^!^^) Ошибка загрузки^^! Сервер не отвечает или нет подключения к Интернету^!
 
 set language_message_update_available01=^^(^^!^^) Доступно обновление для %program_name%^^!
 set language_message_update_available02=Загрузите его здесь:
@@ -2035,7 +2035,7 @@ set language_running=^^(i^^) %program_name% запускається...
 set language_eula01=^^(^^!^^) Автор не несе відповідальності за можливі пошкодження комп'ютера^^!
 set language_eula02=^^(^^?^^) Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
 
-set language_main_menu01=  Інтерфейс                                                    Налаштування
+set language_main_menu01=  Інтерфейс                                                    Програми
 set language_main_menu02=    ^^(1^^) Об'єкти робочого столу ^^(Цей ПК та інші^^)                  ^^(6^^) Установити Офіс Професійний+ 2016
 set language_main_menu03=    ^^(2^^) Комбінації клавіш зміни мови ^^(Ctrl + Shift^^)              ^^(7^^) Установити/відновити gpedit.msc
 set language_main_menu04=    ^^(3^^) Пропозиції при введенні та автозаповнення
@@ -2103,18 +2103,18 @@ set language_interface_taskBar06=^^(5^^) Зміщення кнопок
 set language_interface_taskBar07=^^(3^^) Кнопка перегляду завдань          
 set language_interface_taskBar08=Примітка: Ці функції потребують перезапуску Провідника Windows.
 
-set language_setup_office01=^^(i^^) Microsoft Офіс Професійний+ 2016 - Меню Налаштування
-set language_setup_office02=^^(^^^>^^) Виберіть дію:
-set language_setup_office03=^^(1^^) Запустити встановлення
-set language_setup_office04=Примітка: Ця функція потребує перезавантаження Вашого комп'ютера.
-set language_setup_office05=^^(i^^) Завантаження Microsoft Офіс Професійний+ 2016
-set language_setup_office06=^^(i^^) Підключення iso файлу
-set language_setup_office07=^^(i^^) Встановлення
-set language_setup_office08=^^(i^^) Відключення iso файлу
+set language_programs_office01=^^(i^^) Microsoft Офіс Професійний+ 2016 - Меню Налаштування
+set language_programs_office02=^^(^^^>^^) Виберіть дію:
+set language_programs_office03=^^(1^^) Запустити встановлення
+set language_programs_office04=Примітка: Ця функція потребує перезавантаження Вашого комп'ютера.
+set language_programs_office05=^^(i^^) Завантаження Microsoft Офіс Професійний+ 2016
+set language_programs_office06=^^(i^^) Підключення iso файлу
+set language_programs_office07=^^(i^^) Встановлення
+set language_programs_office08=^^(i^^) Відключення iso файлу
 
-set language_setup_gpeditMSC01=^^(i^^) Редактор Групових Політик - Меню Налаштування
-set language_setup_gpeditMSC02=^^(^^^>^^) Виберіть дію:
-set language_setup_gpeditMSC03=^^(1^^) Установити/відновити              
+set language_programs_gpeditMSC01=^^(i^^) Редактор Групових Політик - Меню Налаштування
+set language_programs_gpeditMSC02=^^(^^^>^^) Виберіть дію:
+set language_programs_gpeditMSC03=^^(1^^) Установити/відновити              
 
 set language_services_windowsUpdate01=^^(i^^) Оновлення Windows ^^(wuauserv^^) - Меню Управління
 set language_services_windowsUpdate02=^^(^^^>^^) Виберіть дію, щоб увімкнути/вимкнути оновлення Windows:
@@ -2159,7 +2159,7 @@ set language_message_error_main_variables_disabledRegistryTools04=Будь ла�
 
 set language_message_error_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Не може бути двох ідентичних комбінацій клавіш^^!
 
-set language_message_error_setup_office_download=^^(^^!^^) Помилка завантаження^^! Сервер не відповідає або немає підключення до Інтернету^!
+set language_message_error_programs_office_download=^^(^^!^^) Помилка завантаження^^! Сервер не відповідає або немає підключення до Інтернету^!
 
 set language_message_update_available01=^^(^^!^^) Доступно оновлення для %program_name%^^!
 set language_message_update_available02=Завантажте його тут:
