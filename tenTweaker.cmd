@@ -1005,6 +1005,77 @@ set command=%errorLevel%
 
 
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
+  if "%command%" == "1" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "2" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "3" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "4" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "5" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "6" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "7" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "8" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "9" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "10" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "11" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "12" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "13" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "14" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "15" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "16" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "17" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "18" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "19" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "20" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "21" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "22" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "23" if "%programs_system_program_%" == "installed" (
+  ) else
+
+  if "%command%" == "24" if "%programs_system_program_%" == "installed" (
+  ) else
 )
 
 if "%command%" == "25" ( set command= & exit /b )
