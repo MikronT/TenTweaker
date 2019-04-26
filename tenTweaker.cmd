@@ -1020,6 +1020,9 @@ if "%programs_system_program_xbox%" == "installed" (
 echo.    %stringBuilder_string%
 
 echo.
+echo.    %language_programs_system33%
+echo.    %language_programs_system34%
+echo.
 echo.    %language_menuItem_goBack%
 echo.
 echo.
@@ -2270,6 +2273,8 @@ set language_programs_system26=^^(O^^) Store
 set language_programs_system28=^^(P^^) Voice Recorder                    
 set language_programs_system30=^^(Q^^) Weather                           
 set language_programs_system32=^^(R^^) Xbox                              
+set language_programs_system33=^^(S^^) Install all
+set language_programs_system34=^^(T^^) Uninstall all
 
 set language_programs_office01=^^(i^^) Microsoft Office Professional+ 2016 - Setup Menu
 set language_programs_office02=^^(^^^>^^) Choose action:
