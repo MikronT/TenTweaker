@@ -1100,7 +1100,11 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
 
   if "%command%" == "16" if "%programs_system_program_gameBar%" == "installed" (
     %appxMgmt% remove XboxGameOverlay
-  ) else %appxMgmt% add XboxGameOverlay
+    %appxMgmt% remove XboxGamingOverlay
+  ) else (
+    %appxMgmt% add XboxGameOverlay
+    %appxMgmt% add XboxGamingOverlay
+  )
 
   if "%command%" == "17" if "%programs_system_program_grooveMusic%" == "installed" (
     %appxMgmt% remove ZuneMusic
@@ -2001,7 +2005,11 @@ if "%1" == "programs_system" (
   %appxMgmt% check WindowsCamera programs_system_program_camera
 
   set programs_system_program_gameBar=uninstalled
-  %appxMgmt% check XboxGameOverlay programs_system_program_gameBar
+  set programs_system_program_gameBar1=uninstalled
+  set programs_system_program_gameBar2=uninstalled
+  rem %appxMgmt% check XboxGam programs_system_program_gameBar
+  %appxMgmt% check XboxGameOverlay   programs_system_program_gameBar1
+  %appxMgmt% check XboxGamingOverlay programs_system_program_gameBar2
 
   set programs_system_program_grooveMusic=uninstalled
   %appxMgmt% check ZuneMusic programs_system_program_grooveMusic
@@ -2038,6 +2046,14 @@ if "%1" == "programs_system" (
 
   set programs_system_program_xbox=uninstalled
   %appxMgmt% check XboxApp programs_system_program_xbox
+)
+
+
+
+
+
+if "%1" == "programs_system" (
+  if "%programs_system_program_gameBar1%" == "%programs_system_program_gameBar2%" if "%programs_system_program_gameBar1%" == "installed" set programs_system_program_gameBar=installed
 )
 
 
