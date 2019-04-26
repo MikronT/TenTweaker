@@ -24,7 +24,8 @@ Console tweaker for Windows 10 with some useful options.
   - Input suggestions and auto completion
   - Windows Explorer (file extensions, hidden files etc.)
   - Windows Task Bar
-- Setup/Restore
+- Programs
+  - System programs
   - Microsoft Office Professional Plus 2016
   - Group Policy Editor (gpedit.msc) for Windows 10 Home
 - Services Management
