@@ -2546,6 +2546,8 @@ set language_programs_system26=^^(O^^) Магазин
 set language_programs_system28=^^(P^^) Звукозаписыватель                 
 set language_programs_system30=^^(Q^^) Погода                            
 set language_programs_system32=^^(R^^) Xbox                              
+set language_programs_system33=^^(S^^) Установить всё
+set language_programs_system34=^^(T^^) Деинсталировать всё
 
 set language_programs_office01=^^(i^^) Microsoft Офис Профессиональный+ 2016 - Меню Настройки
 set language_programs_office02=^^(^^^>^^) Выберите действие:
@@ -2749,6 +2751,8 @@ set language_programs_system26=^^(O^^) Магазин
 set language_programs_system28=^^(P^^) Звукозаписувач                    
 set language_programs_system30=^^(Q^^) Погода                            
 set language_programs_system32=^^(R^^) Xbox                              
+set language_programs_system33=^^(S^^) Установити все
+set language_programs_system34=^^(T^^) Деінсталювати все
 
 set language_programs_office01=^^(i^^) Microsoft Офіс Професійний+ 2016 - Меню Налаштування
 set language_programs_office02=^^(^^^>^^) Виберіть дію:
