@@ -862,9 +862,9 @@ if "%programs_system_program_getHelp%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system08%
-if "%programs_system_program_grooveMusic%" == "installed" (
+if "%programs_system_program_gameBar%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_grooveMusic%" == "uninstalled" (
+) else if "%programs_system_program_gameBar%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -876,9 +876,9 @@ if "%programs_system_program_mailCalendar%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system10%
-if "%programs_system_program_moviesTV%" == "installed" (
+if "%programs_system_program_grooveMusic%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_moviesTV%" == "uninstalled" (
+) else if "%programs_system_program_grooveMusic%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -890,9 +890,9 @@ if "%programs_system_program_maps%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system12%
-if "%programs_system_program_myOffice%" == "installed" (
+if "%programs_system_program_moviesTV%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_myOffice%" == "uninstalled" (
+) else if "%programs_system_program_moviesTV%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -904,9 +904,9 @@ if "%programs_system_program_messaging%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system14%
-if "%programs_system_program_paint3D%" == "installed" (
+if "%programs_system_program_myOffice%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_paint3D%" == "uninstalled" (
+) else if "%programs_system_program_myOffice%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -918,9 +918,9 @@ if "%programs_system_program_mobilePlans%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system16%
-if "%programs_system_program_skype%" == "installed" (
+if "%programs_system_program_paint3D%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_skype%" == "uninstalled" (
+) else if "%programs_system_program_paint3D%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -932,9 +932,9 @@ if "%programs_system_program_oneNote%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system18%
-if "%programs_system_program_stickyNotes%" == "installed" (
+if "%programs_system_program_photos%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_stickyNotes%" == "uninstalled" (
+) else if "%programs_system_program_photos%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -946,9 +946,9 @@ if "%programs_system_program_people%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system20%
-if "%programs_system_program_store%" == "installed" (
+if "%programs_system_program_snipSketch%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_store%" == "uninstalled" (
+) else if "%programs_system_program_snipSketch%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -960,9 +960,9 @@ if "%programs_system_program_print3D%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system22%
-if "%programs_system_program_voiceRecorder%" == "installed" (
+if "%programs_system_program_skype%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_voiceRecorder%" == "uninstalled" (
+) else if "%programs_system_program_skype%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -974,9 +974,9 @@ if "%programs_system_program_solitare%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system24%
-if "%programs_system_program_weather%" == "installed" (
+if "%programs_system_program_stickyNotes%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_weather%" == "uninstalled" (
+) else if "%programs_system_program_stickyNotes%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -988,6 +988,36 @@ if "%programs_system_program_tips%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system26%
+if "%programs_system_program_store%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_store%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system27%
+if "%programs_system_program_yourPhone%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_yourPhone%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system28%
+if "%programs_system_program_voiceRecorder%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_voiceRecorder%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=                                                             %language_programs_system30%
+if "%programs_system_program_weather%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_weather%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=                                                             %language_programs_system32%
 if "%programs_system_program_xbox%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
 ) else if "%programs_system_program_xbox%" == "uninstalled" (
@@ -1001,7 +1031,7 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-choice /c 123456789ABCDEFGHIJKLMNO0 /n /m "> "
+choice /c 123456789ABCDEFGHIJKLMNOPQRS0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -1055,56 +1085,73 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
     %appxMgmt% remove GetStarted
   ) else %appxMgmt% add GetStarted
 
-  if "%command%" == "13" if "%programs_system_program_alarmsClock%" == "installed" (
+  if "%command%" == "13" if "%programs_system_program_yourPhone%" == "installed" (
+    %appxMgmt% remove YourPhone
+  ) else %appxMgmt% add YourPhone
+
+
+  if "%command%" == "14" if "%programs_system_program_alarmsClock%" == "installed" (
     %appxMgmt% remove WindowsAlarms
   ) else %appxMgmt% add WindowsAlarms
 
-  if "%command%" == "14" if "%programs_system_program_camera%" == "installed" (
+  if "%command%" == "15" if "%programs_system_program_camera%" == "installed" (
     %appxMgmt% remove WindowsCamera
   ) else %appxMgmt% add WindowsCamera
 
-  if "%command%" == "15" if "%programs_system_program_grooveMusic%" == "installed" (
+  if "%command%" == "16" if "%programs_system_program_gameBar%" == "installed" (
+    %appxMgmt% remove XboxGameOverlay
+  ) else %appxMgmt% add XboxGameOverlay
+
+  if "%command%" == "17" if "%programs_system_program_grooveMusic%" == "installed" (
     %appxMgmt% remove ZuneMusic
   ) else %appxMgmt% add ZuneMusic
 
-  if "%command%" == "16" if "%programs_system_program_moviesTV%" == "installed" (
+  if "%command%" == "18" if "%programs_system_program_moviesTV%" == "installed" (
     %appxMgmt% remove ZuneVideo
   ) else %appxMgmt% add ZuneVideo
 
-  if "%command%" == "17" if "%programs_system_program_myOffice%" == "installed" (
+  if "%command%" == "19" if "%programs_system_program_myOffice%" == "installed" (
     %appxMgmt% remove MicrosoftOfficeHub
   ) else %appxMgmt% add MicrosoftOfficeHub
 
-  if "%command%" == "18" if "%programs_system_program_paint3D%" == "installed" (
+  if "%command%" == "20" if "%programs_system_program_paint3D%" == "installed" (
     %appxMgmt% remove MSPaint
   ) else %appxMgmt% add MSPaint
 
-  if "%command%" == "19" if "%programs_system_program_skype%" == "installed" (
+  if "%command%" == "21" if "%programs_system_program_photos%" == "installed" (
+    %appxMgmt% remove Windows.Photos
+  ) else %appxMgmt% add Windows.Photos
+
+  if "%command%" == "22" if "%programs_system_program_snipSketch%" == "installed" (
+    %appxMgmt% remove ScreenSketch
+  ) else %appxMgmt% add ScreenSketch
+
+  if "%command%" == "23" if "%programs_system_program_skype%" == "installed" (
     %appxMgmt% remove SkypeApp
   ) else %appxMgmt% add SkypeApp
 
-  if "%command%" == "20" if "%programs_system_program_stickyNotes%" == "installed" (
+  if "%command%" == "24" if "%programs_system_program_stickyNotes%" == "installed" (
     %appxMgmt% remove MicrosoftStickyNotes
   ) else %appxMgmt% add MicrosoftStickyNotes
 
-  if "%command%" == "21" if "%programs_system_program_store%" == "installed" (
+  if "%command%" == "25" if "%programs_system_program_store%" == "installed" (
     %appxMgmt% remove WindowsStore
   ) else %appxMgmt% add WindowsStore
 
-  if "%command%" == "22" if "%programs_system_program_voiceRecorder%" == "installed" (
+  if "%command%" == "26" if "%programs_system_program_voiceRecorder%" == "installed" (
     %appxMgmt% remove WindowsSoundRecorder
   ) else %appxMgmt% add WindowsSoundRecorder
 
-  if "%command%" == "23" if "%programs_system_program_weather%" == "installed" (
+  if "%command%" == "27" if "%programs_system_program_weather%" == "installed" (
     %appxMgmt% remove BingWeather
   ) else %appxMgmt% add BingWeather
 
-  if "%command%" == "24" if "%programs_system_program_xbox%" == "installed" (
+  if "%command%" == "28" if "%programs_system_program_xbox%" == "installed" (
     %appxMgmt% remove XboxApp
   ) else %appxMgmt% add XboxApp
 )
 
-if "%command%" == "25" ( set command= & exit /b )
+if "%command%" == "29" ( set command= & exit /b )
 goto :programs_system
 
 
@@ -1944,12 +1991,18 @@ if "%1" == "programs_system" (
   set programs_system_program_tips=uninstalled
   %appxMgmt% check GetStarted programs_system_program_tips
 
+  set programs_system_program_yourPhone=uninstalled
+  %appxMgmt% check YourPhone programs_system_program_yourPhone
+
 
   set programs_system_program_alarmsClock=uninstalled
   %appxMgmt% check WindowsAlarms programs_system_program_alarmsClock
 
   set programs_system_program_camera=uninstalled
   %appxMgmt% check WindowsCamera programs_system_program_camera
+
+  set programs_system_program_gameBar=uninstalled
+  %appxMgmt% check XboxGameOverlay programs_system_program_gameBar
 
   set programs_system_program_grooveMusic=uninstalled
   %appxMgmt% check ZuneMusic programs_system_program_grooveMusic
@@ -1962,6 +2015,12 @@ if "%1" == "programs_system" (
 
   set programs_system_program_paint3D=uninstalled
   %appxMgmt% check MSPaint programs_system_program_paint3D
+
+  set programs_system_program_photos=uninstalled
+  %appxMgmt% check Windows.Photos programs_system_program_photos
+
+  set programs_system_program_snipSketch=uninstalled
+  %appxMgmt% check ScreenSketch programs_system_program_snipSketch
 
   set programs_system_program_skype=uninstalled
   %appxMgmt% check SkypeApp programs_system_program_skype
@@ -1980,7 +2039,6 @@ if "%1" == "programs_system" (
 
   set programs_system_program_xbox=uninstalled
   %appxMgmt% check XboxApp programs_system_program_xbox
-
 )
 
 
@@ -2185,29 +2243,33 @@ set language_interface_taskBar08=Note: These features require to restart Windows
 set language_programs_system01=^^(i^^) System Programs - Control Menu
 set language_programs_system02=^^(^^^>^^) Choose action to install/uninstall system programs:
 set language_programs_system03=^^(1^^) 3D Viewer                         
-set language_programs_system04=^^(D^^) Alarms and Clock                  
+set language_programs_system04=^^(E^^) Alarms and Clock                  
 set language_programs_system05=^^(2^^) Feedback Hub                      
-set language_programs_system06=^^(E^^) Camera                            
+set language_programs_system06=^^(F^^) Camera                            
 set language_programs_system07=^^(3^^) Get Help                          
-set language_programs_system08=^^(F^^) Groove Music                      
+set language_programs_system08=^^(G^^) Game bar                          
 set language_programs_system09=^^(4^^) Mail and Calendar                 
-set language_programs_system10=^^(G^^) Movies and TV                     
+set language_programs_system10=^^(H^^) Groove Music                      
 set language_programs_system11=^^(5^^) Maps                              
-set language_programs_system12=^^(H^^) My Office                         
+set language_programs_system12=^^(I^^) Movies and TV                     
 set language_programs_system13=^^(6^^) Messaging                         
-set language_programs_system14=^^(I^^) Paint 3D                          
+set language_programs_system14=^^(J^^) My Office                         
 set language_programs_system15=^^(7^^) Mobile Plans                      
-set language_programs_system16=^^(J^^) Skype                             
+set language_programs_system16=^^(K^^) Paint 3D                          
 set language_programs_system17=^^(8^^) OneNote                           
-set language_programs_system18=^^(K^^) Sticky Notes                      
+set language_programs_system18=^^(L^^) Photos                            
 set language_programs_system19=^^(9^^) People                            
-set language_programs_system20=^^(L^^) Store                             
+set language_programs_system20=^^(M^^) Snip and Sketch                   
 set language_programs_system21=^^(A^^) Print 3D                          
-set language_programs_system22=^^(M^^) Voice Recorder                    
+set language_programs_system22=^^(N^^) Skype                             
 set language_programs_system23=^^(B^^) Solitare                          
-set language_programs_system24=^^(N^^) Weather                           
+set language_programs_system24=^^(O^^) Sticky Notes                      
 set language_programs_system25=^^(C^^) Tips                              
-set language_programs_system26=^^(O^^) Xbox                              
+set language_programs_system26=^^(P^^) Store                             
+set language_programs_system27=^^(D^^) Your Phone                        
+set language_programs_system28=^^(Q^^) Voice Recorder                    
+set language_programs_system30=^^(R^^) Weather                           
+set language_programs_system32=^^(S^^) Xbox                              
 
 set language_programs_office01=^^(i^^) Microsoft Office Professional+ 2016 - Setup Menu
 set language_programs_office02=^^(^^^>^^) Choose action:
