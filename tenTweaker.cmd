@@ -1028,7 +1028,7 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-choice /c 123456789ABCDEFGHIJKLMNOPQR0 /n /m "> "
+choice /c 123456789ABCDEFGHIJKLMNOPQRST0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -1146,9 +1146,17 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   if "%command%" == "27" if "%programs_system_program_xbox%" == "installed" (
     %appxMgmt% remove XboxApp
   ) else %appxMgmt% add XboxApp
+
+  if "%command%" == "28" (
+    rem
+  )
+
+  if "%command%" == "29" (
+    rem
+  )
 )
 
-if "%command%" == "28" ( set command= & exit /b )
+if "%command%" == "30" ( set command= & exit /b )
 goto :programs_system
 
 
