@@ -2458,6 +2458,23 @@ set language_interface_taskBar06=^^(5^^) Совмещение кнопок
 set language_interface_taskBar07=^^(3^^) Кнопка просмотра задач            
 set language_interface_taskBar08=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
+set language_programs_system01=^^(i^^) Системные Приложения - Меню Управления
+set language_programs_system02=^^(^^^>^^) Выберите действие, чтобы установить/деинсталировать системные приложения:
+set language_programs_system06=^^(F^^) Камера                            
+set language_programs_system08=^^(G^^) Игровая панель                    
+set language_programs_system09=^^(4^^) Почта и Календарь                 
+set language_programs_system11=^^(5^^) Карты                             
+set language_programs_system17=^^(8^^) OneNote                           
+set language_programs_system18=^^(L^^) Фотографии                        
+set language_programs_system19=^^(9^^) Люди                              
+set language_programs_system20=^^(M^^) Фрагмент и Набросок               
+set language_programs_system22=^^(N^^) Skype                             
+set language_programs_system25=^^(C^^) Подсказки                         
+set language_programs_system26=^^(P^^) Магазин                           
+set language_programs_system27=^^(D^^) Ваш Телефон                       
+set language_programs_system30=^^(R^^) Погода                            
+set language_programs_system32=^^(S^^) Xbox                              
+
 set language_programs_office01=^^(i^^) Microsoft Офис Профессиональный+ 2016 - Меню Настройки
 set language_programs_office02=^^(^^^>^^) Выберите действие:
 set language_programs_office03=^^(1^^) Запустить установку
@@ -2630,6 +2647,22 @@ set language_interface_taskBar05=^^(2^^) Командний рядок при Wi
 set language_interface_taskBar06=^^(5^^) Зміщення кнопок                   
 set language_interface_taskBar07=^^(3^^) Кнопка перегляду завдань          
 set language_interface_taskBar08=Примітка: Ці функції потребують перезапуску Провідника Windows.
+
+set language_programs_system01=^^(i^^) Системні Програми - Меню Управління
+set language_programs_system02=^^(^^^>^^) Виберіть дію, щоб установити/деінсталювати системні програми:
+set language_programs_system06=^^(F^^) Камера                            
+set language_programs_system08=^^(G^^) Ігрова панель                     
+set language_programs_system09=^^(4^^) Пошта і Календар                  
+set language_programs_system11=^^(5^^) Карти                             
+set language_programs_system17=^^(8^^) OneNote                           
+set language_programs_system18=^^(L^^) Фотографії                        
+set language_programs_system19=^^(9^^) Люди                              
+set language_programs_system20=^^(M^^) Фрагмент і Ескіз                  
+set language_programs_system22=^^(N^^) Skype                             
+set language_programs_system26=^^(P^^) Магазин                           
+set language_programs_system27=^^(D^^) Ваш Телефон                       
+set language_programs_system30=^^(R^^) Погода                            
+set language_programs_system32=^^(S^^) Xbox                              
 
 set language_programs_office01=^^(i^^) Microsoft Офіс Професійний+ 2016 - Меню Налаштування
 set language_programs_office02=^^(^^^>^^) Виберіть дію:
