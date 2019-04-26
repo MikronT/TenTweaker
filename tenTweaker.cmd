@@ -946,9 +946,9 @@ if "%programs_system_program_print3D%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system20%
-if "%programs_system_program_snipSketch%" == "installed" (
+if "%programs_system_program_skype%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_snipSketch%" == "uninstalled" (
+) else if "%programs_system_program_skype%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -960,9 +960,9 @@ if "%programs_system_program_solitare%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system22%
-if "%programs_system_program_skype%" == "installed" (
+if "%programs_system_program_snipSketch%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_skype%" == "uninstalled" (
+) else if "%programs_system_program_snipSketch%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -1116,13 +1116,13 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
     %appxMgmt% remove Windows.Photos
   ) else %appxMgmt% add Windows.Photos
 
-  if "%command%" == "21" if "%programs_system_program_snipSketch%" == "installed" (
-    %appxMgmt% remove ScreenSketch
-  ) else %appxMgmt% add ScreenSketch
-
-  if "%command%" == "22" if "%programs_system_program_skype%" == "installed" (
+  if "%command%" == "21" if "%programs_system_program_skype%" == "installed" (
     %appxMgmt% remove SkypeApp
   ) else %appxMgmt% add SkypeApp
+
+  if "%command%" == "22" if "%programs_system_program_snipSketch%" == "installed" (
+    %appxMgmt% remove ScreenSketch
+  ) else %appxMgmt% add ScreenSketch
 
   if "%command%" == "23" if "%programs_system_program_stickyNotes%" == "installed" (
     %appxMgmt% remove MicrosoftStickyNotes
@@ -2012,11 +2012,11 @@ if "%1" == "programs_system" (
   set programs_system_program_photos=uninstalled
   %appxMgmt% check Windows.Photos programs_system_program_photos
 
-  set programs_system_program_snipSketch=uninstalled
-  %appxMgmt% check ScreenSketch programs_system_program_snipSketch
-
   set programs_system_program_skype=uninstalled
   %appxMgmt% check SkypeApp programs_system_program_skype
+
+  set programs_system_program_snipSketch=uninstalled
+  %appxMgmt% check ScreenSketch programs_system_program_snipSketch
 
   set programs_system_program_stickyNotes=uninstalled
   %appxMgmt% check MicrosoftStickyNotes programs_system_program_stickyNotes
@@ -2260,9 +2260,9 @@ set language_programs_system16=^^(J^^) Paint 3D
 set language_programs_system17=^^(8^^) OneNote                           
 set language_programs_system18=^^(K^^) Photos                            
 set language_programs_system19=^^(9^^) Print 3D                          
-set language_programs_system20=^^(L^^) Snip and Sketch                   
+set language_programs_system20=^^(L^^) Skype                             
 set language_programs_system21=^^(A^^) Solitare                          
-set language_programs_system22=^^(M^^) Skype                             
+set language_programs_system22=^^(M^^) Snip and Sketch                   
 set language_programs_system23=^^(B^^) Tips                              
 set language_programs_system24=^^(N^^) Sticky Notes                      
 set language_programs_system25=^^(C^^) Your Phone                        
@@ -2463,9 +2463,9 @@ set language_programs_system16=^^(J^^) Paint 3D
 set language_programs_system17=^^(8^^) OneNote                           
 set language_programs_system18=^^(K^^) Фотографии                        
 set language_programs_system19=^^(9^^) Print 3D                          
-set language_programs_system20=^^(L^^) Фрагмент и Набросок               
+set language_programs_system20=^^(L^^) Skype                             
 set language_programs_system21=^^(A^^) Solitare                          
-set language_programs_system22=^^(M^^) Skype                             
+set language_programs_system22=^^(M^^) Фрагмент и Набросок               
 set language_programs_system23=^^(B^^) Подсказки                         
 set language_programs_system24=^^(N^^) Sticky Notes                      
 set language_programs_system25=^^(C^^) Ваш Телефон                       
@@ -2666,9 +2666,9 @@ set language_programs_system16=^^(J^^) Paint 3D
 set language_programs_system17=^^(8^^) OneNote                           
 set language_programs_system18=^^(K^^) Фотографії                        
 set language_programs_system19=^^(9^^) Print 3D                          
-set language_programs_system20=^^(L^^) Фрагмент і Ескіз                  
+set language_programs_system20=^^(L^^) Skype                             
 set language_programs_system21=^^(A^^) Solitare                          
-set language_programs_system22=^^(M^^) Skype                             
+set language_programs_system22=^^(M^^) Фрагмент і Ескіз                  
 set language_programs_system23=^^(B^^) Підказки                          
 set language_programs_system24=^^(N^^) Липкі Нотатки                     
 set language_programs_system25=^^(C^^) Ваш Телефон                       
