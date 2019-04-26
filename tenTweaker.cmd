@@ -2007,7 +2007,6 @@ if "%1" == "programs_system" (
   set programs_system_program_gameBar=uninstalled
   set programs_system_program_gameBar1=uninstalled
   set programs_system_program_gameBar2=uninstalled
-  rem %appxMgmt% check XboxGam programs_system_program_gameBar
   %appxMgmt% check XboxGameOverlay   programs_system_program_gameBar1
   %appxMgmt% check XboxGamingOverlay programs_system_program_gameBar2
 
