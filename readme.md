@@ -77,7 +77,8 @@ Note: you can combine the keys as you wish.
 
 
 ## Disclaimer
-- *I am not responsible for any damage to your computer.* I am not responsible for any lost files or data.
+- I am not responsible for any *damage to your computer*.
+- I am not responsible for any *lost files or data*.
 
 
 
