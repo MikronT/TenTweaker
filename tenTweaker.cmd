@@ -44,7 +44,7 @@ if %errorLevel% LSS 1 if "%key_main_registryMerge%" NEQ "true" (
 set program_name=Ten Tweaker
 set program_name_ns=tenTweaker
 
-set program_version=2.0
+set program_version=2.1
 set program_version_level1=0
 set program_version_level2=0
 set program_version_level3=0
@@ -56,6 +56,8 @@ for /f "tokens=1-3 delims=." %%i in ("%program_version%") do (
 )
 
 set module_wget=files\wget.exe --quiet --no-check-certificate --tries=1
+set module_powershell=start /wait /min powershell.exe
+set appxMgmt=call :programs_system_appxPackageManagement
 set stringBuilder_build=set stringBuilder_string=%%stringBuilder_string%%
 
 set update_version_output=temp\%program_name_ns%.version
@@ -146,7 +148,7 @@ if "%update_available%" == "true" (
   echo.        %language_message_update_available02% github.com/MikronT/TenTweaker/releases/latest
   echo.
 )
-choice /c 123456789ABL0 /n /m "> "
+choice /c 123456789ABCL0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -157,21 +159,22 @@ if "%command%" == "3" call :interface_suggestions
 if "%command%" == "4" call :interface_explorer
 if "%command%" == "5" call :interface_taskBar
 
-if "%command%" == "6" call :setup_office
-if "%command%" == "7" call :setup_gpeditMSC
+if "%command%" == "6" call :programs_system
+if "%command%" == "7" call :programs_office
+if "%command%" == "8" call :programs_gpeditMSC
 
-if "%command%" == "8" call :services_windowsUpdate
-if "%command%" == "9" call :services_sppsvc
+if "%command%" == "9" call :services_windowsUpdate
+if "%command%" == "10" call :services_sppsvc
 
-if "%command%" == "10" call :tools_administrativeTools
-if "%command%" == "11" call :tools_systemResourceChecker
+if "%command%" == "11" call :tools_administrativeTools
+if "%command%" == "12" call :tools_systemResourceChecker
 
-if "%command%" == "12" (
+if "%command%" == "13" (
   call :language_menu
   call :language_import
 )
 
-if "%command%" == "13" (
+if "%command%" == "14" (
   rd /s /q temp
   exit /b
 )
@@ -607,7 +610,6 @@ if "%interface_explorer_autoFolderTypeDiscovery%" == "enabled" (
 echo.    %stringBuilder_string%
 
 echo.
-echo.
 echo.    %language_interface_explorer22%
 echo.    %language_menuItem_restartExplorer%
 echo.
@@ -816,17 +818,453 @@ goto :interface_taskBar
 
 
 
-:setup_office
-call :main_variables setup_office
+:programs_system
+call :main_variables programs_system
 
 call :logo
-echo.%language_setup_office01%
+echo.%language_programs_system01%
 echo.
 echo.
-echo.%language_setup_office02%
-echo.    %language_setup_office03%
+echo.%language_programs_system02%
+
+set stringBuilder_string=%language_programs_system03%
+if "%programs_system_program_3DViewer%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_3DViewer%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system04%
+if "%programs_system_program_alarmsClock%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_alarmsClock%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system05%
+if "%programs_system_program_feedbackHub%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_feedbackHub%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system06%
+if "%programs_system_program_camera%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_camera%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system07%
+if "%programs_system_program_getHelp%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_getHelp%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system08%
+if "%programs_system_program_gameBar%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_gameBar%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system09%
+if "%programs_system_program_mailCalendar%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_mailCalendar%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system10%
+if "%programs_system_program_grooveMusic%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_grooveMusic%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system11%
+if "%programs_system_program_maps%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_maps%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system12%
+if "%programs_system_program_moviesTV%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_moviesTV%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system13%
+if "%programs_system_program_messaging%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_messaging%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system14%
+if "%programs_system_program_myOffice%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_myOffice%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system15%
+if "%programs_system_program_mobilePlans%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_mobilePlans%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system16%
+if "%programs_system_program_paint3D%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_paint3D%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system17%
+if "%programs_system_program_oneNote%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_oneNote%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system18%
+if "%programs_system_program_photos%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_photos%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system19%
+if "%programs_system_program_print3D%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_print3D%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system20%
+if "%programs_system_program_skype%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_skype%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system21%
+if "%programs_system_program_solitare%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_solitare%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system22%
+if "%programs_system_program_snipSketch%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_snipSketch%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system23%
+if "%programs_system_program_tips%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_tips%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system24%
+if "%programs_system_program_stickyNotes%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_stickyNotes%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_programs_system25%
+if "%programs_system_program_yourPhone%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_yourPhone%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system26%
+if "%programs_system_program_store%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_store%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=                                                             %language_programs_system28%
+if "%programs_system_program_voiceRecorder%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_voiceRecorder%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=                                                             %language_programs_system30%
+if "%programs_system_program_weather%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_weather%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=                                                             %language_programs_system32%
+if "%programs_system_program_xbox%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_xbox%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
 echo.
-echo.    %language_setup_office04%
+echo.    %language_programs_system33%
+echo.    %language_programs_system34%
+echo.
+echo.    %language_menuItem_goBack%
+echo.
+echo.
+echo.
+if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
+choice /c 123456789ABCDEFGHIJKLMNOPQRST0 /n /m "> "
+set command=%errorLevel%
+
+
+
+if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
+  if "%command%" == "1" if "%programs_system_program_3DViewer%" == "installed" (
+    %appxMgmt% remove Microsoft3DViewer
+  ) else %appxMgmt% add Microsoft3DViewer
+
+  if "%command%" == "2" if "%programs_system_program_feedbackHub%" == "installed" (
+    %appxMgmt% remove WindowsFeedbackHub
+  ) else %appxMgmt% add WindowsFeedbackHub
+
+  if "%command%" == "3" if "%programs_system_program_getHelp%" == "installed" (
+    %appxMgmt% remove GetHelp
+  ) else %appxMgmt% add GetHelp
+
+  if "%command%" == "4" if "%programs_system_program_mailCalendar%" == "installed" (
+    %appxMgmt% remove WindowsCommunicationsApps
+  ) else %appxMgmt% add WindowsCommunicationsApps
+
+  if "%command%" == "5" if "%programs_system_program_maps%" == "installed" (
+    %appxMgmt% remove WindowsMaps
+  ) else %appxMgmt% add WindowsMaps
+
+  if "%command%" == "6" if "%programs_system_program_messaging%" == "installed" (
+    %appxMgmt% remove Messaging
+  ) else %appxMgmt% add Messaging
+
+  if "%command%" == "7" if "%programs_system_program_mobilePlans%" == "installed" (
+    %appxMgmt% remove OneConnect
+  ) else %appxMgmt% add OneConnect
+
+  if "%command%" == "8" if "%programs_system_program_oneNote%" == "installed" (
+    %appxMgmt% remove Office.OneNote
+  ) else %appxMgmt% add Office.OneNote
+
+  if "%command%" == "9" if "%programs_system_program_print3D%" == "installed" (
+    %appxMgmt% remove Print3D
+  ) else %appxMgmt% add Print3D
+
+  if "%command%" == "10" if "%programs_system_program_solitare%" == "installed" (
+    %appxMgmt% remove MicrosoftSolitaireCollection
+  ) else %appxMgmt% add MicrosoftSolitaireCollection
+
+  if "%command%" == "11" if "%programs_system_program_tips%" == "installed" (
+    %appxMgmt% remove GetStarted
+  ) else %appxMgmt% add GetStarted
+
+  if "%command%" == "12" if "%programs_system_program_yourPhone%" == "installed" (
+    %appxMgmt% remove YourPhone
+  ) else %appxMgmt% add YourPhone
+
+
+  if "%command%" == "13" if "%programs_system_program_alarmsClock%" == "installed" (
+    %appxMgmt% remove WindowsAlarms
+  ) else %appxMgmt% add WindowsAlarms
+
+  if "%command%" == "14" if "%programs_system_program_camera%" == "installed" (
+    %appxMgmt% remove WindowsCamera
+  ) else %appxMgmt% add WindowsCamera
+
+  if "%command%" == "15" if "%programs_system_program_gameBar%" == "installed" (
+    %appxMgmt% remove XboxGameOverlay
+    %appxMgmt% remove XboxGamingOverlay
+  ) else (
+    %appxMgmt% add XboxGameOverlay
+    %appxMgmt% add XboxGamingOverlay
+  )
+
+  if "%command%" == "16" if "%programs_system_program_grooveMusic%" == "installed" (
+    %appxMgmt% remove ZuneMusic
+  ) else %appxMgmt% add ZuneMusic
+
+  if "%command%" == "17" if "%programs_system_program_moviesTV%" == "installed" (
+    %appxMgmt% remove ZuneVideo
+  ) else %appxMgmt% add ZuneVideo
+
+  if "%command%" == "18" if "%programs_system_program_myOffice%" == "installed" (
+    %appxMgmt% remove MicrosoftOfficeHub
+  ) else %appxMgmt% add MicrosoftOfficeHub
+
+  if "%command%" == "19" if "%programs_system_program_paint3D%" == "installed" (
+    %appxMgmt% remove MSPaint
+  ) else %appxMgmt% add MSPaint
+
+  if "%command%" == "20" if "%programs_system_program_photos%" == "installed" (
+    %appxMgmt% remove Windows.Photos
+  ) else %appxMgmt% add Windows.Photos
+
+  if "%command%" == "21" if "%programs_system_program_skype%" == "installed" (
+    %appxMgmt% remove SkypeApp
+  ) else %appxMgmt% add SkypeApp
+
+  if "%command%" == "22" if "%programs_system_program_snipSketch%" == "installed" (
+    %appxMgmt% remove ScreenSketch
+  ) else %appxMgmt% add ScreenSketch
+
+  if "%command%" == "23" if "%programs_system_program_stickyNotes%" == "installed" (
+    %appxMgmt% remove MicrosoftStickyNotes
+  ) else %appxMgmt% add MicrosoftStickyNotes
+
+  if "%command%" == "24" if "%programs_system_program_store%" == "installed" (
+    %appxMgmt% remove WindowsStore
+  ) else %appxMgmt% add WindowsStore
+
+  if "%command%" == "25" if "%programs_system_program_voiceRecorder%" == "installed" (
+    %appxMgmt% remove WindowsSoundRecorder
+  ) else %appxMgmt% add WindowsSoundRecorder
+
+  if "%command%" == "26" if "%programs_system_program_weather%" == "installed" (
+    %appxMgmt% remove BingWeather
+  ) else %appxMgmt% add BingWeather
+
+  if "%command%" == "27" if "%programs_system_program_xbox%" == "installed" (
+    %appxMgmt% remove XboxApp
+  ) else %appxMgmt% add XboxApp
+
+  if "%command%" == "28" (
+    if "%programs_system_program_3DViewer%"      == "uninstalled" %appxMgmt% add Microsoft3DViewer
+    if "%programs_system_program_feedbackHub%"   == "uninstalled" %appxMgmt% add WindowsFeedbackHub
+    if "%programs_system_program_getHelp%"       == "uninstalled" %appxMgmt% add GetHelp
+    if "%programs_system_program_mailCalendar%"  == "uninstalled" %appxMgmt% add WindowsCommunicationsApps
+    if "%programs_system_program_maps%"          == "uninstalled" %appxMgmt% add WindowsMaps
+    if "%programs_system_program_messaging%"     == "uninstalled" %appxMgmt% add Messaging
+    if "%programs_system_program_mobilePlans%"   == "uninstalled" %appxMgmt% add OneConnect
+    if "%programs_system_program_oneNote%"       == "uninstalled" %appxMgmt% add Office.OneNote
+    if "%programs_system_program_print3D%"       == "uninstalled" %appxMgmt% add Print3D
+    if "%programs_system_program_solitare%"      == "uninstalled" %appxMgmt% add MicrosoftSolitaireCollection
+    if "%programs_system_program_tips%"          == "uninstalled" %appxMgmt% add GetStarted
+    if "%programs_system_program_yourPhone%"     == "uninstalled" %appxMgmt% add YourPhone
+
+    if "%programs_system_program_alarmsClock%"   == "uninstalled" %appxMgmt% add WindowsAlarms
+    if "%programs_system_program_camera%"        == "uninstalled" %appxMgmt% add WindowsCamera
+    if "%programs_system_program_gameBar%"       == "uninstalled" (
+      %appxMgmt% add XboxGameOverlay
+      %appxMgmt% add XboxGamingOverlay
+    )
+    if "%programs_system_program_grooveMusic%"   == "uninstalled" %appxMgmt% add ZuneMusic
+    if "%programs_system_program_moviesTV%"      == "uninstalled" %appxMgmt% add ZuneVideo
+    if "%programs_system_program_myOffice%"      == "uninstalled" %appxMgmt% add MicrosoftOfficeHub
+    if "%programs_system_program_paint3D%"       == "uninstalled" %appxMgmt% add MSPaint
+    if "%programs_system_program_photos%"        == "uninstalled" %appxMgmt% add Windows.Photos
+    if "%programs_system_program_skype%"         == "uninstalled" %appxMgmt% add SkypeApp
+    if "%programs_system_program_snipSketch%"    == "uninstalled" %appxMgmt% add ScreenSketch
+    if "%programs_system_program_stickyNotes%"   == "uninstalled" %appxMgmt% add MicrosoftStickyNotes
+    if "%programs_system_program_store%"         == "uninstalled" %appxMgmt% add WindowsStore
+    if "%programs_system_program_voiceRecorder%" == "uninstalled" %appxMgmt% add WindowsSoundRecorder
+    if "%programs_system_program_weather%"       == "uninstalled" %appxMgmt% add BingWeather
+    if "%programs_system_program_xbox%"          == "uninstalled" %appxMgmt% add XboxApp
+  )
+
+  if "%command%" == "29" (
+    if "%programs_system_program_3DViewer%"      == "installed" %appxMgmt% remove Microsoft3DViewer
+    if "%programs_system_program_feedbackHub%"   == "installed" %appxMgmt% remove WindowsFeedbackHub
+    if "%programs_system_program_getHelp%"       == "installed" %appxMgmt% remove GetHelp
+    if "%programs_system_program_mailCalendar%"  == "installed" %appxMgmt% remove WindowsCommunicationsApps
+    if "%programs_system_program_maps%"          == "installed" %appxMgmt% remove WindowsMaps
+    if "%programs_system_program_messaging%"     == "installed" %appxMgmt% remove Messaging
+    if "%programs_system_program_mobilePlans%"   == "installed" %appxMgmt% remove OneConnect
+    if "%programs_system_program_oneNote%"       == "installed" %appxMgmt% remove Office.OneNote
+    if "%programs_system_program_print3D%"       == "installed" %appxMgmt% remove Print3D
+    if "%programs_system_program_solitare%"      == "installed" %appxMgmt% remove MicrosoftSolitaireCollection
+    if "%programs_system_program_tips%"          == "installed" %appxMgmt% remove GetStarted
+    if "%programs_system_program_yourPhone%"     == "installed" %appxMgmt% remove YourPhone
+
+    if "%programs_system_program_alarmsClock%"   == "installed" %appxMgmt% remove WindowsAlarms
+    if "%programs_system_program_camera%"        == "installed" %appxMgmt% remove WindowsCamera
+    if "%programs_system_program_gameBar%"       == "installed" (
+      %appxMgmt% remove XboxGameOverlay
+      %appxMgmt% remove XboxGamingOverlay
+    )
+    if "%programs_system_program_grooveMusic%"   == "installed" %appxMgmt% remove ZuneMusic
+    if "%programs_system_program_moviesTV%"      == "installed" %appxMgmt% remove ZuneVideo
+    if "%programs_system_program_myOffice%"      == "installed" %appxMgmt% remove MicrosoftOfficeHub
+    if "%programs_system_program_paint3D%"       == "installed" %appxMgmt% remove MSPaint
+    if "%programs_system_program_photos%"        == "installed" %appxMgmt% remove Windows.Photos
+    if "%programs_system_program_skype%"         == "installed" %appxMgmt% remove SkypeApp
+    if "%programs_system_program_snipSketch%"    == "installed" %appxMgmt% remove ScreenSketch
+    if "%programs_system_program_stickyNotes%"   == "installed" %appxMgmt% remove MicrosoftStickyNotes
+    if "%programs_system_program_store%"         == "installed" %appxMgmt% remove WindowsStore
+    if "%programs_system_program_voiceRecorder%" == "installed" %appxMgmt% remove WindowsSoundRecorder
+    if "%programs_system_program_weather%"       == "installed" %appxMgmt% remove BingWeather
+    if "%programs_system_program_xbox%"          == "installed" %appxMgmt% remove XboxApp
+  )
+)
+
+if "%command%" == "30" ( set command= & exit /b )
+goto :programs_system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:programs_system_appxPackageManagement
+if "%1" == "get"    %module_powershell% "Get-AppxPackage *Microsoft.* | Select Name | Out-File -FilePath """%~dp0temp\return_appxPackages""" -Encoding ASCII"
+if "%1" == "check"  for /f "eol=- delims=" %%i in ('find /i "%2" "%~dp0temp\return_appxPackages"') do if "%%i" NEQ "" set %3=installed
+if "%1" == "add"    %module_powershell% "Add-AppxPackage -Path ((Get-AppxPackage -AllUsers -Name """*Microsoft.%2*""").InstallLocation + """\AppxManifest.xml""") -Register -DisableDevelopmentMode"
+if "%1" == "remove" %module_powershell% "Get-AppxPackage *Microsoft.%2* | Remove-AppxPackage"
+exit /b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:programs_office
+call :main_variables programs_office
+
+call :logo
+echo.%language_programs_office01%
+echo.
+echo.
+echo.%language_programs_office02%
+echo.    %language_programs_office03%
+echo.
+echo.    %language_programs_office04%
 echo.    %language_menuItem_rebootComputer%
 echo.
 echo.    %language_menuItem_goBack%
@@ -834,48 +1272,52 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-if "%error_setup_office_download%" == "1" (
+if "%error_programs_office_download%" == "1" (
   color 0c
-  echo.    %language_message_error_setup_office_download%
+  echo.    %language_message_error_programs_office_download%
   echo.
-  set error_setup_office_download=0
+  set error_programs_office_download=0
 ) else color 0b
 choice /c 1Z0 /n /m "> "
 set command=%errorLevel%
 
 
 
-:setup_office_setup
+:programs_office_setup
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%command%" == "1" (
   call :logo
-  if exist "%setup_office_setupISO%" del /q "%setup_office_setupISO%"
+  echo.%language_programs_office01%
+  echo.
+  echo.
 
-  echo.%language_setup_office05%
-  %module_wget% --show-progress --progress=bar:force:noscroll "%setup_office_setupURL%" --output-document="%setup_office_setupISO%"
+  if exist "%programs_office_setupISO%" del /q "%programs_office_setupISO%"
+
+  echo.%language_programs_office05%
+  %module_wget% --show-progress --progress=bar:force:noscroll "%programs_office_setupURL%" --output-document="%programs_office_setupISO%"
   timeout /nobreak /t 1 >nul
 
-  for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir "%~dp0%setup_office_setupISO%"') do if "%%i" == "1" if "%%j" == "0" (
-    set error_setup_office_download=1
-    goto :setup_office
+  for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir "%~dp0%programs_office_setupISO%"') do if "%%i" == "1" if "%%j" == "0" (
+    set error_programs_office_download=1
+    goto :programs_office
   )
 
-  echo.%language_setup_office06%
-  start /wait /min powershell.exe "Mount-DiskImage ""%~dp0%setup_office_setupISO%"""
+  echo.%language_programs_office06%
+  %module_powershell% "Mount-DiskImage ""%~dp0%programs_office_setupISO%"""
   timeout /nobreak /t 1 >nul
 
-  echo.%language_setup_office07%
-  start /wait /min powershell.exe "Get-DiskImage """%~dp0%setup_office_setupISO%""" | Get-Volume | Select-Object {$_.DriveLetter} | Out-File -FilePath """%~dp0temp\return_diskImage""" -Encoding ASCII"
+  echo.%language_programs_office07%
+  %module_powershell% "Get-DiskImage """%~dp0%programs_office_setupISO%""" | Get-Volume | Select-Object {$_.DriveLetter} | Out-File -FilePath """%~dp0temp\return_diskImage""" -Encoding ASCII"
   for /f "skip=3 delims= " %%i in (temp\return_diskImage) do start /wait %%i:\O16Setup.exe
   timeout /nobreak /t 1 >nul
 
-  echo.%language_setup_office08%
-  start /wait /min powershell.exe "Dismount-DiskImage ""%~dp0%setup_office_setupISO%"""
+  echo.%language_programs_office08%
+  %module_powershell% "Dismount-DiskImage ""%~dp0%programs_office_setupISO%"""
   timeout /nobreak /t 1 >nul
 )
 
 if "%command%" == "2" call :reboot_computer
 if "%command%" == "3" ( set command= & exit /b )
-goto :setup_office
+goto :programs_office
 
 
 
@@ -891,19 +1333,19 @@ goto :setup_office
 
 
 
-:setup_gpeditMSC
-call :main_variables setup_gpeditMSC
+:programs_gpeditMSC
+call :main_variables programs_gpeditMSC
 
 call :logo
-echo.%language_setup_gpeditMSC01%
+echo.%language_programs_gpeditMSC01%
 echo.
 echo.
-echo.%language_setup_gpeditMSC02%
+echo.%language_programs_gpeditMSC02%
 
-set stringBuilder_string=%language_setup_gpeditMSC03%
-if "%setup_gpeditMSC_gpeditFile%" == "exist" (
+set stringBuilder_string=%language_programs_gpeditMSC03%
+if "%programs_gpeditMSC_gpeditFile%" == "exist" (
   call %stringBuilder_build% %language_stringBuilder_option_exist%
-) else if "%setup_gpeditMSC_gpeditFile%" == "notExist" (
+) else if "%programs_gpeditMSC_gpeditFile%" == "notExist" (
   call %stringBuilder_build% %language_stringBuilder_option_notExist%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
@@ -921,12 +1363,12 @@ set command=%errorLevel%
 
 if "%command%" == "2" ( set command= & exit /b )
 
-if "%error_main_variables_disabledRegistryTools%" == "1" goto :setup_gpeditMSC
+if "%error_main_variables_disabledRegistryTools%" == "1" goto :programs_gpeditMSC
 
-dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >%setup_gpeditMSC_packagesList%
-dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>%setup_gpeditMSC_packagesList%
-for /f %%i in ('findstr /i . %setup_gpeditMSC_packagesList% 2^>nul') do dism /online /norestart /add-package:"%systemRoot%\servicing\Packages\%%i"
-goto :setup_gpeditMSC
+dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >%programs_gpeditMSC_packagesList%
+dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>%programs_gpeditMSC_packagesList%
+for /f %%i in ('findstr /i . %programs_gpeditMSC_packagesList% 2^>nul') do dism /online /norestart /add-package:"%systemRoot%\servicing\Packages\%%i"
+goto :programs_gpeditMSC
 
 
 
@@ -943,9 +1385,6 @@ goto :setup_gpeditMSC
 
 
 :services_windowsUpdate
-set services_windowsUpdate_updateDistributions=unlocked
-for /f "delims=" %%i in ('dir /a:-d /b "%WinDir%\SoftwareDistribution\Download"') do if "%%i" == "Download" set services_windowsUpdate_updateDistributions=locked
-
 call :main_variables services_windowsUpdate
 
 call :logo
@@ -1436,19 +1875,19 @@ if %errorLevel% GEQ 1 (
 
 if "%1" == "interface_desktopObjects" (
   set interface_desktopObjects_thisPC=hidden
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D}') do if "%%i" == "0x0" set interface_desktopObjects_thisPC=shown
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D}') do if "%%i" == "0x0" set interface_desktopObjects_thisPC=shown)>nul 2>nul
 
   set interface_desktopObjects_recycleBin=shown
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {645FF040-5081-101B-9F08-00AA002F954E}') do if "%%i" == "0x1" set interface_desktopObjects_recycleBin=hidden
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {645FF040-5081-101B-9F08-00AA002F954E}') do if "%%i" == "0x1" set interface_desktopObjects_recycleBin=hidden)>nul 2>nul
 
   set interface_desktopObjects_controlPanel=hidden
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}') do if "%%i" == "0x0" set interface_desktopObjects_controlPanel=shown
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}') do if "%%i" == "0x0" set interface_desktopObjects_controlPanel=shown)>nul 2>nul
 
   set interface_desktopObjects_userFolder=hidden
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee}') do if "%%i" == "0x0" set interface_desktopObjects_userFolder=shown
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee}') do if "%%i" == "0x0" set interface_desktopObjects_userFolder=shown)>nul 2>nul
 
   set interface_desktopObjects_network=hidden
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C}') do if "%%i" == "0x0" set interface_desktopObjects_network=shown
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C}') do if "%%i" == "0x0" set interface_desktopObjects_network=shown)>nul 2>nul
 )
 
 
@@ -1543,10 +1982,10 @@ if "%1" == "interface_explorer" (
   for /f "delims=" %%i in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace ^| find /i /c "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}"') do if "%%i" == "0" set interface_explorer_thisPC_3DObjects=hidden
 
   set interface_explorer_oneDriveInNavbar=shown
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCR\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6} /v System.IsPinnedToNameSpaceTree') do if "%%i" == "0x0" set interface_explorer_oneDriveInNavbar=hidden
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCR\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6} /v System.IsPinnedToNameSpaceTree') do if "%%i" == "0x0" set interface_explorer_oneDriveInNavbar=hidden)>nul 2>nul
 
   set interface_explorer_autoFolderTypeDiscovery=enabled
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /v FolderType') do if "%%i" == "NotSpecified" set interface_explorer_autoFolderTypeDiscovery=disabled
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /v FolderType') do if "%%i" == "NotSpecified" set interface_explorer_autoFolderTypeDiscovery=disabled)>nul 2>nul
 )
 
 
@@ -1577,20 +2016,121 @@ if "%1" == "interface_taskBar" (
 
 
 
-if "%1" == "setup_office" (
-  set setup_office_setupURL=https://onedrive.live.com/download?cid=D3AF852448CB4BF6^&resid=D3AF852448CB4BF6%%21259^&authkey=AAK3Qw80R8to-VE
-  set setup_office_setupISO=temp\setup_office_microsoftOfficeProfessionalPlus2016Setup.iso
+if "%1" == "programs_system" (
+  %appxMgmt% get
+
+  set programs_system_program_3DViewer=uninstalled
+  %appxMgmt% check Microsoft3DViewer programs_system_program_3DViewer
+
+  set programs_system_program_feedbackHub=uninstalled
+  %appxMgmt% check WindowsFeedbackHub programs_system_program_feedbackHub
+
+  set programs_system_program_getHelp=uninstalled
+  %appxMgmt% check GetHelp programs_system_program_getHelp
+
+  set programs_system_program_mailCalendar=uninstalled
+  %appxMgmt% check WindowsCommunicationsApps programs_system_program_mailCalendar
+
+  set programs_system_program_maps=uninstalled
+  %appxMgmt% check WindowsMaps programs_system_program_maps
+
+  set programs_system_program_messaging=uninstalled
+  %appxMgmt% check Messaging programs_system_program_messaging
+
+  set programs_system_program_mobilePlans=uninstalled
+  %appxMgmt% check OneConnect programs_system_program_mobilePlans
+
+  set programs_system_program_oneNote=uninstalled
+  %appxMgmt% check Office.OneNote programs_system_program_oneNote
+
+  set programs_system_program_print3D=uninstalled
+  %appxMgmt% check Print3D programs_system_program_print3D
+
+  set programs_system_program_solitare=uninstalled
+  %appxMgmt% check MicrosoftSolitaireCollection programs_system_program_solitare
+
+  set programs_system_program_tips=uninstalled
+  %appxMgmt% check GetStarted programs_system_program_tips
+
+  set programs_system_program_yourPhone=uninstalled
+  %appxMgmt% check YourPhone programs_system_program_yourPhone
+
+
+  set programs_system_program_alarmsClock=uninstalled
+  %appxMgmt% check WindowsAlarms programs_system_program_alarmsClock
+
+  set programs_system_program_camera=uninstalled
+  %appxMgmt% check WindowsCamera programs_system_program_camera
+
+  set programs_system_program_gameBar=uninstalled
+  set programs_system_program_gameBar1=uninstalled
+  set programs_system_program_gameBar2=uninstalled
+  %appxMgmt% check XboxGameOverlay   programs_system_program_gameBar1
+  %appxMgmt% check XboxGamingOverlay programs_system_program_gameBar2
+
+  set programs_system_program_grooveMusic=uninstalled
+  %appxMgmt% check ZuneMusic programs_system_program_grooveMusic
+
+  set programs_system_program_moviesTV=uninstalled
+  %appxMgmt% check ZuneVideo programs_system_program_moviesTV
+
+  set programs_system_program_myOffice=uninstalled
+  %appxMgmt% check MicrosoftOfficeHub programs_system_program_myOffice
+
+  set programs_system_program_paint3D=uninstalled
+  %appxMgmt% check MSPaint programs_system_program_paint3D
+
+  set programs_system_program_photos=uninstalled
+  %appxMgmt% check Windows.Photos programs_system_program_photos
+
+  set programs_system_program_skype=uninstalled
+  %appxMgmt% check SkypeApp programs_system_program_skype
+
+  set programs_system_program_snipSketch=uninstalled
+  %appxMgmt% check ScreenSketch programs_system_program_snipSketch
+
+  set programs_system_program_stickyNotes=uninstalled
+  %appxMgmt% check MicrosoftStickyNotes programs_system_program_stickyNotes
+
+  set programs_system_program_store=uninstalled
+  %appxMgmt% check WindowsStore programs_system_program_store
+
+  set programs_system_program_voiceRecorder=uninstalled
+  %appxMgmt% check WindowsSoundRecorder programs_system_program_voiceRecorder
+
+  set programs_system_program_weather=uninstalled
+  %appxMgmt% check BingWeather programs_system_program_weather
+
+  set programs_system_program_xbox=uninstalled
+  %appxMgmt% check XboxApp programs_system_program_xbox
 )
 
 
 
 
 
-if "%1" == "setup_gpeditMSC" (
-  set setup_gpeditMSC_packagesList=temp\setup_gpeditMSC_packagesList.txt
+if "%1" == "programs_system" (
+  if "%programs_system_program_gameBar1%" == "%programs_system_program_gameBar2%" if "%programs_system_program_gameBar1%" == "installed" set programs_system_program_gameBar=installed
+)
 
-  set setup_gpeditMSC_gpeditFile=notExist
-  for /f "delims=" %%i in ('dir /a:-d /b "%winDir%\System32\gpedit.msc"') do if "%%i" == "gpedit.msc" set setup_gpeditMSC_gpeditFile=exist
+
+
+
+
+if "%1" == "programs_office" (
+  set programs_office_setupURL=https://onedrive.live.com/download?cid=D3AF852448CB4BF6^&resid=D3AF852448CB4BF6%%21259^&authkey=AAK3Qw80R8to-VE
+  set programs_office_setupISO=temp\programs_office_microsoftOfficeProfessionalPlus2016Setup.iso
+)
+
+
+
+
+
+if "%1" == "programs_gpeditMSC" (
+  set programs_gpeditMSC_packagesList=temp\programs_gpeditMSC_packagesList.txt
+
+  set programs_gpeditMSC_gpeditFile=notExist
+  for /f "delims=" %%i in ('dir /a:-d /b "%winDir%\System32\gpedit.msc"') do if "%%i" == "gpedit.msc" set programs_gpeditMSC_gpeditFile=exist
 )
 
 
@@ -1598,6 +2138,9 @@ if "%1" == "setup_gpeditMSC" (
 
 
 if "%1" == "services_windowsUpdate" (
+  set services_windowsUpdate_updateDistributions=unlocked
+  for /f "delims=" %%i in ('dir /a:-d /b "%WinDir%\SoftwareDistribution\Download"') do if "%%i" == "Download" set services_windowsUpdate_updateDistributions=locked
+
   set services_windowsUpdate_updateCenter=enabled
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKLM\SYSTEM\ControlSet001\Services\wuauserv /v Start') do if "%%i" == "0x4" set services_windowsUpdate_updateCenter=disabled
 )
@@ -1617,22 +2160,22 @@ if "%1" == "services_sppsvc" (
 
 if "%1" == "tools_administrativeTools" (
   set tools_administrativeTools_desktop=enabled
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoDesktop') do if "%%i" == "0x1" set tools_administrativeTools_desktop=disabled
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoDesktop') do if "%%i" == "0x1" set tools_administrativeTools_desktop=disabled)>nul 2>nul
 
   set tools_administrativeTools_controlPanel=enabled
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoControlPanel') do if "%%i" == "0x1" set tools_administrativeTools_controlPanel=disabled
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoControlPanel') do if "%%i" == "0x1" set tools_administrativeTools_controlPanel=disabled)>nul 2>nul
 
   set tools_administrativeTools_runDialog=enabled
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoRun') do if "%%i" == "0x1" set tools_administrativeTools_runDialog=disabled
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoRun') do if "%%i" == "0x1" set tools_administrativeTools_runDialog=disabled)>nul 2>nul
 
   if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
     set tools_administrativeTools_registryTools=enabled
 
     set tools_administrativeTools_cmd=enabled
-    for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableCMD') do if "%%i" == "0x1" set tools_administrativeTools_cmd=disabled
+    (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableCMD') do if "%%i" == "0x1" set tools_administrativeTools_cmd=disabled)>nul 2>nul
 
     set tools_administrativeTools_taskManager=enabled
-    for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr') do if "%%i" == "0x1" set tools_administrativeTools_taskManager=disabled
+    (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableTaskMgr') do if "%%i" == "0x1" set tools_administrativeTools_taskManager=disabled)>nul 2>nul
 
   )
 )
@@ -1675,38 +2218,42 @@ set       language_stringBuilder_option_enabled=enabled
 set      language_stringBuilder_option_disabled=disabled          
 set         language_stringBuilder_option_shown=shown             
 set        language_stringBuilder_option_hidden=hidden            
-set   language_stringBuilder_option_notAssigned=not assigned      
-set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
-set  language_stringBuilder_option_leftAltShift=left Alt + Shift  
-set   language_stringBuilder_option_graveAccent=grave accent ^^(`^^)  
-set    language_stringBuilder_option_powerShell=PowerShell        
-set language_stringBuilder_option_commandPrompt=Command Prompt    
-set        language_stringBuilder_option_always=always            
-set    language_stringBuilder_option_whenIsFull=when is full      
-set         language_stringBuilder_option_never=never             
 set         language_stringBuilder_option_exist=exist             
 set      language_stringBuilder_option_notExist=not exist         
 set        language_stringBuilder_option_locked=locked            
 set      language_stringBuilder_option_unlocked=unlocked          
+set     language_stringBuilder_option_installed=installed         
+set   language_stringBuilder_option_uninstalled=uninstalled       
+
+set   language_stringBuilder_option_notAssigned=not assigned      
+set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
+set  language_stringBuilder_option_leftAltShift=left Alt + Shift  
+set   language_stringBuilder_option_graveAccent=grave accent ^^(`^^)  
+
+set    language_stringBuilder_option_powerShell=PowerShell        
+set language_stringBuilder_option_commandPrompt=Command Prompt    
+
+set        language_stringBuilder_option_always=always            
+set    language_stringBuilder_option_whenIsFull=when is full      
+set         language_stringBuilder_option_never=never             
 
 set language_logo01=Release v%program_version%
-set language_logo02=============================
-set language_logo03=See other programs here:
+set language_logo02=See other programs here:
 
 set language_running=^^(i^^) %program_name% is running...
 set language_eula01=^^(^^!^^) The author is not responsible for any possible damage to the computer^^!
 set language_eula02=^^(^^?^^) Are you sure^^? ^^(Press Enter or close^^)
 
-set language_main_menu01=  Interface                                                    Setup
-set language_main_menu02=    ^^(1^^) Desktop objects ^^(This PC etc^^)                            ^^(6^^) Setup Office Professional+ 2016
-set language_main_menu03=    ^^(2^^) Language key sequence ^^(Ctrl + Shift^^)                     ^^(7^^) Setup/restore gpedit.msc
-set language_main_menu04=    ^^(3^^) Input suggestions and auto completion
-set language_main_menu05=    ^^(4^^) Windows Explorer                                       Services
-set language_main_menu06=    ^^(5^^) Windows Task Bar                                         ^^(8^^) Windows Update ^^(wuauserv^^)
-set language_main_menu07=                                                                 ^^(9^^) Software Protection Platform Service ^^(sppsvc^^)
-set language_main_menu08=  Tools
-set language_main_menu09=    ^^(A^^) Administrative tools
-set language_main_menu10=    ^^(B^^) System Resource Checker
+set language_main_menu01=  Interface                                                    Programs
+set language_main_menu02=    ^^(1^^) Desktop objects ^^(This PC etc^^)                            ^^(6^^) System programs
+set language_main_menu03=    ^^(2^^) Language key sequence ^^(Ctrl + Shift^^)                     ^^(7^^) Setup Office Professional+ 2016
+set language_main_menu04=    ^^(3^^) Input suggestions and auto completion                    ^^(8^^) Setup/restore gpedit.msc
+set language_main_menu05=    ^^(4^^) Windows Explorer
+set language_main_menu06=    ^^(5^^) Windows Task Bar                                       Services
+set language_main_menu07=                                                                 ^^(9^^) Windows Update ^^(wuauserv^^)
+set language_main_menu08=  Tools                                                          ^^(A^^) Software Protection Platform Service ^^(sppsvc^^)
+set language_main_menu09=    ^^(B^^) Administrative tools
+set language_main_menu10=    ^^(C^^) System Resource Checker
 set language_main_menu11=
 set language_main_menu12=
 set language_main_menu13=    ^^(L^^) Language
@@ -1765,18 +2312,50 @@ set language_interface_taskBar06=^^(5^^) Buttons combine
 set language_interface_taskBar07=^^(3^^) Task view button                  
 set language_interface_taskBar08=Note: These features require to restart Windows Explorer.
 
-set language_setup_office01=^^(i^^) Microsoft Office Professional+ 2016 - Setup Menu
-set language_setup_office02=^^(^^^>^^) Choose action:
-set language_setup_office03=^^(1^^) Run setup
-set language_setup_office04=Note: This feature requires to reboot your computer.
-set language_setup_office05=^^(i^^) Downloading Microsoft Office Professional+ 2016
-set language_setup_office06=^^(i^^) Mounting iso file
-set language_setup_office07=^^(i^^) Setup
-set language_setup_office08=^^(i^^) Unmounting iso file
+set language_programs_system01=^^(i^^) System Programs - Control Menu
+set language_programs_system02=^^(^^^>^^) Choose action to install/uninstall system programs:
+set language_programs_system03=^^(1^^) 3D Viewer                         
+set language_programs_system04=^^(D^^) Alarms and Clock                  
+set language_programs_system05=^^(2^^) Feedback Hub                      
+set language_programs_system06=^^(E^^) Camera                            
+set language_programs_system07=^^(3^^) Get Help                          
+set language_programs_system08=^^(F^^) Game bar                          
+set language_programs_system09=^^(4^^) Mail and Calendar                 
+set language_programs_system10=^^(G^^) Groove Music                      
+set language_programs_system11=^^(5^^) Maps                              
+set language_programs_system12=^^(H^^) Movies and TV                     
+set language_programs_system13=^^(6^^) Messaging                         
+set language_programs_system14=^^(I^^) My Office                         
+set language_programs_system15=^^(7^^) Mobile Plans                      
+set language_programs_system16=^^(J^^) Paint 3D                          
+set language_programs_system17=^^(8^^) OneNote                           
+set language_programs_system18=^^(K^^) Photos                            
+set language_programs_system19=^^(9^^) Print 3D                          
+set language_programs_system20=^^(L^^) Skype                             
+set language_programs_system21=^^(A^^) Solitare                          
+set language_programs_system22=^^(M^^) Snip and Sketch                   
+set language_programs_system23=^^(B^^) Tips                              
+set language_programs_system24=^^(N^^) Sticky Notes                      
+set language_programs_system25=^^(C^^) Your Phone                        
+set language_programs_system26=^^(O^^) Store                             
+set language_programs_system28=^^(P^^) Voice Recorder                    
+set language_programs_system30=^^(Q^^) Weather                           
+set language_programs_system32=^^(R^^) Xbox                              
+set language_programs_system33=^^(S^^) Install all
+set language_programs_system34=^^(T^^) Uninstall all
 
-set language_setup_gpeditMSC01=^^(i^^) Group Policy Editor - Setup Menu
-set language_setup_gpeditMSC02=^^(^^^>^^) Choose action:
-set language_setup_gpeditMSC03=^^(1^^) Setup/repair gpedit.msc           
+set language_programs_office01=^^(i^^) Microsoft Office Professional+ 2016 - Setup Menu
+set language_programs_office02=^^(^^^>^^) Choose action:
+set language_programs_office03=^^(1^^) Run setup
+set language_programs_office04=Note: This feature requires to reboot your computer.
+set language_programs_office05=^^(i^^) Downloading Microsoft Office Professional+ 2016
+set language_programs_office06=^^(i^^) Mounting iso file
+set language_programs_office07=^^(i^^) Setup
+set language_programs_office08=^^(i^^) Unmounting iso file
+
+set language_programs_gpeditMSC01=^^(i^^) Group Policy Editor - Setup Menu
+set language_programs_gpeditMSC02=^^(^^^>^^) Choose action:
+set language_programs_gpeditMSC03=^^(1^^) Setup/repair gpedit.msc           
 
 set language_services_windowsUpdate01=^^(i^^) Windows Update ^^(wuauserv^^) - Control Menu
 set language_services_windowsUpdate02=^^(^^^>^^) Choose action to enable/disable Windows Update:
@@ -1821,7 +2400,7 @@ set language_message_error_main_variables_disabledRegistryTools04=Please, back t
 
 set language_message_error_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Can not be two identical key combinations^^!
 
-set language_message_error_setup_office_download=^^(^^!^^) Download error^^! Server not respond or no Internet connection^^!
+set language_message_error_programs_office_download=^^(^^!^^) Download error^^! Server not respond or no Internet connection^^!
 
 set language_message_update_available01=^^(^^!^^) An update for %program_name% is now available^^!
 set language_message_update_available02=Download it here:
@@ -1844,38 +2423,42 @@ set       language_stringBuilder_option_enabled=включено
 set      language_stringBuilder_option_disabled=отключено         
 set         language_stringBuilder_option_shown=показано          
 set        language_stringBuilder_option_hidden=скрыто            
-set   language_stringBuilder_option_notAssigned=не призначено     
-set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
-set  language_stringBuilder_option_leftAltShift=левый Alt + Shift 
-set   language_stringBuilder_option_graveAccent=ударение ^^(`^^)      
-set    language_stringBuilder_option_powerShell=PowerShell        
-set language_stringBuilder_option_commandPrompt=Командная Строка  
-set        language_stringBuilder_option_always=всегда            
-set    language_stringBuilder_option_whenIsFull=когда полон       
-set         language_stringBuilder_option_never=никогда           
 set         language_stringBuilder_option_exist=существует        
 set      language_stringBuilder_option_notExist=не существует     
 set        language_stringBuilder_option_locked=заблокировано     
 set      language_stringBuilder_option_unlocked=розблокировано    
+set     language_stringBuilder_option_installed=установлено       
+set   language_stringBuilder_option_uninstalled=не установлено    
+
+set   language_stringBuilder_option_notAssigned=не призначено     
+set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
+set  language_stringBuilder_option_leftAltShift=левый Alt + Shift 
+set   language_stringBuilder_option_graveAccent=ударение ^^(`^^)      
+
+set    language_stringBuilder_option_powerShell=PowerShell        
+set language_stringBuilder_option_commandPrompt=Командная Строка  
+
+set        language_stringBuilder_option_always=всегда            
+set    language_stringBuilder_option_whenIsFull=когда полон       
+set         language_stringBuilder_option_never=никогда           
 
 set language_logo01=Релиз v%program_version%
-set language_logo02====================================
-set language_logo03=Смотрите другие программы здесь:
+set language_logo02=Смотрите другие программы здесь:
 
 set language_running=^^(i^^) %program_name% запускается...
 set language_eula01=^^(^^!^^) Автор не несет ответственности за возможные повреждения компьютера^^!
 set language_eula02=^^(^^?^^) Вы уверены^^? ^^(Нажмите Enter или закройте^^)
 
-set language_main_menu01=  Интерфейс                                                    Настройка
-set language_main_menu02=    ^^(1^^) Объекты рабочего стола ^^(Этот ПК и другие^^)                ^^(6^^) Установить Офис Профессиональный+ 2016
-set language_main_menu03=    ^^(2^^) Сочетания клавиш смены языка ^^(Ctrl + Shift^^)              ^^(7^^) Установить/восстановить gpedit.msc
-set language_main_menu04=    ^^(3^^) Предложения при вводе и автозаполнение
-set language_main_menu05=    ^^(4^^) Проводник Windows                                      Службы
-set language_main_menu06=    ^^(5^^) Панель Задач Windows                                     ^^(8^^) Обновление Windows ^^(wuauserv^^)
-set language_main_menu07=                                                                 ^^(9^^) Служба Платформы Защиты ПО ^^(sppsvc^^)
-set language_main_menu08=  Инструменты
-set language_main_menu09=    ^^(A^^) Административные инструменты
-set language_main_menu10=    ^^(B^^) Проверка системных ресурсов
+set language_main_menu01=  Интерфейс                                                    Программы
+set language_main_menu02=    ^^(1^^) Объекты рабочего стола ^^(Этот ПК и другие^^)                ^^(6^^) Системные программы
+set language_main_menu03=    ^^(2^^) Сочетания клавиш смены языка ^^(Ctrl + Shift^^)              ^^(7^^) Установить Офис Профессиональный+ 2016
+set language_main_menu04=    ^^(3^^) Предложения при вводе и автозаполнение                   ^^(8^^) Установить/восстановить gpedit.msc
+set language_main_menu05=    ^^(4^^) Проводник Windows
+set language_main_menu06=    ^^(5^^) Панель Задач Windows                                   Службы
+set language_main_menu07=                                                                 ^^(9^^) Обновление Windows ^^(wuauserv^^)
+set language_main_menu08=  Инструменты                                                    ^^(A^^) Служба Платформы Защиты ПО ^^(sppsvc^^)
+set language_main_menu09=    ^^(B^^) Административные инструменты
+set language_main_menu10=    ^^(C^^) Проверка системных ресурсов
 set language_main_menu11=
 set language_main_menu12=
 set language_main_menu13=    ^^(L^^) Язык
@@ -1934,18 +2517,50 @@ set language_interface_taskBar06=^^(5^^) Совмещение кнопок
 set language_interface_taskBar07=^^(3^^) Кнопка просмотра задач            
 set language_interface_taskBar08=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
-set language_setup_office01=^^(i^^) Microsoft Офис Профессиональный+ 2016 - Меню Настройки
-set language_setup_office02=^^(^^^>^^) Выберите действие:
-set language_setup_office03=^^(1^^) Запустить установку
-set language_setup_office04=Примечание: Эта функция требует перезагрузки Вашего компьютера.
-set language_setup_office05=^^(i^^) Загрузка Microsoft Офис Профессиональный+ 2016
-set language_setup_office06=^^(i^^) Подключение iso файла
-set language_setup_office07=^^(i^^) Установка
-set language_setup_office08=^^(i^^) Отключение iso файла
+set language_programs_system01=^^(i^^) Системные Приложения - Меню Управления
+set language_programs_system02=^^(^^^>^^) Выберите действие, чтобы установить/деинсталировать системные приложения:
+set language_programs_system03=^^(1^^) 3D-модели                         
+set language_programs_system04=^^(D^^) Будильники и Часы                 
+set language_programs_system05=^^(2^^) Обратная Связь                    
+set language_programs_system06=^^(E^^) Камера                            
+set language_programs_system07=^^(3^^) Помощник                          
+set language_programs_system08=^^(F^^) Игровая панель                    
+set language_programs_system09=^^(4^^) Почта и Календарь                 
+set language_programs_system10=^^(G^^) Музыка Groove                     
+set language_programs_system11=^^(5^^) Карты                             
+set language_programs_system12=^^(H^^) Фильмы и Телевидение              
+set language_programs_system13=^^(6^^) Сообщения                         
+set language_programs_system14=^^(I^^) Office                            
+set language_programs_system15=^^(7^^) Мобильные тарифы                  
+set language_programs_system16=^^(J^^) Paint 3D                          
+set language_programs_system17=^^(8^^) OneNote                           
+set language_programs_system18=^^(K^^) Фотографии                        
+set language_programs_system19=^^(9^^) Print 3D                          
+set language_programs_system20=^^(L^^) Skype                             
+set language_programs_system21=^^(A^^) Solitare                          
+set language_programs_system22=^^(M^^) Фрагмент и Набросок               
+set language_programs_system23=^^(B^^) Подсказки                         
+set language_programs_system24=^^(N^^) Наклейки                          
+set language_programs_system25=^^(C^^) Ваш Телефон                       
+set language_programs_system26=^^(O^^) Магазин                           
+set language_programs_system28=^^(P^^) Звукозаписыватель                 
+set language_programs_system30=^^(Q^^) Погода                            
+set language_programs_system32=^^(R^^) Xbox                              
+set language_programs_system33=^^(S^^) Установить всё
+set language_programs_system34=^^(T^^) Деинсталировать всё
 
-set language_setup_gpeditMSC01=^^(i^^) Редактор Групповых Политик - Меню Настройки
-set language_setup_gpeditMSC02=^^(^^^>^^) Выберите действие:
-set language_setup_gpeditMSC03=^^(1^^) Установить/восстановить           
+set language_programs_office01=^^(i^^) Microsoft Офис Профессиональный+ 2016 - Меню Настройки
+set language_programs_office02=^^(^^^>^^) Выберите действие:
+set language_programs_office03=^^(1^^) Запустить установку
+set language_programs_office04=Примечание: Эта функция требует перезагрузки Вашего компьютера.
+set language_programs_office05=^^(i^^) Загрузка Microsoft Офис Профессиональный+ 2016
+set language_programs_office06=^^(i^^) Подключение iso файла
+set language_programs_office07=^^(i^^) Установка
+set language_programs_office08=^^(i^^) Отключение iso файла
+
+set language_programs_gpeditMSC01=^^(i^^) Редактор Групповых Политик - Меню Настройки
+set language_programs_gpeditMSC02=^^(^^^>^^) Выберите действие:
+set language_programs_gpeditMSC03=^^(1^^) Установить/восстановить           
 
 set language_services_windowsUpdate01=^^(i^^) Обновление Windows ^^(wuauserv^^) - Меню Управления
 set language_services_windowsUpdate02=^^(^^^>^^) Выберите действие, чтобы включить/отключить обновления Windows:
@@ -1990,7 +2605,7 @@ set language_message_error_main_variables_disabledRegistryTools04=Пожалуй
 
 set language_message_error_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Не может быть двух одинаковых комбинаций клавиш^^!
 
-set language_message_error_setup_office_download=^^(^^!^^) Ошибка загрузки^^! Сервер не отвечает или нет подключения к Интернету^!
+set language_message_error_programs_office_download=^^(^^!^^) Ошибка загрузки^^! Сервер не отвечает или нет подключения к Интернету^!
 
 set language_message_update_available01=^^(^^!^^) Доступно обновление для %program_name%^^!
 set language_message_update_available02=Загрузите его здесь:
@@ -2013,38 +2628,42 @@ set       language_stringBuilder_option_enabled=увімкнено
 set      language_stringBuilder_option_disabled=вимкнено          
 set         language_stringBuilder_option_shown=показано          
 set        language_stringBuilder_option_hidden=сховано           
-set   language_stringBuilder_option_notAssigned=не визначено      
-set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
-set  language_stringBuilder_option_leftAltShift=лівий Alt + Shift 
-set   language_stringBuilder_option_graveAccent=наголос ^^(`^^)       
-set    language_stringBuilder_option_powerShell=PowerShell        
-set language_stringBuilder_option_commandPrompt=Командний Рядок   
-set        language_stringBuilder_option_always=завжди            
-set    language_stringBuilder_option_whenIsFull=коли повний       
-set         language_stringBuilder_option_never=ніколи            
 set         language_stringBuilder_option_exist=існує             
 set      language_stringBuilder_option_notExist=не існує          
 set        language_stringBuilder_option_locked=заблоковано       
 set      language_stringBuilder_option_unlocked=розблоковано      
+set     language_stringBuilder_option_installed=установлено       
+set   language_stringBuilder_option_uninstalled=не установлено    
+
+set   language_stringBuilder_option_notAssigned=не визначено      
+set     language_stringBuilder_option_ctrlShift=Ctrl + Shift      
+set  language_stringBuilder_option_leftAltShift=лівий Alt + Shift 
+set   language_stringBuilder_option_graveAccent=наголос ^^(`^^)       
+
+set    language_stringBuilder_option_powerShell=PowerShell        
+set language_stringBuilder_option_commandPrompt=Командний Рядок   
+
+set        language_stringBuilder_option_always=завжди            
+set    language_stringBuilder_option_whenIsFull=коли повний       
+set         language_stringBuilder_option_never=ніколи            
 
 set language_logo01=Реліз v%program_version%
-set language_logo02===============================
-set language_logo03=Дивіться інші програми тут:
+set language_logo02=Дивіться інші програми тут:
 
 set language_running=^^(i^^) %program_name% запускається...
 set language_eula01=^^(^^!^^) Автор не несе відповідальності за можливі пошкодження комп'ютера^^!
 set language_eula02=^^(^^?^^) Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
 
-set language_main_menu01=  Інтерфейс                                                    Налаштування
-set language_main_menu02=    ^^(1^^) Об'єкти робочого столу ^^(Цей ПК та інші^^)                  ^^(6^^) Установити Офіс Професійний+ 2016
-set language_main_menu03=    ^^(2^^) Комбінації клавіш зміни мови ^^(Ctrl + Shift^^)              ^^(7^^) Установити/відновити gpedit.msc
-set language_main_menu04=    ^^(3^^) Пропозиції при введенні та автозаповнення
-set language_main_menu05=    ^^(4^^) Провідник Windows                                      Служби
-set language_main_menu06=    ^^(5^^) Панель Завдань Windows                                   ^^(8^^) Оновлення Windows ^^(wuauserv^^)
-set language_main_menu07=                                                                 ^^(9^^) Служба Платформи Захисту ПО ^^(sppsvc^^)
-set language_main_menu08=  Інструменти
-set language_main_menu09=    ^^(A^^) Адміністративні інструменти
-set language_main_menu10=    ^^(B^^) Перевірка системних ресурсів
+set language_main_menu01=  Інтерфейс                                                    Програми
+set language_main_menu02=    ^^(1^^) Об'єкти робочого столу ^^(Цей ПК та інші^^)                  ^^(6^^) Системні програми
+set language_main_menu03=    ^^(2^^) Комбінації клавіш зміни мови ^^(Ctrl + Shift^^)              ^^(7^^) Установити Офіс Професійний+ 2016
+set language_main_menu04=    ^^(3^^) Пропозиції при введенні та автозаповнення                ^^(8^^) Установити/відновити gpedit.msc
+set language_main_menu05=    ^^(4^^) Провідник Windows
+set language_main_menu06=    ^^(5^^) Панель Завдань Windows                                 Служби
+set language_main_menu07=                                                                 ^^(9^^) Оновлення Windows ^^(wuauserv^^)
+set language_main_menu08=  Інструменти                                                    ^^(A^^) Служба Платформи Захисту ПО ^^(sppsvc^^)
+set language_main_menu09=    ^^(B^^) Адміністративні інструменти
+set language_main_menu10=    ^^(C^^) Перевірка системних ресурсів
 set language_main_menu11=
 set language_main_menu12=
 set language_main_menu13=    ^^(L^^) Мова
@@ -2103,18 +2722,50 @@ set language_interface_taskBar06=^^(5^^) Зміщення кнопок
 set language_interface_taskBar07=^^(3^^) Кнопка перегляду завдань          
 set language_interface_taskBar08=Примітка: Ці функції потребують перезапуску Провідника Windows.
 
-set language_setup_office01=^^(i^^) Microsoft Офіс Професійний+ 2016 - Меню Налаштування
-set language_setup_office02=^^(^^^>^^) Виберіть дію:
-set language_setup_office03=^^(1^^) Запустити встановлення
-set language_setup_office04=Примітка: Ця функція потребує перезавантаження Вашого комп'ютера.
-set language_setup_office05=^^(i^^) Завантаження Microsoft Офіс Професійний+ 2016
-set language_setup_office06=^^(i^^) Підключення iso файлу
-set language_setup_office07=^^(i^^) Встановлення
-set language_setup_office08=^^(i^^) Відключення iso файлу
+set language_programs_system01=^^(i^^) Системні Програми - Меню Управління
+set language_programs_system02=^^(^^^>^^) Виберіть дію, щоб установити/деінсталювати системні програми:
+set language_programs_system03=^^(1^^) 3D-моделі                         
+set language_programs_system04=^^(D^^) Будильники та Годинники           
+set language_programs_system05=^^(2^^) Зворотній Зв'язок                 
+set language_programs_system06=^^(E^^) Камера                            
+set language_programs_system07=^^(3^^) Помічник                          
+set language_programs_system08=^^(F^^) Ігрова панель                     
+set language_programs_system09=^^(4^^) Пошта і Календар                  
+set language_programs_system10=^^(G^^) Музика Groove                     
+set language_programs_system11=^^(5^^) Карти                             
+set language_programs_system12=^^(H^^) Фільми й Телепрограми             
+set language_programs_system13=^^(6^^) Повідомлення                      
+set language_programs_system14=^^(I^^) Office                            
+set language_programs_system15=^^(7^^) Мобільні тарифи                   
+set language_programs_system16=^^(J^^) Paint 3D                          
+set language_programs_system17=^^(8^^) OneNote                           
+set language_programs_system18=^^(K^^) Фотографії                        
+set language_programs_system19=^^(9^^) Print 3D                          
+set language_programs_system20=^^(L^^) Skype                             
+set language_programs_system21=^^(A^^) Solitare                          
+set language_programs_system22=^^(M^^) Фрагмент і Ескіз                  
+set language_programs_system23=^^(B^^) Підказки                          
+set language_programs_system24=^^(N^^) Наліпки                           
+set language_programs_system25=^^(C^^) Ваш Телефон                       
+set language_programs_system26=^^(O^^) Магазин                           
+set language_programs_system28=^^(P^^) Звукозаписувач                    
+set language_programs_system30=^^(Q^^) Погода                            
+set language_programs_system32=^^(R^^) Xbox                              
+set language_programs_system33=^^(S^^) Установити все
+set language_programs_system34=^^(T^^) Деінсталювати все
 
-set language_setup_gpeditMSC01=^^(i^^) Редактор Групових Політик - Меню Налаштування
-set language_setup_gpeditMSC02=^^(^^^>^^) Виберіть дію:
-set language_setup_gpeditMSC03=^^(1^^) Установити/відновити              
+set language_programs_office01=^^(i^^) Microsoft Офіс Професійний+ 2016 - Меню Налаштування
+set language_programs_office02=^^(^^^>^^) Виберіть дію:
+set language_programs_office03=^^(1^^) Запустити встановлення
+set language_programs_office04=Примітка: Ця функція потребує перезавантаження Вашого комп'ютера.
+set language_programs_office05=^^(i^^) Завантаження Microsoft Офіс Професійний+ 2016
+set language_programs_office06=^^(i^^) Підключення iso файлу
+set language_programs_office07=^^(i^^) Встановлення
+set language_programs_office08=^^(i^^) Відключення iso файлу
+
+set language_programs_gpeditMSC01=^^(i^^) Редактор Групових Політик - Меню Налаштування
+set language_programs_gpeditMSC02=^^(^^^>^^) Виберіть дію:
+set language_programs_gpeditMSC03=^^(1^^) Установити/відновити              
 
 set language_services_windowsUpdate01=^^(i^^) Оновлення Windows ^^(wuauserv^^) - Меню Управління
 set language_services_windowsUpdate02=^^(^^^>^^) Виберіть дію, щоб увімкнути/вимкнути оновлення Windows:
@@ -2159,7 +2810,7 @@ set language_message_error_main_variables_disabledRegistryTools04=Будь ла�
 
 set language_message_error_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Не може бути двох ідентичних комбінацій клавіш^^!
 
-set language_message_error_setup_office_download=^^(^^!^^) Помилка завантаження^^! Сервер не відповідає або немає підключення до Інтернету^!
+set language_message_error_programs_office_download=^^(^^!^^) Помилка завантаження^^! Сервер не відповідає або немає підключення до Інтернету^!
 
 set language_message_update_available01=^^(^^!^^) Доступно оновлення для %program_name%^^!
 set language_message_update_available02=Завантажте його тут:
@@ -2210,8 +2861,8 @@ echo.
 echo.
 echo.    [MikronT] ==^> %program_name%
 echo.                  %language_logo01%
-echo.   %language_logo02%
-echo.     %language_logo03%
+echo.   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo.     %language_logo02%
 echo.         github.com/MikronT
 echo.
 echo.

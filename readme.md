@@ -9,7 +9,7 @@
 [![Status: Pre-Release](https://img.shields.io/badge/Status-Pre--Release-yellow.svg?style=for-the-badge)](#)
 -->
 
-### Version name: *Release v2.0*
+### Version name: *Release v2.1*
 
 Console tweaker for Windows 10 with some useful options.
 
@@ -24,7 +24,8 @@ Console tweaker for Windows 10 with some useful options.
   - Input suggestions and auto completion
   - Windows Explorer (file extensions, hidden files etc.)
   - Windows Task Bar
-- Setup/Restore
+- Programs
+  - System programs
   - Microsoft Office Professional Plus 2016
   - Group Policy Editor (gpedit.msc) for Windows 10 Home
 - Services Management
@@ -76,13 +77,15 @@ Note: you can combine the keys as you wish.
 
 
 ## Disclaimer
-- *I am not responsible for any damage to your computer.* I am not responsible for any lost files or data.
+- I am not responsible for any *damage to your computer*.
+- I am not responsible for any *lost files or data*.
 
 
 
 ## Version History
 | Date       | Version      |
 |------------|--------------|
+| 27.04.2019 | Release v2.1 |
 | 03.04.2019 | Release v2.0 |
 | 29.03.2019 | Release v1.2 |
 | 28.03.2019 | Release v1.1 |
