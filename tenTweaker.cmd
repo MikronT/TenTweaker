@@ -14,10 +14,10 @@ cd "%~dp0"
 if not exist temp md temp
 
 for /f "tokens=1-4,* delims=- " %%i in ("%*") do (
-  >nul set %%i
-  >nul set %%j
-  >nul set %%k
-  >nul set %%l
+  if "%%i" NEQ "" set %%i
+  if "%%j" NEQ "" set %%j
+  if "%%k" NEQ "" set %%k
+  if "%%l" NEQ "" set %%l
 )
 
 set errorLevel=
