@@ -9,6 +9,12 @@ for /f "tokens=1-5,* delims=- " %%i in ("%*") do (
   if "%%l" NEQ "" set key_%%m
 )
 
+if "%key_main_adminRightsChecking%" == ""                set key_main_adminRightsChecking=true
+if "%key_main_eula%" == ""                               set key_main_eula=true
+if "%key_main_reboot%" == ""                             set key_main_reboot=none
+if "%key_main_registryMerge%" == ""                      set key_main_registryMerge=true
+if "%key_tools_administrativeTools_hiddenOptions%" == "" set key_tools_administrativeTools_hiddenOptions=false
+
 setlocal EnableDelayedExpansion
 
 if "%key_main_adminRightsChecking%" == "true" (
