@@ -51,7 +51,7 @@ You can also help me with localization to your language.
 ## Keys
 | Key Name                                | Options         | Description                                                                  |
 |-----------------------------------------|-----------------|------------------------------------------------------------------------------|
-| main_eula                               | hidden          | hides eula start message                                                     |
+| main_eula                               | false           | hides eula start message                                                     |
 | main_adminRightsChecking                | false           | skips admin rights checking                                                  |
 | main_reboot                             | services_sppsvc | shows reboot dialog, but specifically this option used for restore sppsvc    |
 | tools_administrativeTools_hiddenOptions | enabled         | enables hidden options for administrative tools menu (can kill your Windows) |
@@ -63,7 +63,7 @@ Run Command Prompt as admin and enter the command like this:
 ```
 "[Path]\tenTweaker.cmd" --[KeyName]=[Options] --[KeyName2]=[Options] ...
 
-"C:\Users\Admin\Desktop\TenTweaker\tenTweaker.cmd" --key_main_eula=hidden --key_tools_administrativeTools_hiddenOptions=enabled
+"C:\Users\Admin\Desktop\TenTweaker\tenTweaker.cmd" --main_eula=false --tools_administrativeTools_hiddenOptions=enabled
 ```
 
 | Syntax marking | Description                     |
