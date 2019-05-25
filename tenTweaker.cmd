@@ -1,15 +1,26 @@
 @echo off
 chcp 65001>nul
 
-setlocal EnableDelayedExpansion
-net session>nul 2>nul
-if !errorLevel! GEQ 1 (
-  echo.^(^^^!^) Please, run as Admin^^^!
-  timeout /nobreak /t 1 >nul
+for /f "tokens=1-5,* delims=- " %%i in ("%*") do (
+  if "%%i" NEQ "" set key_%%i
+  if "%%j" NEQ "" set key_%%j
+  if "%%k" NEQ "" set key_%%k
+  if "%%l" NEQ "" set key_%%l
+  if "%%l" NEQ "" set key_%%m
+)
 
-  echo.^(^?^) Run anyway^? [Y/N]
-  choice /c yn /d n /t 3 /n /m " > "
-  if "!errorLevel!" NEQ "1" exit
+setlocal EnableDelayedExpansion
+
+if "%key_main_adminRightsChecking%" == "true" (
+  net session>nul 2>nul
+  if !errorLevel! GEQ 1 (
+    echo.^(^^^!^) Please, run as Admin^^^!
+    timeout /nobreak /t 1 >nul
+  
+    echo.^(^?^) Run anyway^? [Y/N]
+    choice /c yn /d n /t 3 /n /m " > "
+    if "!errorLevel!" NEQ "1" exit
+  )
 )
 endlocal
 
@@ -18,17 +29,10 @@ cd "%~dp0"
 
 if not exist temp md temp
 
-for /f "tokens=1-4,* delims=- " %%i in ("%*") do (
-  if "%%i" NEQ "" set %%i
-  if "%%j" NEQ "" set %%j
-  if "%%k" NEQ "" set %%k
-  if "%%l" NEQ "" set %%l
-)
-
 set errorLevel=
 reg query HKCU >nul 2>nul
 
-if %errorLevel% LSS 1 if "%key_main_registryMerge%" NEQ "true" (
+if %errorLevel% LSS 1 if "%key_main_registryMerge%" == "true" (
   reg export HKCU\Console\%%SystemRoot%%_system32_cmd.exe temp\consoleSettings.reg /y >nul
   reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v CodePage         /t REG_DWORD /d 65001      /f >nul
   reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v ColorTable00     /t REG_DWORD /d 0          /f >nul
@@ -39,7 +43,7 @@ if %errorLevel% LSS 1 if "%key_main_registryMerge%" NEQ "true" (
   reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v ScreenBufferSize /t REG_DWORD /d 0x2329006a /f >nul
   reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v WindowSize       /t REG_DWORD /d 0x001e006e /f >nul
 
-  start "" cmd /c "%~dpnx0" --key_main_registryMerge=true
+  start "" cmd /c "%~dpnx0" --main_adminRightsChecking=false --main_registryMerge=false
   exit
 ) else if exist temp\consoleSettings.reg (
   reg delete HKCU\Console\%%SystemRoot%%_system32_cmd.exe /va /f >nul 2>nul
