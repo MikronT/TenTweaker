@@ -1510,7 +1510,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   )
 
   if "%command%" == "2" (
-    reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %program_name_ns%_services_sppsvc /t REG_SZ /d "%~dpnx0 --key_main_reboot=services_sppsvc" /f >nul
+    reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %program_name_ns%_services_sppsvc /t REG_SZ /d "%~dpnx0 --main_reboot=services_sppsvc" /f >nul
     call :reboot_computer
   )
 )
