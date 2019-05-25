@@ -56,6 +56,8 @@ if %errorLevel% LSS 1 if "%key_main_registryMerge%" == "true" (
   reg import temp\consoleSettings.reg >nul 2>nul
 )
 
+start /min powershell.exe "Exit"
+
 set program_name=Ten Tweaker
 set program_name_ns=tenTweaker
 
@@ -89,6 +91,7 @@ call :language_import
 
 
 if exist settings.ini for /f "eol=# delims=" %%i in (settings.ini) do set setting_%%i
+
 if "%setting_language%" NEQ "english" if "%setting_language%" NEQ "russian" if "%setting_language%" NEQ "ukrainian" call :language_menu force
 call :language_import
 
