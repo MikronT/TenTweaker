@@ -1537,7 +1537,7 @@ goto :services_sppsvc
 
 :tools_administrativeTools
 call :main_variables tools_administrativeTools
-if "%error_main_variables_disabledRegistryTools%" == "1" set key_tools_administrativeTools_hiddenOptions=enabled
+if "%error_main_variables_disabledRegistryTools%" == "1" set key_tools_administrativeTools_hiddenOptions=true
 
 call :logo
 echo.%language_tools_administrativeTools01%
@@ -1551,7 +1551,7 @@ if "%tools_administrativeTools_desktop%" == "enabled" (
 ) else if "%tools_administrativeTools_desktop%" == "disabled" (
   call %stringBuilder_build% %language_stringBuilder_option_disabled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
+if "%key_tools_administrativeTools_hiddenOptions%" == "true" (
   call %stringBuilder_build%    %language_tools_administrativeTools04%
   if "%tools_administrativeTools_registryTools%" == "enabled" (
     call %stringBuilder_build% %language_stringBuilder_option_enabled%
@@ -1567,7 +1567,7 @@ if "%tools_administrativeTools_controlPanel%" == "enabled" (
 ) else if "%tools_administrativeTools_controlPanel%" == "disabled" (
   call %stringBuilder_build% %language_stringBuilder_option_disabled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
+if "%key_tools_administrativeTools_hiddenOptions%" == "true" (
   call %stringBuilder_build%    %language_tools_administrativeTools06%
   if "%tools_administrativeTools_cmd%" == "enabled" (
     call %stringBuilder_build% %language_stringBuilder_option_enabled%
@@ -1583,7 +1583,7 @@ if "%tools_administrativeTools_runDialog%" == "enabled" (
 ) else if "%tools_administrativeTools_runDialog%" == "disabled" (
   call %stringBuilder_build% %language_stringBuilder_option_disabled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
+if "%key_tools_administrativeTools_hiddenOptions%" == "true" (
   call %stringBuilder_build%    %language_tools_administrativeTools08%
   if "%tools_administrativeTools_taskManager%" == "enabled" (
     call %stringBuilder_build% %language_stringBuilder_option_enabled%
@@ -1600,7 +1600,7 @@ echo.
 echo.    %language_tools_administrativeTools10%
 echo.    %language_menuItem_restartExplorer%
 echo.
-if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
+if "%key_tools_administrativeTools_hiddenOptions%" == "true" (
   echo.    %language_tools_administrativeTools11%
   echo.    %language_menuItem_rebootComputer%
   echo.
@@ -1610,7 +1610,7 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
+if "%key_tools_administrativeTools_hiddenOptions%" == "true" (
   echo.    %language_message_tools_administrativeTools_hiddenOptions%
   echo.
   choice /c 123456XYZ0 /n /m "> "
@@ -1633,7 +1633,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   ) else for /l %%i in (4,-1,1) do reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoRun /t REG_DWORD /d 0 /f >nul
 )
 
-if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
+if "%key_tools_administrativeTools_hiddenOptions%" == "true" (
   if "%command%" == "4" if "%tools_administrativeTools_registryTools%" == "enabled" (
     for /l %%i in (4,-1,1) do reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableRegistryTools /t REG_DWORD /d 1 /f >nul
   ) else for /l %%i in (4,-1,1) do rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 %~dp0files\tools_administrativeTools_unHookExec.inf
@@ -2187,7 +2187,7 @@ if "%1" == "tools_administrativeTools" (
   set tools_administrativeTools_runDialog=enabled
   (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoRun') do if "%%i" == "0x1" set tools_administrativeTools_runDialog=disabled)>nul 2>nul
 
-  if "%key_tools_administrativeTools_hiddenOptions%" == "enabled" (
+  if "%key_tools_administrativeTools_hiddenOptions%" == "true" (
     set tools_administrativeTools_registryTools=enabled
 
     set tools_administrativeTools_cmd=enabled
