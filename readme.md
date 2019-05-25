@@ -51,16 +51,17 @@ You can also help me with localization to your language.
 ## Keys
 | Key Name                                | Options         | Description                                                                  |
 |-----------------------------------------|-----------------|------------------------------------------------------------------------------|
-| main_registryMerge                      | true            | to skip registry parameters merge (not recommended)                          |
 | main_eula                               | hidden          | hides eula start message                                                     |
+| main_adminRightsChecking                | false           | skips admin rights checking                                                  |
 | main_reboot                             | services_sppsvc | shows reboot dialog, but specifically this option used for restore sppsvc    |
 | tools_administrativeTools_hiddenOptions | enabled         | enables hidden options for administrative tools menu (can kill your Windows) |
+| main_registryMerge                      | false           | skips registry parameters merge (not recommended)                            |
 
 ### How to run Ten Tweaker with specified keys?
 Run Command Prompt as admin and enter the command like this:
 
 ```
-"[Path]\tenTweaker.cmd" --key_[KeyName]=[Options] --key_[KeyName2]=[Options] ...
+"[Path]\tenTweaker.cmd" --[KeyName]=[Options] --[KeyName2]=[Options] ...
 
 "C:\Users\Admin\Desktop\TenTweaker\tenTweaker.cmd" --key_main_eula=hidden --key_tools_administrativeTools_hiddenOptions=enabled
 ```
