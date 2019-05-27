@@ -2012,8 +2012,8 @@ if "%1" == "interface_explorer" (
 
 
 if "%1" == "interface_taskBar" (
-  set interface_taskBar_peopleBand=shown
-  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand') do if "%%i" == "0x0" set interface_taskBar_peopleBand=hidden)>nul 2>nul
+  set interface_taskBar_peopleBand=hidden
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand') do if "%%i" == "0x1" set interface_taskBar_peopleBand=shown)>nul 2>nul
 
   set interface_taskBar_commandPromptOnWinX=powerShell
   (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX') do if "%%i" == "0x1" set interface_taskBar_commandPromptOnWinX=commandPrompt)>nul 2>nul
