@@ -18,6 +18,7 @@ if "%key_tools_administrativeTools_hiddenOptions%" == "" set key_tools_administr
 setlocal EnableDelayedExpansion
 
 if "%key_main_adminRightsChecking%" == "true" (
+  start /min powershell.exe "Exit"
   net session>nul 2>nul
   if !errorLevel! GEQ 1 (
     echo.^(^^^!^) Please, run as Admin^^^!
@@ -55,8 +56,6 @@ if %errorLevel% LSS 1 if "%key_main_registryMerge%" == "true" (
   reg delete HKCU\Console\%%SystemRoot%%_system32_cmd.exe /va /f >nul 2>nul
   reg import temp\consoleSettings.reg >nul 2>nul
 )
-
-start /min powershell.exe "Exit"
 
 set program_name=Ten Tweaker
 set program_name_ns=tenTweaker
