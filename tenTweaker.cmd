@@ -49,7 +49,7 @@ if %errorLevel% LSS 1 if "%key_main_registryMerge%" == "true" (
   reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v ScreenBufferSize /t REG_DWORD /d 0x2329006a /f >nul
   reg add HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v WindowSize       /t REG_DWORD /d 0x001e006e /f >nul
 
-  start "" cmd /c "%~dpnx0" --main_adminRightsChecking=false --main_registryMerge=false
+  start tenTweaker.cmd --main_adminRightsChecking=false --main_registryMerge=false
   exit
 ) else if exist temp\consoleSettings.reg (
   reg delete HKCU\Console\%%SystemRoot%%_system32_cmd.exe /va /f >nul 2>nul
