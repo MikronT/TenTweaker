@@ -1187,73 +1187,75 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   ) else %appxMgmt% add XboxApp
 
   if "%command%" == "30" (
-    if "%programs_system_program_3DBuilder%"     == "uninstalled" %appxMgmt% add 3DBuilder
-    if "%programs_system_program_3DViewer%"      == "uninstalled" %appxMgmt% add Microsoft3DViewer
-    if "%programs_system_program_feedbackHub%"   == "uninstalled" %appxMgmt% add WindowsFeedbackHub
-    if "%programs_system_program_getHelp%"       == "uninstalled" %appxMgmt% add GetHelp
-    if "%programs_system_program_mailCalendar%"  == "uninstalled" %appxMgmt% add WindowsCommunicationsApps
-    if "%programs_system_program_maps%"          == "uninstalled" %appxMgmt% add WindowsMaps
-    if "%programs_system_program_messaging%"     == "uninstalled" %appxMgmt% add Messaging
-    if "%programs_system_program_mobilePlans%"   == "uninstalled" %appxMgmt% add OneConnect
-    if "%programs_system_program_oneNote%"       == "uninstalled" %appxMgmt% add Office.OneNote
-    if "%programs_system_program_print3D%"       == "uninstalled" %appxMgmt% add Print3D
-    if "%programs_system_program_solitare%"      == "uninstalled" %appxMgmt% add MicrosoftSolitaireCollection
-    if "%programs_system_program_tips%"          == "uninstalled" %appxMgmt% add GetStarted
-    if "%programs_system_program_yourPhone%"     == "uninstalled" %appxMgmt% add YourPhone
+    if "%programs_system_program_3DBuilder%"          == "uninstalled" %appxMgmt% add 3DBuilder
+    if "%programs_system_program_3DViewer%"           == "uninstalled" %appxMgmt% add Microsoft3DViewer
+    if "%programs_system_program_feedbackHub%"        == "uninstalled" %appxMgmt% add WindowsFeedbackHub
+    if "%programs_system_program_getHelp%"            == "uninstalled" %appxMgmt% add GetHelp
+    if "%programs_system_program_mailCalendar%"       == "uninstalled" %appxMgmt% add WindowsCommunicationsApps
+    if "%programs_system_program_maps%"               == "uninstalled" %appxMgmt% add WindowsMaps
+    if "%programs_system_program_messaging%"          == "uninstalled" %appxMgmt% add Messaging
+    if "%programs_system_program_mixedRealityPortal%" == "uninstalled" %appxMgmt% add MixedReality.Portal
+    if "%programs_system_program_mobilePlans%"        == "uninstalled" %appxMgmt% add OneConnect
+    if "%programs_system_program_oneNote%"            == "uninstalled" %appxMgmt% add Office.OneNote
+    if "%programs_system_program_print3D%"            == "uninstalled" %appxMgmt% add Print3D
+    if "%programs_system_program_solitare%"           == "uninstalled" %appxMgmt% add MicrosoftSolitaireCollection
+    if "%programs_system_program_tips%"               == "uninstalled" %appxMgmt% add GetStarted
+    if "%programs_system_program_yourPhone%"          == "uninstalled" %appxMgmt% add YourPhone
 
-    if "%programs_system_program_alarmsClock%"   == "uninstalled" %appxMgmt% add WindowsAlarms
-    if "%programs_system_program_camera%"        == "uninstalled" %appxMgmt% add WindowsCamera
-    if "%programs_system_program_gameBar%"       == "uninstalled" (
+    if "%programs_system_program_alarmsClock%"        == "uninstalled" %appxMgmt% add WindowsAlarms
+    if "%programs_system_program_camera%"             == "uninstalled" %appxMgmt% add WindowsCamera
+    if "%programs_system_program_gameBar%"            == "uninstalled" (
       %appxMgmt% add XboxGameOverlay
       %appxMgmt% add XboxGamingOverlay
     )
-    if "%programs_system_program_grooveMusic%"   == "uninstalled" %appxMgmt% add ZuneMusic
-    if "%programs_system_program_moviesTV%"      == "uninstalled" %appxMgmt% add ZuneVideo
-    if "%programs_system_program_myOffice%"      == "uninstalled" %appxMgmt% add MicrosoftOfficeHub
-    if "%programs_system_program_paint3D%"       == "uninstalled" %appxMgmt% add MSPaint
-    if "%programs_system_program_photos%"        == "uninstalled" %appxMgmt% add Windows.Photos
-    if "%programs_system_program_skype%"         == "uninstalled" %appxMgmt% add SkypeApp
-    if "%programs_system_program_snipSketch%"    == "uninstalled" %appxMgmt% add ScreenSketch
-    if "%programs_system_program_stickyNotes%"   == "uninstalled" %appxMgmt% add MicrosoftStickyNotes
-    if "%programs_system_program_store%"         == "uninstalled" %appxMgmt% add WindowsStore
-    if "%programs_system_program_voiceRecorder%" == "uninstalled" %appxMgmt% add WindowsSoundRecorder
-    if "%programs_system_program_weather%"       == "uninstalled" %appxMgmt% add BingWeather
-    if "%programs_system_program_xbox%"          == "uninstalled" %appxMgmt% add XboxApp
+    if "%programs_system_program_grooveMusic%"        == "uninstalled" %appxMgmt% add ZuneMusic
+    if "%programs_system_program_moviesTV%"           == "uninstalled" %appxMgmt% add ZuneVideo
+    if "%programs_system_program_myOffice%"           == "uninstalled" %appxMgmt% add MicrosoftOfficeHub
+    if "%programs_system_program_paint3D%"            == "uninstalled" %appxMgmt% add MSPaint
+    if "%programs_system_program_photos%"             == "uninstalled" %appxMgmt% add Windows.Photos
+    if "%programs_system_program_skype%"              == "uninstalled" %appxMgmt% add SkypeApp
+    if "%programs_system_program_snipSketch%"         == "uninstalled" %appxMgmt% add ScreenSketch
+    if "%programs_system_program_stickyNotes%"        == "uninstalled" %appxMgmt% add MicrosoftStickyNotes
+    if "%programs_system_program_store%"              == "uninstalled" %appxMgmt% add WindowsStore
+    if "%programs_system_program_voiceRecorder%"      == "uninstalled" %appxMgmt% add WindowsSoundRecorder
+    if "%programs_system_program_weather%"            == "uninstalled" %appxMgmt% add BingWeather
+    if "%programs_system_program_xbox%"               == "uninstalled" %appxMgmt% add XboxApp
   )
 
   if "%command%" == "31" (
-    if "%programs_system_program_3DBuilder%"     == "installed" %appxMgmt% remove 3DBuilder
-    if "%programs_system_program_3DViewer%"      == "installed" %appxMgmt% remove Microsoft3DViewer
-    if "%programs_system_program_feedbackHub%"   == "installed" %appxMgmt% remove WindowsFeedbackHub
-    if "%programs_system_program_getHelp%"       == "installed" %appxMgmt% remove GetHelp
-    if "%programs_system_program_mailCalendar%"  == "installed" %appxMgmt% remove WindowsCommunicationsApps
-    if "%programs_system_program_maps%"          == "installed" %appxMgmt% remove WindowsMaps
-    if "%programs_system_program_messaging%"     == "installed" %appxMgmt% remove Messaging
-    if "%programs_system_program_mobilePlans%"   == "installed" %appxMgmt% remove OneConnect
-    if "%programs_system_program_oneNote%"       == "installed" %appxMgmt% remove Office.OneNote
-    if "%programs_system_program_print3D%"       == "installed" %appxMgmt% remove Print3D
-    if "%programs_system_program_solitare%"      == "installed" %appxMgmt% remove MicrosoftSolitaireCollection
-    if "%programs_system_program_tips%"          == "installed" %appxMgmt% remove GetStarted
-    if "%programs_system_program_yourPhone%"     == "installed" %appxMgmt% remove YourPhone
+    if "%programs_system_program_3DBuilder%"          == "installed" %appxMgmt% remove 3DBuilder
+    if "%programs_system_program_3DViewer%"           == "installed" %appxMgmt% remove Microsoft3DViewer
+    if "%programs_system_program_feedbackHub%"        == "installed" %appxMgmt% remove WindowsFeedbackHub
+    if "%programs_system_program_getHelp%"            == "installed" %appxMgmt% remove GetHelp
+    if "%programs_system_program_mailCalendar%"       == "installed" %appxMgmt% remove WindowsCommunicationsApps
+    if "%programs_system_program_maps%"               == "installed" %appxMgmt% remove WindowsMaps
+    if "%programs_system_program_messaging%"          == "installed" %appxMgmt% remove Messaging
+    if "%programs_system_program_mixedRealityPortal%" == "installed" %appxMgmt% remove MixedReality.Portal
+    if "%programs_system_program_mobilePlans%"        == "installed" %appxMgmt% remove OneConnect
+    if "%programs_system_program_oneNote%"            == "installed" %appxMgmt% remove Office.OneNote
+    if "%programs_system_program_print3D%"            == "installed" %appxMgmt% remove Print3D
+    if "%programs_system_program_solitare%"           == "installed" %appxMgmt% remove MicrosoftSolitaireCollection
+    if "%programs_system_program_tips%"               == "installed" %appxMgmt% remove GetStarted
+    if "%programs_system_program_yourPhone%"          == "installed" %appxMgmt% remove YourPhone
 
-    if "%programs_system_program_alarmsClock%"   == "installed" %appxMgmt% remove WindowsAlarms
-    if "%programs_system_program_camera%"        == "installed" %appxMgmt% remove WindowsCamera
-    if "%programs_system_program_gameBar%"       == "installed" (
+    if "%programs_system_program_alarmsClock%"        == "installed" %appxMgmt% remove WindowsAlarms
+    if "%programs_system_program_camera%"             == "installed" %appxMgmt% remove WindowsCamera
+    if "%programs_system_program_gameBar%"            == "installed" (
       %appxMgmt% remove XboxGameOverlay
       %appxMgmt% remove XboxGamingOverlay
     )
-    if "%programs_system_program_grooveMusic%"   == "installed" %appxMgmt% remove ZuneMusic
-    if "%programs_system_program_moviesTV%"      == "installed" %appxMgmt% remove ZuneVideo
-    if "%programs_system_program_myOffice%"      == "installed" %appxMgmt% remove MicrosoftOfficeHub
-    if "%programs_system_program_paint3D%"       == "installed" %appxMgmt% remove MSPaint
-    if "%programs_system_program_photos%"        == "installed" %appxMgmt% remove Windows.Photos
-    if "%programs_system_program_skype%"         == "installed" %appxMgmt% remove SkypeApp
-    if "%programs_system_program_snipSketch%"    == "installed" %appxMgmt% remove ScreenSketch
-    if "%programs_system_program_stickyNotes%"   == "installed" %appxMgmt% remove MicrosoftStickyNotes
-    if "%programs_system_program_store%"         == "installed" %appxMgmt% remove WindowsStore
-    if "%programs_system_program_voiceRecorder%" == "installed" %appxMgmt% remove WindowsSoundRecorder
-    if "%programs_system_program_weather%"       == "installed" %appxMgmt% remove BingWeather
-    if "%programs_system_program_xbox%"          == "installed" %appxMgmt% remove XboxApp
+    if "%programs_system_program_grooveMusic%"        == "installed" %appxMgmt% remove ZuneMusic
+    if "%programs_system_program_moviesTV%"           == "installed" %appxMgmt% remove ZuneVideo
+    if "%programs_system_program_myOffice%"           == "installed" %appxMgmt% remove MicrosoftOfficeHub
+    if "%programs_system_program_paint3D%"            == "installed" %appxMgmt% remove MSPaint
+    if "%programs_system_program_photos%"             == "installed" %appxMgmt% remove Windows.Photos
+    if "%programs_system_program_skype%"              == "installed" %appxMgmt% remove SkypeApp
+    if "%programs_system_program_snipSketch%"         == "installed" %appxMgmt% remove ScreenSketch
+    if "%programs_system_program_stickyNotes%"        == "installed" %appxMgmt% remove MicrosoftStickyNotes
+    if "%programs_system_program_store%"              == "installed" %appxMgmt% remove WindowsStore
+    if "%programs_system_program_voiceRecorder%"      == "installed" %appxMgmt% remove WindowsSoundRecorder
+    if "%programs_system_program_weather%"            == "installed" %appxMgmt% remove BingWeather
+    if "%programs_system_program_xbox%"               == "installed" %appxMgmt% remove XboxApp
   )
 )
 
