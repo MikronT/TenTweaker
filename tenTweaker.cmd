@@ -987,9 +987,9 @@ if "%programs_system_program_snipSketch%" == "installed" (
 echo.    %stringBuilder_string%
 
 set stringBuilder_string=%language_programs_system23%
-if "%programs_system_program_print3D%" == "installed" (
+if "%programs_system_program_people%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_print3D%" == "uninstalled" (
+) else if "%programs_system_program_people%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system24%
@@ -1001,9 +1001,9 @@ if "%programs_system_program_stickyNotes%" == "installed" (
 echo.    %stringBuilder_string%
 
 set stringBuilder_string=%language_programs_system25%
-if "%programs_system_program_solitare%" == "installed" (
+if "%programs_system_program_print3D%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_solitare%" == "uninstalled" (
+) else if "%programs_system_program_print3D%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system26%
@@ -1015,9 +1015,9 @@ if "%programs_system_program_store%" == "installed" (
 echo.    %stringBuilder_string%
 
 set stringBuilder_string=%language_programs_system27%
-if "%programs_system_program_tips%" == "installed" (
+if "%programs_system_program_solitare%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_tips%" == "uninstalled" (
+) else if "%programs_system_program_solitare%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system28%
@@ -1029,9 +1029,9 @@ if "%programs_system_program_voiceRecorder%" == "installed" (
 echo.    %stringBuilder_string%
 
 set stringBuilder_string=%language_programs_system29%
-if "%programs_system_program_yourPhone%" == "installed" (
+if "%programs_system_program_tips%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
-) else if "%programs_system_program_yourPhone%" == "uninstalled" (
+) else if "%programs_system_program_tips%" == "uninstalled" (
   call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 call %stringBuilder_build%    %language_programs_system30%
@@ -1042,7 +1042,13 @@ if "%programs_system_program_weather%" == "installed" (
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=                                                             %language_programs_system32%
+set stringBuilder_string=%language_programs_system31%
+if "%programs_system_program_yourPhone%" == "installed" (
+  call %stringBuilder_build% %language_stringBuilder_option_installed%
+) else if "%programs_system_program_yourPhone%" == "uninstalled" (
+  call %stringBuilder_build% %language_stringBuilder_option_uninstalled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_programs_system32%
 if "%programs_system_program_xbox%" == "installed" (
   call %stringBuilder_build% %language_stringBuilder_option_installed%
 ) else if "%programs_system_program_xbox%" == "uninstalled" (
@@ -1059,7 +1065,7 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-choice /c 123456789ABCDEFGHIJKLMNOPQRSTUV0 /n /m "> "
+choice /c 123456789ABCDEFGHIJKLMNOPQRSTUVW0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -1105,32 +1111,36 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
     %appxMgmt% remove Office.OneNote
   ) else %appxMgmt% add Office.OneNote
 
-  if "%command%" == "11" if "%programs_system_program_print3D%" == "installed" (
+  if "%command%" == "11" if "%programs_system_program_people%" == "installed" (
+    %appxMgmt% remove People
+  ) else %appxMgmt% add People
+
+  if "%command%" == "12" if "%programs_system_program_print3D%" == "installed" (
     %appxMgmt% remove Print3D
   ) else %appxMgmt% add Print3D
 
-  if "%command%" == "12" if "%programs_system_program_solitare%" == "installed" (
+  if "%command%" == "13" if "%programs_system_program_solitare%" == "installed" (
     %appxMgmt% remove MicrosoftSolitaireCollection
   ) else %appxMgmt% add MicrosoftSolitaireCollection
 
-  if "%command%" == "13" if "%programs_system_program_tips%" == "installed" (
+  if "%command%" == "14" if "%programs_system_program_tips%" == "installed" (
     %appxMgmt% remove GetStarted
   ) else %appxMgmt% add GetStarted
 
-  if "%command%" == "14" if "%programs_system_program_yourPhone%" == "installed" (
+  if "%command%" == "15" if "%programs_system_program_yourPhone%" == "installed" (
     %appxMgmt% remove YourPhone
   ) else %appxMgmt% add YourPhone
 
 
-  if "%command%" == "15" if "%programs_system_program_alarmsClock%" == "installed" (
+  if "%command%" == "16" if "%programs_system_program_alarmsClock%" == "installed" (
     %appxMgmt% remove WindowsAlarms
   ) else %appxMgmt% add WindowsAlarms
 
-  if "%command%" == "16" if "%programs_system_program_camera%" == "installed" (
+  if "%command%" == "17" if "%programs_system_program_camera%" == "installed" (
     %appxMgmt% remove WindowsCamera
   ) else %appxMgmt% add WindowsCamera
 
-  if "%command%" == "17" if "%programs_system_program_gameBar%" == "installed" (
+  if "%command%" == "18" if "%programs_system_program_gameBar%" == "installed" (
     %appxMgmt% remove XboxGameOverlay
     %appxMgmt% remove XboxGamingOverlay
   ) else (
@@ -1138,55 +1148,55 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
     %appxMgmt% add XboxGamingOverlay
   )
 
-  if "%command%" == "18" if "%programs_system_program_grooveMusic%" == "installed" (
+  if "%command%" == "19" if "%programs_system_program_grooveMusic%" == "installed" (
     %appxMgmt% remove ZuneMusic
   ) else %appxMgmt% add ZuneMusic
 
-  if "%command%" == "19" if "%programs_system_program_moviesTV%" == "installed" (
+  if "%command%" == "20" if "%programs_system_program_moviesTV%" == "installed" (
     %appxMgmt% remove ZuneVideo
   ) else %appxMgmt% add ZuneVideo
 
-  if "%command%" == "20" if "%programs_system_program_myOffice%" == "installed" (
+  if "%command%" == "21" if "%programs_system_program_myOffice%" == "installed" (
     %appxMgmt% remove MicrosoftOfficeHub
   ) else %appxMgmt% add MicrosoftOfficeHub
 
-  if "%command%" == "21" if "%programs_system_program_paint3D%" == "installed" (
+  if "%command%" == "22" if "%programs_system_program_paint3D%" == "installed" (
     %appxMgmt% remove MSPaint
   ) else %appxMgmt% add MSPaint
 
-  if "%command%" == "22" if "%programs_system_program_photos%" == "installed" (
+  if "%command%" == "23" if "%programs_system_program_photos%" == "installed" (
     %appxMgmt% remove Windows.Photos
   ) else %appxMgmt% add Windows.Photos
 
-  if "%command%" == "23" if "%programs_system_program_skype%" == "installed" (
+  if "%command%" == "24" if "%programs_system_program_skype%" == "installed" (
     %appxMgmt% remove SkypeApp
   ) else %appxMgmt% add SkypeApp
 
-  if "%command%" == "24" if "%programs_system_program_snipSketch%" == "installed" (
+  if "%command%" == "25" if "%programs_system_program_snipSketch%" == "installed" (
     %appxMgmt% remove ScreenSketch
   ) else %appxMgmt% add ScreenSketch
 
-  if "%command%" == "25" if "%programs_system_program_stickyNotes%" == "installed" (
+  if "%command%" == "26" if "%programs_system_program_stickyNotes%" == "installed" (
     %appxMgmt% remove MicrosoftStickyNotes
   ) else %appxMgmt% add MicrosoftStickyNotes
 
-  if "%command%" == "26" if "%programs_system_program_store%" == "installed" (
+  if "%command%" == "27" if "%programs_system_program_store%" == "installed" (
     %appxMgmt% remove WindowsStore
   ) else %appxMgmt% add WindowsStore
 
-  if "%command%" == "27" if "%programs_system_program_voiceRecorder%" == "installed" (
+  if "%command%" == "28" if "%programs_system_program_voiceRecorder%" == "installed" (
     %appxMgmt% remove WindowsSoundRecorder
   ) else %appxMgmt% add WindowsSoundRecorder
 
-  if "%command%" == "28" if "%programs_system_program_weather%" == "installed" (
+  if "%command%" == "29" if "%programs_system_program_weather%" == "installed" (
     %appxMgmt% remove BingWeather
   ) else %appxMgmt% add BingWeather
 
-  if "%command%" == "29" if "%programs_system_program_xbox%" == "installed" (
+  if "%command%" == "30" if "%programs_system_program_xbox%" == "installed" (
     %appxMgmt% remove XboxApp
   ) else %appxMgmt% add XboxApp
 
-  if "%command%" == "30" (
+  if "%command%" == "31" (
     if "%programs_system_program_3DBuilder%"          == "uninstalled" %appxMgmt% add 3DBuilder
     if "%programs_system_program_3DViewer%"           == "uninstalled" %appxMgmt% add Microsoft3DViewer
     if "%programs_system_program_feedbackHub%"        == "uninstalled" %appxMgmt% add WindowsFeedbackHub
@@ -1222,7 +1232,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
     if "%programs_system_program_xbox%"               == "uninstalled" %appxMgmt% add XboxApp
   )
 
-  if "%command%" == "31" (
+  if "%command%" == "32" (
     if "%programs_system_program_3DBuilder%"          == "installed" %appxMgmt% remove 3DBuilder
     if "%programs_system_program_3DViewer%"           == "installed" %appxMgmt% remove Microsoft3DViewer
     if "%programs_system_program_feedbackHub%"        == "installed" %appxMgmt% remove WindowsFeedbackHub
@@ -1259,7 +1269,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   )
 )
 
-if "%command%" == "32" ( set command= & exit /b )
+if "%command%" == "33" ( set command= & exit /b )
 goto :programs_system
 
 
@@ -2095,6 +2105,9 @@ if "%1" == "programs_system" (
   set programs_system_program_print3D=uninstalled
   %appxMgmt% check Print3D programs_system_program_print3D
 
+  set programs_system_program_people=uninstalled
+  %appxMgmt% check People programs_system_program_people
+
   set programs_system_program_solitare=uninstalled
   %appxMgmt% check MicrosoftSolitaireCollection programs_system_program_solitare
 
@@ -2364,36 +2377,37 @@ set language_interface_taskBar08=Note: These features require to restart Windows
 set language_programs_system01=^^(i^^) System Programs - Control Menu
 set language_programs_system02=^^(^^^>^^) Choose action to install/uninstall system programs:
 set language_programs_system03=^^(1^^) 3D Builder                        
-set language_programs_system04=^^(F^^) Alarms and Clock                  
+set language_programs_system04=^^(G^^) Alarms and Clock                  
 set language_programs_system05=^^(2^^) 3D Viewer                         
-set language_programs_system06=^^(G^^) Camera                            
+set language_programs_system06=^^(H^^) Camera                            
 set language_programs_system07=^^(3^^) Feedback Hub                      
-set language_programs_system08=^^(H^^) Game bar                          
+set language_programs_system08=^^(I^^) Game bar                          
 set language_programs_system09=^^(4^^) Get Help                          
-set language_programs_system10=^^(I^^) Groove Music                      
+set language_programs_system10=^^(J^^) Groove Music                      
 set language_programs_system11=^^(5^^) Mail and Calendar                 
-set language_programs_system12=^^(J^^) Movies and TV                     
+set language_programs_system12=^^(K^^) Movies and TV                     
 set language_programs_system13=^^(6^^) Maps                              
-set language_programs_system14=^^(K^^) My Office                         
+set language_programs_system14=^^(L^^) My Office                         
 set language_programs_system15=^^(7^^) Messaging                         
-set language_programs_system16=^^(L^^) Paint 3D                          
+set language_programs_system16=^^(M^^) Paint 3D                          
 set language_programs_system17=^^(8^^) Mixed Reality Portal              
-set language_programs_system18=^^(M^^) Photos                            
+set language_programs_system18=^^(N^^) Photos                            
 set language_programs_system19=^^(9^^) Mobile Plans                      
-set language_programs_system20=^^(N^^) Skype                             
+set language_programs_system20=^^(O^^) Skype                             
 set language_programs_system21=^^(A^^) OneNote                           
-set language_programs_system22=^^(O^^) Snip and Sketch                   
-set language_programs_system23=^^(B^^) Print 3D                          
-set language_programs_system24=^^(P^^) Sticky Notes                      
-set language_programs_system25=^^(C^^) Solitare                          
-set language_programs_system26=^^(Q^^) Store                             
-set language_programs_system27=^^(D^^) Tips                              
-set language_programs_system28=^^(R^^) Voice Recorder                    
-set language_programs_system29=^^(E^^) Your Phone                        
-set language_programs_system30=^^(S^^) Weather                           
-set language_programs_system32=^^(T^^) Xbox                              
-set language_programs_system33=^^(U^^) Install all
-set language_programs_system34=^^(V^^) Uninstall all
+set language_programs_system22=^^(P^^) Snip and Sketch                   
+set language_programs_system23=^^(B^^) People                            
+set language_programs_system24=^^(Q^^) Sticky Notes                      
+set language_programs_system25=^^(C^^) Print 3D                          
+set language_programs_system26=^^(R^^) Store                             
+set language_programs_system27=^^(D^^) Solitare                          
+set language_programs_system28=^^(S^^) Voice Recorder                    
+set language_programs_system29=^^(E^^) Tips                              
+set language_programs_system30=^^(T^^) Weather                           
+set language_programs_system31=^^(F^^) Your Phone                        
+set language_programs_system32=^^(U^^) Xbox                              
+set language_programs_system33=^^(V^^) Install all
+set language_programs_system34=^^(W^^) Uninstall all
 
 set language_programs_office01=^^(i^^) Microsoft Office Professional+ 2016 - Setup Menu
 set language_programs_office02=^^(^^^>^^) Choose action:
@@ -2571,36 +2585,37 @@ set language_interface_taskBar08=Примечание: Эти функции т�
 set language_programs_system01=^^(i^^) Системные Приложения - Меню Управления
 set language_programs_system02=^^(^^^>^^) Выберите действие, чтобы установить/деинсталировать системные приложения:
 set language_programs_system03=^^(1^^) 3D Builder                        
-set language_programs_system04=^^(F^^) Будильники и Часы                 
+set language_programs_system04=^^(G^^) Будильники и Часы                 
 set language_programs_system05=^^(2^^) 3D-модели                         
-set language_programs_system06=^^(G^^) Камера                            
+set language_programs_system06=^^(H^^) Камера                            
 set language_programs_system07=^^(3^^) Обратная Связь                    
-set language_programs_system08=^^(H^^) Игровая панель                    
+set language_programs_system08=^^(I^^) Игровая панель                    
 set language_programs_system09=^^(4^^) Помощник                          
-set language_programs_system10=^^(I^^) Музыка Groove                     
+set language_programs_system10=^^(J^^) Музыка Groove                     
 set language_programs_system11=^^(5^^) Почта и Календарь                 
-set language_programs_system12=^^(J^^) Фильмы и Телевидение              
+set language_programs_system12=^^(K^^) Фильмы и Телевидение              
 set language_programs_system13=^^(6^^) Карты                             
-set language_programs_system14=^^(K^^) Office                            
+set language_programs_system14=^^(L^^) Office                            
 set language_programs_system15=^^(7^^) Сообщения                         
-set language_programs_system16=^^(L^^) Paint 3D                          
+set language_programs_system16=^^(M^^) Paint 3D                          
 set language_programs_system17=^^(8^^) Портал смешанной реальности       
-set language_programs_system18=^^(M^^) Фотографии                        
+set language_programs_system18=^^(N^^) Фотографии                        
 set language_programs_system19=^^(9^^) Мобильные тарифы                  
-set language_programs_system20=^^(N^^) Skype                             
+set language_programs_system20=^^(O^^) Skype                             
 set language_programs_system21=^^(A^^) OneNote                           
-set language_programs_system22=^^(O^^) Фрагмент и Набросок               
-set language_programs_system23=^^(B^^) Print 3D                          
-set language_programs_system24=^^(P^^) Наклейки                          
-set language_programs_system25=^^(C^^) Solitare                          
-set language_programs_system26=^^(Q^^) Магазин                           
-set language_programs_system27=^^(D^^) Подсказки                         
-set language_programs_system28=^^(R^^) Звукозаписыватель                 
-set language_programs_system29=^^(E^^) Ваш Телефон                       
-set language_programs_system30=^^(S^^) Погода                            
-set language_programs_system32=^^(T^^) Xbox                              
-set language_programs_system33=^^(U^^) Установить всё
-set language_programs_system34=^^(V^^) Деинсталировать всё
+set language_programs_system22=^^(P^^) Фрагмент и Набросок               
+set language_programs_system23=^^(B^^) Люди                              
+set language_programs_system24=^^(Q^^) Наклейки                          
+set language_programs_system25=^^(C^^) Print 3D                          
+set language_programs_system26=^^(R^^) Магазин                           
+set language_programs_system27=^^(D^^) Solitare                          
+set language_programs_system28=^^(S^^) Звукозаписыватель                 
+set language_programs_system29=^^(E^^) Подсказки                         
+set language_programs_system30=^^(T^^) Погода                            
+set language_programs_system31=^^(F^^) Ваш Телефон                       
+set language_programs_system32=^^(U^^) Xbox                              
+set language_programs_system33=^^(V^^) Установить всё
+set language_programs_system34=^^(W^^) Деинсталировать всё
 
 set language_programs_office01=^^(i^^) Microsoft Офис Профессиональный+ 2016 - Меню Настройки
 set language_programs_office02=^^(^^^>^^) Выберите действие:
@@ -2778,36 +2793,37 @@ set language_interface_taskBar08=Примітка: Ці функції потр�
 set language_programs_system01=^^(i^^) Системні Програми - Меню Управління
 set language_programs_system02=^^(^^^>^^) Виберіть дію, щоб установити/деінсталювати системні програми:
 set language_programs_system03=^^(1^^) 3D Builder                        
-set language_programs_system04=^^(F^^) Будильники та Годинники           
+set language_programs_system04=^^(G^^) Будильники та Годинники           
 set language_programs_system05=^^(2^^) 3D-моделі                         
-set language_programs_system06=^^(G^^) Камера                            
+set language_programs_system06=^^(H^^) Камера                            
 set language_programs_system07=^^(3^^) Зворотній Зв'язок                 
-set language_programs_system08=^^(H^^) Ігрова панель                     
+set language_programs_system08=^^(I^^) Ігрова панель                     
 set language_programs_system09=^^(4^^) Помічник                          
-set language_programs_system10=^^(I^^) Музика Groove                     
+set language_programs_system10=^^(J^^) Музика Groove                     
 set language_programs_system11=^^(5^^) Пошта і Календар                  
-set language_programs_system12=^^(J^^) Фільми й Телепрограми             
+set language_programs_system12=^^(K^^) Фільми й Телепрограми             
 set language_programs_system13=^^(6^^) Карти                             
-set language_programs_system14=^^(K^^) Office                            
+set language_programs_system14=^^(L^^) Office                            
 set language_programs_system15=^^(7^^) Повідомлення                      
-set language_programs_system16=^^(L^^) Paint 3D                          
+set language_programs_system16=^^(M^^) Paint 3D                          
 set language_programs_system17=^^(8^^) Портал змішаної реальності        
-set language_programs_system18=^^(M^^) Фотографії                        
+set language_programs_system18=^^(N^^) Фотографії                        
 set language_programs_system19=^^(9^^) Мобільні тарифи                   
-set language_programs_system20=^^(N^^) Skype                             
+set language_programs_system20=^^(O^^) Skype                             
 set language_programs_system21=^^(A^^) OneNote                           
-set language_programs_system22=^^(O^^) Фрагмент і Ескіз                  
-set language_programs_system23=^^(B^^) Print 3D                          
-set language_programs_system24=^^(P^^) Наліпки                           
-set language_programs_system25=^^(C^^) Solitare                          
-set language_programs_system26=^^(Q^^) Магазин                           
-set language_programs_system27=^^(D^^) Підказки                          
-set language_programs_system28=^^(R^^) Звукозаписувач                    
-set language_programs_system29=^^(E^^) Ваш Телефон                       
-set language_programs_system30=^^(S^^) Погода                            
-set language_programs_system32=^^(T^^) Xbox                              
-set language_programs_system33=^^(U^^) Установити все
-set language_programs_system34=^^(V^^) Деінсталювати все
+set language_programs_system22=^^(P^^) Фрагмент і Ескіз                  
+set language_programs_system23=^^(B^^) Люди                              
+set language_programs_system24=^^(Q^^) Наліпки                           
+set language_programs_system25=^^(C^^) Print 3D                          
+set language_programs_system26=^^(R^^) Магазин                           
+set language_programs_system27=^^(D^^) Solitare                          
+set language_programs_system28=^^(S^^) Звукозаписувач                    
+set language_programs_system29=^^(E^^) Підказки                          
+set language_programs_system30=^^(T^^) Погода                            
+set language_programs_system31=^^(F^^) Ваш Телефон                       
+set language_programs_system32=^^(U^^) Xbox                              
+set language_programs_system33=^^(V^^) Установити все
+set language_programs_system34=^^(W^^) Деінсталювати все
 
 set language_programs_office01=^^(i^^) Microsoft Офіс Професійний+ 2016 - Меню Налаштування
 set language_programs_office02=^^(^^^>^^) Виберіть дію:
