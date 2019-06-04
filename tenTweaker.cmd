@@ -2280,7 +2280,7 @@ set language_logo01=Release v%program_version%
 set language_logo02=See other programs here:
 
 set language_running=^^(i^^) %program_name% is running...
-set language_eula01=^^(^^!^^) The author is not responsible for any possible damage to the computer^^!
+set language_eula01=^^(^^^^!^^) The author is not responsible for any possible damage to the computer^^^^!
 set language_eula02=^^(^^?^^) Are you sure^^? ^^(Press Enter or close^^)
 
 set language_main_menu01=  Interface                                                    Programs
@@ -2486,7 +2486,7 @@ set language_logo01=Релиз v%program_version%
 set language_logo02=Смотрите другие программы здесь:
 
 set language_running=^^(i^^) %program_name% запускается...
-set language_eula01=^^(^^!^^) Автор не несет ответственности за возможные повреждения компьютера^^!
+set language_eula01=^^(^^^^!^^) Автор не несет ответственности за возможные повреждения компьютера^^^^!
 set language_eula02=^^(^^?^^) Вы уверены^^? ^^(Нажмите Enter или закройте^^)
 
 set language_main_menu01=  Интерфейс                                                    Программы
@@ -2692,7 +2692,7 @@ set language_logo01=Реліз v%program_version%
 set language_logo02=Дивіться інші програми тут:
 
 set language_running=^^(i^^) %program_name% запускається...
-set language_eula01=^^(^^!^^) Автор не несе відповідальності за можливі пошкодження комп'ютера^^!
+set language_eula01=^^(^^^^!^^) Автор не несе відповідальності за можливі пошкодження комп'ютера^^^^!
 set language_eula02=^^(^^?^^) Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
 
 set language_main_menu01=  Інтерфейс                                                    Програми
