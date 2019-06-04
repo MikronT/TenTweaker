@@ -61,14 +61,10 @@ set program_name=Ten Tweaker
 set program_name_ns=tenTweaker
 
 set program_version=2.1
-set program_version_level1=0
-set program_version_level2=0
-set program_version_level3=0
 
 for /f "tokens=1-3 delims=." %%i in ("%program_version%") do (
-  if "%%i" NEQ "" set program_version_level1=%%i
-  if "%%j" NEQ "" set program_version_level2=%%j
-  if "%%k" NEQ "" set program_version_level3=%%k
+  if "%%k" NEQ "" ( set program_version_number=%%i%%j%%k
+  ) else set program_version_number=%%i%%j0
 )
 
 set module_wget=files\wget.exe --quiet --no-check-certificate --tries=1
@@ -98,6 +94,7 @@ call :logo
 echo.%language_running%
 echo.
 
+setlocal EnableDelayedExpansion
 if "%key_main_reboot%" == "services_sppsvc" (
   for /l %%i in (4,-1,1)  do rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 %~dp0files\tools_administrativeTools_unHookExec.inf
   for /l %%i in (4,-1,1)  do reg import files\services_sppsvc_registry.reg >nul 2>nul
@@ -108,14 +105,16 @@ if "%key_main_reboot%" == "services_sppsvc" (
 ) else (
   %module_wget% "%update_version_url%" --output-document="%update_version_output%"
 
-  for /f "tokens=1-3 delims=." %%l in (%update_version_output%) do (
-           if "%%l" NEQ "" if %%l GTR %program_version_level1% ( set update_available=true
-    ) else if "%%m" NEQ "" if %%m GTR %program_version_level2% ( set update_available=true
-    ) else if "%%n" NEQ "" if %%m GTR %program_version_level3% ( set update_available=true
-    )
+  for /f "tokens=1-3 delims=." %%i in (%update_version_output%) do (
+    if "%%k" NEQ "" ( set update_program_version_number=%%i%%j%%k
+    ) else set update_program_version_number=%%i%%j0
   )
+  if !update_program_version_number! GTR %program_version_number% echo.>temp\return_update_available
 
-  if "%key_main_eula%" == "false" goto :main_menu
+  if "%key_main_eula%" == "false" (
+    endlocal
+    goto :main_menu
+  )
   if "%setting_eula%" == "true" (
     echo.%language_eula01%
     echo.%language_eula02%
@@ -123,6 +122,7 @@ if "%key_main_reboot%" == "services_sppsvc" (
     set setting_eula=false
   )
 )
+endlocal
 
 
 
@@ -141,6 +141,8 @@ if "%key_main_reboot%" == "services_sppsvc" (
 :main_menu
 call :main_variables
 call :settings_save
+
+if exist temp\return_update_available set update_available=true
 
 call :logo
 echo.%language_main_menu01%
