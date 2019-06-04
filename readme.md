@@ -18,17 +18,16 @@ Console tweaker for Windows 10 with some useful options.
 
 
 ## Features
-- Interface Config
-  - Desktop objects (This PC, Recycle Bin etc.)
-  - Language key sequence
-  - Input suggestions and auto completion
-  - Windows Explorer (file extensions, hidden files etc.)
-  - Windows Task Bar
-- Programs
+- Interface configuration
+  - Desktop (This PC, Recycle Bin etc.)
+  - Task Bar (People band, small icons etc.)
+  - Explorer (file extensions, hidden files etc.)
+  - Input (key sequences, suggestions and auto completion)
+- Programs management
   - System programs
   - Microsoft Office Professional Plus 2016
   - Group Policy Editor (gpedit.msc) for Windows 10 Home
-- Services Management
+- Services control
   - Windows Update (wuaserv)
   - Software Protection Platform Service (sppsvc)
 - Tools
