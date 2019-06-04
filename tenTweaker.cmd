@@ -60,7 +60,7 @@ if %errorLevel% LSS 1 if "%key_main_registryMerge%" == "true" (
 set program_name=Ten Tweaker
 set program_name_ns=tenTweaker
 
-set program_version=2.1
+set program_version=2.2
 
 for /f "tokens=1-3 delims=." %%i in ("%program_version%") do (
   if "%%k" NEQ "" ( set program_version_number=%%i%%j%%k
