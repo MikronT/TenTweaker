@@ -156,7 +156,6 @@ echo.%language_main_menu10%
 echo.%language_main_menu11%
 echo.%language_main_menu12%
 echo.%language_main_menu13%
-echo.%language_main_menu14%
 echo.
 echo.
 echo.
@@ -166,33 +165,32 @@ if "%update_available%" == "true" (
   echo.        %language_message_update_available02% github.com/MikronT/TenTweaker/releases/latest
   echo.
 )
-choice /c 123456789ABCL0 /n /m "> "
+choice /c 123456789ABL0 /n /m "> "
 set command=%errorLevel%
 
 
 
 if "%command%" == "1" call :interface_desktop
-if "%command%" == "2" call :interface_languageKeySequence
-if "%command%" == "3" call :interface_suggestions
-if "%command%" == "4" call :interface_explorer
-if "%command%" == "5" call :interface_taskBar
+if "%command%" == "2" call :interface_taskBar
+if "%command%" == "3" call :interface_explorer
+if "%command%" == "4" call :interface_input
 
-if "%command%" == "6" call :programs_system
-if "%command%" == "7" call :programs_office
-if "%command%" == "8" call :programs_gpeditMSC
+if "%command%" == "5" call :programs_system
+if "%command%" == "6" call :programs_office
+if "%command%" == "7" call :programs_gpeditMSC
 
-if "%command%" == "9" call :services_windowsUpdate
-if "%command%" == "10" call :services_sppsvc
+if "%command%" == "8" call :services_windowsUpdate
+if "%command%" == "9" call :services_sppsvc
 
-if "%command%" == "11" call :tools_administrativeTools
-if "%command%" == "12" call :tools_systemResourceChecker
+if "%command%" == "10" call :tools_administrativeTools
+if "%command%" == "11" call :tools_systemResourceChecker
 
-if "%command%" == "13" (
+if "%command%" == "12" (
   call :language_menu
   call :language_import
 )
 
-if "%command%" == "14" (
+if "%command%" == "13" (
   rd /s /q temp
   exit
 )
@@ -301,100 +299,12 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
   if "%command%" == "5" if "%interface_desktop_objects_network%" == "hidden" (
     reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C} /t REG_DWORD /d 0 /f >nul
   ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C} /t REG_DWORD /d 1 /f >nul
-)
 
-if "%command%" == "6" call :restart_explorer
-if "%command%" == "7" ( set command= & exit /b )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:interface_languageKeySequence
-call :main_variables interface_languageKeySequence
-if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%interface_languageKeySequence_inputLanguageSwitch%" == "%interface_languageKeySequence_keyboardLayoutSwitch%" (
-  if "%interface_languageKeySequence_inputLanguageSwitch%" NEQ "notAssigned" (
-    set error_interface_languageKeySequence_twoIdenticalCombinations=1
-  ) else set error_interface_languageKeySequence_twoIdenticalCombinations=0
-) else set error_interface_languageKeySequence_twoIdenticalCombinations=0
-
-call :logo
-echo.%language_interface_languageKeySequence01%
-echo.
-echo.
-echo.%language_interface_languageKeySequence02%
-
-set stringBuilder_string=%language_interface_languageKeySequence03%
-if "%interface_languageKeySequence_inputLanguageSwitch%" == "notAssigned" (
-  call %stringBuilder_build% %language_stringBuilder_option_notAssigned%
-) else if "%interface_languageKeySequence_inputLanguageSwitch%" == "ctrlShift" (
-  call %stringBuilder_build% %language_stringBuilder_option_ctrlShift%
-) else if "%interface_languageKeySequence_inputLanguageSwitch%" == "leftAltShift" (
-  call %stringBuilder_build% %language_stringBuilder_option_leftAltShift%
-) else if "%interface_languageKeySequence_inputLanguageSwitch%" == "graveAccent" (
-  call %stringBuilder_build% %language_stringBuilder_option_graveAccent%
-) else call %stringBuilder_build% %language_stringBuilder_option_error%
-echo.    %stringBuilder_string%
-
-set stringBuilder_string=%language_interface_languageKeySequence04%
-if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "notAssigned" (
-  call %stringBuilder_build% %language_stringBuilder_option_notAssigned%
-) else if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "ctrlShift" (
-  call %stringBuilder_build% %language_stringBuilder_option_ctrlShift%
-) else if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "leftAltShift" (
-  call %stringBuilder_build% %language_stringBuilder_option_leftAltShift%
-) else if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "graveAccent" (
-  call %stringBuilder_build% %language_stringBuilder_option_graveAccent%
-) else call %stringBuilder_build% %language_stringBuilder_option_error%
-echo.    %stringBuilder_string%
-
-echo.
-echo.    %language_menuItem_goBack%
-echo.
-echo.
-echo.
-if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-if "%error_interface_languageKeySequence_twoIdenticalCombinations%" == "1" (
-  color 0c
-  echo.    %language_message_error_interface_languageKeySequence_twoIdenticalCombinations%
-  echo.
-) else color 0b
-choice /c 120 /n /m "> "
-set command=%errorLevel%
-
-
-
-if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
-  if "%command%" == "1" (
-    if "%interface_languageKeySequence_inputLanguageSwitch%" == "notAssigned" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "2" /f >nul
-    if "%interface_languageKeySequence_inputLanguageSwitch%" == "ctrlShift" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "1" /f >nul
-    if "%interface_languageKeySequence_inputLanguageSwitch%" == "leftAltShift" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "4" /f >nul
-    if "%interface_languageKeySequence_inputLanguageSwitch%" == "graveAccent" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "3" /f >nul
-  )
-
-  if "%command%" == "2" (
-    if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "notAssigned" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 2 /f >nul
-    if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "ctrlShift" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 1 /f >nul
-    if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "leftAltShift" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 4 /f >nul
-    if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "graveAccent" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 3 /f >nul
-  )
   if "%command%" == "6" if "%interface_desktop_logonBackgroundBlur%" == "disabled" (
     reg add HKLM\Software\Policies\Microsoft\Windows\System /v DisableAcrylicBackgroundOnLogon /t REG_DWORD /d 0 /f >nul
   ) else reg add HKLM\Software\Policies\Microsoft\Windows\System /v DisableAcrylicBackgroundOnLogon /t REG_DWORD /d 1 /f >nul
 )
 
-if "%command%" == "3" if "%error_interface_languageKeySequence_twoIdenticalCombinations%" NEQ "1" ( set command= & exit /b )
-goto :interface_languageKeySequence
 if "%command%" == "7" call :restart_explorer
 if "%command%" == "8" ( set command= & exit /b )
 goto :interface_desktop
@@ -413,78 +323,94 @@ goto :interface_desktop
 
 
 
-:interface_suggestions
-call :main_variables interface_suggestions
+:interface_taskBar
+call :main_variables interface_taskBar
 
 call :logo
-echo.%language_interface_suggestions01%
+echo.%language_interface_taskBar01%
 echo.
 echo.
-echo.%language_interface_suggestions02%
+echo.%language_interface_taskBar02%
 
-set stringBuilder_string=%language_interface_suggestions03%
-if "%interface_suggestions_autoSuggest%" == "enabled" (
+set stringBuilder_string=%language_interface_taskBar03%
+if "%interface_taskBar_peopleBand%" == "shown" (
+  call %stringBuilder_build% %language_stringBuilder_option_shown%
+) else if "%interface_taskBar_peopleBand%" == "hidden" (
+  call %stringBuilder_build% %language_stringBuilder_option_hidden%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_interface_taskBar04%
+if "%interface_taskBar_smallIcons%" == "enabled" (
   call %stringBuilder_build% %language_stringBuilder_option_enabled%
-) else if "%interface_suggestions_autoSuggest%" == "disabled" (
+) else if "%interface_taskBar_smallIcons%" == "disabled" (
   call %stringBuilder_build% %language_stringBuilder_option_disabled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=%language_interface_suggestions04%
-if "%interface_suggestions_appendCompletion%" == "enabled" (
-  call %stringBuilder_build% %language_stringBuilder_option_enabled%
-) else if "%interface_suggestions_appendCompletion%" == "disabled" (
-  call %stringBuilder_build% %language_stringBuilder_option_disabled%
+set stringBuilder_string=%language_interface_taskBar05%
+if "%interface_taskBar_commandPromptOnWinX%" == "powerShell" (
+  call %stringBuilder_build% %language_stringBuilder_option_powerShell%
+) else if "%interface_taskBar_commandPromptOnWinX%" == "commandPrompt" (
+  call %stringBuilder_build% %language_stringBuilder_option_commandPrompt%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+call %stringBuilder_build%    %language_interface_taskBar06%
+if "%interface_taskBar_buttonsCombine%" == "always" (
+  call %stringBuilder_build% %language_stringBuilder_option_always%
+) else if "%interface_taskBar_buttonsCombine%" == "when is full" (
+  call %stringBuilder_build% %language_stringBuilder_option_whenIsFull%
+) else if "%interface_taskBar_buttonsCombine%" == "never" (
+  call %stringBuilder_build% %language_stringBuilder_option_never%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=%language_interface_suggestions05%
-if "%interface_suggestions_startTrackProgs%" == "enabled" (
-  call %stringBuilder_build% %language_stringBuilder_option_enabled%
-) else if "%interface_suggestions_startTrackProgs%" == "disabled" (
-  call %stringBuilder_build% %language_stringBuilder_option_disabled%
+set stringBuilder_string=%language_interface_taskBar07%
+if "%interface_taskBar_taskViewButton%" == "shown" (
+  call %stringBuilder_build% %language_stringBuilder_option_shown%
+) else if "%interface_taskBar_taskViewButton%" == "hidden" (
+  call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=%language_interface_suggestions06%
-if "%interface_suggestions_suggestionsWhenTyping%" == "enabled" (
-  call %stringBuilder_build% %language_stringBuilder_option_enabled%
-) else if "%interface_suggestions_suggestionsWhenTyping%" == "disabled" (
-  call %stringBuilder_build% %language_stringBuilder_option_disabled%
-) else call %stringBuilder_build% %language_stringBuilder_option_error%
-echo.    %stringBuilder_string%
-
+echo.
+echo.    %language_interface_taskBar08%
+echo.    %language_menuItem_restartExplorer%
 echo.
 echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-choice /c 12340 /n /m "> "
+choice /c 12345Y0 /n /m "> "
 set command=%errorLevel%
 
 
 
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
-  if "%command%" == "1" if "%interface_suggestions_autoSuggest%" == "disabled" (
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v AutoSuggest /t REG_SZ /d yes /f >nul
-  ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v AutoSuggest /t REG_SZ /d no /f >nul
+  if "%command%" == "1" if "%interface_taskBar_peopleBand%" == "shown" (
+    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand /t REG_DWORD /d 0 /f >nul
+  ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand /t REG_DWORD /d 1 /f >nul
 
-  if "%command%" == "2" if "%interface_suggestions_appendCompletion%" == "disabled" (
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v "Append Completion" /t REG_SZ /d yes /f >nul
-  ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v "Append Completion" /t REG_SZ /d no /f >nul
+  if "%command%" == "2" if "%interface_taskBar_commandPromptOnWinX%" == "powerShell" (
+    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX /t REG_DWORD /d 1 /f >nul
+  ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX /t REG_DWORD /d 0 /f >nul
 
-  if "%command%" == "3" if "%interface_suggestions_startTrackProgs%" == "disabled" (
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs /t REG_DWORD /d 1 /f >nul
-  ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs /t REG_DWORD /d 0 /f >nul
+  if "%command%" == "3" if "%interface_taskBar_taskViewButton%" == "shown" (
+    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowTaskViewButton /t REG_DWORD /d 0 /f >nul
+  ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowTaskViewButton /t REG_DWORD /d 1 /f >nul
 
-  if "%command%" == "4" if "%interface_suggestions_suggestionsWhenTyping%" == "disabled" (
-    reg add HKCU\Software\Microsoft\Input\Settings /v EnableHwkbTextPrediction /t REG_DWORD /d 1 /f >nul
-  ) else reg add HKCU\Software\Microsoft\Input\Settings /v EnableHwkbTextPrediction /t REG_DWORD /d 0 /f >nul
+  if "%command%" == "4" if "%interface_taskBar_smallIcons%" == "disabled" (
+    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarSmallIcons /t REG_DWORD /d 1 /f >nul
+  ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarSmallIcons /t REG_DWORD /d 0 /f >nul
+
+  if "%command%" == "5" (
+    if "%interface_taskBar_buttonsCombine%" == "always" reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarGlomLevel /t REG_DWORD /d 1 /f >nul
+    if "%interface_taskBar_buttonsCombine%" == "when is full" reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarGlomLevel /t REG_DWORD /d 2 /f >nul
+    if "%interface_taskBar_buttonsCombine%" == "never" reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarGlomLevel /t REG_DWORD /d 0 /f >nul
+  )
 )
 
-if "%command%" == "5" ( set command= & exit /b )
-goto :interface_suggestions
+if "%command%" == "6" call :restart_explorer
+if "%command%" == "7" ( set command= & exit /b )
+goto :interface_taskBar
 
 
 
@@ -748,94 +674,131 @@ goto :interface_explorer
 
 
 
-:interface_taskBar
-call :main_variables interface_taskBar
+:interface_input
+call :main_variables interface_input
+if "%error_main_variables_disabledRegistryTools%" NEQ "1" if "%interface_input_keyboard_languageSwitch%" == "%interface_input_keyboard_layoutSwitch%" (
+  if "%interface_input_keyboard_languageSwitch%" NEQ "notAssigned" (
+    set error_interface_input_keyboard_keySequence_twoIdentical=1
+  ) else set error_interface_input_keyboard_keySequence_twoIdentical=0
+) else set error_interface_input_keyboard_keySequence_twoIdentical=0
 
 call :logo
-echo.%language_interface_taskBar01%
+echo.%language_interface_input01%
 echo.
 echo.
-echo.%language_interface_taskBar02%
+echo.%language_interface_input02%
 
-set stringBuilder_string=%language_interface_taskBar03%
-if "%interface_taskBar_peopleBand%" == "shown" (
-  call %stringBuilder_build% %language_stringBuilder_option_shown%
-) else if "%interface_taskBar_peopleBand%" == "hidden" (
-  call %stringBuilder_build% %language_stringBuilder_option_hidden%
-) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    %language_interface_taskBar04%
-if "%interface_taskBar_smallIcons%" == "enabled" (
+set stringBuilder_string=%language_interface_input03%
+if "%interface_input_suggestions_auto%" == "enabled" (
   call %stringBuilder_build% %language_stringBuilder_option_enabled%
-) else if "%interface_taskBar_smallIcons%" == "disabled" (
+) else if "%interface_input_suggestions_auto%" == "disabled" (
   call %stringBuilder_build% %language_stringBuilder_option_disabled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=%language_interface_taskBar05%
-if "%interface_taskBar_commandPromptOnWinX%" == "powerShell" (
-  call %stringBuilder_build% %language_stringBuilder_option_powerShell%
-) else if "%interface_taskBar_commandPromptOnWinX%" == "commandPrompt" (
-  call %stringBuilder_build% %language_stringBuilder_option_commandPrompt%
-) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    %language_interface_taskBar06%
-if "%interface_taskBar_buttonsCombine%" == "always" (
-  call %stringBuilder_build% %language_stringBuilder_option_always%
-) else if "%interface_taskBar_buttonsCombine%" == "when is full" (
-  call %stringBuilder_build% %language_stringBuilder_option_whenIsFull%
-) else if "%interface_taskBar_buttonsCombine%" == "never" (
-  call %stringBuilder_build% %language_stringBuilder_option_never%
+set stringBuilder_string=%language_interface_input04%
+if "%interface_input_suggestions_appendCompletion%" == "enabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_enabled%
+) else if "%interface_input_suggestions_appendCompletion%" == "disabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_disabled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=%language_interface_taskBar07%
-if "%interface_taskBar_taskViewButton%" == "shown" (
-  call %stringBuilder_build% %language_stringBuilder_option_shown%
-) else if "%interface_taskBar_taskViewButton%" == "hidden" (
-  call %stringBuilder_build% %language_stringBuilder_option_hidden%
+set stringBuilder_string=%language_interface_input05%
+if "%interface_input_suggestions_startTrackProgs%" == "enabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_enabled%
+) else if "%interface_input_suggestions_startTrackProgs%" == "disabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_disabled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_interface_input06%
+if "%interface_input_suggestions_whenTyping%" == "enabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_enabled%
+) else if "%interface_input_suggestions_whenTyping%" == "disabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_disabled%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
 echo.
-echo.    %language_interface_taskBar08%
-echo.    %language_menuItem_restartExplorer%
+echo.%language_interface_input07%
+
+set stringBuilder_string=%language_interface_input08%
+if "%interface_input_keyboard_languageSwitch%" == "notAssigned" (
+  call %stringBuilder_build% %language_stringBuilder_option_notAssigned%
+) else if "%interface_input_keyboard_languageSwitch%" == "ctrlShift" (
+  call %stringBuilder_build% %language_stringBuilder_option_ctrlShift%
+) else if "%interface_input_keyboard_languageSwitch%" == "leftAltShift" (
+  call %stringBuilder_build% %language_stringBuilder_option_leftAltShift%
+) else if "%interface_input_keyboard_languageSwitch%" == "graveAccent" (
+  call %stringBuilder_build% %language_stringBuilder_option_graveAccent%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
+set stringBuilder_string=%language_interface_input09%
+if "%interface_input_keyboard_layoutSwitch%" == "notAssigned" (
+  call %stringBuilder_build% %language_stringBuilder_option_notAssigned%
+) else if "%interface_input_keyboard_layoutSwitch%" == "ctrlShift" (
+  call %stringBuilder_build% %language_stringBuilder_option_ctrlShift%
+) else if "%interface_input_keyboard_layoutSwitch%" == "leftAltShift" (
+  call %stringBuilder_build% %language_stringBuilder_option_leftAltShift%
+) else if "%interface_input_keyboard_layoutSwitch%" == "graveAccent" (
+  call %stringBuilder_build% %language_stringBuilder_option_graveAccent%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
+echo.    %stringBuilder_string%
+
 echo.
 echo.    %language_menuItem_goBack%
 echo.
 echo.
 echo.
+
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-choice /c 12345Y0 /n /m "> "
+if "%error_interface_input_keyboard_keySequence_twoIdentical%" == "1" (
+  color 0c
+  echo.    %language_message_error_interface_input_keyboard_keySequence_twoIdentical%
+  echo.
+) else color 0b
+
+choice /c 1234560 /n /m "> "
 set command=%errorLevel%
 
 
 
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
-  if "%command%" == "1" if "%interface_taskBar_peopleBand%" == "shown" (
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand /t REG_DWORD /d 0 /f >nul
-  ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand /t REG_DWORD /d 1 /f >nul
+  if "%command%" == "1" if "%interface_input_suggestions_auto%" == "disabled" (
+    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v AutoSuggest /t REG_SZ /d yes /f >nul
+  ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v AutoSuggest /t REG_SZ /d no /f >nul
 
-  if "%command%" == "2" if "%interface_taskBar_commandPromptOnWinX%" == "powerShell" (
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX /t REG_DWORD /d 1 /f >nul
-  ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX /t REG_DWORD /d 0 /f >nul
+  if "%command%" == "2" if "%interface_input_suggestions_appendCompletion%" == "disabled" (
+    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v "Append Completion" /t REG_SZ /d yes /f >nul
+  ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v "Append Completion" /t REG_SZ /d no /f >nul
 
-  if "%command%" == "3" if "%interface_taskBar_taskViewButton%" == "shown" (
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowTaskViewButton /t REG_DWORD /d 0 /f >nul
-  ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowTaskViewButton /t REG_DWORD /d 1 /f >nul
+  if "%command%" == "3" if "%interface_input_suggestions_startTrackProgs%" == "disabled" (
+    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs /t REG_DWORD /d 1 /f >nul
+  ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs /t REG_DWORD /d 0 /f >nul
 
-  if "%command%" == "4" if "%interface_taskBar_smallIcons%" == "disabled" (
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarSmallIcons /t REG_DWORD /d 1 /f >nul
-  ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarSmallIcons /t REG_DWORD /d 0 /f >nul
+  if "%command%" == "4" if "%interface_input_suggestions_whenTyping%" == "disabled" (
+    reg add HKCU\Software\Microsoft\Input\Settings /v EnableHwkbTextPrediction /t REG_DWORD /d 1 /f >nul
+  ) else reg add HKCU\Software\Microsoft\Input\Settings /v EnableHwkbTextPrediction /t REG_DWORD /d 0 /f >nul
 
   if "%command%" == "5" (
-    if "%interface_taskBar_buttonsCombine%" == "always" reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarGlomLevel /t REG_DWORD /d 1 /f >nul
-    if "%interface_taskBar_buttonsCombine%" == "when is full" reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarGlomLevel /t REG_DWORD /d 2 /f >nul
-    if "%interface_taskBar_buttonsCombine%" == "never" reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarGlomLevel /t REG_DWORD /d 0 /f >nul
+    if "%interface_input_keyboard_languageSwitch%" == "notAssigned" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "2" /f >nul
+    if "%interface_input_keyboard_languageSwitch%" == "ctrlShift" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "1" /f >nul
+    if "%interface_input_keyboard_languageSwitch%" == "leftAltShift" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "4" /f >nul
+    if "%interface_input_keyboard_languageSwitch%" == "graveAccent" reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d "3" /f >nul
+  )
+
+  if "%command%" == "6" (
+    if "%interface_input_keyboard_layoutSwitch%" == "notAssigned" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 2 /f >nul
+    if "%interface_input_keyboard_layoutSwitch%" == "ctrlShift" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 1 /f >nul
+    if "%interface_input_keyboard_layoutSwitch%" == "leftAltShift" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 4 /f >nul
+    if "%interface_input_keyboard_layoutSwitch%" == "graveAccent" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 3 /f >nul
   )
 )
 
-if "%command%" == "6" call :restart_explorer
-if "%command%" == "7" ( set command= & exit /b )
-goto :interface_taskBar
+if "%command%" == "7" if "%error_interface_input_keyboard_keySequence_twoIdentical%" NEQ "1" ( set command= & exit /b )
+goto :interface_input
 
 
 
@@ -1889,13 +1852,11 @@ if %errorLevel% GEQ 1 (
   set interface_desktop_objects_network=error
   set interface_desktop_logonBackgroundBlur=error
 
-  set interface_languageKeySequence_inputLanguageSwitch=error
-  set interface_languageKeySequence_keyboardLayoutSwitch=error
-
-  set interface_suggestions_autoSuggest=error
-  set interface_suggestions_appendCompletion=error
-  set interface_suggestions_startTrackProgs=error
-  set interface_suggestions_suggestionsWhenTyping=error
+  set interface_taskBar_peopleBand=error
+  set interface_taskBar_commandPromptOnWinX=error
+  set interface_taskBar_taskViewButton=error
+  set interface_taskBar_smallIcons=error
+  set interface_taskBar_buttonsCombine=error
 
   set interface_explorer_fileExtensions=error
   set interface_explorer_hiddenFiles=error
@@ -1916,11 +1877,13 @@ if %errorLevel% GEQ 1 (
   set interface_explorer_oneDriveInNavbar=error
   set interface_explorer_autoFolderTypeDiscovery=error
 
-  set interface_taskBar_peopleBand=error
-  set interface_taskBar_commandPromptOnWinX=error
-  set interface_taskBar_taskViewButton=error
-  set interface_taskBar_smallIcons=error
-  set interface_taskBar_buttonsCombine=error
+  set interface_input_keyboard_languageSwitch=error
+  set interface_input_keyboard_layoutSwitch=error
+
+  set interface_input_suggestions_auto=error
+  set interface_input_suggestions_appendCompletion=error
+  set interface_input_suggestions_startTrackProgs=error
+  set interface_input_suggestions_whenTyping=error
 
   set services_windowsUpdate_updateCenter=error
 
@@ -1965,38 +1928,24 @@ if "%1" == "interface_desktop" (
 
 
 
-if "%1" == "interface_languageKeySequence" (
-  set interface_languageKeySequence_inputLanguageSwitch=leftAltShift
-  (for /f "skip=2 tokens=4,* delims= " %%i in ('reg query "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey"') do (
-    if "%%i" == "3" set interface_languageKeySequence_inputLanguageSwitch=notAssigned
-    if "%%i" == "2" set interface_languageKeySequence_inputLanguageSwitch=ctrlShift
-    if "%%i" == "4" set interface_languageKeySequence_inputLanguageSwitch=graveAccent
+if "%1" == "interface_taskBar" (
+  set interface_taskBar_peopleBand=hidden
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand') do if "%%i" == "0x1" set interface_taskBar_peopleBand=shown)>nul 2>nul
+
+  set interface_taskBar_commandPromptOnWinX=powerShell
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX') do if "%%i" == "0x1" set interface_taskBar_commandPromptOnWinX=commandPrompt)>nul 2>nul
+
+  set interface_taskBar_taskViewButton=shown
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowTaskViewButton') do if "%%i" == "0x0" set interface_taskBar_taskViewButton=hidden)>nul 2>nul
+
+  set interface_taskBar_smallIcons=disabled
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarSmallIcons') do if "%%i" == "0x1" set interface_taskBar_smallIcons=enabled)>nul 2>nul
+
+  set interface_taskBar_buttonsCombine=always
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarGlomLevel') do (
+    if "%%i" == "0x1" set interface_taskBar_buttonsCombine=when is full
+    if "%%i" == "0x2" set interface_taskBar_buttonsCombine=never
   ))>nul 2>nul
-
-  set interface_languageKeySequence_keyboardLayoutSwitch=ctrlShift
-  (for /f "skip=2 tokens=4,* delims= " %%i in ('reg query "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey"') do (
-    if "%%i" == "3" set interface_languageKeySequence_keyboardLayoutSwitch=notAssigned
-    if "%%i" == "1" set interface_languageKeySequence_keyboardLayoutSwitch=leftAltShift
-    if "%%i" == "4" set interface_languageKeySequence_keyboardLayoutSwitch=graveAccent
-  ))>nul 2>nul
-)
-
-
-
-
-
-if "%1" == "interface_suggestions" (
-  set interface_suggestions_autoSuggest=disabled
-  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v AutoSuggest') do if "%%i" == "yes" set interface_suggestions_autoSuggest=enabled)>nul 2>nul
-
-  set interface_suggestions_appendCompletion=disabled
-  (for /f "skip=2 tokens=4,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v "Append Completion"') do if "%%i" == "yes" set interface_suggestions_appendCompletion=enabled)>nul 2>nul
-
-  set interface_suggestions_startTrackProgs=disabled
-  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs') do if "%%i" == "0x1" set interface_suggestions_startTrackProgs=enabled)>nul 2>nul
-
-  set interface_suggestions_suggestionsWhenTyping=disabled
-  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Input\Settings /v EnableHwkbTextPrediction') do if "%%i" == "0x1" set interface_suggestions_suggestionsWhenTyping=enabled)>nul 2>nul
 )
 
 
@@ -2063,24 +2012,32 @@ if "%1" == "interface_explorer" (
 
 
 
-if "%1" == "interface_taskBar" (
-  set interface_taskBar_peopleBand=hidden
-  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand') do if "%%i" == "0x1" set interface_taskBar_peopleBand=shown)>nul 2>nul
-
-  set interface_taskBar_commandPromptOnWinX=powerShell
-  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX') do if "%%i" == "0x1" set interface_taskBar_commandPromptOnWinX=commandPrompt)>nul 2>nul
-
-  set interface_taskBar_taskViewButton=shown
-  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowTaskViewButton') do if "%%i" == "0x0" set interface_taskBar_taskViewButton=hidden)>nul 2>nul
-
-  set interface_taskBar_smallIcons=disabled
-  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarSmallIcons') do if "%%i" == "0x1" set interface_taskBar_smallIcons=enabled)>nul 2>nul
-
-  set interface_taskBar_buttonsCombine=always
-  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarGlomLevel') do (
-    if "%%i" == "0x1" set interface_taskBar_buttonsCombine=when is full
-    if "%%i" == "0x2" set interface_taskBar_buttonsCombine=never
+if "%1" == "interface_input" (
+  set interface_input_keyboard_languageSwitch=leftAltShift
+  (for /f "skip=2 tokens=4,* delims= " %%i in ('reg query "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey"') do (
+    if "%%i" == "3" set interface_input_keyboard_languageSwitch=notAssigned
+    if "%%i" == "2" set interface_input_keyboard_languageSwitch=ctrlShift
+    if "%%i" == "4" set interface_input_keyboard_languageSwitch=graveAccent
   ))>nul 2>nul
+
+  set interface_input_keyboard_layoutSwitch=ctrlShift
+  (for /f "skip=2 tokens=4,* delims= " %%i in ('reg query "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey"') do (
+    if "%%i" == "3" set interface_input_keyboard_layoutSwitch=notAssigned
+    if "%%i" == "1" set interface_input_keyboard_layoutSwitch=leftAltShift
+    if "%%i" == "4" set interface_input_keyboard_layoutSwitch=graveAccent
+  ))>nul 2>nul
+
+  set interface_input_suggestions_auto=disabled
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v AutoSuggest') do if "%%i" == "yes" set interface_input_suggestions_auto=enabled)>nul 2>nul
+
+  set interface_input_suggestions_appendCompletion=disabled
+  (for /f "skip=2 tokens=4,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v "Append Completion"') do if "%%i" == "yes" set interface_input_suggestions_appendCompletion=enabled)>nul 2>nul
+
+  set interface_input_suggestions_startTrackProgs=disabled
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs') do if "%%i" == "0x1" set interface_input_suggestions_startTrackProgs=enabled)>nul 2>nul
+
+  set interface_input_suggestions_whenTyping=disabled
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Input\Settings /v EnableHwkbTextPrediction') do if "%%i" == "0x1" set interface_input_suggestions_whenTyping=enabled)>nul 2>nul
 )
 
 
@@ -2325,32 +2282,19 @@ set language_eula01=^^(^^!^^) The author is not responsible for any possible dam
 set language_eula02=^^(^^?^^) Are you sure^^? ^^(Press Enter or close^^)
 
 set language_main_menu01=  Interface                                                    Programs
-set language_main_menu02=    ^^(1^^) Desktop objects ^^(This PC etc^^)                            ^^(6^^) System programs
-set language_main_menu03=    ^^(2^^) Language key sequence ^^(Ctrl + Shift^^)                     ^^(7^^) Setup Office Professional+ 2016
-set language_main_menu04=    ^^(3^^) Input suggestions and auto completion                    ^^(8^^) Setup/restore gpedit.msc
-set language_main_menu05=    ^^(4^^) Windows Explorer
-set language_main_menu06=    ^^(5^^) Windows Task Bar                                       Services
-set language_main_menu07=                                                                 ^^(9^^) Windows Update ^^(wuauserv^^)
-set language_main_menu08=  Tools                                                          ^^(A^^) Software Protection Platform Service ^^(sppsvc^^)
-set language_main_menu09=    ^^(B^^) Administrative tools
-set language_main_menu10=    ^^(C^^) System Resource Checker
+set language_main_menu02=    ^^(1^^) Desktop ^^(This PC, Recycle Bin etc^^)                       ^^(5^^) System programs
+set language_main_menu03=    ^^(2^^) Task Bar                                                 ^^(6^^) Setup Office Professional+ 2016
+set language_main_menu04=    ^^(3^^) Explorer                                                 ^^(7^^) Setup/restore gpedit.msc
+set language_main_menu05=    ^^(4^^) Input
+set language_main_menu06=                                                               Services
+set language_main_menu07=  Tools                                                          ^^(8^^) Windows Update ^^(wuauserv^^)
+set language_main_menu08=    ^^(A^^) Administrative tools                                     ^^(9^^) Software Protection Service ^^(sppsvc^^)
+set language_main_menu09=    ^^(B^^) System Resource Checker
+set language_main_menu10=
 set language_main_menu11=
-set language_main_menu12=
-set language_main_menu13=    ^^(L^^) Language
-set language_main_menu14=    ^^(0^^) Exit
+set language_main_menu12=    ^^(L^^) Language
+set language_main_menu13=    ^^(0^^) Exit
 
-
-set language_interface_languageKeySequence01=^^(i^^) Language Key Sequence - Control Menu
-set language_interface_languageKeySequence02=^^(^^^>^^) Choose action to change key sequence:
-set language_interface_languageKeySequence03=^^(1^^) Input language                    
-set language_interface_languageKeySequence04=^^(2^^) Keyboard layout                   
-
-set language_interface_suggestions01=^^(i^^) Input Suggestions - Control Menu
-set language_interface_suggestions02=^^(^^^>^^) Choose action to enable/disable input suggestions:
-set language_interface_suggestions03=^^(1^^) Auto suggest                      
-set language_interface_suggestions04=^^(2^^) Append completion                 
-set language_interface_suggestions05=^^(3^^) Start track progs                 
-set language_interface_suggestions06=^^(4^^) Suggestions when typing           
 set language_interface_desktop01=^^(i^^) Desktop - Control Menu
 set language_interface_desktop02=^^(^^^>^^) Choose action to config desktop:
 set language_interface_desktop03=^^(1^^) This PC                           
@@ -2360,6 +2304,15 @@ set language_interface_desktop06=^^(5^^) Network
 set language_interface_desktop07=^^(3^^) Control Panel                     
 set language_interface_desktop08=^^(6^^) Background blur on logon          
 set language_interface_desktop09=Note: These features require to restart Windows Explorer.
+
+set language_interface_taskBar01=^^(i^^) Windows Task Bar - Control Menu
+set language_interface_taskBar02=^^(^^^>^^) Choose action to config Windows Task Bar:
+set language_interface_taskBar03=^^(1^^) People band                       
+set language_interface_taskBar04=^^(4^^) Small icons                       
+set language_interface_taskBar05=^^(2^^) Command prompt on Win + X         
+set language_interface_taskBar06=^^(5^^) Buttons combine                   
+set language_interface_taskBar07=^^(3^^) Task view button                  
+set language_interface_taskBar08=Note: These features require to restart Windows Explorer.
 
 set language_interface_explorer01=^^(i^^) Windows Explorer - Control Menu
 set language_interface_explorer02=^^(^^^>^^) Choose action to config Windows Explorer:
@@ -2384,14 +2337,15 @@ set language_interface_explorer20=^^(H^^) OneDrive
 set language_interface_explorer21=^^(I^^) Auto folder type discovery        
 set language_interface_explorer22=Note: These features require to restart Windows Explorer.
 
-set language_interface_taskBar01=^^(i^^) Windows Task Bar - Control Menu
-set language_interface_taskBar02=^^(^^^>^^) Choose action to config Windows Task Bar:
-set language_interface_taskBar03=^^(1^^) People band                       
-set language_interface_taskBar04=^^(4^^) Small icons                       
-set language_interface_taskBar05=^^(2^^) Command prompt on Win + X         
-set language_interface_taskBar06=^^(5^^) Buttons combine                   
-set language_interface_taskBar07=^^(3^^) Task view button                  
-set language_interface_taskBar08=Note: These features require to restart Windows Explorer.
+set language_interface_input01=^^(i^^) Input - Control Menu
+set language_interface_input02=^^(^^^>^^) Choose action to enable/disable input suggestions:
+set language_interface_input03=^^(1^^) Auto suggest                      
+set language_interface_input04=^^(2^^) Append completion                 
+set language_interface_input05=^^(3^^) Start track progs                 
+set language_interface_input06=^^(4^^) Suggestions when typing           
+set language_interface_input07=^^(^^^>^^) Choose action to change key sequences:
+set language_interface_input08=^^(5^^) Input language                    
+set language_interface_input09=^^(6^^) Keyboard layout                   
 
 set language_programs_system01=^^(i^^) System Programs - Control Menu
 set language_programs_system02=^^(^^^>^^) Choose action to install/uninstall system programs:
@@ -2482,7 +2436,7 @@ set language_message_error_main_variables_disabledRegistryTools02=If you see [er
 set language_message_error_main_variables_disabledRegistryTools03=To fix it you must enable Registry Tools in ^^(A^^) menu ^^(with hidden options^^)^^!
 set language_message_error_main_variables_disabledRegistryTools04=Please, back to main menu and read this error message again.
 
-set language_message_error_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Can not be two identical key combinations^^!
+set language_message_error_interface_input_keyboard_keySequence_twoIdentical=^^(^^!^^) Can not be two identical key combinations^^!
 
 set language_message_error_programs_office_download=^^(^^!^^) Download error^^! Server not respond or no Internet connection^^!
 
@@ -2534,32 +2488,19 @@ set language_eula01=^^(^^!^^) Автор не несет ответственн�
 set language_eula02=^^(^^?^^) Вы уверены^^? ^^(Нажмите Enter или закройте^^)
 
 set language_main_menu01=  Интерфейс                                                    Программы
-set language_main_menu02=    ^^(1^^) Объекты рабочего стола ^^(Этот ПК и другие^^)                ^^(6^^) Системные программы
-set language_main_menu03=    ^^(2^^) Сочетания клавиш смены языка ^^(Ctrl + Shift^^)              ^^(7^^) Установить Офис Профессиональный+ 2016
-set language_main_menu04=    ^^(3^^) Предложения при вводе и автозаполнение                   ^^(8^^) Установить/восстановить gpedit.msc
-set language_main_menu05=    ^^(4^^) Проводник Windows
-set language_main_menu06=    ^^(5^^) Панель Задач Windows                                   Службы
-set language_main_menu07=                                                                 ^^(9^^) Обновление Windows ^^(wuauserv^^)
-set language_main_menu08=  Инструменты                                                    ^^(A^^) Служба Платформы Защиты ПО ^^(sppsvc^^)
-set language_main_menu09=    ^^(B^^) Административные инструменты
-set language_main_menu10=    ^^(C^^) Проверка системных ресурсов
+set language_main_menu02=    ^^(1^^) Рабочий стол ^^(Этот ПК, Корзина и другие^^)                 ^^(5^^) Системные программы
+set language_main_menu03=    ^^(2^^) Панель Задач                                             ^^(6^^) Установить Офис Профессиональный+ 2016
+set language_main_menu04=    ^^(3^^) Проводник                                                ^^(7^^) Установить/восстановить gpedit.msc
+set language_main_menu05=    ^^(4^^) Ввод
+set language_main_menu06=                                                               Службы
+set language_main_menu07=  Инструменты                                                    ^^(8^^) Обновление Windows ^^(wuauserv^^)
+set language_main_menu08=    ^^(A^^) Административные инструменты                             ^^(9^^) Служба Защиты ПО ^^(sppsvc^^)
+set language_main_menu09=    ^^(B^^) Проверка системных ресурсов
+set language_main_menu10=
 set language_main_menu11=
-set language_main_menu12=
-set language_main_menu13=    ^^(L^^) Язык
-set language_main_menu14=    ^^(0^^) Выход
+set language_main_menu12=    ^^(L^^) Язык
+set language_main_menu13=    ^^(0^^) Выход
 
-
-set language_interface_languageKeySequence01=^^(i^^) Сочетания Клавиш Смены Языка - Меню Управления
-set language_interface_languageKeySequence02=^^(^^^>^^) Выберите действие, чтобы изменить последовательность клавиш:
-set language_interface_languageKeySequence03=^^(1^^) Язык ввода                        
-set language_interface_languageKeySequence04=^^(2^^) Раскладка клавиатуры              
-
-set language_interface_suggestions01=^^(i^^) Предложения При Вводе - Меню Управления
-set language_interface_suggestions02=^^(^^^>^^) Выберите действие, чтобы включить/отключить предложения ввода:
-set language_interface_suggestions03=^^(1^^) Авто предложения                  
-set language_interface_suggestions04=^^(2^^) Автозаполнение                    
-set language_interface_suggestions05=^^(3^^) Запустить трекинг програм         
-set language_interface_suggestions06=^^(4^^) Предложения при наборе текста     
 set language_interface_desktop01=^^(i^^)  Рабочий Стол - Меню Управления
 set language_interface_desktop02=^^(^^^>^^) Выберите действие, чтобы настроить рабочий стол:
 set language_interface_desktop03=^^(1^^) Этот компьютер                    
@@ -2569,6 +2510,15 @@ set language_interface_desktop06=^^(5^^) Сеть
 set language_interface_desktop07=^^(3^^) Панель управления                 
 set language_interface_desktop08=^^(6^^) Размытие при входе                
 set language_interface_desktop09=Примечание: Эти функции требуют перезапуска Проводника Windows.
+
+set language_interface_taskBar01=^^(i^^) Панель Задач Windows - Меню Управления
+set language_interface_taskBar02=^^(^^^>^^) Выберите действие, чтобы настроить Панель Задач Windows:
+set language_interface_taskBar03=^^(1^^) Полоса людей                      
+set language_interface_taskBar04=^^(4^^) Маленькие иконки                  
+set language_interface_taskBar05=^^(2^^) Командная строка при Win + X      
+set language_interface_taskBar06=^^(5^^) Совмещение кнопок                 
+set language_interface_taskBar07=^^(3^^) Кнопка просмотра задач            
+set language_interface_taskBar08=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
 set language_interface_explorer01=^^(i^^) Проводник Windows - Меню Управления
 set language_interface_explorer02=^^(^^^>^^) Выберите действие, чтобы настроить Проводник Windows:
@@ -2593,14 +2543,15 @@ set language_interface_explorer20=^^(H^^) OneDrive
 set language_interface_explorer21=^^(I^^) Авто определение типа папки       
 set language_interface_explorer22=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
-set language_interface_taskBar01=^^(i^^) Панель Задач Windows - Меню Управления
-set language_interface_taskBar02=^^(^^^>^^) Выберите действие, чтобы настроить Панель Задач Windows:
-set language_interface_taskBar03=^^(1^^) Полоса людей                      
-set language_interface_taskBar04=^^(4^^) Маленькие иконки                  
-set language_interface_taskBar05=^^(2^^) Командная строка при Win + X      
-set language_interface_taskBar06=^^(5^^) Совмещение кнопок                 
-set language_interface_taskBar07=^^(3^^) Кнопка просмотра задач            
-set language_interface_taskBar08=Примечание: Эти функции требуют перезапуска Проводника Windows.
+set language_interface_input01=^^(i^^) Ввод - Меню Управления
+set language_interface_input02=^^(^^^>^^) Выберите действие, чтобы включить/отключить предложения ввода:
+set language_interface_input03=^^(1^^) Авто предложения                  
+set language_interface_input04=^^(2^^) Автозаполнение                    
+set language_interface_input05=^^(3^^) Запустить трекинг програм         
+set language_interface_input06=^^(4^^) Предложения при наборе текста     
+set language_interface_input07=^^(^^^>^^) Выберите действие, чтобы изменить последовательности клавиш:
+set language_interface_input08=^^(5^^) Язык ввода                        
+set language_interface_input09=^^(6^^) Раскладка клавиатуры              
 
 set language_programs_system01=^^(i^^) Системные Приложения - Меню Управления
 set language_programs_system02=^^(^^^>^^) Выберите действие, чтобы установить/деинсталировать системные приложения:
@@ -2691,7 +2642,7 @@ set language_message_error_main_variables_disabledRegistryTools02=Если вы 
 set language_message_error_main_variables_disabledRegistryTools03=Чтобы это исправить, вы должны включить инструменты реестра в меню ^^(A^^) ^^(со скрытыми параметрами^^)^^!
 set language_message_error_main_variables_disabledRegistryTools04=Пожалуйста, вернитесь в главное меню и прочитайте это сообщение об ошибке еще раз.
 
-set language_message_error_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Не может быть двух одинаковых комбинаций клавиш^^!
+set language_message_error_interface_input_keyboard_keySequence_twoIdentical=^^(^^!^^) Не может быть двух одинаковых комбинаций клавиш^^!
 
 set language_message_error_programs_office_download=^^(^^!^^) Ошибка загрузки^^! Сервер не отвечает или нет подключения к Интернету^!
 
@@ -2743,32 +2694,19 @@ set language_eula01=^^(^^!^^) Автор не несе відповідальн�
 set language_eula02=^^(^^?^^) Ви впевнені^^? ^^(Натисніть Enter або закрийте^^)
 
 set language_main_menu01=  Інтерфейс                                                    Програми
-set language_main_menu02=    ^^(1^^) Об'єкти робочого столу ^^(Цей ПК та інші^^)                  ^^(6^^) Системні програми
-set language_main_menu03=    ^^(2^^) Комбінації клавіш зміни мови ^^(Ctrl + Shift^^)              ^^(7^^) Установити Офіс Професійний+ 2016
-set language_main_menu04=    ^^(3^^) Пропозиції при введенні та автозаповнення                ^^(8^^) Установити/відновити gpedit.msc
-set language_main_menu05=    ^^(4^^) Провідник Windows
-set language_main_menu06=    ^^(5^^) Панель Завдань Windows                                 Служби
-set language_main_menu07=                                                                 ^^(9^^) Оновлення Windows ^^(wuauserv^^)
-set language_main_menu08=  Інструменти                                                    ^^(A^^) Служба Платформи Захисту ПО ^^(sppsvc^^)
-set language_main_menu09=    ^^(B^^) Адміністративні інструменти
-set language_main_menu10=    ^^(C^^) Перевірка системних ресурсів
+set language_main_menu02=    ^^(1^^) Робочий стіл ^^(Цей ПК, Корзина та інші^^)                   ^^(5^^) Системні програми
+set language_main_menu03=    ^^(2^^) Панель Завдань                                           ^^(6^^) Установити Офіс Професійний+ 2016
+set language_main_menu04=    ^^(3^^) Провідник                                                ^^(7^^) Установити/відновити gpedit.msc
+set language_main_menu05=    ^^(4^^) Введення
+set language_main_menu06=                                                               Служби
+set language_main_menu07=  Інструменти                                                    ^^(8^^) Оновлення Windows ^^(wuauserv^^)
+set language_main_menu08=    ^^(A^^) Адміністративні інструменти                              ^^(9^^) Служба Захисту ПО ^^(sppsvc^^)
+set language_main_menu09=    ^^(B^^) Перевірка системних ресурсів
+set language_main_menu10=
 set language_main_menu11=
-set language_main_menu12=
-set language_main_menu13=    ^^(L^^) Мова
-set language_main_menu14=    ^^(0^^) Вихід
+set language_main_menu12=    ^^(L^^) Мова
+set language_main_menu13=    ^^(0^^) Вихід
 
-
-set language_interface_languageKeySequence01=^^(i^^) Комбінації Клавіш Зміни Мови - Меню Управління
-set language_interface_languageKeySequence02=^^(^^^>^^) Виберіть дію, щоб змінити комбінації клавіш:
-set language_interface_languageKeySequence03=^^(1^^) Мова введення                     
-set language_interface_languageKeySequence04=^^(2^^) Розкладка клавіатури              
-
-set language_interface_suggestions01=^^(i^^) Пропозиції При Введенні - Меню Управління
-set language_interface_suggestions02=^^(^^^>^^) Виберіть дію, щоб включити/відключити пропозиції введення:
-set language_interface_suggestions03=^^(1^^) Авто пропозиції                   
-set language_interface_suggestions04=^^(2^^) Автозаповнення                    
-set language_interface_suggestions05=^^(3^^) Запустити трекінг програм         
-set language_interface_suggestions06=^^(4^^) Пропозиції при наборі тексту      
 set language_interface_desktop01=^^(i^^) Робочий Стіл - Меню Управління
 set language_interface_desktop02=^^(^^^>^^) Виберіть дію, щоб налаштувати робочий стіл:
 set language_interface_desktop03=^^(1^^) Цей комп'ютер                     
@@ -2778,6 +2716,15 @@ set language_interface_desktop06=^^(5^^) Мережа
 set language_interface_desktop07=^^(3^^) Панель управління                 
 set language_interface_desktop08=^^(6^^) Размиття при вході                
 set language_interface_desktop09=Примітка: Ці функції потребують перезапуску Провідника Windows.
+
+set language_interface_taskBar01=^^(i^^) Панель Завдань Windows - Меню Управління
+set language_interface_taskBar02=^^(^^^>^^) Виберіть дію, щоб налаштувати Панель Завдань Windows:
+set language_interface_taskBar03=^^(1^^) Полоса людей                      
+set language_interface_taskBar04=^^(4^^) Маленькі іконки                   
+set language_interface_taskBar05=^^(2^^) Командний рядок при Win + X       
+set language_interface_taskBar06=^^(5^^) Зміщення кнопок                   
+set language_interface_taskBar07=^^(3^^) Кнопка перегляду завдань          
+set language_interface_taskBar08=Примітка: Ці функції потребують перезапуску Провідника Windows.
 
 set language_interface_explorer01=^^(i^^) Провідник Windows - Меню Управління
 set language_interface_explorer02=^^(^^^>^^) Виберіть дію, щоб налаштувати Провідник Windows:
@@ -2802,14 +2749,15 @@ set language_interface_explorer20=^^(H^^) OneDrive
 set language_interface_explorer21=^^(I^^) Авто визначення типу папки        
 set language_interface_explorer22=Примітка: Ці функції потребують перезапуску Провідника Windows.
 
-set language_interface_taskBar01=^^(i^^) Панель Завдань Windows - Меню Управління
-set language_interface_taskBar02=^^(^^^>^^) Виберіть дію, щоб налаштувати Панель Завдань Windows:
-set language_interface_taskBar03=^^(1^^) Полоса людей                      
-set language_interface_taskBar04=^^(4^^) Маленькі іконки                   
-set language_interface_taskBar05=^^(2^^) Командний рядок при Win + X       
-set language_interface_taskBar06=^^(5^^) Зміщення кнопок                   
-set language_interface_taskBar07=^^(3^^) Кнопка перегляду завдань          
-set language_interface_taskBar08=Примітка: Ці функції потребують перезапуску Провідника Windows.
+set language_interface_input01=^^(i^^) Введення - Меню Управління
+set language_interface_input02=^^(^^^>^^) Виберіть дію, щоб включити/відключити пропозиції введення:
+set language_interface_input03=^^(1^^) Авто пропозиції                   
+set language_interface_input04=^^(2^^) Автозаповнення                    
+set language_interface_input05=^^(3^^) Запустити трекінг програм         
+set language_interface_input06=^^(4^^) Пропозиції при наборі тексту      
+set language_interface_input07=^^(^^^>^^) Виберіть дію, щоб змінити комбінації клавіш:
+set language_interface_input08=^^(5^^) Мова введення                     
+set language_interface_input09=^^(6^^) Розкладка клавіатури              
 
 set language_programs_system01=^^(i^^) Системні Програми - Меню Управління
 set language_programs_system02=^^(^^^>^^) Виберіть дію, щоб установити/деінсталювати системні програми:
@@ -2900,7 +2848,7 @@ set language_message_error_main_variables_disabledRegistryTools02=Якщо ви 
 set language_message_error_main_variables_disabledRegistryTools03=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^^(A^^) ^^(з прихованими параметрами^^)^^!
 set language_message_error_main_variables_disabledRegistryTools04=Будь ласка, поверніться в головне меню і прочитайте це повідомлення про помилку ще раз.
 
-set language_message_error_interface_languageKeySequence_twoIdenticalCombinations=^^(^^!^^) Не може бути двох ідентичних комбінацій клавіш^^!
+set language_message_error_interface_input_keyboard_keySequence_twoIdentical=^^(^^!^^) Не може бути двох ідентичних комбінацій клавіш^^!
 
 set language_message_error_programs_office_download=^^(^^!^^) Помилка завантаження^^! Сервер не відповідає або немає підключення до Інтернету^!
 
