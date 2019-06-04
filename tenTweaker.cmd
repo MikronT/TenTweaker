@@ -194,7 +194,7 @@ if "%command%" == "13" (
 
 if "%command%" == "14" (
   rd /s /q temp
-  exit /b
+  exit
 )
 goto :main_menu
 
