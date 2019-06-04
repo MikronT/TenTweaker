@@ -212,53 +212,58 @@ goto :main_menu
 
 
 
-:interface_desktopObjects
-call :main_variables interface_desktopObjects
+:interface_desktop
+call :main_variables interface_desktop
 
 call :logo
-echo.%language_interface_desktopObjects01%
+echo.%language_interface_desktop01%
 echo.
 echo.
-echo.%language_interface_desktopObjects02%
+echo.%language_interface_desktop02%
 
-set stringBuilder_string=%language_interface_desktopObjects03%
-if "%interface_desktopObjects_thisPC%" == "shown" (
+set stringBuilder_string=%language_interface_desktop03%
+if "%interface_desktop_objects_thisPC%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
-) else if "%interface_desktopObjects_thisPC%" == "hidden" (
+) else if "%interface_desktop_objects_thisPC%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    %language_interface_desktopObjects04%
-if "%interface_desktopObjects_userFolder%" == "shown" (
+call %stringBuilder_build%    %language_interface_desktop04%
+if "%interface_desktop_objects_userFolder%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
-) else if "%interface_desktopObjects_userFolder%" == "hidden" (
+) else if "%interface_desktop_objects_userFolder%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=%language_interface_desktopObjects05%
-if "%interface_desktopObjects_recycleBin%" == "shown" (
+set stringBuilder_string=%language_interface_desktop05%
+if "%interface_desktop_objects_recycleBin%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
-) else if "%interface_desktopObjects_recycleBin%" == "hidden" (
+) else if "%interface_desktop_objects_recycleBin%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
-call %stringBuilder_build%    %language_interface_desktopObjects06%
-if "%interface_desktopObjects_network%" == "shown" (
+call %stringBuilder_build%    %language_interface_desktop06%
+if "%interface_desktop_objects_network%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
-) else if "%interface_desktopObjects_network%" == "hidden" (
+) else if "%interface_desktop_objects_network%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
-set stringBuilder_string=%language_interface_desktopObjects07%
-if "%interface_desktopObjects_controlPanel%" == "shown" (
+set stringBuilder_string=%language_interface_desktop07%
+if "%interface_desktop_objects_controlPanel%" == "shown" (
   call %stringBuilder_build% %language_stringBuilder_option_shown%
-) else if "%interface_desktopObjects_controlPanel%" == "hidden" (
+) else if "%interface_desktop_objects_controlPanel%" == "hidden" (
   call %stringBuilder_build% %language_stringBuilder_option_hidden%
 ) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
 echo.
-echo.    %language_interface_desktopObjects08%
+
+set stringBuilder_string=%language_interface_desktop08%
+echo.    %stringBuilder_string%
+
+echo.
+echo.    %language_interface_desktop09%
 echo.    %language_menuItem_restartExplorer%
 echo.
 echo.    %language_menuItem_goBack%
@@ -272,30 +277,29 @@ set command=%errorLevel%
 
 
 if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
-  if "%command%" == "1" if "%interface_desktopObjects_thisPC%" == "hidden" (
+  if "%command%" == "1" if "%interface_desktop_objects_thisPC%" == "hidden" (
     reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D} /t REG_DWORD /d 0 /f >nul
   ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D} /t REG_DWORD /d 1 /f >nul
 
-  if "%command%" == "2" if "%interface_desktopObjects_recycleBin%" == "hidden" (
+  if "%command%" == "2" if "%interface_desktop_objects_recycleBin%" == "hidden" (
     reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {645FF040-5081-101B-9F08-00AA002F954E} /t REG_DWORD /d 0 /f >nul
   ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {645FF040-5081-101B-9F08-00AA002F954E} /t REG_DWORD /d 1 /f >nul
 
-  if "%command%" == "3" if "%interface_desktopObjects_controlPanel%" == "hidden" (
+  if "%command%" == "3" if "%interface_desktop_objects_controlPanel%" == "hidden" (
     reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0} /t REG_DWORD /d 0 /f >nul
   ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0} /t REG_DWORD /d 1 /f >nul
 
-  if "%command%" == "4" if "%interface_desktopObjects_userFolder%" == "hidden" (
+  if "%command%" == "4" if "%interface_desktop_objects_userFolder%" == "hidden" (
     reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee} /t REG_DWORD /d 0 /f >nul
   ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee} /t REG_DWORD /d 1 /f >nul
 
-  if "%command%" == "5" if "%interface_desktopObjects_network%" == "hidden" (
+  if "%command%" == "5" if "%interface_desktop_objects_network%" == "hidden" (
     reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C} /t REG_DWORD /d 0 /f >nul
   ) else reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C} /t REG_DWORD /d 1 /f >nul
 )
 
 if "%command%" == "6" call :restart_explorer
 if "%command%" == "7" ( set command= & exit /b )
-goto :interface_desktopObjects
 
 
 
@@ -383,6 +387,7 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
 
 if "%command%" == "3" if "%error_interface_languageKeySequence_twoIdenticalCombinations%" NEQ "1" ( set command= & exit /b )
 goto :interface_languageKeySequence
+goto :interface_desktop
 
 
 
@@ -1867,11 +1872,11 @@ set errorLevel=
 reg query HKCU >nul 2>nul
 
 if %errorLevel% GEQ 1 (
-  set interface_desktopObjects_thisPC=error
-  set interface_desktopObjects_recycleBin=error
-  set interface_desktopObjects_controlPanel=error
-  set interface_desktopObjects_userFolder=error
-  set interface_desktopObjects_network=error
+  set interface_desktop_objects_thisPC=error
+  set interface_desktop_objects_recycleBin=error
+  set interface_desktop_objects_controlPanel=error
+  set interface_desktop_objects_userFolder=error
+  set interface_desktop_objects_network=error
 
   set interface_languageKeySequence_inputLanguageSwitch=error
   set interface_languageKeySequence_keyboardLayoutSwitch=error
@@ -1925,21 +1930,21 @@ if %errorLevel% GEQ 1 (
 
 
 
-if "%1" == "interface_desktopObjects" (
-  set interface_desktopObjects_thisPC=hidden
-  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D}') do if "%%i" == "0x0" set interface_desktopObjects_thisPC=shown)>nul 2>nul
+if "%1" == "interface_desktop" (
+  set interface_desktop_objects_thisPC=hidden
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D}') do if "%%i" == "0x0" set interface_desktop_objects_thisPC=shown)>nul 2>nul
 
-  set interface_desktopObjects_recycleBin=shown
-  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {645FF040-5081-101B-9F08-00AA002F954E}') do if "%%i" == "0x1" set interface_desktopObjects_recycleBin=hidden)>nul 2>nul
+  set interface_desktop_objects_recycleBin=shown
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {645FF040-5081-101B-9F08-00AA002F954E}') do if "%%i" == "0x1" set interface_desktop_objects_recycleBin=hidden)>nul 2>nul
 
-  set interface_desktopObjects_controlPanel=hidden
-  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}') do if "%%i" == "0x0" set interface_desktopObjects_controlPanel=shown)>nul 2>nul
+  set interface_desktop_objects_controlPanel=hidden
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}') do if "%%i" == "0x0" set interface_desktop_objects_controlPanel=shown)>nul 2>nul
 
-  set interface_desktopObjects_userFolder=hidden
-  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee}') do if "%%i" == "0x0" set interface_desktopObjects_userFolder=shown)>nul 2>nul
+  set interface_desktop_objects_userFolder=hidden
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee}') do if "%%i" == "0x0" set interface_desktop_objects_userFolder=shown)>nul 2>nul
 
-  set interface_desktopObjects_network=hidden
-  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C}') do if "%%i" == "0x0" set interface_desktopObjects_network=shown)>nul 2>nul
+  set interface_desktop_objects_network=hidden
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C}') do if "%%i" == "0x0" set interface_desktop_objects_network=shown)>nul 2>nul
 )
 
 
@@ -2320,14 +2325,6 @@ set language_main_menu12=
 set language_main_menu13=    ^^(L^^) Language
 set language_main_menu14=    ^^(0^^) Exit
 
-set language_interface_desktopObjects01=^^(i^^) Desktop Objects - Control Menu
-set language_interface_desktopObjects02=^^(^^^>^^) Choose action to show/hide desktop object:
-set language_interface_desktopObjects03=^^(1^^) This PC                           
-set language_interface_desktopObjects04=^^(4^^) User Folder                       
-set language_interface_desktopObjects05=^^(2^^) Recycle Bin                       
-set language_interface_desktopObjects06=^^(5^^) Network                           
-set language_interface_desktopObjects07=^^(3^^) Control Panel                     
-set language_interface_desktopObjects08=Note: These features require to restart Windows Explorer.
 
 set language_interface_languageKeySequence01=^^(i^^) Language Key Sequence - Control Menu
 set language_interface_languageKeySequence02=^^(^^^>^^) Choose action to change key sequence:
@@ -2340,6 +2337,15 @@ set language_interface_suggestions03=^^(1^^) Auto suggest
 set language_interface_suggestions04=^^(2^^) Append completion                 
 set language_interface_suggestions05=^^(3^^) Start track progs                 
 set language_interface_suggestions06=^^(4^^) Suggestions when typing           
+set language_interface_desktop01=^^(i^^) Desktop - Control Menu
+set language_interface_desktop02=^^(^^^>^^) Choose action to config desktop:
+set language_interface_desktop03=^^(1^^) This PC                           
+set language_interface_desktop04=^^(4^^) User Folder                       
+set language_interface_desktop05=^^(2^^) Recycle Bin                       
+set language_interface_desktop06=^^(5^^) Network                           
+set language_interface_desktop07=^^(3^^) Control Panel                     
+set language_interface_desktop08=^^(6^^) Background blur on logon          
+set language_interface_desktop09=Note: These features require to restart Windows Explorer.
 
 set language_interface_explorer01=^^(i^^) Windows Explorer - Control Menu
 set language_interface_explorer02=^^(^^^>^^) Choose action to config Windows Explorer:
@@ -2528,14 +2534,6 @@ set language_main_menu12=
 set language_main_menu13=    ^^(L^^) Язык
 set language_main_menu14=    ^^(0^^) Выход
 
-set language_interface_desktopObjects01=^^(i^^) Объекты Рабочего Стола - Меню Управления
-set language_interface_desktopObjects02=^^(^^^>^^) Выберите действие, чтобы показать / скрыть объект рабочего стола:
-set language_interface_desktopObjects03=^^(1^^) Этот компьютер                    
-set language_interface_desktopObjects04=^^(4^^) Папка пользователя                
-set language_interface_desktopObjects05=^^(2^^) Корзина                           
-set language_interface_desktopObjects06=^^(5^^) Сеть                              
-set language_interface_desktopObjects07=^^(3^^) Панель управления                 
-set language_interface_desktopObjects08=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
 set language_interface_languageKeySequence01=^^(i^^) Сочетания Клавиш Смены Языка - Меню Управления
 set language_interface_languageKeySequence02=^^(^^^>^^) Выберите действие, чтобы изменить последовательность клавиш:
@@ -2548,6 +2546,15 @@ set language_interface_suggestions03=^^(1^^) Авто предложения
 set language_interface_suggestions04=^^(2^^) Автозаполнение                    
 set language_interface_suggestions05=^^(3^^) Запустить трекинг програм         
 set language_interface_suggestions06=^^(4^^) Предложения при наборе текста     
+set language_interface_desktop01=^^(i^^)  Рабочий Стол - Меню Управления
+set language_interface_desktop02=^^(^^^>^^) Выберите действие, чтобы настроить рабочий стол:
+set language_interface_desktop03=^^(1^^) Этот компьютер                    
+set language_interface_desktop04=^^(4^^) Папка пользователя                
+set language_interface_desktop05=^^(2^^) Корзина                           
+set language_interface_desktop06=^^(5^^) Сеть                              
+set language_interface_desktop07=^^(3^^) Панель управления                 
+set language_interface_desktop08=^^(6^^) Размытие при входе                
+set language_interface_desktop09=Примечание: Эти функции требуют перезапуска Проводника Windows.
 
 set language_interface_explorer01=^^(i^^) Проводник Windows - Меню Управления
 set language_interface_explorer02=^^(^^^>^^) Выберите действие, чтобы настроить Проводник Windows:
@@ -2736,14 +2743,6 @@ set language_main_menu12=
 set language_main_menu13=    ^^(L^^) Мова
 set language_main_menu14=    ^^(0^^) Вихід
 
-set language_interface_desktopObjects01=^^(i^^) Об'єкти Робочого Столу - Меню Управління
-set language_interface_desktopObjects02=^^(^^^>^^) Виберіть дію, щоб показати/приховати об'єкт робочого столу:
-set language_interface_desktopObjects03=^^(1^^) Цей комп'ютер                     
-set language_interface_desktopObjects04=^^(4^^) Папка користувача                 
-set language_interface_desktopObjects05=^^(2^^) Кошик                             
-set language_interface_desktopObjects06=^^(5^^) Мережа                            
-set language_interface_desktopObjects07=^^(3^^) Панель управління                 
-set language_interface_desktopObjects08=Примітка: Ці функції потребують перезапуску Провідника Windows.
 
 set language_interface_languageKeySequence01=^^(i^^) Комбінації Клавіш Зміни Мови - Меню Управління
 set language_interface_languageKeySequence02=^^(^^^>^^) Виберіть дію, щоб змінити комбінації клавіш:
@@ -2756,6 +2755,15 @@ set language_interface_suggestions03=^^(1^^) Авто пропозиції
 set language_interface_suggestions04=^^(2^^) Автозаповнення                    
 set language_interface_suggestions05=^^(3^^) Запустити трекінг програм         
 set language_interface_suggestions06=^^(4^^) Пропозиції при наборі тексту      
+set language_interface_desktop01=^^(i^^) Робочий Стіл - Меню Управління
+set language_interface_desktop02=^^(^^^>^^) Виберіть дію, щоб налаштувати робочий стіл:
+set language_interface_desktop03=^^(1^^) Цей комп'ютер                     
+set language_interface_desktop04=^^(4^^) Папка користувача                 
+set language_interface_desktop05=^^(2^^) Кошик                             
+set language_interface_desktop06=^^(5^^) Мережа                            
+set language_interface_desktop07=^^(3^^) Панель управління                 
+set language_interface_desktop08=^^(6^^) Размиття при вході                
+set language_interface_desktop09=Примітка: Ці функції потребують перезапуску Провідника Windows.
 
 set language_interface_explorer01=^^(i^^) Провідник Windows - Меню Управління
 set language_interface_explorer02=^^(^^^>^^) Виберіть дію, щоб налаштувати Провідник Windows:
