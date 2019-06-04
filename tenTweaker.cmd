@@ -388,10 +388,15 @@ if "%error_main_variables_disabledRegistryTools%" NEQ "1" (
     if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "leftAltShift" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 4 /f >nul
     if "%interface_languageKeySequence_keyboardLayoutSwitch%" == "graveAccent" reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d 3 /f >nul
   )
+  if "%command%" == "6" if "%interface_desktop_logonBackgroundBlur%" == "disabled" (
+    reg add HKLM\Software\Policies\Microsoft\Windows\System /v DisableAcrylicBackgroundOnLogon /t REG_DWORD /d 0 /f >nul
+  ) else reg add HKLM\Software\Policies\Microsoft\Windows\System /v DisableAcrylicBackgroundOnLogon /t REG_DWORD /d 1 /f >nul
 )
 
 if "%command%" == "3" if "%error_interface_languageKeySequence_twoIdenticalCombinations%" NEQ "1" ( set command= & exit /b )
 goto :interface_languageKeySequence
+if "%command%" == "7" call :restart_explorer
+if "%command%" == "8" ( set command= & exit /b )
 goto :interface_desktop
 
 
