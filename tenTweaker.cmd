@@ -171,7 +171,7 @@ set command=%errorLevel%
 
 
 
-if "%command%" == "1" call :interface_desktopObjects
+if "%command%" == "1" call :interface_desktop
 if "%command%" == "2" call :interface_languageKeySequence
 if "%command%" == "3" call :interface_suggestions
 if "%command%" == "4" call :interface_explorer
@@ -260,6 +260,11 @@ echo.    %stringBuilder_string%
 echo.
 
 set stringBuilder_string=%language_interface_desktop08%
+if "%interface_desktop_logonBackgroundBlur%" == "enabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_enabled%
+) else if "%interface_desktop_logonBackgroundBlur%" == "disabled" (
+  call %stringBuilder_build% %language_stringBuilder_option_disabled%
+) else call %stringBuilder_build% %language_stringBuilder_option_error%
 echo.    %stringBuilder_string%
 
 echo.
@@ -271,7 +276,7 @@ echo.
 echo.
 echo.
 if "%error_main_variables_disabledRegistryTools%" == "1" call :message_error_main_variables_disabledRegistryTools
-choice /c 12345Y0 /n /m "> "
+choice /c 123456Y0 /n /m "> "
 set command=%errorLevel%
 
 
@@ -1877,6 +1882,7 @@ if %errorLevel% GEQ 1 (
   set interface_desktop_objects_controlPanel=error
   set interface_desktop_objects_userFolder=error
   set interface_desktop_objects_network=error
+  set interface_desktop_logonBackgroundBlur=error
 
   set interface_languageKeySequence_inputLanguageSwitch=error
   set interface_languageKeySequence_keyboardLayoutSwitch=error
@@ -1945,6 +1951,9 @@ if "%1" == "interface_desktop" (
 
   set interface_desktop_objects_network=hidden
   (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C}') do if "%%i" == "0x0" set interface_desktop_objects_network=shown)>nul 2>nul
+  
+  set interface_desktop_logonBackgroundBlur=enabled
+  (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKLM\Software\Policies\Microsoft\Windows\System /v DisableAcrylicBackgroundOnLogon') do if "%%i" == "0x1" set interface_desktop_logonBackgroundBlur=disabled)>nul 2>nul
 )
 
 
