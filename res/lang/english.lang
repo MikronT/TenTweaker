@@ -1,0 +1,195 @@
+menuItem_goBack=Go back
+menuItem_rebootComputer=Reboot computer
+menuItem_restartExplorer=Restart Windows Explorer
+menuItem_updateGroupPolicy=Update group policy
+
+sBuilder_option_error=[error]           
+sBuilder_option_enabled=enabled           
+sBuilder_option_disabled=disabled          
+sBuilder_option_shown=shown             
+sBuilder_option_hidden=hidden            
+sBuilder_option_exist=exist             
+sBuilder_option_notExist=not exist         
+sBuilder_option_locked=locked            
+sBuilder_option_unlocked=unlocked          
+sBuilder_option_installed=installed         
+sBuilder_option_uninstalled=uninstalled       
+
+sBuilder_option_notAssigned=not assigned      
+sBuilder_option_ctrlShift=Ctrl + Shift      
+sBuilder_option_leftAltShift=left Alt + Shift  
+sBuilder_option_graveAccent=grave accent ^(`^)  
+
+sBuilder_option_powerShell=PowerShell        
+sBuilder_option_commandPrompt=Command Prompt    
+
+sBuilder_option_always=always            
+sBuilder_option_whenIsFull=when full         
+sBuilder_option_never=never             
+
+logo01=Version %program_version%
+logo02=See other programs here:
+
+eula=The author is not responsible for any possible damage to your computer
+
+main_menu01=Interface                                                    Programs
+main_menu02=  ^(1^) Desktop ^(This PC, Recycle Bin etc.^)                      ^(5^) System programs
+main_menu03=  ^(2^) Task Bar                                                 ^(6^) Setup Office Professional+ 2016
+main_menu04=  ^(3^) Explorer                                                 ^(7^) Setup/restore gpedit.msc
+main_menu05=  ^(4^) Input
+main_menu06=                                                             Services
+main_menu07=Tools                                                          ^(8^) Windows Update ^(wuauserv^)
+main_menu08=  ^(A^) Administrative tools                                     ^(9^) Software Protection Service ^(sppsvc^)
+main_menu09=  ^(B^) System Resource Checker
+main_menu10=Language
+main_menu11=Exit
+
+interface_desktop01=Desktop - Control Menu
+interface_desktop02=Choose action to config desktop:
+interface_desktop03=This PC                           
+interface_desktop04=User Folder                       
+interface_desktop05=Recycle Bin                       
+interface_desktop06=Network                           
+interface_desktop07=Control Panel                     
+interface_desktop08=Background blur on logon          
+interface_desktop09=Note: These features require to restart Windows Explorer.
+
+interface_taskBar01=Windows Task Bar - Control Menu
+interface_taskBar02=Choose action to config Windows Task Bar:
+interface_taskBar03=People band                       
+interface_taskBar04=Small icons                       
+interface_taskBar05=Command prompt on Win + X         
+interface_taskBar06=Buttons combine                   
+interface_taskBar07=Task view button                  
+interface_taskBar08=Note: These features require to restart Windows Explorer.
+
+interface_explorer01=Windows Explorer - Control Menu
+interface_explorer02=Choose action to config Windows Explorer:
+interface_explorer03=File extensions                   
+interface_explorer04=Ribbon ^(option bar^)               
+interface_explorer05=Hidden files                      
+interface_explorer06=Expand to open folder             
+interface_explorer07=Protected system files            
+interface_explorer08=Status bar                        
+interface_explorer09=Empty drives                      
+interface_explorer10=File info tip                     
+interface_explorer11=Folder merge conflicts            
+interface_explorer12=This PC and navigation bar objects:
+interface_explorer13=Desktop                           
+interface_explorer14=Pictures                          
+interface_explorer15=Documents                         
+interface_explorer16=Videos                            
+interface_explorer17=Downloads                         
+interface_explorer18=3DObjects                         
+interface_explorer19=Music                             
+interface_explorer20=OneDrive                          
+interface_explorer21=Auto folder type discovery        
+interface_explorer22=Note: These features require to restart Windows Explorer.
+
+interface_input01=Input - Control Menu
+interface_input02=Choose action to enable/disable input suggestions:
+interface_input03=Auto suggest                      
+interface_input04=Append completion                 
+interface_input05=Start track progs                 
+interface_input06=Suggestions when typing           
+interface_input07=Choose action to change key sequences:
+interface_input08=Input language                    
+interface_input09=Keyboard layout                   
+
+programs_system01=System Programs - Control Menu
+programs_system02=Choose action to install/uninstall system programs:
+programs_system03=3D Builder                        
+programs_system04=Alarms and Clock                  
+programs_system05=3D Viewer                         
+programs_system06=Camera                            
+programs_system07=Feedback Hub                      
+programs_system08=Game bar                          
+programs_system09=Get Help                          
+programs_system10=Groove Music                      
+programs_system11=Mail and Calendar                 
+programs_system12=Movies and TV                     
+programs_system13=Maps                              
+programs_system14=My Office                         
+programs_system15=Messaging                         
+programs_system16=Paint 3D                          
+programs_system17=Mixed Reality Portal              
+programs_system18=Photos                            
+programs_system19=Mobile Plans                      
+programs_system20=Skype                             
+programs_system21=OneNote                           
+programs_system22=Snip and Sketch                   
+programs_system23=People                            
+programs_system24=Sticky Notes                      
+programs_system25=Print 3D                          
+programs_system26=Store                             
+programs_system27=Solitare                          
+programs_system28=Voice Recorder                    
+programs_system29=Tips                              
+programs_system30=Weather                           
+programs_system31=Your Phone                        
+programs_system32=Xbox                              
+programs_system33=Install all
+programs_system34=Uninstall all
+
+programs_office01=Microsoft Office Professional+ 2016 - Setup Menu
+programs_office02=Choose action:
+programs_office03=Run setup
+programs_office04=Note: This feature requires to reboot your computer.
+programs_office05=Downloading Microsoft Office Professional+ 2016
+programs_office06=Mounting iso file
+programs_office07=Setup
+programs_office08=Unmounting iso file
+
+programs_gpeditMSC01=Group Policy Editor - Setup Menu
+programs_gpeditMSC02=Choose action:
+programs_gpeditMSC03=Setup/repair gpedit.msc           
+
+services_windowsUpdate01=Windows Update ^(wuauserv^) - Control Menu
+services_windowsUpdate02=Choose action to enable/disable Windows Update:
+services_windowsUpdate03=Update distributions              
+services_windowsUpdate04=Update Center ^(wuauserv^)          
+
+services_sppsvc01=Software Protection Platform Service ^(sppsvc^) - Restore Menu
+services_sppsvc02=Choose action:
+services_sppsvc03=Restore service                   
+services_sppsvc04=Note: This feature requires to reboot your computer two times.
+services_sppsvc05=      The computer will automatically reboot after the next system start.
+
+tools_administrativeTools01=Windows Administrative Tools - Control Menu
+tools_administrativeTools02=Choose action to config Windows Administrative Tools:
+tools_administrativeTools03=Desktop                           
+tools_administrativeTools04=Registry Tools                    
+tools_administrativeTools05=Control Panel                     
+tools_administrativeTools06=Command Prompt                    
+tools_administrativeTools07=Run ^(Win + R^)                     
+tools_administrativeTools08=Task Manager                      
+tools_administrativeTools09=Note: Features ^(2^) and ^(3^) require to update group policy.
+tools_administrativeTools10=Note: Feature ^(1^) requires to restart Windows Explorer.
+tools_administrativeTools11=Note: Feature ^(5^) requires to reboot your computer.
+
+tools_systemResourceChecker01=System Resource Checker - Restore Menu
+tools_systemResourceChecker02=Choose action:
+tools_systemResourceChecker03=Run System Resource Scan and automatically repair all files with problems
+tools_systemResourceChecker04=Note: This feature requires to reboot your computer.
+
+lang_menu01=Language - Selection Menu
+lang_menu02=Choose language:
+
+reboot_computer01=Reboot Menu
+reboot_computer02=Choose action:
+reboot_computer03=Reboot now
+reboot_computer04=Rebooting...
+
+message_error_main_variables_disabledRegistryTools01=Registry Tools are disabled
+message_error_main_variables_disabledRegistryTools02=If you see [error] than this feature state cannot be shown or changed
+message_error_main_variables_disabledRegistryTools03=To fix it you must enable Registry Tools in ^(A^) menu ^(with hidden options^)
+message_error_main_variables_disabledRegistryTools04=Please, back to main menu and read this error message again
+
+message_error_interface_input_keyboard_keySequence_twoIdentical=Can not be two identical key combinations
+
+message_error_programs_office_download=Download error^^^! Server not respond or no Internet connection
+
+message_update_available01=An update for %program_name% is now available
+message_update_available02=Download it here:
+
+message_tools_administrativeTools_hiddenOptions=Warning^^^! Hidden options are shown^^^! They can damage your computer

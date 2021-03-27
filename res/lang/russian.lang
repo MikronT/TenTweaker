@@ -1,0 +1,195 @@
+menuItem_goBack=Назад
+menuItem_rebootComputer=Перезагрузить компьютер
+menuItem_restartExplorer=Перезагрузить Проводник Windows
+menuItem_updateGroupPolicy=Обновить групповую политику
+
+sBuilder_option_error=[ошибка]          
+sBuilder_option_enabled=включено          
+sBuilder_option_disabled=отключено         
+sBuilder_option_shown=показано          
+sBuilder_option_hidden=скрыто            
+sBuilder_option_exist=существует        
+sBuilder_option_notExist=не существует     
+sBuilder_option_locked=заблокировано     
+sBuilder_option_unlocked=розблокировано    
+sBuilder_option_installed=установлено       
+sBuilder_option_uninstalled=не установлено    
+
+sBuilder_option_notAssigned=не призначено     
+sBuilder_option_ctrlShift=Ctrl + Shift      
+sBuilder_option_leftAltShift=левый Alt + Shift 
+sBuilder_option_graveAccent=ударение ^(`^)      
+
+sBuilder_option_powerShell=PowerShell        
+sBuilder_option_commandPrompt=Командная Строка  
+
+sBuilder_option_always=всегда            
+sBuilder_option_whenIsFull=когда полон       
+sBuilder_option_never=никогда           
+
+logo01=Версия %program_version%
+logo02=Смотрите другие программы здесь:
+
+eula=Автор не несет ответственности за возможные повреждения компьютера
+
+main_menu01=Интерфейс                                                    Программы
+main_menu02=  ^(1^) Рабочий стол ^(Этот ПК, Корзина и другое^)                 ^(5^) Системные программы
+main_menu03=  ^(2^) Панель Задач                                             ^(6^) Установить Офис Профессиональный+ 2016
+main_menu04=  ^(3^) Проводник                                                ^(7^) Установить/восстановить gpedit.msc
+main_menu05=  ^(4^) Ввод
+main_menu06=                                                             Службы
+main_menu07=Инструменты                                                    ^(8^) Обновление Windows ^(wuauserv^)
+main_menu08=  ^(A^) Административные инструменты                             ^(9^) Служба Защиты ПО ^(sppsvc^)
+main_menu09=  ^(B^) Проверка системных ресурсов
+main_menu10=Язык
+main_menu11=Выход
+
+interface_desktop01=Рабочий Стол - Меню Управления
+interface_desktop02=Выберите действие, чтобы настроить рабочий стол:
+interface_desktop03=Этот компьютер                    
+interface_desktop04=Папка пользователя                
+interface_desktop05=Корзина                           
+interface_desktop06=Сеть                              
+interface_desktop07=Панель управления                 
+interface_desktop08=Размытие при входе                
+interface_desktop09=Примечание: Эти функции требуют перезапуска Проводника Windows.
+
+interface_taskBar01=Панель Задач Windows - Меню Управления
+interface_taskBar02=Выберите действие, чтобы настроить Панель Задач Windows:
+interface_taskBar03=Полоса людей                      
+interface_taskBar04=Маленькие иконки                  
+interface_taskBar05=Командная строка при Win + X      
+interface_taskBar06=Совмещение кнопок                 
+interface_taskBar07=Кнопка просмотра задач            
+interface_taskBar08=Примечание: Эти функции требуют перезапуска Проводника Windows.
+
+interface_explorer01=Проводник Windows - Меню Управления
+interface_explorer02=Выберите действие, чтобы настроить Проводник Windows:
+interface_explorer03=Расширения файлов                 
+interface_explorer04=Лента ^(панель опций^)              
+interface_explorer05=Скрытые файлы                     
+interface_explorer06=Развернуть к открытой папке       
+interface_explorer07=Защищенные системные файлы        
+interface_explorer08=Статус бар                        
+interface_explorer09=Пустые диски                      
+interface_explorer10=Информация о файле                
+interface_explorer11=Конфликты слияния папок           
+interface_explorer12=Объекты Этого компьютера и панели навигации:
+interface_explorer13=Рабочий Стол                      
+interface_explorer14=Картинки                          
+interface_explorer15=Документы                         
+interface_explorer16=Видео                             
+interface_explorer17=Загрузки                          
+interface_explorer18=3D Объекты                        
+interface_explorer19=Музыка                            
+interface_explorer20=OneDrive                          
+interface_explorer21=Авто определение типа папки       
+interface_explorer22=Примечание: Эти функции требуют перезапуска Проводника Windows.
+
+interface_input01=Ввод - Меню Управления
+interface_input02=Выберите действие, чтобы включить/отключить предложения ввода:
+interface_input03=Авто предложения                  
+interface_input04=Автозаполнение                    
+interface_input05=Запустить трекинг програм         
+interface_input06=Предложения при наборе текста     
+interface_input07=Выберите действие, чтобы изменить последовательности клавиш:
+interface_input08=Язык ввода                        
+interface_input09=Раскладка клавиатуры              
+
+programs_system01=Системные Приложения - Меню Управления
+programs_system02=Выберите действие, чтобы установить/деинсталировать системные приложения:
+programs_system03=3D Builder                        
+programs_system04=Будильники и Часы                 
+programs_system05=3D-модели                         
+programs_system06=Камера                            
+programs_system07=Обратная Связь                    
+programs_system08=Игровая панель                    
+programs_system09=Помощник                          
+programs_system10=Музыка Groove                     
+programs_system11=Почта и Календарь                 
+programs_system12=Фильмы и Телевидение              
+programs_system13=Карты                             
+programs_system14=Office                            
+programs_system15=Сообщения                         
+programs_system16=Paint 3D                          
+programs_system17=Портал смешанной реальности       
+programs_system18=Фотографии                        
+programs_system19=Мобильные тарифы                  
+programs_system20=Skype                             
+programs_system21=OneNote                           
+programs_system22=Фрагмент и Набросок               
+programs_system23=Люди                              
+programs_system24=Наклейки                          
+programs_system25=Print 3D                          
+programs_system26=Магазин                           
+programs_system27=Solitare                          
+programs_system28=Звукозаписыватель                 
+programs_system29=Подсказки                         
+programs_system30=Погода                            
+programs_system31=Ваш Телефон                       
+programs_system32=Xbox                              
+programs_system33=Установить всё
+programs_system34=Деинсталировать всё
+
+programs_office01=Microsoft Офис Профессиональный+ 2016 - Меню Настройки
+programs_office02=Выберите действие:
+programs_office03=Запустить установку
+programs_office04=Примечание: Эта функция требует перезагрузки Вашего компьютера.
+programs_office05=Загрузка Microsoft Офис Профессиональный+ 2016
+programs_office06=Подключение iso файла
+programs_office07=Установка
+programs_office08=Отключение iso файла
+
+programs_gpeditMSC01=Редактор Групповых Политик - Меню Настройки
+programs_gpeditMSC02=Выберите действие:
+programs_gpeditMSC03=Установить/восстановить           
+
+services_windowsUpdate01=Обновление Windows ^(wuauserv^) - Меню Управления
+services_windowsUpdate02=Выберите действие, чтобы включить/отключить обновления Windows:
+services_windowsUpdate03=Дистрибутивы обновлений           
+services_windowsUpdate04=Центр обновлений ^(wuauserv^)       
+
+services_sppsvc01=Служба Платформы Защиты Програмного Обеспечения ^(sppsvc^) - Меню Восстановления
+services_sppsvc02=Выберите действие:
+services_sppsvc03=Восстановить службу               
+services_sppsvc04=Примечание: Эта функция требует двух перезагрузок Вашего компьютера.
+services_sppsvc05=            Ваш компьютер автоматически перезагрузится после следущего старта системы.
+
+tools_administrativeTools01=Административные Инструменты Windows - Меню Управления
+tools_administrativeTools02=Выберите действие, чтобы настроить Административные Инструменты Windows:
+tools_administrativeTools03=Рабочий Стол                      
+tools_administrativeTools04=Инструменты Реестра               
+tools_administrativeTools05=Панель Управления                 
+tools_administrativeTools06=Командная Строка                  
+tools_administrativeTools07=Выполнить ^(Win + R^)               
+tools_administrativeTools08=Диспетчер Задач                   
+tools_administrativeTools09=Примечание: Функции ^(2^) и ^(3^) требуют обновить групповую политику.
+tools_administrativeTools10=Примечание: Функция ^(1^) требует перезапуска Проводника Windows.
+tools_administrativeTools11=Примечание: Функция ^(5^) требует перезагрузки Вашего компьютера.
+
+tools_systemResourceChecker01=Проверка Системных Ресурсов - Меню Восстановления
+tools_systemResourceChecker02=Выберите действие:
+tools_systemResourceChecker03=Запустить проверку системных ресурсов и автоматически исправить все файлы с проблемами
+tools_systemResourceChecker04=Примечание: Эта функция требует перезагрузки Вашего компьютера.
+
+lang_menu01=Язык - Меню Выбора
+lang_menu02=Выберите язык:
+
+reboot_computer01=Меню Перезагрузки
+reboot_computer02=Выберите действие:
+reboot_computer03=Перезагрузить сейчас
+reboot_computer04=Перезагрузка...
+
+message_error_main_variables_disabledRegistryTools01=Инструменты реестра отключены
+message_error_main_variables_disabledRegistryTools02=Если вы видите [ошибка], то это состояние функции не может быть показано или изменено
+message_error_main_variables_disabledRegistryTools03=Чтобы это исправить, вы должны включить инструменты реестра в меню ^(A^) ^(со скрытыми параметрами^)
+message_error_main_variables_disabledRegistryTools04=Пожалуйста, вернитесь в главное меню и прочитайте это сообщение об ошибке еще раз
+
+message_error_interface_input_keyboard_keySequence_twoIdentical=Не может быть двух одинаковых комбинаций клавиш
+
+message_error_programs_office_download=Ошибка загрузки^^^! Сервер не отвечает или нет подключения к Интернету
+
+message_update_available01=Доступно обновление для %program_name%
+message_update_available02=Загрузите его здесь:
+
+message_tools_administrativeTools_hiddenOptions=Предупреждение^^^! Скрытые параметры отображаются^^^! Они могут повредить Ваш компьютер

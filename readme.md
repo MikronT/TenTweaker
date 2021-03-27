@@ -1,19 +1,21 @@
 # Ten Tweaker
 
-[![Status: Release](https://img.shields.io/badge/Status-Release-green.svg?style=for-the-badge)](#)
+[![Status: Alpha](https://img.shields.io/badge/Status-Alpha-red.svg?style=for-the-badge)](#)
 [![Latest Release](https://img.shields.io/badge/Latest-Release-blue.svg?style=for-the-badge)](https://github.com/MikronT/TenTweaker/releases/latest)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-black.svg?style=for-the-badge)](https://www.gnu.org/licenses/gpl-3.0)
 
 <!--
+[![Status: Pre-Alpha](https://img.shields.io/badge/Status-Pre--Alpha-black.svg?style=for-the-badge)](#)
+[![Status: Alpha](https://img.shields.io/badge/Status-Alpha-red.svg?style=for-the-badge)](#)
 [![Status: Beta](https://img.shields.io/badge/Status-Beta-orange.svg?style=for-the-badge)](#)
 [![Status: Pre-Release](https://img.shields.io/badge/Status-Pre--Release-yellow.svg?style=for-the-badge)](#)
 -->
 
-### Version name: *Release v2.2*
+### Current version: 3.0 Alpha 1
 
 Console tweaker for Windows 10 with some useful options.
 
-*Developed for Windows 10 but, in theory, can work on Windows 7, 8 and 8.1 too.*
+*Developed for Windows 10*
 
 
 
@@ -39,11 +41,14 @@ Console tweaker for Windows 10 with some useful options.
 ## Localization
 Available languages:
 - English
+- Portuguese
 - Russian
 - Ukrainian
 
 ### Translations
 You can also help me with localization to your language.
+Special thanks to these amazing people:
+- Portuguese - Batch Satti (amazing man who also helped with many interface improvements)
 
 
 
@@ -51,7 +56,6 @@ You can also help me with localization to your language.
 | Key Name                                | Options         | Description                                                                  |
 |-----------------------------------------|-----------------|------------------------------------------------------------------------------|
 | main_adminRightsChecking                | false           | skips admin rights checking                                                  |
-| main_eula                               | false           | hides eula start message                                                     |
 | main_reboot                             | services_sppsvc | shows reboot dialog, but specifically this option used for restore sppsvc    |
 | main_registryMerge                      | false           | skips registry parameters merge (not recommended)                            |
 | tools_administrativeTools_hiddenOptions | true            | enables hidden options for administrative tools menu (can kill your Windows) |
@@ -78,13 +82,14 @@ Note: you can combine the keys as you wish.
 
 ## Disclaimer
 - I am not responsible for any *damage to your computer*.
-- I am not responsible for any *lost files or data*.
+- I am not responsible for any *lost data*.
 
 
 
 ## Version History
 | Date       | Version      |
 |------------|--------------|
+| 27.03.2021 | v3.0 Alpha 1 |
 | 04.06.2019 | Release v2.2 |
 | 27.04.2019 | Release v2.1 |
 | 03.04.2019 | Release v2.0 |
