@@ -155,22 +155,22 @@ services_sppsvc03=Serviço restauração
 services_sppsvc04=Nota: este recurso é necessário para reiniciar o seu computador two times.
 services_sppsvc05=      O computador irá reiniciar automaticamente após a próxima inicialização do sistema.
 
-tools_administrativeTools01=Ferramentas Administrativas do Windows - Menu de controle
-tools_administrativeTools02=Escolher ação para configurar as ferramentas administrativas do Windows:
-tools_administrativeTools03=Desktop                                
-tools_administrativeTools04=Ferramentas de registro                    
-tools_administrativeTools05=Painel de controle                     
-tools_administrativeTools06=Prompt de comando                    
-tools_administrativeTools07=Executar ^(Win + R^)                     
-tools_administrativeTools08=Gerenciador de tarefas                      
-tools_administrativeTools09=Nota: este recurso ^(2^) e ^(3^) requer a atualização da política do grupo.
-tools_administrativeTools10=Nota: este recurso ^(1^) requerido para reiniciar Windows Explorer.
-tools_administrativeTools11=Nota: este recurso ^(5^) requerido para reiniciar o seu computador.
+tools_admin01=Ferramentas Administrativas do Windows - Menu de controle
+tools_admin02=Escolher ação para configurar as ferramentas administrativas do Windows:
+tools_admin03=Desktop                                
+tools_admin04=Ferramentas de registro                    
+tools_admin05=Painel de controle                     
+tools_admin06=Prompt de comando                    
+tools_admin07=Executar ^(Win + R^)                     
+tools_admin08=Gerenciador de tarefas                      
+tools_admin09=Nota: este recurso ^(2^) e ^(3^) requer a atualização da política do grupo.
+tools_admin10=Nota: este recurso ^(1^) requerido para reiniciar Windows Explorer.
+tools_admin11=Nota: este recurso ^(5^) requerido para reiniciar o seu computador.
 
-tools_systemResourceChecker01=Verificador de Recursos do Sistema - Menu Restaurar
-tools_systemResourceChecker02=Escolher ação:
-tools_systemResourceChecker03=Faça uma varredura no sistema e repare automaticamente os arquivos com problemas
-tools_systemResourceChecker04=Nota: Este recurso requer a reinicialização do computador.
+tools_syscheck01=Verificador de Recursos do Sistema - Menu Restaurar
+tools_syscheck02=Escolher ação:
+tools_syscheck03=Faça uma varredura no sistema e repare automaticamente os arquivos com problemas
+tools_syscheck04=Nota: Este recurso requer a reinicialização do computador.
 
 lang_menu01=Menu de seleção de idiomas
 lang_menu02=Escolha o idioma:
@@ -192,4 +192,4 @@ message_error_programs_office_download=Erro de download^^^! O servidor não resp
 message_update_available01=Uma atualização para %program_name% está agora disponível^^^!
 message_update_available02=Baixar aqui:
 
-message_tools_administrativeTools_hiddenOptions=Aviso^^^! Opções ocultas serão mostradas^^^! Elas podem danificar seu computador
+message_tools_admin_hiddenOptions=Aviso^^^! Opções ocultas serão mostradas^^^! Elas podem danificar seu computador

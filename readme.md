@@ -66,7 +66,7 @@ Run Command Prompt as admin and enter the command like this:
 ```
 "[Path]\tenTweaker.cmd" --[KeyName]=[Options] --[KeyName2]=[Options] ...
 
-"C:\Users\Admin\Desktop\TenTweaker\tenTweaker.cmd" --main_eula=false --tools_administrativeTools_hiddenOptions=enabled
+"C:\Users\Admin\Desktop\TenTweaker\tenTweaker.cmd" --tools_administrativeTools_hiddenOptions=enabled
 ```
 
 | Syntax marking | Description                     |

@@ -56,17 +56,29 @@ reg query HKCU >nul 2>nul
   )
 )>nul 2>nul
 
+
+
 set program_name=Ten Tweaker
 set program_name_ns=%~n0
-
 set program_version=3.0 Alpha 1
 set program_version_number=30011
 
-set module_wget=files\wget.exe --quiet --no-check-certificate --tries=1
+set module_choice=bin\choice.exe /n
 set module_powershell=start /wait /min "" powershell
+set module_wget=bin\wget.exe --quiet --no-check-certificate --tries=1
 
-set appxMgmt=call :programs_system_appxPackageManagement
+set appxMgmt=call bin\lib.cmd :appxMgmt
+set getState=call bin\lib.cmd :getState
+set logo=call bin\lib.cmd :logo
+set main=call bin\main.cmd
+set reboot_computer=call bin\main.cmd :reboot_computer
+set restartExplorer=call bin\lib.cmd :restartExplorer
 set sBuilder_build=call set sBuilder_text=%%sBuilder_text%%
+set settings_apply=call bin\lib.cmd :settings_apply
+set settings_import=for /f "eol=# delims=" %%i in ('type "settings.ini" 2^^^>nul') do call set setting_%%i
+set settings_save=call bin\lib.cmd :settings_save
+
+
 
 set update_version_output=temp\%program_name_ns%.version
 set update_version_url=https://drive.google.com/uc?export=download^^^&id=1ZeM5bnX0fWs7njKL2ZTeYc2ctv0FmGRs
@@ -80,19 +92,21 @@ set setting_language=english
 
 
 
-if exist settings.ini for /f "eol=# delims=" %%i in ('type settings.ini 2^>nul') do set setting_%%i
+%settings_import%
 
-call bin\main.cmd :language_import
-if "%setting_firstRun%" == "true" call bin\main.cmd :language_menu force
-call bin\main.cmd :language_import
+if "%setting_firstRun%" == "true" (
+  set setting_firstRun=false
+  %settings_apply%
+  %main% :language_menu force
+) else %settings_apply%
 
 (
   if "%key_main_reboot%" == "services_sppsvc" (
-    for /l %%i in (4,-1,1)  do rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 %~dp0files\tools_administrativeTools_unHookExec.inf
-    for /l %%i in (4,-1,1)  do reg import files\services_sppsvc_registry.reg
+    for /l %%i in (4,-1,1)  do rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 %~dp0res\tools_administrativeTools_unHookExec.inf
+    for /l %%i in (4,-1,1)  do reg import res\services_sppsvc_registry.reg
     for /l %%i in (10,-1,1) do sc start sppsvc
     for /l %%i in (4,-1,1)  do reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %program_name_ns%_services_sppsvc /f
-    call :reboot_computer force
+    %reboot_computer% force
   ) else (
     %module_wget% "%update_version_url%" --output-document="%update_version_output%"
 
@@ -104,5 +118,5 @@ call bin\main.cmd :language_import
   )
 )>nul 2>nul
 
-call bin\main.cmd :main_menu
+%main% :main_menu
 exit

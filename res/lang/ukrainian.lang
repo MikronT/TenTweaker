@@ -155,22 +155,22 @@ services_sppsvc03=Відновити службу
 services_sppsvc04=Примітка: Ця функція потребує двох перезавантажень Вашого комп'ютера.
 services_sppsvc05=          Ваш комп'ютер автоматично перезавантажиться після наступного старту системи.
 
-tools_administrativeTools01=Адміністративні Інструменти Windows - Меню Управління
-tools_administrativeTools02=Виберіть дію, щоб налаштувати Адміністративні Інструменти Windows:
-tools_administrativeTools03=Робочий Стіл                      
-tools_administrativeTools04=Інструменти Реєстру               
-tools_administrativeTools05=Панель Управління                 
-tools_administrativeTools06=Командний Рядок                   
-tools_administrativeTools07=Виконати ^(Win + R^)                
-tools_administrativeTools08=Диспетчер Завдань                 
-tools_administrativeTools09=Примітка: Функції ^(2^) и ^(3^) потребують оновити групову політику.
-tools_administrativeTools10=Примітка: Функція ^(1^) потребує перезапуску Провідника Windows.
-tools_administrativeTools11=Примітка: Функція ^(5^) потребує перезавантаження Вашого комп'ютера.
+tools_admin01=Адміністративні Інструменти Windows - Меню Управління
+tools_admin02=Виберіть дію, щоб налаштувати Адміністративні Інструменти Windows:
+tools_admin03=Робочий Стіл                      
+tools_admin04=Інструменти Реєстру               
+tools_admin05=Панель Управління                 
+tools_admin06=Командний Рядок                   
+tools_admin07=Виконати ^(Win + R^)                
+tools_admin08=Диспетчер Завдань                 
+tools_admin09=Примітка: Функції ^(2^) и ^(3^) потребують оновити групову політику.
+tools_admin10=Примітка: Функція ^(1^) потребує перезапуску Провідника Windows.
+tools_admin11=Примітка: Функція ^(5^) потребує перезавантаження Вашого комп'ютера.
 
-tools_systemResourceChecker01=Перевірка Системних Ресурсів - Меню Відновлення
-tools_systemResourceChecker02=Виберіть дію:
-tools_systemResourceChecker03=Запустити перевірку системних ресурсів та автоматично виправити всі файли з проблемами
-tools_systemResourceChecker04=Примітка: Ця функція потребує перезавантаження Вашого комп'ютера.
+tools_syscheck01=Перевірка Системних Ресурсів - Меню Відновлення
+tools_syscheck02=Виберіть дію:
+tools_syscheck03=Запустити перевірку системних ресурсів та автоматично виправити всі файли з проблемами
+tools_syscheck04=Примітка: Ця функція потребує перезавантаження Вашого комп'ютера.
 
 lang_menu01=Мова - Меню Вибору
 lang_menu02=Виберіть мову:
@@ -192,4 +192,4 @@ message_error_programs_office_download=Помилка завантаження^^
 message_update_available01=Доступно оновлення для %program_name%
 message_update_available02=Завантажте його тут:
 
-message_tools_administrativeTools_hiddenOptions=Попередження^^^! Приховані параметри відображаються^^^! Вони можуть пошкодити Ваш комп'ютер
+message_tools_admin_hiddenOptions=Попередження^^^! Приховані параметри відображаються^^^! Вони можуть пошкодити Ваш комп'ютер
