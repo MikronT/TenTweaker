@@ -7,22 +7,28 @@ pushd "%~dp0"
 
 
 
-for /f "tokens=1-5,* delims=- " %%i in ("%*") do (
-  if "%%i" NEQ "" set key_%%i
-  if "%%j" NEQ "" set key_%%j
-  if "%%k" NEQ "" set key_%%k
-  if "%%l" NEQ "" set key_%%l
-  if "%%l" NEQ "" set key_%%m
-)
+set key_admin=false
+set key_hiddenOptions=false
+set key_reboot=none
+set key_skipRegMerge=false
 
-if "%key_main_adminRightsChecking%" == ""                set key_main_adminRightsChecking=true
-if "%key_main_reboot%" == ""                             set key_main_reboot=none
-if "%key_main_registryMerge%" == ""                      set key_main_registryMerge=true
-if "%key_tools_administrativeTools_hiddenOptions%" == "" set key_tools_administrativeTools_hiddenOptions=false
+:keyParser
+set temp_key=%1
+set temp_key=!temp_key:~1!
+
+       if /i "!temp_key!" == "admin"         ( set key_!temp_key!=true
+) else if /i "!temp_key!" == "hiddenOptions" ( set key_!temp_key!=true
+) else if /i "!temp_key!" == "reboot"        ( set key_!temp_key!=%2
+  shift /1
+) else if /i "!temp_key!" == "skipRegMerge"    set key_!temp_key!=true
+shift /1
+if "%1" NEQ "" goto :keyParser
+
+
 
 start /min powershell "Exit"
 
-if "%key_main_adminRightsChecking%" == "true" (
+if "%key_admin%" == "false" (
   net session>nul 2>nul
 
   if !errorLevel! GEQ 1 (
@@ -38,7 +44,7 @@ set errorLevel=
 reg query HKCU >nul 2>nul
 
 (
-  if %errorLevel% LSS 1 if "%key_main_registryMerge%" == "true" (
+  if %errorLevel% LSS 1 if "%key_skipRegMerge%" == "false" (
     reg export HKCU\Console\%%SystemRoot%%_system32_cmd.exe temp\consoleSettings.reg /y
     reg add    HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v ColorTable00     /t REG_DWORD /d 0          /f
     reg add    HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v FaceName         /t REG_SZ    /d Consolas   /f
@@ -48,7 +54,7 @@ reg query HKCU >nul 2>nul
     reg add    HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v ScreenBufferSize /t REG_DWORD /d 0x2329006a /f
     reg add    HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v WindowSize       /t REG_DWORD /d 0x001e006e /f
 
-    start "" "%~nx0" --main_adminRightsChecking=false --main_registryMerge=false
+    start "" "%~nx0" %* /admin /skipRegMerge
     exit
   ) else if exist temp\consoleSettings.reg (
     reg delete HKCU\Console\%%SystemRoot%%_system32_cmd.exe /va /f
@@ -101,7 +107,7 @@ if "%setting_firstRun%" == "true" (
 ) else %settings_apply%
 
 (
-  if "%key_main_reboot%" == "services_sppsvc" (
+  if "%key_reboot%" == "sppsvc" (
     for /l %%i in (4,-1,1)  do rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 %~dp0res\tools_administrativeTools_unHookExec.inf
     for /l %%i in (4,-1,1)  do reg import res\services_sppsvc_registry.reg
     for /l %%i in (10,-1,1) do sc start sppsvc

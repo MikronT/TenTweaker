@@ -21,20 +21,20 @@ Console tweaker for Windows 10 with some useful options.
 
 ## Features
 - Interface configuration
-  - Desktop (This PC, Recycle Bin etc.)
-  - Task Bar (People band, small icons etc.)
-  - Explorer (file extensions, hidden files etc.)
-  - Input (key sequences, suggestions and auto completion)
+  - Desktop (This PC object, logon background blur etc.)
+  - Taskbar (People band, small icons etc.)
+  - Explorer (file extensions, navbar entries etc.)
+  - Input (key sequences, suggestions, and auto completion)
 - Programs management
-  - System programs
-  - Microsoft Office Professional Plus 2016
+  - System programs (AppX packages)
+  - Microsoft Office Professional+ 2016
   - Group Policy Editor (gpedit.msc) for Windows 10 Home
 - Services control
-  - Windows Update (wuaserv)
-  - Software Protection Platform Service (sppsvc)
+  - Windows Update (disable until you desire to enable it again)
+  - Software Protection Platform Service (service restoring after some activators work)
 - Tools
-  - Windows Administrative Tools
-  - System Resource Checker
+  - Windows Administrative Tools (Registry tools, Desktop icons)
+  - System Resource Checker (can help fix some problems without full system restore)
 
 
 
@@ -46,43 +46,41 @@ Available languages:
 - Ukrainian
 
 ### Translations
-You can also help me with localization to your language.
+You can also help me with localizing program to your language.
 Special thanks to these amazing people:
 - Portuguese - Batch Satti (amazing man who also helped with many interface improvements)
 
 
 
 ## Keys
-| Key Name                                | Options         | Description                                                                  |
-|-----------------------------------------|-----------------|------------------------------------------------------------------------------|
-| main_adminRightsChecking                | false           | skips admin rights checking                                                  |
-| main_reboot                             | services_sppsvc | shows reboot dialog, but specifically this option used for restore sppsvc    |
-| main_registryMerge                      | false           | skips registry parameters merge (not recommended)                            |
-| tools_administrativeTools_hiddenOptions | true            | enables hidden options for administrative tools menu (can kill your Windows) |
+| Key Name      | Options | Description                                                                |
+|---------------|---------|----------------------------------------------------------------------------|
+| admin         |         | skips admin rights checking (can cause problems)                           |
+| hiddenOptions |         | enables hidden options for administrative tools menu (at your own risk)    |
+| reboot        | sppsvc  | shows reboot dialog, used for sppsvc service restoring (inner program key) |
+| skipRegMerge  |         | skips registry parameters merge (not recommended)                          |
 
 ### How to run Ten Tweaker with specified keys?
 Run Command Prompt as admin and enter the command like this:
 
 ```
-"[Path]\tenTweaker.cmd" --[KeyName]=[Options] --[KeyName2]=[Options] ...
+"[path\]tenTweaker.cmd" /key [option]...
 
-"C:\Users\Admin\Desktop\TenTweaker\tenTweaker.cmd" --tools_administrativeTools_hiddenOptions=enabled
+Example: "C:\Users\Admin\Desktop\TenTweaker\tenTweaker.cmd" /admin /hiddenOptions
 ```
 
-| Syntax marking | Description                     |
-|----------------|---------------------------------|
-| Path           | Path to the tenTweaker.cmd file |
-| KeyName        | Key name from the first table   |
-| Options        | Options from the first table    |
-| ...            | Other keys and options          |
+| Syntax mark | Description                                          |
+|-------------|------------------------------------------------------|
+| path        | Path to the tenTweaker.cmd file (optional)           |
+| key         | Key name from the first table                        |
+| option      | Option from the first table (optional, key depended) |
 
-Note: you can combine the keys as you wish.
+Note: You can combine the keys as you wish.
 
 
 
 ## Disclaimer
-- I am not responsible for any *damage to your computer*.
-- I am not responsible for any *lost data*.
+- I am not responsible for any *damage you can make to your computer*.
 
 
 

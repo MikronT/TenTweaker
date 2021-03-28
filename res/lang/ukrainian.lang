@@ -20,15 +20,15 @@ sBuilder_ctrlShift=Ctrl + Shift
 sBuilder_leftAltShift=лівий Alt + Shift 
 sBuilder_graveAccent=наголос ^(`^)       
 
-sBuilder_powerShell=PowerShell        
-sBuilder_commandPrompt=Командний Рядок   
+sBuilder_ps=PowerShell        
+sBuilder_cmd=Командний Рядок   
 
 sBuilder_always=завжди            
-sBuilder_whenIsFull=коли повний       
+sBuilder_ifFull=коли повний       
 sBuilder_never=ніколи            
 
-logo01=Версія %program_version%
-logo02=Дивіться інші програми тут:
+logo1=Версія %program_version%
+logo2=Дивіться інші програми тут:
 
 eula=Автор не несе відповідальності за можливі пошкодження комп'ютера
 
@@ -54,14 +54,14 @@ interface_desktop07=Панель управління
 interface_desktop08=Размиття при вході                
 interface_desktop09=Примітка: Ці функції потребують перезапуску Провідника Windows
 
-interface_taskBar01=Панель Завдань Windows
-interface_taskBar02=Виберіть дію, щоб налаштувати Панель Завдань Windows
-interface_taskBar03=Полоса людей                      
-interface_taskBar04=Маленькі іконки                   
-interface_taskBar05=Командний рядок при Win + X       
-interface_taskBar06=Зміщення кнопок                   
-interface_taskBar07=Кнопка перегляду завдань          
-interface_taskBar08=Примітка: Ці функції потребують перезапуску Провідника Windows
+interface_taskbar01=Панель Завдань Windows
+interface_taskbar02=Виберіть дію, щоб налаштувати Панель Завдань Windows
+interface_taskbar03=Полоса людей                      
+interface_taskbar04=Маленькі іконки                   
+interface_taskbar05=Командний рядок при Win + X       
+interface_taskbar06=Зміщення кнопок                   
+interface_taskbar07=Кнопка перегляду завдань          
+interface_taskbar08=Примітка: Ці функції потребують перезапуску Провідника Windows
 
 interface_explorer01=Провідник Windows
 interface_explorer02=Виберіть дію, щоб налаштувати Провідник Windows
@@ -144,10 +144,10 @@ programs_gpeditMSC01=Редактор Групових Політик
 programs_gpeditMSC02=Виберіть дію
 programs_gpeditMSC03=Установити/відновити              
 
-services_windowsUpdate01=Оновлення Windows ^(wuauserv^)
-services_windowsUpdate02=Виберіть дію, щоб увімкнути/вимкнути оновлення Windows
-services_windowsUpdate03=Дистрибутиви оновлень             
-services_windowsUpdate04=Центр оновлень ^(wuauserv^)         
+services_wuaserv01=Оновлення Windows ^(wuauserv^)
+services_wuaserv02=Виберіть дію, щоб увімкнути/вимкнути оновлення Windows
+services_wuaserv03=Дистрибутиви оновлень             
+services_wuaserv04=Центр оновлень ^(wuauserv^)         
 
 services_sppsvc01=Служба Платформи Захисту Програмного Забезпечення ^(sppsvc^)
 services_sppsvc02=Виберіть дію
@@ -180,16 +180,18 @@ reboot_computer02=Виберіть дію
 reboot_computer03=Перезавантажити зараз
 reboot_computer04=Перезавантаження...
 
-message_error_main_variables_disabledRegistryTools01=Інструменти реєстру відключені
-message_error_main_variables_disabledRegistryTools02=Якщо ви бачите [помилка], то це стан формальної процедури не може показано або змінено
-message_error_main_variables_disabledRegistryTools03=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^(A^) ^(з прихованими параметрами^)
-message_error_main_variables_disabledRegistryTools04=Будь ласка, поверніться в головне меню і прочитайте повідомлення про помилку там
 
-message_error_interface_input_keyboard_keySequence_twoIdentical=Не може бути двох ідентичних комбінацій клавіш
 
-message_error_programs_office_download=Помилка завантаження^^^! Сервер не відповідає або немає підключення до Інтернету
+msg_info_update1=Доступно оновлення для %program_name%
+msg_info_update2=Завантажте його тут:
 
-message_update_available01=Доступно оновлення для %program_name%
-message_update_available02=Завантажте його тут:
+msg_warning_hiddenOptions=Попередження^^^! Приховані параметри відображаються. Використовуйте їх на власний ризик
 
-message_tools_admin_hiddenOptions=Попередження^^^! Приховані параметри відображаються. Вони можуть пошкодити Ваш комп'ютер
+msg_error_identicalKeys=Не може бути двох ідентичних комбінацій клавіш
+
+msg_error_office=Помилка завантаження^^^! Сервер не відповідає або немає підключення до Інтернету
+
+msg_error_reg1=Інструменти реєстру відключені
+msg_error_reg2=Якщо ви бачите [помилка], то опцію не мож ні показати ні змінити
+msg_error_reg3=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^(A^) ^(з прихованими параметрами^)
+msg_error_reg4=Будь ласка, поверніться в головне меню і прочитайте повідомлення про помилку там

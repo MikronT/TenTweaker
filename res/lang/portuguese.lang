@@ -20,15 +20,15 @@ sBuilder_ctrlShift=Ctrl + Shift
 sBuilder_leftAltShift=Alt-Gr + Shift    
 sBuilder_graveAccent=Acento grave ^(`^)  
 
-sBuilder_powerShell=PowerShell        
-sBuilder_commandPrompt=Prompt de comand  
+sBuilder_ps=PowerShell        
+sBuilder_cmd=Prompt de comand  
 
 sBuilder_always=Sempre            
-sBuilder_whenIsFull=Quando encher     
+sBuilder_ifFull=Quando encher     
 sBuilder_never=Nunca             
 
-logo01=Versão %program_version%
-logo02=Veja outros programas aqui:
+logo1=Versão %program_version%
+logo2=Veja outros programas aqui:
 
 eula=O autor não é responsável por qualquer possível dano ao computador
 
@@ -54,14 +54,14 @@ interface_desktop07=Painel de controle
 interface_desktop08=Desfocar fundo no logon           
 interface_desktop09=Nota: Esses recursos exigem reiniciar o Windows Explorer
 
-interface_taskBar01=Barra de Tarefas Windows
-interface_taskBar02=Escolher ação para configurar a Barra de Tarefas Windows
-interface_taskBar03=Aba de pessoas                    
-interface_taskBar04=Icones Pequenos                   
-interface_taskBar05=Ativar Prompt de comando Win + X  
-interface_taskBar06=Botões combinados                 
-interface_taskBar07=Botão de visualização de tarefas  
-interface_taskBar08=Nota: Esses recursos requer a reinicialização do Windows Explorer
+interface_taskbar01=Barra de Tarefas Windows
+interface_taskbar02=Escolher ação para configurar a Barra de Tarefas Windows
+interface_taskbar03=Aba de pessoas                    
+interface_taskbar04=Icones Pequenos                   
+interface_taskbar05=Ativar Prompt de comando Win + X  
+interface_taskbar06=Botões combinados                 
+interface_taskbar07=Botão de visualização de tarefas  
+interface_taskbar08=Nota: Esses recursos requer a reinicialização do Windows Explorer
 
 interface_explorer01=Windows Explorer
 interface_explorer02=Escolher ação para config Windows Explorer
@@ -144,10 +144,10 @@ programs_gpeditMSC01=Editor de Política de Grupo
 programs_gpeditMSC02=Escolher ação
 programs_gpeditMSC03=Configuração/reparo gpedit.msc           
 
-services_windowsUpdate01=Windows Update ^(wuauserv^)
-services_windowsUpdate02=Escolher ação para ativar/desativar Windows Update
-services_windowsUpdate03=Distribuições de atualização              
-services_windowsUpdate04=Centro de atualização ^(wuauserv^)          
+services_wuaserv01=Windows Update ^(wuauserv^)
+services_wuaserv02=Escolher ação para ativar/desativar Windows Update
+services_wuaserv03=Distribuições de atualização              
+services_wuaserv04=Centro de atualização ^(wuauserv^)          
 
 services_sppsvc01=Plataforma de proteção de software ^(sppsvc^)
 services_sppsvc02=Escolher ação
@@ -180,16 +180,18 @@ reboot_computer02=Escolher ação
 reboot_computer03=Rebootar agora
 reboot_computer04=Rebootando...
 
-message_error_main_variables_disabledRegistryTools01=Ferramentas de registro estão desabilitadas
-message_error_main_variables_disabledRegistryTools02=Se você ver [erro], este estado de recurso não pode ser mostrado ou alterado
-message_error_main_variables_disabledRegistryTools03=Para corrigi-lo, você deve habilitar as Ferramentas de Registro no menu ^(A^) ^(com opções ocultas^)
-message_error_main_variables_disabledRegistryTools04=Por favor, volte ao menu principal e leia esta mensagem de erro novamente
 
-message_error_interface_input_keyboard_keySequence_twoIdentical=Não podem ser duas combinações de teclas idênticas
 
-message_error_programs_office_download=Erro de download^^^! O servidor não responde ou não há conexão com a Internet
+msg_info_update1=Uma atualização para %program_name% está agora disponível
+msg_info_update2=Baixar aqui:
 
-message_update_available01=Uma atualização para %program_name% está agora disponível
-message_update_available02=Baixar aqui:
+msg_warning_hiddenOptions=Aviso^^^! Opções ocultas serão mostradas. Use-os por sua própria conta e risco
 
-message_tools_admin_hiddenOptions=Aviso^^^! Opções ocultas serão mostradas. Use-os por sua própria conta e risco.
+msg_error_identicalKeys=Não podem ser duas combinações de teclas idênticas
+
+msg_error_office=Erro de download^^^! O servidor não responde ou não há conexão com a Internet
+
+msg_error_reg1=Ferramentas de registro estão desabilitadas
+msg_error_reg2=Se você ver [erro], este estado de recurso não pode ser mostrado ou alterado
+msg_error_reg3=Para corrigi-lo, você deve habilitar as Ferramentas de Registro no menu ^(A^) ^(com opções ocultas^)
+msg_error_reg4=Por favor, volte ao menu principal e leia esta mensagem de erro novamente

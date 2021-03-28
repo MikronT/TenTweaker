@@ -20,15 +20,15 @@ sBuilder_ctrlShift=Ctrl + Shift
 sBuilder_leftAltShift=левый Alt + Shift 
 sBuilder_graveAccent=ударение ^(`^)      
 
-sBuilder_powerShell=PowerShell        
-sBuilder_commandPrompt=Командная Строка  
+sBuilder_ps=PowerShell        
+sBuilder_cmd=Командная Строка  
 
 sBuilder_always=всегда            
-sBuilder_whenIsFull=когда полон       
+sBuilder_ifFull=когда полон       
 sBuilder_never=никогда           
 
-logo01=Версия %program_version%
-logo02=Смотрите другие программы здесь:
+logo1=Версия %program_version%
+logo2=Смотрите другие программы здесь:
 
 eula=Автор не несет ответственности за возможные повреждения компьютера
 
@@ -54,14 +54,14 @@ interface_desktop07=Панель управления
 interface_desktop08=Размытие при входе                
 interface_desktop09=Примечание: Эти функции требуют перезапуска Проводника Windows
 
-interface_taskBar01=Панель Задач Windows
-interface_taskBar02=Выберите действие, чтобы настроить Панель Задач Windows
-interface_taskBar03=Полоса людей                      
-interface_taskBar04=Маленькие иконки                  
-interface_taskBar05=Командная строка при Win + X      
-interface_taskBar06=Совмещение кнопок                 
-interface_taskBar07=Кнопка просмотра задач            
-interface_taskBar08=Примечание: Эти функции требуют перезапуска Проводника Windows
+interface_taskbar01=Панель Задач Windows
+interface_taskbar02=Выберите действие, чтобы настроить Панель Задач Windows
+interface_taskbar03=Полоса людей                      
+interface_taskbar04=Маленькие иконки                  
+interface_taskbar05=Командная строка при Win + X      
+interface_taskbar06=Совмещение кнопок                 
+interface_taskbar07=Кнопка просмотра задач            
+interface_taskbar08=Примечание: Эти функции требуют перезапуска Проводника Windows
 
 interface_explorer01=Проводник Windows
 interface_explorer02=Выберите действие, чтобы настроить Проводник Windows
@@ -144,10 +144,10 @@ programs_gpeditMSC01=Редактор Групповых Политик
 programs_gpeditMSC02=Выберите действие
 programs_gpeditMSC03=Установить/восстановить           
 
-services_windowsUpdate01=Обновление Windows ^(wuauserv^)
-services_windowsUpdate02=Выберите действие, чтобы включить/отключить обновления Windows
-services_windowsUpdate03=Дистрибутивы обновлений           
-services_windowsUpdate04=Центр обновлений ^(wuauserv^)       
+services_wuaserv01=Обновление Windows ^(wuauserv^)
+services_wuaserv02=Выберите действие, чтобы включить/отключить обновления Windows
+services_wuaserv03=Дистрибутивы обновлений           
+services_wuaserv04=Центр обновлений ^(wuauserv^)       
 
 services_sppsvc01=Служба Платформы Защиты Програмного Обеспечения ^(sppsvc^)
 services_sppsvc02=Выберите действие
@@ -180,16 +180,18 @@ reboot_computer02=Выберите действие
 reboot_computer03=Перезагрузить сейчас
 reboot_computer04=Перезагрузка...
 
-message_error_main_variables_disabledRegistryTools01=Инструменты реестра отключены
-message_error_main_variables_disabledRegistryTools02=Если вы видите [ошибка], то это состояние функции не может быть показано или изменено
-message_error_main_variables_disabledRegistryTools03=Чтобы это исправить, вы должны включить инструменты реестра в меню ^(A^) ^(со скрытыми параметрами^)
-message_error_main_variables_disabledRegistryTools04=Пожалуйста, вернитесь в главное меню и прочитайте сообщение об ошибке там
 
-message_error_interface_input_keyboard_keySequence_twoIdentical=Не может быть двух одинаковых комбинаций клавиш
 
-message_error_programs_office_download=Ошибка загрузки^^^! Сервер не отвечает или нет подключения к Интернету
+msg_info_update1=Доступно обновление для %program_name%
+msg_info_update2=Загрузите его здесь:
 
-message_update_available01=Доступно обновление для %program_name%
-message_update_available02=Загрузите его здесь:
+msg_warning_hiddenOptions=Предупреждение^^^! Скрытые параметры отображаются. Используйте их на свой страх и риск
 
-message_tools_admin_hiddenOptions=Предупреждение^^^! Скрытые параметры отображаются. Используйте их на свой страх и риск
+msg_error_identicalKeys=Не может быть двух одинаковых комбинаций клавиш
+
+msg_error_office=Ошибка загрузки^^^! Сервер не отвечает или нет подключения к Интернету
+
+msg_error_reg1=Инструменты реестра отключены
+msg_error_reg2=Если вы видите [ошибка], то это состояние функции не может быть показано или изменено
+msg_error_reg3=Чтобы это исправить, вы должны включить инструменты реестра в меню ^(A^) ^(со скрытыми параметрами^)
+msg_error_reg4=Пожалуйста, вернитесь в главное меню и прочитайте сообщение об ошибке там
