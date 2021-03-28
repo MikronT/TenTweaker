@@ -192,7 +192,7 @@ if "%1" == "interface_taskBar" (
 
   set interface_taskBar_buttonsCombine=always
   (for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarGlomLevel') do (
-    if "%%i" == "0x1" set interface_taskBar_buttonsCombine=when is full
+    if "%%i" == "0x1" set interface_taskBar_buttonsCombine=ifRoom
     if "%%i" == "0x2" set interface_taskBar_buttonsCombine=never
   ))>nul 2>nul
 )

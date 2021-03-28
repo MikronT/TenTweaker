@@ -3,29 +3,29 @@ menuItem_rebootComputer=Перезавантажити комп'ютер
 menuItem_restartExplorer=Перезавантажити Провідник Windows
 menuItem_updateGroupPolicy=Оновити групову політику
 
-sBuilder_option_error=[помилка]         
-sBuilder_option_enabled=увімкнено         
-sBuilder_option_disabled=вимкнено          
-sBuilder_option_shown=показано          
-sBuilder_option_hidden=сховано           
-sBuilder_option_exist=існує             
-sBuilder_option_notExist=не існує          
-sBuilder_option_locked=заблоковано       
-sBuilder_option_unlocked=розблоковано      
-sBuilder_option_installed=установлено       
-sBuilder_option_uninstalled=не установлено    
+sBuilder_error=[помилка]         
+sBuilder_enabled=увімкнено         
+sBuilder_disabled=вимкнено          
+sBuilder_shown=показано          
+sBuilder_hidden=сховано           
+sBuilder_exist=існує             
+sBuilder_notExist=не існує          
+sBuilder_locked=заблоковано       
+sBuilder_unlocked=розблоковано      
+sBuilder_installed=установлено       
+sBuilder_uninstalled=не установлено    
 
-sBuilder_option_notAssigned=не визначено      
-sBuilder_option_ctrlShift=Ctrl + Shift      
-sBuilder_option_leftAltShift=лівий Alt + Shift 
-sBuilder_option_graveAccent=наголос ^(`^)       
+sBuilder_notAssigned=не визначено      
+sBuilder_ctrlShift=Ctrl + Shift      
+sBuilder_leftAltShift=лівий Alt + Shift 
+sBuilder_graveAccent=наголос ^(`^)       
 
-sBuilder_option_powerShell=PowerShell        
-sBuilder_option_commandPrompt=Командний Рядок   
+sBuilder_powerShell=PowerShell        
+sBuilder_commandPrompt=Командний Рядок   
 
-sBuilder_option_always=завжди            
-sBuilder_option_whenIsFull=коли повний       
-sBuilder_option_never=ніколи            
+sBuilder_always=завжди            
+sBuilder_whenIsFull=коли повний       
+sBuilder_never=ніколи            
 
 logo01=Версія %program_version%
 logo02=Дивіться інші програми тут:
@@ -44,27 +44,27 @@ main_menu09=  ^(B^) Перевірка системних ресурсів
 main_menu10=Мова
 main_menu11=Вихід
 
-interface_desktop01=Робочий Стіл - Меню Управління
-interface_desktop02=Виберіть дію, щоб налаштувати робочий стіл:
+interface_desktop01=Робочий Стіл
+interface_desktop02=Виберіть дію, щоб налаштувати робочий стіл
 interface_desktop03=Цей комп'ютер                     
 interface_desktop04=Папка користувача                 
 interface_desktop05=Кошик                             
 interface_desktop06=Мережа                            
 interface_desktop07=Панель управління                 
 interface_desktop08=Размиття при вході                
-interface_desktop09=Примітка: Ці функції потребують перезапуску Провідника Windows.
+interface_desktop09=Примітка: Ці функції потребують перезапуску Провідника Windows
 
-interface_taskBar01=Панель Завдань Windows - Меню Управління
-interface_taskBar02=Виберіть дію, щоб налаштувати Панель Завдань Windows:
+interface_taskBar01=Панель Завдань Windows
+interface_taskBar02=Виберіть дію, щоб налаштувати Панель Завдань Windows
 interface_taskBar03=Полоса людей                      
 interface_taskBar04=Маленькі іконки                   
 interface_taskBar05=Командний рядок при Win + X       
 interface_taskBar06=Зміщення кнопок                   
 interface_taskBar07=Кнопка перегляду завдань          
-interface_taskBar08=Примітка: Ці функції потребують перезапуску Провідника Windows.
+interface_taskBar08=Примітка: Ці функції потребують перезапуску Провідника Windows
 
-interface_explorer01=Провідник Windows - Меню Управління
-interface_explorer02=Виберіть дію, щоб налаштувати Провідник Windows:
+interface_explorer01=Провідник Windows
+interface_explorer02=Виберіть дію, щоб налаштувати Провідник Windows
 interface_explorer03=Розширення файлів                 
 interface_explorer04=Стрічка ^(панель опцій^)            
 interface_explorer05=Приховані файли                   
@@ -74,7 +74,7 @@ interface_explorer08=Рядок стану
 interface_explorer09=Порожні диски                     
 interface_explorer10=Інформація про файл               
 interface_explorer11=Конфлікти об'єднання папок        
-interface_explorer12=Об'єкти Цього комп'ютера і панелі навігації:
+interface_explorer12=Об'єкти Цього комп'ютера і панелі навігації
 interface_explorer13=Робочий Стіл                      
 interface_explorer14=Зображення                        
 interface_explorer15=Документи                         
@@ -84,20 +84,20 @@ interface_explorer18=3D Об'єкти
 interface_explorer19=Музика                            
 interface_explorer20=OneDrive                          
 interface_explorer21=Авто визначення типу папки        
-interface_explorer22=Примітка: Ці функції потребують перезапуску Провідника Windows.
+interface_explorer22=Примітка: Ці функції потребують перезапуску Провідника Windows
 
-interface_input01=Введення - Меню Управління
-interface_input02=Виберіть дію, щоб включити/відключити пропозиції введення:
-interface_input03=Авто пропозиції                   
+interface_input01=Введення
+interface_input02=Виберіть дію, щоб включити/відключити пропозиції введення
+interface_input03=Автопропозиції                    
 interface_input04=Автозаповнення                    
-interface_input05=Запустити трекінг програм         
+interface_input05=Трекінг програм ^(Виконати^)        
 interface_input06=Пропозиції при наборі тексту      
-interface_input07=Виберіть дію, щоб змінити комбінації клавіш:
+interface_input07=Виберіть дію, щоб змінити комбінації клавіш
 interface_input08=Мова введення                     
 interface_input09=Розкладка клавіатури              
 
-programs_system01=Системні Програми - Меню Управління
-programs_system02=Виберіть дію, щоб установити/деінсталювати системні програми:
+programs_system01=Системні Програми
+programs_system02=Виберіть дію, щоб установити/деінсталювати системні програми
 programs_system03=3D Builder                        
 programs_system04=Будильники та Годинники           
 programs_system05=3D-моделі                         
@@ -131,59 +131,59 @@ programs_system32=Xbox
 programs_system33=Установити все
 programs_system34=Деінсталювати все
 
-programs_office01=Microsoft Офіс Професійний+ 2016 - Меню Налаштування
-programs_office02=Виберіть дію:
+programs_office01=Microsoft Офіс Професійний+ 2016
+programs_office02=Виберіть дію
 programs_office03=Запустити встановлення
-programs_office04=Примітка: Ця функція потребує перезавантаження Вашого комп'ютера.
-programs_office05=Завантаження Microsoft Офіс Професійний+ 2016
-programs_office06=Підключення iso файлу
-programs_office07=Встановлення
-programs_office08=Відключення iso файлу
+programs_office04=Примітка: Ця функція потребує перезавантаження Вашого комп'ютера
+programs_office05=Завантаження Microsoft Офіс Професійний+ 2016...
+programs_office06=Підключення iso файлу...
+programs_office07=Встановлення...
+programs_office08=Відключення iso файлу...
 
-programs_gpeditMSC01=Редактор Групових Політик - Меню Налаштування
-programs_gpeditMSC02=Виберіть дію:
+programs_gpeditMSC01=Редактор Групових Політик
+programs_gpeditMSC02=Виберіть дію
 programs_gpeditMSC03=Установити/відновити              
 
-services_windowsUpdate01=Оновлення Windows ^(wuauserv^) - Меню Управління
-services_windowsUpdate02=Виберіть дію, щоб увімкнути/вимкнути оновлення Windows:
+services_windowsUpdate01=Оновлення Windows ^(wuauserv^)
+services_windowsUpdate02=Виберіть дію, щоб увімкнути/вимкнути оновлення Windows
 services_windowsUpdate03=Дистрибутиви оновлень             
 services_windowsUpdate04=Центр оновлень ^(wuauserv^)         
 
-services_sppsvc01=Служба Платформи Захисту Програмного Забезпечення ^(sppsvc^) - Меню Відновлення
-services_sppsvc02=Виберіть дію:
+services_sppsvc01=Служба Платформи Захисту Програмного Забезпечення ^(sppsvc^)
+services_sppsvc02=Виберіть дію
 services_sppsvc03=Відновити службу                  
-services_sppsvc04=Примітка: Ця функція потребує двох перезавантажень Вашого комп'ютера.
-services_sppsvc05=          Ваш комп'ютер автоматично перезавантажиться після наступного старту системи.
+services_sppsvc04=Примітка: Ця функція потребує двох перезавантажень Вашого комп'ютера
+services_sppsvc05=          Ваш комп'ютер автоматично перезавантажиться після наступного старту системи
 
-tools_admin01=Адміністративні Інструменти Windows - Меню Управління
-tools_admin02=Виберіть дію, щоб налаштувати Адміністративні Інструменти Windows:
+tools_admin01=Адміністративні Інструменти Windows
+tools_admin02=Виберіть дію, щоб налаштувати Адміністративні Інструменти Windows
 tools_admin03=Робочий Стіл                      
 tools_admin04=Інструменти Реєстру               
 tools_admin05=Панель Управління                 
 tools_admin06=Командний Рядок                   
 tools_admin07=Виконати ^(Win + R^)                
 tools_admin08=Диспетчер Завдань                 
-tools_admin09=Примітка: Функції ^(2^) и ^(3^) потребують оновити групову політику.
-tools_admin10=Примітка: Функція ^(1^) потребує перезапуску Провідника Windows.
-tools_admin11=Примітка: Функція ^(5^) потребує перезавантаження Вашого комп'ютера.
+tools_admin09=Примітка: Функції ^(2^) и ^(3^) потребують оновити групову політику
+tools_admin10=Примітка: Функція ^(1^) потребує перезапуску Провідника Windows
+tools_admin11=Примітка: Функція ^(5^) потребує перезавантаження Вашого комп'ютера
 
 tools_syscheck01=Перевірка Системних Ресурсів - Меню Відновлення
-tools_syscheck02=Виберіть дію:
+tools_syscheck02=Виберіть дію
 tools_syscheck03=Запустити перевірку системних ресурсів та автоматично виправити всі файли з проблемами
-tools_syscheck04=Примітка: Ця функція потребує перезавантаження Вашого комп'ютера.
+tools_syscheck04=Примітка: Ця функція потребує перезавантаження Вашого комп'ютера
 
-lang_menu01=Мова - Меню Вибору
-lang_menu02=Виберіть мову:
+lang_menu01=Мова
+lang_menu02=Виберіть мову
 
 reboot_computer01=Меню Перезавантаження
-reboot_computer02=Виберіть дію:
+reboot_computer02=Виберіть дію
 reboot_computer03=Перезавантажити зараз
 reboot_computer04=Перезавантаження...
 
 message_error_main_variables_disabledRegistryTools01=Інструменти реєстру відключені
 message_error_main_variables_disabledRegistryTools02=Якщо ви бачите [помилка], то це стан формальної процедури не може показано або змінено
 message_error_main_variables_disabledRegistryTools03=Щоб це виправити, ви повинні включити інструменти реєстру в меню ^(A^) ^(з прихованими параметрами^)
-message_error_main_variables_disabledRegistryTools04=Будь ласка, поверніться в головне меню і прочитайте це повідомлення про помилку ще раз
+message_error_main_variables_disabledRegistryTools04=Будь ласка, поверніться в головне меню і прочитайте повідомлення про помилку там
 
 message_error_interface_input_keyboard_keySequence_twoIdentical=Не може бути двох ідентичних комбінацій клавіш
 
@@ -192,4 +192,4 @@ message_error_programs_office_download=Помилка завантаження^^
 message_update_available01=Доступно оновлення для %program_name%
 message_update_available02=Завантажте його тут:
 
-message_tools_admin_hiddenOptions=Попередження^^^! Приховані параметри відображаються^^^! Вони можуть пошкодити Ваш комп'ютер
+message_tools_admin_hiddenOptions=Попередження^^^! Приховані параметри відображаються. Вони можуть пошкодити Ваш комп'ютер

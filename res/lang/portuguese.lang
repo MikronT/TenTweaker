@@ -3,29 +3,29 @@ menuItem_rebootComputer=Reiniciar o Computador
 menuItem_restartExplorer=Reiniciar Windows Explorer
 menuItem_updateGroupPolicy=Atualizar política de grupo
 
-sBuilder_option_error=[erro]            
-sBuilder_option_enabled=Ativado           
-sBuilder_option_disabled=Desativado        
-sBuilder_option_shown=Mostra            
-sBuilder_option_hidden=Oculta            
-sBuilder_option_exist=Existe            
-sBuilder_option_notExist=Não Existe        
-sBuilder_option_locked=Travado           
-sBuilder_option_unlocked=Destravado        
-sBuilder_option_installed=Instalado         
-sBuilder_option_uninstalled=Desinstalado      
+sBuilder_error=[erro]            
+sBuilder_enabled=Ativado           
+sBuilder_disabled=Desativado        
+sBuilder_shown=Mostra            
+sBuilder_hidden=Oculta            
+sBuilder_exist=Existe            
+sBuilder_notExist=Não Existe        
+sBuilder_locked=Travado           
+sBuilder_unlocked=Destravado        
+sBuilder_installed=Instalado         
+sBuilder_uninstalled=Desinstalado      
 
-sBuilder_option_notAssigned=Não atribuído     
-sBuilder_option_ctrlShift=Ctrl + Shift      
-sBuilder_option_leftAltShift=Alt-Gr + Shift    
-sBuilder_option_graveAccent=Acento grave ^(`^)  
+sBuilder_notAssigned=Não atribuído     
+sBuilder_ctrlShift=Ctrl + Shift      
+sBuilder_leftAltShift=Alt-Gr + Shift    
+sBuilder_graveAccent=Acento grave ^(`^)  
 
-sBuilder_option_powerShell=PowerShell        
-sBuilder_option_commandPrompt=Prompt de comand  
+sBuilder_powerShell=PowerShell        
+sBuilder_commandPrompt=Prompt de comand  
 
-sBuilder_option_always=Sempre            
-sBuilder_option_whenIsFull=Quando encher     
-sBuilder_option_never=Nunca             
+sBuilder_always=Sempre            
+sBuilder_whenIsFull=Quando encher     
+sBuilder_never=Nunca             
 
 logo01=Versão %program_version%
 logo02=Veja outros programas aqui:
@@ -44,29 +44,29 @@ main_menu09=  ^(B^) Verificador de recursos do sistema
 main_menu10=Idioma
 main_menu11=Sair
 
-interface_desktop01=Desktop - Menu de controle
-interface_desktop02=Escolher ação para configurar desktop:
+interface_desktop01=Desktop
+interface_desktop02=Escolher ação para configurar desktop
 interface_desktop03=Este PC                           
 interface_desktop04=Pasta do usuário                  
 interface_desktop05=Lixeira                           
 interface_desktop06=Rede                              
 interface_desktop07=Painel de controle                
 interface_desktop08=Desfocar fundo no logon           
-interface_desktop09=Nota: Esses recursos exigem reiniciar o Windows Explorer.
+interface_desktop09=Nota: Esses recursos exigem reiniciar o Windows Explorer
 
-interface_taskBar01=Barra de Tarefas Windows - Menu de controle
-interface_taskBar02=Escolher ação para configurar a Barra de Tarefas Windows:
+interface_taskBar01=Barra de Tarefas Windows
+interface_taskBar02=Escolher ação para configurar a Barra de Tarefas Windows
 interface_taskBar03=Aba de pessoas                    
 interface_taskBar04=Icones Pequenos                   
 interface_taskBar05=Ativar Prompt de comando Win + X  
 interface_taskBar06=Botões combinados                 
 interface_taskBar07=Botão de visualização de tarefas  
-interface_taskBar08=Nota: Esses recursos requer a reinicialização do Windows Explorer.
+interface_taskBar08=Nota: Esses recursos requer a reinicialização do Windows Explorer
 
-interface_explorer01=Windows Explorer - Menu de controle
-interface_explorer02=Escolher ação para config Windows Explorer:
+interface_explorer01=Windows Explorer
+interface_explorer02=Escolher ação para config Windows Explorer
 interface_explorer03=Extensões no nome do arquivo      
-interface_explorer04=Ocultar ^(%ESC%[96mbarra de opções%ESC%[0m^)         
+interface_explorer04=Ocultar ^(barra de opções^)         
 interface_explorer05=Arquivos ocultos                  
 interface_explorer06=Expandir ao abrir a pasta         
 interface_explorer07=Arquivos de sistema protegidos    
@@ -74,7 +74,7 @@ interface_explorer08=Barra de Status
 interface_explorer09=Unidades vazias                   
 interface_explorer10=Dica de informação do arquivo     
 interface_explorer11=Conflitos de mesclagem de pasta   
-interface_explorer12=Este PC e objetos da barra de navegação:
+interface_explorer12=Este PC e objetos da barra de navegação
 interface_explorer13=Desktop                           
 interface_explorer14=Imagens                           
 interface_explorer15=Documentos                        
@@ -84,20 +84,20 @@ interface_explorer18=3DObjects
 interface_explorer19=Musicas                           
 interface_explorer20=OneDrive                          
 interface_explorer21=Descoberta automática de pastas   
-interface_explorer22=Nota: Esses recursos exigem reiniciar o Windows Explorer.
+interface_explorer22=Nota: Esses recursos exigem reiniciar o Windows Explorer
 
-interface_input01=Entrada - Menu de controle
-interface_input02=Escolher ação para ativar/desativar input suggestions:
+interface_input01=Entrada
+interface_input02=Escolher ação para ativar/desativar input suggestions
 interface_input03=Sugestão automática               
-interface_input04=Anexar conclusão                  
-interface_input05=Rastrear programas                
+interface_input04=Autocompletar                     
+interface_input05=Rastrear programas ^(menu Executar^)
 interface_input06=Sugestões ao digitar              
-interface_input07=Escolher ação para mudar as sequências de teclas:
+interface_input07=Escolher ação para mudar as sequências de teclas
 interface_input08=Escolha o idioma                  
 interface_input09=Layout do teclado                 
 
-programs_system01=Programas de sistema - Menu de controle
-programs_system02=Escolher ação to Instalar/Desinstalar Programas de sistema:
+programs_system01=Programas de sistema
+programs_system02=Escolher ação to Instalar/Desinstalar Programas de sistema
 programs_system03=3D Builder                        
 programs_system04=Alarme e despertador              
 programs_system05=3D Viewer                         
@@ -131,54 +131,54 @@ programs_system32=Xbox
 programs_system33=Instalar todos
 programs_system34=Desinstalar todos
 
-programs_office01=Microsoft Office Professional+ 2016 - Menu Setup
-programs_office02=Escolher ação:
+programs_office01=Microsoft Office Professional+ 2016
+programs_office02=Escolher ação
 programs_office03=Executar setup
-programs_office04=Nota: este recurso é necessário para reiniciar o seu computador.
-programs_office05=Baixando Microsoft Office Professional+ 2016
-programs_office06=Montando arquivo iso
-programs_office07=Setup
-programs_office08=Desmontando arquivo iso
+programs_office04=Nota: Este recurso é necessário para reiniciar o seu computador
+programs_office05=Baixando Microsoft Office Professional+ 2016...
+programs_office06=Montando arquivo iso...
+programs_office07=Setup...
+programs_office08=Desmontando arquivo iso...
 
-programs_gpeditMSC01=Editor de Política de Grupo - Menu Setup
-programs_gpeditMSC02=Escolher ação:
+programs_gpeditMSC01=Editor de Política de Grupo
+programs_gpeditMSC02=Escolher ação
 programs_gpeditMSC03=Configuração/reparo gpedit.msc           
 
-services_windowsUpdate01=Windows Update ^(wuauserv^) - Menu de controle
-services_windowsUpdate02=Escolher ação para ativar/desativar Windows Update:
+services_windowsUpdate01=Windows Update ^(wuauserv^)
+services_windowsUpdate02=Escolher ação para ativar/desativar Windows Update
 services_windowsUpdate03=Distribuições de atualização              
 services_windowsUpdate04=Centro de atualização ^(wuauserv^)          
 
-services_sppsvc01=Plataforma de proteção de software ^(sppsvc^) - Menu Restaurar
-services_sppsvc02=Escolher ação:
+services_sppsvc01=Plataforma de proteção de software ^(sppsvc^)
+services_sppsvc02=Escolher ação
 services_sppsvc03=Serviço restauração                   
-services_sppsvc04=Nota: este recurso é necessário para reiniciar o seu computador two times.
-services_sppsvc05=      O computador irá reiniciar automaticamente após a próxima inicialização do sistema.
+services_sppsvc04=Nota: Este recurso é necessário para reiniciar o seu computador two times
+services_sppsvc05=      O computador irá reiniciar automaticamente após a próxima inicialização do sistema
 
-tools_admin01=Ferramentas Administrativas do Windows - Menu de controle
-tools_admin02=Escolher ação para configurar as ferramentas administrativas do Windows:
+tools_admin01=Ferramentas Administrativas do Windows
+tools_admin02=Escolher a ferramenta administrativa do Windows para ativar/desativar
 tools_admin03=Desktop                                
 tools_admin04=Ferramentas de registro                    
 tools_admin05=Painel de controle                     
 tools_admin06=Prompt de comando                    
 tools_admin07=Executar ^(Win + R^)                     
 tools_admin08=Gerenciador de tarefas                      
-tools_admin09=Nota: este recurso ^(2^) e ^(3^) requer a atualização da política do grupo.
-tools_admin10=Nota: este recurso ^(1^) requerido para reiniciar Windows Explorer.
-tools_admin11=Nota: este recurso ^(5^) requerido para reiniciar o seu computador.
+tools_admin09=Nota: Este recurso ^(2^) e ^(3^) requer a atualização da política do grupo
+tools_admin10=Nota: Este recurso ^(1^) requerido para reiniciar Windows Explorer
+tools_admin11=Nota: Este recurso ^(5^) requerido para reiniciar o seu computador
 
-tools_syscheck01=Verificador de Recursos do Sistema - Menu Restaurar
-tools_syscheck02=Escolher ação:
+tools_syscheck01=Verificador de Recursos do Sistema
+tools_syscheck02=Escolher ação
 tools_syscheck03=Faça uma varredura no sistema e repare automaticamente os arquivos com problemas
-tools_syscheck04=Nota: Este recurso requer a reinicialização do computador.
+tools_syscheck04=Nota: Este recurso requer a reinicialização do computador
 
 lang_menu01=Menu de seleção de idiomas
-lang_menu02=Escolha o idioma:
+lang_menu02=Escolha o idioma
 
 reboot_computer01=Menu de Reboot
-reboot_computer02=Escolher ação:
-reboot_computer03=Rebootar agora?
-reboot_computer04=Rebootando..
+reboot_computer02=Escolher ação
+reboot_computer03=Rebootar agora
+reboot_computer04=Rebootando...
 
 message_error_main_variables_disabledRegistryTools01=Ferramentas de registro estão desabilitadas
 message_error_main_variables_disabledRegistryTools02=Se você ver [erro], este estado de recurso não pode ser mostrado ou alterado
@@ -189,7 +189,7 @@ message_error_interface_input_keyboard_keySequence_twoIdentical=Não podem ser d
 
 message_error_programs_office_download=Erro de download^^^! O servidor não responde ou não há conexão com a Internet
 
-message_update_available01=Uma atualização para %program_name% está agora disponível^^^!
+message_update_available01=Uma atualização para %program_name% está agora disponível
 message_update_available02=Baixar aqui:
 
-message_tools_admin_hiddenOptions=Aviso^^^! Opções ocultas serão mostradas^^^! Elas podem danificar seu computador
+message_tools_admin_hiddenOptions=Aviso^^^! Opções ocultas serão mostradas. Use-os por sua própria conta e risco.
