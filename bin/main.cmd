@@ -1112,7 +1112,7 @@ set command=%errorLevel%
 if "%error_reg%" NEQ "true" (
   if "%command%" == "1" (
     (
-      for /l %%i in (1,1,4) do reg import res\services_sppsvc_registry.reg
+      for /l %%i in (1,1,4) do reg import res\sppsvc.reg
       for /l %%i in (1,1,10) do sc start sppsvc
     )>nul 2>nul
   ) else if "%command%" == "2" (
@@ -1225,7 +1225,7 @@ if "%error_reg%" NEQ "true" (
 if "%key_hiddenOptions%" == "true" (
   if "%command%" == "4" (
     if "%tools_admin_reg%" == "disabled" (
-      for /l %%i in (1,1,4) do rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 %cd%\res\tools_admin_unHookExec.inf
+      for /l %%i in (1,1,4) do rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 %cd%\res\unHookExec.inf
     ) else reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableRegistryTools /t REG_DWORD /d 1 /f
   )
 

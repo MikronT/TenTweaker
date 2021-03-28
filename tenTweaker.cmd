@@ -33,7 +33,7 @@ if "%key_admin%" == "false" (
 
   if !errorLevel! GEQ 1 (
     echo.^(^^^!^) Please, run as Admin
-    timeout /nobreak /t 2 >nul
+    timeout /t 2 >nul
     exit
   )
 )
@@ -108,16 +108,17 @@ if "%setting_firstRun%" == "true" (
 
 (
   if "%key_reboot%" == "sppsvc" (
-    for /l %%i in (4,-1,1)  do rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 %~dp0res\tools_administrativeTools_unHookExec.inf
-    for /l %%i in (4,-1,1)  do reg import res\services_sppsvc_registry.reg
-    for /l %%i in (10,-1,1) do sc start sppsvc
-    for /l %%i in (4,-1,1)  do reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %program_name_ns%_services_sppsvc /f
+    for /l %%i in (1,1, 4) do rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 %cd%\res\unHookExec.inf
+    for /l %%i in (1,1, 4) do reg import res\sppsvc.reg
+    for /l %%i in (1,1,10) do sc start sppsvc
+    for /l %%i in (1,1, 4) do reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %program_name_ns%_services_sppsvc /f
     %reboot_computer% force
   ) else (
     %module_wget% "%update_version_url%" --output-document="%update_version_output%"
 
     for /f "tokens=1-3 delims=." %%i in (%update_version_output%) do (
-      if "%%k" NEQ "" ( set update_program_version_number=%%i%%j%%k
+      if "%%k" NEQ "" (
+             set update_program_version_number=%%i%%j%%k
       ) else set update_program_version_number=%%i%%j0
     )
     if !update_program_version_number! GTR %program_version_number% echo.>temp\return_update_available
