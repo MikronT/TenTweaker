@@ -147,9 +147,9 @@ if %errorLevel% GEQ 1 (
   set tools_admin_cmd=error
   set tools_admin_desktop=error
 
-  set error_main_variables_disabledRegistryTools=1
+  set error_reg=true
   exit /b
-) else set error_main_variables_disabledRegistryTools=0
+) else set error_reg=false
 
 
 

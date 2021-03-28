@@ -185,11 +185,11 @@ reboot_computer04=Rebooting...
 msg_info_update1=The update for %program_name% is available now
 msg_info_update2=Download it here:
 
-msg_warning_hiddenOptions=Warning^^^! Hidden options are shown. Use them at your own risk
+msg_warning_hiddenOptions=Warning: Hidden options are shown. Use them at your own risk
 
 msg_error_identicalKeys=There can't be 2 identical key combinations
 
-msg_error_office=Download error^^^! Server doesn't respond or there are no Internet connection
+msg_error_office=Download error: Server doesn't respond or there are no Internet connection
 
 msg_error_reg1=Registry Tools are disabled
 msg_error_reg2=If you see [error], this feature state cannot be shown and changed

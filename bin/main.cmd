@@ -88,8 +88,9 @@ echo.
 echo.
 echo.    ^(^^^!^) %lang_eula%
 echo.
-if "%error_state_reg%" == "1" call :msg_error_reg main_menu
-if "%update_available%" == "true" call :msg_info_update
+if "%error_reg%"         == "true" call :msg_error_reg main_menu
+if "%key_hiddenOptions%" == "true" call :msg_warning_hiddenOptions
+if "%update_available%"  == "true" call :msg_info_update
 %module_choice% /c 123456789ABL0 /m "> "
 set command=%errorLevel%
 
@@ -175,13 +176,13 @@ echo.    ^(0^) %lang_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_state_reg%" == "1" call :msg_error_reg
+if "%error_reg%" == "true" call :msg_error_reg
 %module_choice% /c 123456Y0 /m "> "
 set command=%errorLevel%
 
 
 
-if "%error_state_reg%" NEQ "1" (
+if "%error_reg%" NEQ "true" (
   if "%command%" == "1" (
     if "%interface_desktop_thisPC%"     == "hidden"  ( set temp_cmd=0 ) else set temp_cmd=1
     reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D} /t REG_DWORD /d !temp_cmd! /f
@@ -269,13 +270,13 @@ echo.    ^(0^) %lang_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_state_reg%" == "1" call :msg_error_reg
+if "%error_reg%" == "true" call :msg_error_reg
 %module_choice% /c 12345Y0 /m "> "
 set command=%errorLevel%
 
 
 
-if "%error_state_reg%" NEQ "1" (
+if "%error_reg%" NEQ "true" (
   if "%command%" == "1" (
     if "%interface_taskbar_people%"   == "shown"    ( set temp_cmd=0 ) else set temp_cmd=1
     reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand       /t REG_DWORD /d !temp_cmd! /f
@@ -428,13 +429,13 @@ echo.    ^(0^) %lang_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_state_reg%" == "1" call :msg_error_reg
+if "%error_reg%" == "true" call :msg_error_reg
 %module_choice% /c 123456789ABCDEFGHIY0 /m "> "
 set command=%errorLevel%
 
 
 
-if "%error_state_reg%" NEQ "1" (
+if "%error_reg%" NEQ "true" (
   if "%command%" == "1" (
     if "%interface_explorer_extensions%"       == "hidden"  ( set temp_cmd=0 ) else set temp_cmd=1
     reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideFileExt                  /t REG_DWORD /d !temp_cmd! /f
@@ -529,11 +530,11 @@ goto :interface_explorer
 
 :interface_input
 %getState% interface_input
-if "%error_state_reg%" NEQ "1" if "%interface_input_langKey%" == "%interface_input_layoutKey%" (
+if "%error_reg%" NEQ "true" if "%interface_input_langKey%" == "%interface_input_layoutKey%" (
   if "%interface_input_langKey%" NEQ "notAssigned" (
-    set error_interface_input_keyboard_keySequence_twoIdentical=1
-  ) else set error_interface_input_keyboard_keySequence_twoIdentical=0
-) else set error_interface_input_keyboard_keySequence_twoIdentical=0
+           set error_identicalKeys=true
+  ) else set error_identicalKeys=false
+) else set error_identicalKeys=false
 
 %logo%
 echo.^(i^) %lang_interface_input01%
@@ -590,8 +591,8 @@ echo.
 echo.
 echo.
 
-if "%error_state_reg%" == "1" call :msg_error_reg
-if "%error_interface_input_keyboard_keySequence_twoIdentical%" == "1" ( call :msg_error_identicalKeys
+if "%error_reg%"           == "true"   call :msg_error_reg
+if "%error_identicalKeys%" == "true" ( call :msg_error_identicalKeys
   color 0c
 ) else color 0b
 
@@ -600,7 +601,7 @@ set command=%errorLevel%
 
 
 
-if "%error_state_reg%" NEQ "1" (
+if "%error_reg%" NEQ "true" (
   if "%command%" == "1" (
     if "%interface_input_suggestions%"  == "disabled" ( set temp_cmd=yes ) else set temp_cmd=no
     reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v AutoSuggest         /t REG_SZ    /d !temp_cmd! /f
@@ -632,7 +633,7 @@ if "%error_state_reg%" NEQ "1" (
     reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d !temp_cmd! /f
   )
 )>nul 2>nul
-if "%command%" == "7" if "%error_interface_input_keyboard_keySequence_twoIdentical%" NEQ "1" exit /b
+if "%command%" == "7" if "%error_identicalKeys%" NEQ "true" exit /b
 goto :interface_input
 
 
@@ -816,13 +817,13 @@ echo.    ^(0^) %lang_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_state_reg%" == "1" call :msg_error_reg
+if "%error_reg%" == "true" call :msg_error_reg
 %module_choice% /c 123456789ABCDEFGHIJKLMNOPQRSTUVW0 /m "> "
 set command=%errorLevel%
 
 
 
-if "%error_state_reg%" NEQ "1" (
+if "%error_reg%" NEQ "true" (
          if "%command%" == "1"  ( if "%programs_system_3DBuilder%" == "installed" ( %appxMgmt% remove 3DBuilder                    ) else %appxMgmt% add 3DBuilder
   ) else if "%command%" == "2"  ( if "%programs_system_3DViewer%"  == "installed" ( %appxMgmt% remove Microsoft3DViewer            ) else %appxMgmt% add Microsoft3DViewer
   ) else if "%command%" == "3"  ( if "%programs_system_feedback%"  == "installed" ( %appxMgmt% remove WindowsFeedbackHub           ) else %appxMgmt% add WindowsFeedbackHub
@@ -899,10 +900,10 @@ echo.    ^(0^) %lang_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_state_reg%" == "1" call :msg_error_reg
-if "%error_programs_office_download%" == "1" ( call :msg_error_office
+if "%error_reg%"                      == "true"   call :msg_error_reg
+if "%error_programs_office_download%" == "true" ( call :msg_error_office
+  set error_programs_office_download=false
   color 0c
-  set error_programs_office_download=0
 ) else color 0b
 %module_choice% /c 1Z0 /m "> "
 set command=%errorLevel%
@@ -910,7 +911,7 @@ set command=%errorLevel%
 
 
 :programs_office_setup
-if "%error_state_reg%" NEQ "1" if "%command%" == "1" (
+if "%error_reg%" NEQ "true" if "%command%" == "1" (
   %logo%
   echo.^(i^) %lang_programs_office01%
   echo.
@@ -923,7 +924,7 @@ if "%error_state_reg%" NEQ "1" if "%command%" == "1" (
   timeout /nobreak /t 1 >nul
 
   for /f "skip=6 tokens=1,3,* delims= " %%i in ('dir "%cd%\%programs_office_setupISO%"') do if "%%i" == "1" if "%%j" == "0" (
-    set error_programs_office_download=1
+    set error_programs_office_download=true
     goto :programs_office
   )
 
@@ -977,14 +978,14 @@ echo.    ^(0^) %lang_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_state_reg%" == "1" call :msg_error_reg
+if "%error_reg%" == "true" call :msg_error_reg
 %module_choice% /c 10 /m "> "
 set command=%errorLevel%
 
 
 
 if "%command%" == "1" (
-  if "%error_state_reg%" NEQ "1" (
+  if "%error_reg%" NEQ "true" (
     (
       dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum
       dir /b %systemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum
@@ -1034,7 +1035,7 @@ echo.    ^(0^) %lang_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_state_reg%" == "1" call :msg_error_reg
+if "%error_reg%" == "true" call :msg_error_reg
 %module_choice% /c 120 /m "> "
 set command=%errorLevel%
 
@@ -1052,7 +1053,7 @@ if "%command%" == "1" (
     md     "%WinDir%\SoftwareDistribution\Download"
   )
 )>nul 2>nul
-if "%error_state_reg%" NEQ "1" (
+if "%error_reg%" NEQ "true" (
   if "%command%" == "2" if "%services_wuaserv_center%" == "enabled" (
     for /l %%i in (1,1,3) do sc stop   wuauserv
     for /l %%i in (1,1,3) do sc config wuauserv start=disabled
@@ -1102,13 +1103,13 @@ echo.    ^(0^) %lang_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_state_reg%" == "1" call :msg_error_reg
+if "%error_reg%" == "true" call :msg_error_reg
 %module_choice% /c 1Z0 /m "> "
 set command=%errorLevel%
 
 
 
-if "%error_state_reg%" NEQ "1" (
+if "%error_reg%" NEQ "true" (
   if "%command%" == "1" (
     (
       for /l %%i in (1,1,4) do reg import res\services_sppsvc_registry.reg
@@ -1138,7 +1139,7 @@ goto :services_sppsvc
 
 :tools_admin
 %getState% tools_admin
-if "%error_state_reg%" == "1" set key_hiddenOptions=true
+if "%error_reg%" == "true" set key_hiddenOptions=true
 
 %logo%
 echo.^(i^) %lang_tools_admin01%
@@ -1198,15 +1199,15 @@ echo.    ^(0^) %lang_menuItem_goBack%
 echo.
 echo.
 echo.
-if "%error_state_reg%" == "1" call :msg_error_reg
+if "%error_reg%"         == "true"   call :msg_error_reg
 if "%key_hiddenOptions%" == "true" ( call :msg_warning_hiddenOptions
-  %module_choice% /c 123456XYZ0 /m "> "
+       %module_choice% /c 123456XYZ0 /m "> "
 ) else %module_choice% /c 123XY0 /m "> "
 set command=%errorLevel%
 
 
 
-if "%error_state_reg%" NEQ "1" (
+if "%error_reg%" NEQ "true" (
   if "%command%" == "1" (
     if "%tools_admin_desktop%" == "disabled" ( set temp_cmd=0 ) else set temp_cmd=1
     reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoDesktop      /t REG_DWORD /d !temp_cmd! /f
@@ -1228,7 +1229,7 @@ if "%key_hiddenOptions%" == "true" (
     ) else reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableRegistryTools /t REG_DWORD /d 1 /f
   )
 
-  if "%error_state_reg%" NEQ "1" (
+  if "%error_reg%" NEQ "true" (
     if "%command%" == "5" (
       if "%tools_admin_cmd%"     == "disabled" ( set temp_cmd=0 ) else set temp_cmd=1
       reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v DisableCMD     /t REG_DWORD /d !temp_cmd! /f

@@ -185,11 +185,11 @@ reboot_computer04=Rebootando...
 msg_info_update1=Uma atualização para %program_name% está agora disponível
 msg_info_update2=Baixar aqui:
 
-msg_warning_hiddenOptions=Aviso^^^! Opções ocultas serão mostradas. Use-os por sua própria conta e risco
+msg_warning_hiddenOptions=Aviso: Opções ocultas serão mostradas. Use-os por sua própria conta e risco
 
 msg_error_identicalKeys=Não podem ser duas combinações de teclas idênticas
 
-msg_error_office=Erro de download^^^! O servidor não responde ou não há conexão com a Internet
+msg_error_office=Erro de download: O servidor não responde ou não há conexão com a Internet
 
 msg_error_reg1=Ferramentas de registro estão desabilitadas
 msg_error_reg2=Se você ver [erro], este estado de recurso não pode ser mostrado ou alterado
