@@ -7,15 +7,6 @@ pushd "%~dp0"
 
 
 
-if "%key_admin%" == "false" (
-  net session>nul 2>nul
-
-  if !errorLevel! GEQ 1 (
-    echo.^(^^^!^) Please, run as Admin
-    timeout /t 2 >nul
-    exit
-  )
-)
 set program_name=Ten Tweaker
 set program_name_ns=%~n0
 set program_version=3.0 Alpha 1
@@ -24,7 +15,7 @@ set program_version_number=30011
 
 
 set module_choice=bin\choice.exe /n
-set module_powershell=start /wait /min "" powershell
+set module_powershell=start /wait /min "" powershell -ep bypass -nop -w 1
 set module_wget=bin\wget.exe --quiet --no-check-certificate --tries=1
 
 set appxMgmt=call bin\lib.cmd :appxMgmt
@@ -62,10 +53,22 @@ set key_skipRegMerge=false
 set setting_firstRun=true
 set setting_language=english
 
+net session>nul 2>nul
+if "!errorLevel!" == "0" (
+       set state_admin_privileges=true
+) else set state_admin_privileges=false
+
 set update_version_output=temp\%program_name_ns%.version
 set update_version_url=https://drive.google.com/uc?export=download^^^&id=1ZeM5bnX0fWs7njKL2ZTeYc2ctv0FmGRs
 
 
+
+
+
+if "%key_elevate%" == "false" if "%state_admin_privileges%" == "false" (
+  %module_elevate% "%cd%" "%~nx0" /elevate
+  exit
+)
 
 
 
