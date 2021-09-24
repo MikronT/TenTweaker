@@ -7,26 +7,6 @@ pushd "%~dp0"
 
 
 
-set key_admin=false
-set key_hiddenOptions=false
-set key_reboot=none
-
-:keyParser
-set temp_key=%1
-set temp_key=!temp_key:~1!
-
-       if /i "!temp_key!" == "admin"         ( set key_!temp_key!=true
-) else if /i "!temp_key!" == "hiddenOptions" ( set key_!temp_key!=true
-) else if /i "!temp_key!" == "reboot"        ( set key_!temp_key!=%2
-  shift /1
-) else if /i "!temp_key!" == "skipRegMerge"    set key_!temp_key!=true
-shift /1
-if "%1" NEQ "" goto :keyParser
-
-
-
-start /min powershell "Exit"
-
 if "%key_admin%" == "false" (
   net session>nul 2>nul
 
@@ -36,9 +16,6 @@ if "%key_admin%" == "false" (
     exit
   )
 )
-
-if not exist temp md temp
-
 set program_name=Ten Tweaker
 set program_name_ns=%~n0
 set program_version=3.0 Alpha 1
@@ -63,15 +40,36 @@ set settings_save=call bin\lib.cmd :settings_save
 
 
 
-set update_version_output=temp\%program_name_ns%.version
-set update_version_url=https://drive.google.com/uc?export=download^^^&id=1ZeM5bnX0fWs7njKL2ZTeYc2ctv0FmGRs
+set key_elevate=false
+set key_hiddenOptions=false
+set key_reboot=none
+set key_skipRegMerge=false
+
+:parser
+  set temp_key=%1
+  set temp_value=%2
+  if "!temp_key!" NEQ "" set temp_key=!temp_key:"=!
+  if "!temp_key!" NEQ "" (
+    set temp_key=!temp_key:~1!
+                    if /i "!temp_key!" == "elevate"       ( set key_!temp_key!=true
+             ) else if /i "!temp_key!" == "hiddenOptions" ( set key_!temp_key!=true
+             ) else if /i "!temp_key!" == "reboot"        ( set key_!temp_key!=!temp_value:"=!
+    shift /1 )
+    shift /1
+    goto :parser
+  )
 
 set setting_firstRun=true
 set setting_language=english
 
+set update_version_output=temp\%program_name_ns%.version
+set update_version_url=https://drive.google.com/uc?export=download^^^&id=1ZeM5bnX0fWs7njKL2ZTeYc2ctv0FmGRs
 
 
 
+
+
+if not exist "temp" md "temp"
 
 
 
@@ -82,6 +80,8 @@ if "%setting_firstRun%" == "true" (
   %settings_apply%
   %main% :language_menu force
 ) else %settings_apply%
+
+
 
 (
   if "%key_reboot%" == "sppsvc" (
@@ -101,6 +101,8 @@ if "%setting_firstRun%" == "true" (
     if !update_program_version_number! GTR %program_version_number% echo.>temp\return_update_available
   )
 )>nul 2>nul
+
+
 
 %main% :main_menu
 exit
