@@ -10,7 +10,6 @@ pushd "%~dp0"
 set key_admin=false
 set key_hiddenOptions=false
 set key_reboot=none
-set key_skipRegMerge=false
 
 :keyParser
 set temp_key=%1
@@ -40,34 +39,12 @@ if "%key_admin%" == "false" (
 
 if not exist temp md temp
 
-set errorLevel=
-reg query HKCU >nul 2>nul
-
-(
-  if %errorLevel% LSS 1 if "%key_skipRegMerge%" == "false" (
-    reg export HKCU\Console\%%SystemRoot%%_system32_cmd.exe temp\consoleSettings.reg /y
-    reg add    HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v ColorTable00     /t REG_DWORD /d 0          /f
-    reg add    HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v FaceName         /t REG_SZ    /d Consolas   /f
-    reg add    HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v FontFamily       /t REG_DWORD /d 0x0000036  /f
-    reg add    HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v FontSize         /t REG_DWORD /d 0x00100008 /f
-    reg add    HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v FontWeight       /t REG_DWORD /d 0x0000190  /f
-    reg add    HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v ScreenBufferSize /t REG_DWORD /d 0x2329006a /f
-    reg add    HKCU\Console\%%SystemRoot%%_system32_cmd.exe /v WindowSize       /t REG_DWORD /d 0x001e006e /f
-
-    start "" "%~nx0" %* /admin /skipRegMerge
-    exit
-  ) else if exist temp\consoleSettings.reg (
-    reg delete HKCU\Console\%%SystemRoot%%_system32_cmd.exe /va /f
-    reg import temp\consoleSettings.reg
-  )
-)>nul 2>nul
-
-
-
 set program_name=Ten Tweaker
 set program_name_ns=%~n0
 set program_version=3.0 Alpha 1
 set program_version_number=30011
+
+
 
 set module_choice=bin\choice.exe /n
 set module_powershell=start /wait /min "" powershell
