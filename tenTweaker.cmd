@@ -15,6 +15,7 @@ set program_version_number=30011
 
 
 set module_choice=bin\choice.exe /n
+set module_elevate=bin\elevate.vbs
 set module_powershell=start /wait /min "" powershell -ep bypass -nop -w 1
 set module_wget=bin\wget.exe --quiet --no-check-certificate --tries=1
 
@@ -33,7 +34,7 @@ set settings_save=call bin\lib.cmd :settings_save
 
 set key_elevate=false
 set key_hiddenOptions=false
-set key_reboot=none
+set key_reboot=null
 set key_skipRegMerge=false
 
 :parser
@@ -66,7 +67,11 @@ set update_version_url=https://drive.google.com/uc?export=download^^^&id=1ZeM5bn
 
 
 if "%key_elevate%" == "false" if "%state_admin_privileges%" == "false" (
-  %module_elevate% "%cd%" "%~nx0" /elevate
+  set args=
+  if "%key_hiddenOptions%" ==  "true" set args=!args! /key_hiddenOptions
+  if "%key_reboot%"        NEQ "null" set args=!args! /reboot !key_reboot!
+
+  %module_elevate% "%cd%" "%~nx0" !args! /elevate
   exit
 )
 
