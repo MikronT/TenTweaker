@@ -44,9 +44,6 @@ set key_skipRegMerge=false
     goto :parser
   )
 
-set setting_firstRun=true
-set setting_language=english
-
 net session>nul 2>nul
 if "!errorLevel!" == "0" (
        set state_admin_privileges=true

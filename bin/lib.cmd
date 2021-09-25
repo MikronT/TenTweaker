@@ -47,6 +47,12 @@ exit /b
 
 :settings_load
   for /f "eol=# delims=" %%i in ('type "settings.ini" 2^>nul') do call set setting_%%i
+
+
+
+  if "!setting_firstRun!" NEQ "false" if "!setting_firstRun!" NEQ "true" set setting_firstRun=true
+
+  if not exist "res\lang\!setting_language!.lang" set setting_language=english
 exit /b
 
 
@@ -60,6 +66,8 @@ exit /b
   if "%setting_language%" NEQ "english" set temp_lang_set=!temp_lang_set! %setting_language%
 
   for %%i in (!temp_lang_set!) do for /f "eol=# delims=" %%j in ('type "res\lang\%%i.lang" 2^>nul') do call set lang_%%j
+
+  set temp_lang_set=
 exit /b
 
 
