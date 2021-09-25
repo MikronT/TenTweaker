@@ -44,38 +44,6 @@ exit /b
 
 
 
-:logo
-  mode con:cols=124 lines=39
-  title [MikronT] %program_name%
-  color 0b
-  cls
-
-  echo.
-  echo.
-  echo.    [MikronT] ==^> %program_name%
-  echo.                  %lang_logo1%
-  echo.   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  echo.     %lang_logo2%
-  echo.         github.com/MikronT
-  echo.
-  echo.
-  echo.
-exit /b
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :settings_apply
   set temp_lang_set=default english
   if "%setting_language%" NEQ "english" set temp_lang_set=!temp_lang_set! %setting_language%
