@@ -175,10 +175,10 @@ tools_syscheck04=Примечание: Эта функция требует пе
 lang_menu01=Язык
 lang_menu02=Выберите свой язык
 
-reboot_computer01=Меню Перезагрузки
-reboot_computer02=Выберите действие
-reboot_computer03=Перезагрузить сейчас
-reboot_computer04=Перезагрузка...
+rebootComputer01=Меню Перезагрузки
+rebootComputer02=Выберите действие
+rebootComputer03=Перезагрузить сейчас
+rebootComputer04=Перезагрузка...
 
 
 

@@ -175,10 +175,10 @@ tools_syscheck04=Примітка: Ця функція потребує пере
 lang_menu01=Мова
 lang_menu02=Виберіть мову
 
-reboot_computer01=Меню Перезавантаження
-reboot_computer02=Виберіть дію
-reboot_computer03=Перезавантажити зараз
-reboot_computer04=Перезавантаження...
+rebootComputer01=Меню Перезавантаження
+rebootComputer02=Виберіть дію
+rebootComputer03=Перезавантажити зараз
+rebootComputer04=Перезавантаження...
 
 
 

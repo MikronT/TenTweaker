@@ -21,8 +21,6 @@ set module_wget=bin\wget.exe --quiet --no-check-certificate --tries=1
 
 for /f "delims=" %%i in ('dir /a:-d /b "bin\*.cmd" 2^>nul') do call "bin\%%i" :init bin
 
-set main=call bin\main.cmd
-set reboot_computer=call bin\main.cmd :reboot_computer
 set sBuilder_build=call set sBuilder_text=%%sBuilder_text%%
 
 
@@ -92,7 +90,7 @@ if "%setting_firstRun%" == "true" (
     for /l %%i in (1,1, 4) do reg import res\sppsvc.reg
     for /l %%i in (1,1,10) do sc start sppsvc
     for /l %%i in (1,1, 4) do reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %program_name_ns%_services_sppsvc /f
-    %reboot_computer% force
+    %rebootComputer% force
   ) else (
     %module_wget% "%update_version_url%" --output-document="%update_version_output%"
 

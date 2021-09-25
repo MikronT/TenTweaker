@@ -175,10 +175,10 @@ tools_syscheck04=Nota: Este recurso requer a reinicialização do computador
 lang_menu01=Menu de seleção de idiomas
 lang_menu02=Escolha o idioma
 
-reboot_computer01=Menu de Reboot
-reboot_computer02=Escolher ação
-reboot_computer03=Rebootar agora
-reboot_computer04=Rebootando...
+rebootComputer01=Menu de Reboot
+rebootComputer02=Escolher ação
+rebootComputer03=Rebootar agora
+rebootComputer04=Rebootando...
 
 
 

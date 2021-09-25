@@ -2,6 +2,26 @@
 chcp 65001>nul
 
 call %*
+exit /b !errorLevel!
+
+
+
+
+
+
+
+:init
+  set exec=%1\%~nx0
+
+
+
+  set main=call !exec!
+
+  set rebootComputer=call !exec! :rebootComputer
+
+
+
+  set exec=
 exit /b
 
 
@@ -940,7 +960,7 @@ if "%error_reg%" NEQ "true" if "%command%" == "1" (
   echo.^(i^) %lang_programs_office08%
   %module_powershell% "Dismount-DiskImage ""%cd%\%programs_office_setupISO%"""
   timeout /nobreak /t 1 >nul
-) else if "%command%" == "2" ( %reboot_computer%
+) else if "%command%" == "2" ( %rebootComputer%
 ) else if "%command%" == "3" exit /b
 goto :programs_office
 
@@ -1117,7 +1137,7 @@ if "%error_reg%" NEQ "true" (
     )>nul 2>nul
   ) else if "%command%" == "2" (
     reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v %program_name_ns%_services_sppsvc /t REG_SZ /d "%~f0 /reboot sppsvc" /f >nul
-    %reboot_computer%
+    %rebootComputer%
   )
 )
 if "%command%" == "3" exit /b
@@ -1242,7 +1262,7 @@ if "%key_hiddenOptions%" == "true" (
 
   if "%command%" == "7" ( gpupdate /force >nul
   ) else if "%command%" == "8"  ( %restartExplorer%
-  ) else if "%command%" == "9"  ( %reboot_computer%
+  ) else if "%command%" == "9"  ( %rebootComputer%
   ) else if "%command%" == "10" exit /b
 ) else (
   if "%command%" == "4" ( gpupdate /force >nul
@@ -1286,7 +1306,7 @@ set command=%errorLevel%
 
 
 if "%command%" == "1" ( for /l %%i in (1,1,3) do sfc /scannow
-) else if "%command%" == "2" ( %reboot_computer%
+) else if "%command%" == "2" ( %rebootComputer%
 ) else if "%command%" == "3" exit /b
 goto :tools_syscheck
 
@@ -1369,15 +1389,15 @@ exit /b
 
 
 
-:reboot_computer
+:rebootComputer
 if "%*" == "force" ( shutdown /r /t 7 & exit )
 
 %logo%
-echo.^(i^) %lang_reboot_computer01%
+echo.^(i^) %lang_rebootComputer01%
 echo.
 echo.
-echo.^(^>^) %lang_reboot_computer02%
-echo.    ^(1^) %lang_reboot_computer03%
+echo.^(^>^) %lang_rebootComputer02%
+echo.    ^(1^) %lang_rebootComputer03%
 echo.
 echo.    ^(0^) %lang_menuItem_goBack%
 echo.
@@ -1390,7 +1410,7 @@ set command=%errorLevel%
 
 if "%command%" == "2" exit /b
 
-echo.^(^^^!^) %lang_reboot_computer04%
+echo.^(^^^!^) %lang_rebootComputer04%
 shutdown /r /t 15
 timeout /nobreak /t 13 >nul
 exit

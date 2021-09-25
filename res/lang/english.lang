@@ -175,10 +175,10 @@ tools_syscheck04=Note: This feature requires to reboot your computer
 lang_menu01=Language
 lang_menu02=Choose your language
 
-reboot_computer01=Reboot Menu
-reboot_computer02=Choose an action
-reboot_computer03=Reboot now
-reboot_computer04=Rebooting...
+rebootComputer01=Reboot Menu
+rebootComputer02=Choose an action
+rebootComputer03=Reboot now
+rebootComputer04=Rebooting...
 
 
 
