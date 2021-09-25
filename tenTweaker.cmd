@@ -19,16 +19,12 @@ set module_elevate=bin\elevate.vbs
 set module_powershell=start /wait /min "" powershell -ep bypass -nop -w 1
 set module_wget=bin\wget.exe --quiet --no-check-certificate --tries=1
 
-set appxMgmt=call bin\lib.cmd :appxMgmt
-set getState=call bin\lib.cmd :getState
-set logo=call bin\lib.cmd :logo
+for /f "delims=" %%i in ('dir /a:-d /b "bin\*.cmd" 2^>nul') do call "bin\%%i" :init bin
+
 set main=call bin\main.cmd
 set reboot_computer=call bin\main.cmd :reboot_computer
-set restartExplorer=call bin\lib.cmd :restartExplorer
 set sBuilder_build=call set sBuilder_text=%%sBuilder_text%%
-set settings_apply=call bin\lib.cmd :settings_apply
 set settings_import=for /f "eol=# delims=" %%i in ('type "settings.ini" 2^^^>nul') do call set setting_%%i
-set settings_save=call bin\lib.cmd :settings_save
 
 
 

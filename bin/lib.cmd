@@ -2,7 +2,41 @@
 chcp 65001>nul
 
 call %*
+exit /b !errorLevel!
+
+
+
+
+
+
+
+:init
+  set exec=%1\%~nx0
+
+
+
+  set logo=call !exec! :logo
+
+  set settings_apply=call !exec! :settings_apply
+  set settings_save=call !exec! :settings_save
+
+  set restartExplorer=call !exec! :restartExplorer
+
+  set appxMgmt=call !exec! :appxMgmt
+
+  set getState=call !exec! :getState
+
+
+  set exec=
 exit /b
+
+
+
+
+
+
+
+
 
 
 
@@ -27,6 +61,14 @@ exit /b
   echo.
   echo.
 exit /b
+
+
+
+
+
+
+
+
 
 
 
@@ -62,6 +104,14 @@ exit /b
 
 
 
+
+
+
+
+
+
+
+
 :restartExplorer
   (
     taskkill /f /im explorer.exe
@@ -69,6 +119,14 @@ exit /b
   )>nul
   start explorer
 exit /b
+
+
+
+
+
+
+
+
 
 
 
@@ -84,6 +142,14 @@ exit /b
   if "%1" == "add"    %module_powershell% "Add-AppxPackage -Path ((Get-AppxPackage -AllUsers -Name """*Microsoft.%2*""").InstallLocation + """\AppxManifest.xml""") -Register -DisableDevelopmentMode"
   if "%1" == "remove" %module_powershell% "Get-AppxPackage *Microsoft.%2* | Remove-AppxPackage"
 exit /b
+
+
+
+
+
+
+
+
 
 
 
