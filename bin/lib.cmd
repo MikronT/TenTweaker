@@ -17,6 +17,7 @@ exit /b !errorLevel!
 
   set logo=call !exec! :logo
 
+  set settings_load=call !exec! :settings_load
   set settings_apply=call !exec! :settings_apply
   set settings_save=call !exec! :settings_save
 
@@ -44,7 +45,17 @@ exit /b
 
 
 
-:settings_apply
+:settings_load
+  for /f "eol=# delims=" %%i in ('type "settings.ini" 2^>nul') do call set setting_%%i
+exit /b
+
+
+
+
+
+
+
+:settings_save
   set temp_lang_set=default english
   if "%setting_language%" NEQ "english" set temp_lang_set=!temp_lang_set! %setting_language%
 

@@ -24,7 +24,6 @@ for /f "delims=" %%i in ('dir /a:-d /b "bin\*.cmd" 2^>nul') do call "bin\%%i" :i
 set main=call bin\main.cmd
 set reboot_computer=call bin\main.cmd :reboot_computer
 set sBuilder_build=call set sBuilder_text=%%sBuilder_text%%
-set settings_import=for /f "eol=# delims=" %%i in ('type "settings.ini" 2^^^>nul') do call set setting_%%i
 
 
 
@@ -77,7 +76,7 @@ if not exist "temp" md "temp"
 
 
 
-%settings_import%
+%settings_load%
 
 if "%setting_firstRun%" == "true" (
   set setting_firstRun=false
