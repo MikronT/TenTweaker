@@ -55,7 +55,7 @@ exit /b
 
 
 
-:settings_save
+:settings_apply
   set temp_lang_set=default english
   if "%setting_language%" NEQ "english" set temp_lang_set=!temp_lang_set! %setting_language%
 
