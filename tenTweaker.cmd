@@ -68,7 +68,7 @@ set update_version_url=https://drive.google.com/uc?export=download^^^&id=1ZeM5bn
 
 if "%key_elevate%" == "false" if "%state_admin_privileges%" == "false" (
   set args=
-  if "%key_hiddenOptions%" ==  "true" set args=!args! /key_hiddenOptions
+  if "%key_hiddenOptions%" ==  "true" set args=!args! /hiddenOptions
   if "%key_reboot%"        NEQ "null" set args=!args! /reboot !key_reboot!
 
   %module_elevate% "%cd%" "%~nx0" !args! /elevate
