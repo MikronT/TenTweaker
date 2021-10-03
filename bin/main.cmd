@@ -39,35 +39,42 @@ exit /b
 
 
 :language_menu
-%logo%
-echo.^(i^) %lang_lang_menu01%
-echo.
-echo.
-echo.^(^>^) %lang_lang_menu02%
-echo.    ^(1^) English
-echo.    ^(2^) Português
-echo.    ^(3^) Русский
-echo.    ^(4^) Українська
-if "%1" NEQ "force" (
-  echo.
-  echo.    ^(0^) %lang_menuItem_goBack%
-)
-echo.
-echo.
-echo.
-if "%1" NEQ "force" (
-       %module_choice% /c 12340 /m "> "
-) else %module_choice% /c 1234  /m "> "
-set command=%errorLevel%
+  (
+    %logo%
+    echo.text=%lang_lang_menu01%
+    echo.skip
+    echo.skip
+    echo.text=^(^>^) %lang_lang_menu02%
+    echo.cursor1_right=2
+    echo.text=^(1^) English
+    echo.text=^(2^) Português
+    echo.text=^(3^) Русский
+    echo.text=^(4^) Українська
+
+    if "%1" NEQ "force" (
+      echo.skip
+      echo.text=^(0^) %lang_menuItem_goBack%
+    )
+    echo.skip
+    echo.skip
+    echo.skip
+    echo.cursor1_left=2
+    echo.text=^>
+  )>%layout%
+  %module_cursor%
+  if "%1" NEQ "force" (
+         %module_choice% /c 12340
+  ) else %module_choice% /c 1234
+  set command=%errorLevel%
 
 
 
-if "%command%" == "1" ( set setting_language=english
-) else if "%command%" == "2" ( set setting_language=portuguese
-) else if "%command%" == "3" ( set setting_language=russian
-) else if "%command%" == "4"   set setting_language=ukrainian
+         if "%command%" == "1" ( set setting_language=english
+  ) else if "%command%" == "2" ( set setting_language=portuguese
+  ) else if "%command%" == "3" ( set setting_language=russian
+  ) else if "%command%" == "4"   set setting_language=ukrainian
 
-%settings_apply%
+  %settings_apply%
 exit /b
 
 
