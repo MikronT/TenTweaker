@@ -92,50 +92,74 @@ exit /b
 
 
 :main_menu
-%getState%
-%settings_save%
+  %getState%
+  %settings_save%
 
-if exist temp\return_update_available set update_available=true
+  if exist temp\return_update_available set update_available=true
 
-%logo%
-echo.  %lang_main_menu01%
-echo.  %lang_main_menu02%
-echo.  %lang_main_menu03%
-echo.  %lang_main_menu04%
-echo.  %lang_main_menu05%
-echo.  %lang_main_menu06%
-echo.  %lang_main_menu07%
-echo.  %lang_main_menu08%
-echo.  %lang_main_menu09%
-echo.
-echo.
-echo.    ^(L^) %lang_main_menu10%
-echo.    ^(0^) %lang_main_menu11%
-echo.
-echo.
-echo.    ^(^^^!^) %lang_eula%
-echo.
-if "%error_reg%"         == "true" call :msg_error_reg main_menu
-if "%key_hiddenOptions%" == "true" call :msg_warning_hiddenOptions
-if "%update_available%"  == "true" call :msg_info_update
-%module_choice% /c 123456789ABL0 /m "> "
-set command=%errorLevel%
+  (
+    %logo%
+    echo.text=%lang_menu_interface%
+    echo.cursor1_right=2
+    echo.text=^(1^) %lang_menu_interface_desktop%
+    echo.text=^(2^) %lang_menu_interface_taskbar%
+    echo.text=^(3^) %lang_menu_interface_explorer%
+    echo.text=^(4^) %lang_menu_interface_input%
+    echo.cursor1_left=2
+    echo.skip
+    echo.text=%lang_menu_tools%
+    echo.cursor1_right=2
+    echo.text=^(A^) %lang_menu_tools_admin%
+    echo.text=^(B^) %lang_menu_tools_sfc%
+    echo.cursor1_left=2
+
+    echo.cursor1=61 10
+
+    echo.text=%lang_menu_programs%
+    echo.cursor1_right=2
+    echo.text=^(5^) %lang_menu_programs_system%
+    echo.text=^(6^) %lang_menu_programs_office%
+    echo.text=^(7^) %lang_menu_programs_gpedit%
+    echo.cursor1_left=2
+    echo.skip
+    echo.text=%lang_menu_services%
+    echo.cursor1_right=2
+    echo.text=^(8^) %lang_menu_services_wuaserv%
+    echo.text=^(9^) %lang_menu_services_sppsvc%
+    echo.cursor1_left=2
+
+    echo.cursor1=3 20
+    echo.text=^(L^) %lang_menu_language%
+    echo.text=^(0^) %lang_menu_exit%
+    echo.skip
+    echo.skip
+    echo.text=^(^^^!^) %lang_eula%
+    echo.skip
+    echo.cursor1_left=2
+    echo.text=^>
+  )>%layout%
+  rem if "%error_reg%"         == "true" call :msg_error_reg main_menu
+  rem if "%key_hiddenOptions%" == "true" call :msg_warning_hiddenOptions
+  rem if "%update_available%"  == "true" call :msg_info_update
+  %module_cursor%
+  %module_choice% /c 123456789ABL0
+  set command=%errorLevel%
 
 
 
-if "%command%" == "1" ( call :interface_desktop
-) else if "%command%" == "2"  ( call :interface_taskbar
-) else if "%command%" == "3"  ( call :interface_explorer
-) else if "%command%" == "4"  ( call :interface_input
-) else if "%command%" == "5"  ( call :programs_system
-) else if "%command%" == "6"  ( call :programs_office
-) else if "%command%" == "7"  ( call :programs_gpeditMSC
-) else if "%command%" == "8"  ( call :services_wuaserv
-) else if "%command%" == "9"  ( call :services_sppsvc
-) else if "%command%" == "10" ( call :tools_admin
-) else if "%command%" == "11" ( call :tools_syscheck
-) else if "%command%" == "12" ( call :language_menu
-) else if "%command%" == "13" ( rd /s /q temp & exit )
+         if "%command%" ==  "1" ( call :interface_desktop
+  ) else if "%command%" ==  "2" ( call :interface_taskbar
+  ) else if "%command%" ==  "3" ( call :interface_explorer
+  ) else if "%command%" ==  "4" ( call :interface_input
+  ) else if "%command%" ==  "5" ( call :programs_system
+  ) else if "%command%" ==  "6" ( call :programs_office
+  ) else if "%command%" ==  "7" ( call :programs_gpeditMSC
+  ) else if "%command%" ==  "8" ( call :services_wuaserv
+  ) else if "%command%" ==  "9" ( call :services_sppsvc
+  ) else if "%command%" == "10" ( call :tools_admin
+  ) else if "%command%" == "11" ( call :tools_syscheck
+  ) else if "%command%" == "12" ( call :language_menu
+  ) else if "%command%" == "13" ( rd /s /q temp & exit )
 goto :main_menu
 
 

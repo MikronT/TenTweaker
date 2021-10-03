@@ -32,17 +32,23 @@ logo2=Check for other programs here:
 
 eula=The author is not responsible for any possible damage to your computer
 
-main_menu01=Interface                                                    Programs
-main_menu02=  ^(1^) Desktop ^(This PC, Recycle Bin etc.^)                      ^(5^) System programs
-main_menu03=  ^(2^) Task Bar                                                 ^(6^) Setup Office Professional+ 2016
-main_menu04=  ^(3^) Explorer                                                 ^(7^) Setup/restore gpedit.msc
-main_menu05=  ^(4^) Input
-main_menu06=                                                             Services
-main_menu07=Tools                                                          ^(8^) Windows Update ^(wuauserv^)
-main_menu08=  ^(A^) Administrative tools                                     ^(9^) Software Protection Service ^(sppsvc^)
-main_menu09=  ^(B^) System Resource Checker
-main_menu10=Language
-main_menu11=Exit
+menu_interface=Interface
+menu_interface_desktop=Desktop ^(This PC, Recycle Bin etc.^)
+menu_interface_taskbar=Task Bar
+menu_interface_explorer=Explorer
+menu_interface_input=Input
+menu_programs=Programs
+menu_programs_system=System programs
+menu_programs_office=Setup Office Professional+ 2016
+menu_programs_gpedit=Setup/restore gpedit.msc
+menu_tools=Tools
+menu_tools_admin=Administrative tools
+menu_tools_sfc=System Resource Checker
+menu_services=Services
+menu_services_wuaserv=Windows Update ^(wuauserv^)
+menu_services_sppsvc=Software Protection Service ^(sppsvc^)
+menu_language=Language
+menu_exit=Exit
 
 interface_desktop01=Desktop
 interface_desktop02=Choose an action to configure your desktop
