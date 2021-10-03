@@ -14,7 +14,10 @@ set program_version_number=30011
 
 
 
+set layout=temp\layout
+
 set module_choice=bin\choice.exe /n
+set module_cursor=bin\cursorMower.exe %layout%
 set module_elevate=bin\elevate.vbs
 set module_powershell=start /wait /min "" powershell -ep bypass -nop -w 1
 set module_wget=bin\wget.exe --quiet --no-check-certificate --tries=1
