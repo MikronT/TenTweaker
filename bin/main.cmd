@@ -42,23 +42,23 @@ exit /b
   (
     %logo%
     echo.text=%lang_lang_menu01%
-    echo.skip
-    echo.skip
+
+    echo.down=2
     echo.text=^(^>^) %lang_lang_menu02%
-    echo.cursor1_right=2
+
+    echo.right=2
     echo.text=^(1^) English
     echo.text=^(2^) Português
     echo.text=^(3^) Русский
     echo.text=^(4^) Українська
 
     if "%1" NEQ "force" (
-      echo.skip
+      echo.down
       echo.text=^(0^) %lang_menuItem_goBack%
     )
-    echo.skip
-    echo.skip
-    echo.skip
-    echo.cursor1_left=2
+    echo.left=2
+
+    echo.down=3
     echo.text=^>
   )>%layout%
   %module_cursor%
@@ -100,42 +100,45 @@ exit /b
   (
     %logo%
     echo.text=%lang_menu_interface%
-    echo.cursor1_right=2
+
+    echo.right=2
     echo.text=^(1^) %lang_menu_interface_desktop%
     echo.text=^(2^) %lang_menu_interface_taskbar%
     echo.text=^(3^) %lang_menu_interface_explorer%
     echo.text=^(4^) %lang_menu_interface_input%
-    echo.cursor1_left=2
-    echo.skip
+    echo.left=2
+
+    echo.down
     echo.text=%lang_menu_tools%
-    echo.cursor1_right=2
+
+    echo.right=2
     echo.text=^(A^) %lang_menu_tools_admin%
     echo.text=^(B^) %lang_menu_tools_sfc%
-    echo.cursor1_left=2
 
     echo.cursor1=61 10
-
     echo.text=%lang_menu_programs%
-    echo.cursor1_right=2
+
+    echo.right=2
     echo.text=^(5^) %lang_menu_programs_system%
     echo.text=^(6^) %lang_menu_programs_office%
     echo.text=^(7^) %lang_menu_programs_gpedit%
-    echo.cursor1_left=2
-    echo.skip
+    echo.left=2
+
+    echo.down
     echo.text=%lang_menu_services%
-    echo.cursor1_right=2
+
+    echo.right=2
     echo.text=^(8^) %lang_menu_services_wuaserv%
     echo.text=^(9^) %lang_menu_services_sppsvc%
-    echo.cursor1_left=2
 
     echo.cursor1=3 20
     echo.text=^(L^) %lang_menu_language%
     echo.text=^(0^) %lang_menu_exit%
-    echo.skip
-    echo.skip
+    echo.down=2
     echo.text=^(^^^!^) %lang_eula%
-    echo.skip
-    echo.cursor1_left=2
+    echo.left=2
+
+    echo.down
     echo.text=^>
   )>%layout%
   rem if "%error_reg%"         == "true" call :msg_error_reg main_menu
