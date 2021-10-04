@@ -108,12 +108,10 @@ exit /b
     %item% L main_language
     %item% 0 main_exit
 
-    if "%error_reg%"         == "true" call :msg_error_reg main_menu
-    if "%key_hiddenOptions%" == "true" call :msg_warning_hiddenOptions
-    if "%update_available%"  == "true" call :msg_info_update
+    if "%error_reg%"         == "true" %message_error_registryInaccessible%
+    if "%key_hiddenOptions%" == "true" %message_info_hiddenOptions%
+    if "%update_available%"  == "true" %message_info_update%
 
-    echo.down=2
-    %message% %message_info% eula
 
     %column_right%
     %title% main_programs
@@ -214,7 +212,6 @@ echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
-if "%error_reg%" == "true" call :msg_error_reg
 %module_choice% /c 123456Y0 /m "> "
 set command=%errorLevel%
 
@@ -308,7 +305,6 @@ echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
-if "%error_reg%" == "true" call :msg_error_reg
 %module_choice% /c 12345Y0 /m "> "
 set command=%errorLevel%
 
@@ -467,7 +463,6 @@ echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
-if "%error_reg%" == "true" call :msg_error_reg
 %module_choice% /c 123456789ABCDEFGHIY0 /m "> "
 set command=%errorLevel%
 
@@ -629,8 +624,8 @@ echo.
 echo.
 echo.
 
-if "%error_reg%"           == "true"   call :msg_error_reg
-if "%error_identicalKeys%" == "true" ( call :msg_error_identicalKeys
+if "%error_identicalKeys%" == "true" (
+  %message_error_keys%
   color 0c
 ) else color 0b
 
@@ -855,7 +850,6 @@ echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
-if "%error_reg%" == "true" call :msg_error_reg
 %module_choice% /c 123456789ABCDEFGHIJKLMNOPQRSTUVW0 /m "> "
 set command=%errorLevel%
 
@@ -938,8 +932,8 @@ echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
-if "%error_reg%"                      == "true"   call :msg_error_reg
-if "%error_programs_office_download%" == "true" ( call :msg_error_office
+if "%error_programs_office_download%" == "true" (
+  %message_error_office%
   set error_programs_office_download=false
   color 0c
 ) else color 0b
@@ -1016,7 +1010,6 @@ echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
-if "%error_reg%" == "true" call :msg_error_reg
 %module_choice% /c 10 /m "> "
 set command=%errorLevel%
 
@@ -1073,7 +1066,6 @@ echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
-if "%error_reg%" == "true" call :msg_error_reg
 %module_choice% /c 120 /m "> "
 set command=%errorLevel%
 
@@ -1141,7 +1133,6 @@ echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
-if "%error_reg%" == "true" call :msg_error_reg
 %module_choice% /c 1Z0 /m "> "
 set command=%errorLevel%
 
@@ -1237,8 +1228,8 @@ echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
-if "%error_reg%"         == "true"   call :msg_error_reg
-if "%key_hiddenOptions%" == "true" ( call :msg_warning_hiddenOptions
+if "%key_hiddenOptions%" == "true" (
+  %message_info_hiddenOptions%
        %module_choice% /c 123456XYZ0 /m "> "
 ) else %module_choice% /c 123XY0 /m "> "
 set command=%errorLevel%
@@ -1327,77 +1318,6 @@ if "%command%" == "1" ( for /l %%i in (1,1,3) do sfc /scannow
 ) else if "%command%" == "2" ( %rebootComputer%
 ) else if "%command%" == "3" exit /b
 goto :tools_syscheck
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:msg_info_update
-  echo.down=3
-  %message% %message_info% msg_info_update1
-
-  echo.right=4
-  echo.text=%lang_msg_info_update2%
-
-  echo.right=4
-  echo.text=github.com/MikronT/TenTweaker/releases/latest
-
-  echo.left=8
-exit /b
-
-
-
-:msg_warning_hiddenOptions
-  echo.    ^(^^^!^) %lang_msg_warning_hiddenOptions%
-  echo.
-exit /b
-
-
-
-:msg_error_identicalKeys
-  echo.    ^(^^^!^) %lang_msg_error_identicalKeys%
-  echo.
-exit /b
-
-
-
-:msg_error_office
-  echo.    ^(^^^!^) %lang_msg_error_office%
-  echo.
-exit /b
-
-
-
-:msg_error_reg
-  echo.    ^(^^^!^) %lang_msg_error_reg1%
-  echo.        %lang_msg_error_reg2%
-
-  if "%1" == "main_menu" (
-         echo.        %lang_msg_error_reg3%
-  ) else echo.        %lang_msg_error_reg4%
-
-  echo.
-exit /b
 
 
 

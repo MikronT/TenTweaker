@@ -41,8 +41,15 @@ exit /b !errorLevel!
   set logo=call !exec! :logo
   set title=call !exec! :title
   set item=call !exec! :item
-  set message=call !exec! :message
   set input=call !exec! :input
+
+  set message=call !exec! :message
+  set message_info_disclaimer=call !exec! :message_info_disclaimer
+  set message_info_hiddenOptions=call !exec! :message_info_hiddenOptions
+  set message_info_update=call !exec! :message_info_update
+  set message_error_keys=call !exec! :message_error_keys
+  set message_error_office=call !exec! :message_error_office
+  set message_error_registryInaccessible=call !exec! :message_error_registryInaccessible
 
 
 
@@ -212,6 +219,26 @@ exit /b
 
 
 
+:input
+  echo.cursor1=1 39
+  echo.color=%color_accent%
+  echo.text=^>
+exit /b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :message
   set arg_level=%1
   if "!arg_level!" NEQ "" set arg_level=!arg_level:"=!
@@ -245,8 +272,75 @@ exit /b
 
 
 
-:input
-  echo.cursor1=1 39
-  echo.color=%color_accent%
-  echo.text=^>
+:message_info_disclaimer
+  echo.down=2
+  %message% %message_info% eula
+exit /b
+
+
+
+
+
+
+
+:message_info_hiddenOptions
+  echo.down=2
+  %message% %message_info% msg_warning_hiddenOptions
+exit /b
+
+
+
+
+
+
+
+:message_info_update
+  echo.down=2
+  %message% %message_info% msg_info_update1
+
+  echo.right=4
+  echo.text=%lang_msg_info_update2%
+
+  echo.right=4
+  echo.text=github.com/MikronT/TenTweaker/releases/latest
+
+  echo.left=8
+exit /b
+
+
+
+
+
+
+
+:message_error_keys
+  echo.down=2
+  %message% %message_error% msg_error_identicalKeys
+exit /b
+
+
+
+
+
+
+
+:message_error_office
+  echo.down=2
+  %message% %message_error% msg_error_office
+exit /b
+
+
+
+
+
+
+
+:message_error_registryInaccessible
+  echo.down=2
+  %message% %message_error% msg_error_reg1
+
+  echo.right=4
+  echo.text=%lang_msg_error_reg2%
+  echo.text=%lang_msg_error_reg3%
+  echo.text=%lang_msg_error_reg4%
 exit /b
