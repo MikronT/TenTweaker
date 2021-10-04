@@ -16,6 +16,7 @@ exit /b !errorLevel!
 
 
   set logo=call !exec! :logo
+  set input=call !exec! :input
 
 
 
@@ -63,4 +64,16 @@ exit /b
   echo.text=github.com/MikronT
 
   echo.cursor1=1 10
+exit /b
+
+
+
+
+
+
+
+:input
+  echo.left=120
+  echo.down=3
+  echo.text=^>
 exit /b

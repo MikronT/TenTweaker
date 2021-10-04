@@ -53,10 +53,7 @@ exit /b
       echo.down
       echo.text=^(0^) %lang_menu_goBack%
     )
-    echo.left=2
-
-    echo.down=3
-    echo.text=^>
+    %input%
   )>%layout%
   %module_cursor%
 
@@ -130,10 +127,7 @@ exit /b
     echo.text=^(0^) %lang_main_exit%
     echo.down=2
     echo.text=^(^^^!^) %lang_eula%
-    echo.left=2
-
-    echo.down
-    echo.text=^>
+    %input%
   )>%layout%
   rem if "%error_reg%"         == "true" call :msg_error_reg main_menu
   rem if "%key_hiddenOptions%" == "true" call :msg_warning_hiddenOptions
