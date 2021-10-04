@@ -15,6 +15,15 @@ exit /b !errorLevel!
 
 
 
+  set color_default=07
+
+  set color_title=0b
+  set color_subtitle=0f
+
+  set color_accent=0e
+
+
+
   set column_left=call !exec! :column_left
   set column_right=call !exec! :column_right
 
@@ -85,7 +94,7 @@ exit /b
   echo.screen_height=40
   echo.screen_margin=1
 
-  echo.color=0b
+  echo.color=%color_default%
   echo.clear=screen
 
 
