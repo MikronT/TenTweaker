@@ -49,7 +49,7 @@ exit /b !errorLevel!
   set message_info_update=call !exec! :message_info_update
   set message_error_keys=call !exec! :message_error_keys
   set message_error_office=call !exec! :message_error_office
-  set message_error_registryInaccessible=call !exec! :message_error_registryInaccessible
+  set message_error_reg=call !exec! :message_error_reg
 
 
 
@@ -335,7 +335,7 @@ exit /b
 
 
 
-:message_error_registryInaccessible
+:message_error_reg
   echo.down=2
   %message% %message_error% msg_error_reg1
 

@@ -108,7 +108,7 @@ exit /b
     %item% L main_language
     %item% 0 main_exit
 
-    if "%error_reg%"         == "true" %message_error_registryInaccessible%
+    if "%error_reg%"         == "true" %message_error_reg%
     if "%key_hiddenOptions%" == "true" %message_warn_hiddenOptions%
     if "%update_available%"  == "true" %message_info_update%
 
