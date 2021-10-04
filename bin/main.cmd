@@ -162,7 +162,7 @@ goto :main_menu
 
 
 :interface_desktop
-%getState% interface_desktop
+  %getState% interface_desktop
 
 %logo%
 echo.^(i^) %lang_interface_desktop01%

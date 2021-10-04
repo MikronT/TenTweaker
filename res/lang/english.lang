@@ -63,15 +63,15 @@ main_exit=Exit
 
 
 
-interface_desktop01=Desktop
-interface_desktop02=Choose an action to configure your desktop
-interface_desktop03=This PC                           
-interface_desktop04=User Folder                       
-interface_desktop05=Recycle Bin                       
-interface_desktop06=Network                           
-interface_desktop07=Control Panel                     
-interface_desktop08=Background blur on logon          
-interface_desktop09=Note: These features require to restart Windows Explorer
+interface_desktop=Desktop
+interface_desktop_hint=Choose an action to configure your desktop
+interface_desktop_thisPC=This PC
+interface_desktop_userDir=User Folder
+interface_desktop_trash=Recycle Bin
+interface_desktop_net=Network
+interface_desktop_control=Control Panel
+interface_desktop_logonBlur=Background blur on logon
+interface_desktop_note=These features require to restart Windows Explorer
 
 
 
@@ -79,7 +79,7 @@ interface_taskbar01=Windows Task Bar
 interface_taskbar02=Choose an action to configure Windows Task Bar
 interface_taskbar03=People band                       
 interface_taskbar04=Small icons                       
-interface_taskbar05=Command prompt on Win + X         
+interface_taskbar05=Command prompt on Win+X         
 interface_taskbar06=Buttons combine                   
 interface_taskbar07=Task view button                  
 interface_taskbar08=Note: These features require to restart Windows Explorer

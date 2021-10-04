@@ -36,8 +36,6 @@ exit /b !errorLevel!
   set align_left=call !exec! :align_left
   set align_right=call !exec! :align_right
 
-
-
   set logo=call !exec! :logo
   set title=call !exec! :title
   set item=call !exec! :item
