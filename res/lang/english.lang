@@ -1,8 +1,3 @@
-menuItem_goBack=Go back
-menuItem_rebootComputer=Reboot computer
-menuItem_restartExplorer=Restart Windows Explorer
-menuItem_updateGroupPolicy=Update group policy
-
 sBuilder_error=[error]           
 sBuilder_enabled=enabled           
 sBuilder_disabled=disabled          
@@ -27,28 +22,47 @@ sBuilder_always=always
 sBuilder_ifFull=when full         
 sBuilder_never=never             
 
+
+
+menuItem_goBack=Go back
+menuItem_rebootComputer=Reboot computer
+menuItem_restartExplorer=Restart Windows Explorer
+menuItem_updateGroupPolicy=Update group policy
+
 logo1=Version %program_version%
 logo2=Check for other programs here:
 
 eula=The author is not responsible for any possible damage to your computer
 
-menu_interface=Interface
-menu_interface_desktop=Desktop ^(This PC, Recycle Bin etc.^)
-menu_interface_taskbar=Task Bar
-menu_interface_explorer=Explorer
-menu_interface_input=Input
-menu_programs=Programs
-menu_programs_system=System programs
-menu_programs_office=Setup Office Professional+ 2016
-menu_programs_gpedit=Setup/restore gpedit.msc
-menu_tools=Tools
-menu_tools_admin=Administrative tools
-menu_tools_sfc=System Resource Checker
-menu_services=Services
-menu_services_wuaserv=Windows Update ^(wuauserv^)
-menu_services_sppsvc=Software Protection Service ^(sppsvc^)
-menu_language=Language
-menu_exit=Exit
+
+
+language=Choose your language
+
+
+
+main_interface=Interface
+main_interface_desktop=Desktop ^(This PC, Recycle Bin etc.^)
+main_interface_taskbar=Task Bar
+main_interface_explorer=Explorer
+main_interface_input=Input
+
+main_programs=Programs
+main_programs_system=System programs
+main_programs_office=Setup Office Professional+ 2016
+main_programs_gpedit=Setup/restore gpedit.msc
+
+main_tools=Tools
+main_tools_admin=Administrative tools
+main_tools_sfc=System Resource Checker
+
+main_services=Services
+main_services_wuaserv=Windows Update ^(wuauserv^)
+main_services_sppsvc=Software Protection Service ^(sppsvc^)
+
+main_language=Language
+main_exit=Exit
+
+
 
 interface_desktop01=Desktop
 interface_desktop02=Choose an action to configure your desktop
@@ -60,6 +74,8 @@ interface_desktop07=Control Panel
 interface_desktop08=Background blur on logon          
 interface_desktop09=Note: These features require to restart Windows Explorer
 
+
+
 interface_taskbar01=Windows Task Bar
 interface_taskbar02=Choose an action to configure Windows Task Bar
 interface_taskbar03=People band                       
@@ -68,6 +84,8 @@ interface_taskbar05=Command prompt on Win + X
 interface_taskbar06=Buttons combine                   
 interface_taskbar07=Task view button                  
 interface_taskbar08=Note: These features require to restart Windows Explorer
+
+
 
 interface_explorer01=Windows Explorer
 interface_explorer02=Choose an action to configure Windows Explorer
@@ -92,6 +110,8 @@ interface_explorer20=OneDrive
 interface_explorer21=Auto folder type discovery        
 interface_explorer22=Note: These features require to restart Windows Explorer
 
+
+
 interface_input01=Input
 interface_input02=Choose an action to enable/disable input suggestions
 interface_input03=Auto suggestions                  
@@ -101,6 +121,8 @@ interface_input06=Suggestions when typing
 interface_input07=Choose an action to change key sequences
 interface_input08=Input language                    
 interface_input09=Keyboard layout                   
+
+
 
 programs_system01=System Programs
 programs_system02=Choose action to install/uninstall system programs
@@ -137,6 +159,8 @@ programs_system32=Xbox
 programs_system33=Install all
 programs_system34=Uninstall all
 
+
+
 programs_office01=Microsoft Office Professional+ 2016
 programs_office02=Choose an action
 programs_office03=Run setup
@@ -146,20 +170,28 @@ programs_office06=Mounting iso file...
 programs_office07=Setup...
 programs_office08=Unmounting iso file...
 
+
+
 programs_gpeditMSC01=Group Policy Editor
 programs_gpeditMSC02=Choose an action
 programs_gpeditMSC03=Setup/repair gpedit.msc           
+
+
 
 services_wuaserv01=Windows Update ^(wuauserv^)
 services_wuaserv02=Choose an action to enable/disable Windows Update
 services_wuaserv03=Update distributions              
 services_wuaserv04=Update Center ^(wuauserv^)          
 
+
+
 services_sppsvc01=Software Protection Platform Service ^(sppsvc^)
 services_sppsvc02=Choose an action
 services_sppsvc03=Restore service                   
 services_sppsvc04=Note: This feature requires to reboot your computer two times
 services_sppsvc05=      The computer will automatically restart after the next system boot
+
+
 
 tools_admin01=Windows Administrative Tools
 tools_admin02=Choose a Windows Administrative Tool to enable/disable it
@@ -173,13 +205,14 @@ tools_admin09=Note: Features ^(2^) and ^(3^) require to update group policy
 tools_admin10=Note: Feature ^(1^) requires to restart Windows Explorer
 tools_admin11=Note: Feature ^(5^) requires to reboot your computer
 
+
+
 tools_syscheck01=System Resource Checker
 tools_syscheck02=Choose an action
 tools_syscheck03=Run System Resource Scan and automatically repair all files having problems
 tools_syscheck04=Note: This feature requires to reboot your computer
 
-lang_menu01=Language
-lang_menu02=Choose your language
+
 
 rebootComputer01=Reboot Menu
 rebootComputer02=Choose an action

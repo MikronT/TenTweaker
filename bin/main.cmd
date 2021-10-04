@@ -41,10 +41,7 @@ exit /b
 :language_menu
   (
     %logo%
-    echo.text=%lang_lang_menu01%
-
-    echo.down=2
-    echo.text=^(^>^) %lang_lang_menu02%
+    echo.text=%lang_language%
 
     echo.right=2
     echo.text=^(1^) English
@@ -99,41 +96,41 @@ exit /b
 
   (
     %logo%
-    echo.text=%lang_menu_interface%
+    echo.text=%lang_main_interface%
 
     echo.right=2
-    echo.text=^(1^) %lang_menu_interface_desktop%
-    echo.text=^(2^) %lang_menu_interface_taskbar%
-    echo.text=^(3^) %lang_menu_interface_explorer%
-    echo.text=^(4^) %lang_menu_interface_input%
+    echo.text=^(1^) %lang_main_interface_desktop%
+    echo.text=^(2^) %lang_main_interface_taskbar%
+    echo.text=^(3^) %lang_main_interface_explorer%
+    echo.text=^(4^) %lang_main_interface_input%
     echo.left=2
 
     echo.down
-    echo.text=%lang_menu_tools%
+    echo.text=%lang_main_tools%
 
     echo.right=2
-    echo.text=^(A^) %lang_menu_tools_admin%
-    echo.text=^(B^) %lang_menu_tools_sfc%
+    echo.text=^(A^) %lang_main_tools_admin%
+    echo.text=^(B^) %lang_main_tools_sfc%
 
     echo.cursor1=61 10
-    echo.text=%lang_menu_programs%
+    echo.text=%lang_main_programs%
 
     echo.right=2
-    echo.text=^(5^) %lang_menu_programs_system%
-    echo.text=^(6^) %lang_menu_programs_office%
-    echo.text=^(7^) %lang_menu_programs_gpedit%
+    echo.text=^(5^) %lang_main_programs_system%
+    echo.text=^(6^) %lang_main_programs_office%
+    echo.text=^(7^) %lang_main_programs_gpedit%
     echo.left=2
 
     echo.down
-    echo.text=%lang_menu_services%
+    echo.text=%lang_main_services%
 
     echo.right=2
-    echo.text=^(8^) %lang_menu_services_wuaserv%
-    echo.text=^(9^) %lang_menu_services_sppsvc%
+    echo.text=^(8^) %lang_main_services_wuaserv%
+    echo.text=^(9^) %lang_main_services_sppsvc%
 
     echo.cursor1=3 20
-    echo.text=^(L^) %lang_menu_language%
-    echo.text=^(0^) %lang_menu_exit%
+    echo.text=^(L^) %lang_main_language%
+    echo.text=^(0^) %lang_main_exit%
     echo.down=2
     echo.text=^(^^^!^) %lang_eula%
     echo.left=2
