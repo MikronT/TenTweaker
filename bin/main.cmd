@@ -108,6 +108,10 @@ exit /b
     %item% L main_language
     %item% 0 main_exit
 
+    if "%error_reg%"         == "true" call :msg_error_reg main_menu
+    if "%key_hiddenOptions%" == "true" call :msg_warning_hiddenOptions
+    if "%update_available%"  == "true" call :msg_info_update
+
     echo.down=2
     %message% %message_info% eula
 
@@ -121,10 +125,6 @@ exit /b
     %title% main_services
     %item% 8 main_services_wuaserv
     %item% 9 main_services_sppsvc
-
-    if "%error_reg%"         == "true" call :msg_error_reg main_menu
-    if "%key_hiddenOptions%" == "true" call :msg_warning_hiddenOptions
-    if "%update_available%"  == "true" call :msg_info_update
 
     %input%
   )>%layout%
@@ -1358,9 +1358,11 @@ goto :tools_syscheck
 
   echo.right=4
   echo.text=%lang_msg_info_update2%
+
+  echo.right=4
   echo.text=github.com/MikronT/TenTweaker/releases/latest
 
-  echo.left=4
+  echo.left=8
 exit /b
 
 
