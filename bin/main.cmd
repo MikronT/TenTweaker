@@ -109,7 +109,7 @@ exit /b
     %item% 0 main_exit
 
     if "%error_reg%"         == "true" %message_error_registryInaccessible%
-    if "%key_hiddenOptions%" == "true" %message_info_hiddenOptions%
+    if "%key_hiddenOptions%" == "true" %message_warn_hiddenOptions%
     if "%update_available%"  == "true" %message_info_update%
 
 
@@ -1229,7 +1229,7 @@ echo.
 echo.
 echo.
 if "%key_hiddenOptions%" == "true" (
-  %message_info_hiddenOptions%
+  %message_warn_hiddenOptions%
        %module_choice% /c 123456XYZ0 /m "> "
 ) else %module_choice% /c 123XY0 /m "> "
 set command=%errorLevel%

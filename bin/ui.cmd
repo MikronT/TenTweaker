@@ -45,7 +45,7 @@ exit /b !errorLevel!
 
   set message=call !exec! :message
   set message_info_disclaimer=call !exec! :message_info_disclaimer
-  set message_info_hiddenOptions=call !exec! :message_info_hiddenOptions
+  set message_warn_hiddenOptions=call !exec! :message_warn_hiddenOptions
   set message_info_update=call !exec! :message_info_update
   set message_error_keys=call !exec! :message_error_keys
   set message_error_office=call !exec! :message_error_office
@@ -274,18 +274,7 @@ exit /b
 
 :message_info_disclaimer
   echo.down=2
-  %message% %message_info% eula
-exit /b
-
-
-
-
-
-
-
-:message_info_hiddenOptions
-  echo.down=2
-  %message% %message_info% msg_warning_hiddenOptions
+  %message% %message_info% message_info_disclaimer
 exit /b
 
 
@@ -296,10 +285,10 @@ exit /b
 
 :message_info_update
   echo.down=2
-  %message% %message_info% msg_info_update1
+  %message% %message_info% message_info_update1
 
   echo.right=4
-  echo.text=%lang_msg_info_update2%
+  echo.text=%lang_message_info_update2%
 
   echo.right=4
   echo.text=github.com/MikronT/TenTweaker/releases/latest
@@ -313,9 +302,20 @@ exit /b
 
 
 
+:message_warn_hiddenOptions
+  echo.down=2
+  %message% %message_info% message_warn_hiddenOptions
+exit /b
+
+
+
+
+
+
+
 :message_error_keys
   echo.down=2
-  %message% %message_error% msg_error_identicalKeys
+  %message% %message_error% message_error_keys
 exit /b
 
 
@@ -326,7 +326,7 @@ exit /b
 
 :message_error_office
   echo.down=2
-  %message% %message_error% msg_error_office
+  %message% %message_error% message_error_office
 exit /b
 
 
@@ -342,5 +342,4 @@ exit /b
   echo.right=4
   echo.text=%lang_msg_error_reg2%
   echo.text=%lang_msg_error_reg3%
-  echo.text=%lang_msg_error_reg4%
 exit /b

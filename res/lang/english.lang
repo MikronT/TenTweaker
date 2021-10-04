@@ -32,8 +32,6 @@ menu_updateGroupPolicy=Update group policy
 logo1=Version %program_version%
 logo2=Check for other programs here:
 
-eula=The author is not responsible for any possible damage to your computer
-
 
 
 language=Language
@@ -53,7 +51,7 @@ main_programs_office=Setup Office Professional+ 2016
 main_programs_gpedit=Setup/restore gpedit.msc
 
 main_tools=Tools
-main_tools_admin=Administrative tools
+main_tools_admin=Admin tools
 main_tools_sfc=System Resource Checker
 
 main_services=Services
@@ -222,16 +220,17 @@ rebootComputer04=Rebooting...
 
 
 
-msg_info_update1=The update for %program_name% is available now
-msg_info_update2=Download it here:
+message_info_disclaimer=The developer is not responsible for any possible damage to your computer
 
-msg_warning_hiddenOptions=Warning: Hidden options are shown. Use them at your own risk
+message_info_update1=An update for %program_name% is available
+message_info_update2=Download it now:
 
-msg_error_identicalKeys=There can't be 2 identical key combinations
+message_warn_hiddenOptions=Use hidden options at your own risk
 
-msg_error_office=Download error: Server doesn't respond or there are no Internet connection
+message_error_keys=There cannot be 2 identical key combinations
 
-msg_error_reg1=Registry Tools are disabled
-msg_error_reg2=If you see [error], this feature state cannot be shown and changed
-msg_error_reg3=To fix this you must enable Registry Tools in ^(A^) menu ^(with hidden options^)
-msg_error_reg4=Please, go back to the main menu and check an error message there
+message_error_office=Server did not respond or no Internet connection
+
+message_error_reg1=Registry tools are disabled in system
+message_error_reg2=If you see [error], this setting cannot be shown and changed
+message_error_reg3=You should go to Admin tools menu and enable them ^(hidden options must be enabled^)
