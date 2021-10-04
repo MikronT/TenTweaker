@@ -41,15 +41,15 @@ exit /b
 :language_menu
   (
     %logo%
-    %title% "%lang_language%" "%lang_language_hint%"
-    echo.text=^(1^) English
-    echo.text=^(2^) Português
-    echo.text=^(3^) Русский
-    echo.text=^(4^) Українська
+    %title% language language_hint
+    %item% 1 language_english
+    %item% 2 language_portuguese
+    %item% 3 language_russian
+    %item% 4 language_ukrainian
 
     if "%1" NEQ "force" (
-      echo.down
-      echo.text=^(0^) %lang_menu_goBack%
+      echo.down=2
+      %item% 0 menu_goBack
     )
 
     %input%
@@ -93,34 +93,34 @@ exit /b
 
   (
     %logo%
-    %title% %lang_main_interface%
-    echo.text=^(1^) %lang_main_interface_desktop%
-    echo.text=^(2^) %lang_main_interface_taskbar%
-    echo.text=^(3^) %lang_main_interface_explorer%
-    echo.text=^(4^) %lang_main_interface_input%
+    %title% main_interface
+    %item% 1 main_interface_desktop
+    %item% 2 main_interface_taskbar
+    %item% 3 main_interface_explorer
+    %item% 4 main_interface_input
 
     echo.down=2
-    %title% %lang_main_tools%
-    echo.text=^(A^) %lang_main_tools_admin%
-    echo.text=^(B^) %lang_main_tools_sfc%
+    %title% main_tools
+    %item% A main_tools_admin
+    %item% B main_tools_sfc
 
     echo.down=2
-    echo.text=^(L^) %lang_main_language%
-    echo.text=^(0^) %lang_main_exit%
+    %item% L main_language
+    %item% 0 main_exit
 
     echo.down=2
     echo.text=^(^^^!^) %lang_eula%
 
     %column_right%
-    %title% %lang_main_programs%
-    echo.text=^(5^) %lang_main_programs_system%
-    echo.text=^(6^) %lang_main_programs_office%
-    echo.text=^(7^) %lang_main_programs_gpedit%
+    %title% main_programs
+    %item% 5 main_programs_system
+    %item% 6 main_programs_office
+    %item% 7 main_programs_gpedit
 
     echo.down=2
-    %title% %lang_main_services%
-    echo.text=^(8^) %lang_main_services_wuaserv%
-    echo.text=^(9^) %lang_main_services_sppsvc%
+    %title% main_services
+    %item% 8 main_services_wuaserv
+    %item% 9 main_services_sppsvc
 
     %input%
   )>%layout%
