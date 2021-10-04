@@ -109,7 +109,7 @@ exit /b
     %item% 0 main_exit
 
     echo.down=2
-    echo.text=^(^^^!^) %lang_eula%
+    %message% %message_info% eula
 
     %column_right%
     %title% main_programs

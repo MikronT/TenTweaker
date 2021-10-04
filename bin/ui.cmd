@@ -16,11 +16,17 @@ exit /b !errorLevel!
 
 
   set color_default=07
+  set color_logo=0f
+  set color_title=%color_logo%
+  set color_subtitle=%color_default%
+  set color_accent=0b
+  set color_info=%color_default%
+  set color_warn=%color_title%
+  set color_error=0c
 
-  set color_title=0b
-  set color_subtitle=0f
-
-  set color_accent=0e
+  set message_info=info
+  set message_warn=warning
+  set message_error=error
 
 
 
@@ -30,9 +36,12 @@ exit /b !errorLevel!
   set align_left=call !exec! :align_left
   set align_right=call !exec! :align_right
 
+
+
   set logo=call !exec! :logo
   set title=call !exec! :title
   set item=call !exec! :item
+  set message=call !exec! :message
   set input=call !exec! :input
 
 
@@ -87,6 +96,14 @@ exit /b
 
 
 
+
+
+
+
+
+
+
+
 :logo
   title [MikronT] %program_name%
 
@@ -99,11 +116,12 @@ exit /b
 
 
   echo.cursor1=3 2
+  echo.color=%color_accent%
   echo.text=[       ] ==^>
 
   echo.up
   echo.right
-  echo.color=0e
+  echo.color=%color_logo%
   echo.text=MikronT
 
   echo.up
@@ -112,16 +130,17 @@ exit /b
 
 
   echo.cursor1=17 3
-  echo.color=0f
+  echo.color=%color_default%
   echo.text=%lang_logo1%
 
 
   echo.cursor1=2 4
+  echo.color=%color_logo%
   echo.text=━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
   echo.cursor1=4 5
-  echo.color=0b
+  echo.color=%color_default%
   echo.text=%lang_logo2%
 
   echo.cursor1=8 6
@@ -146,15 +165,14 @@ exit /b
 
 
 
-  echo.color=0f
+  echo.color=%color_title%
   call echo.text=%%lang_!arg_title!%%
 
   if "!arg_sub!" NEQ "" (
-    echo.color=07
+    echo.color=%color_subtitle%
     call echo.text=%%lang_!arg_sub!%%
   )
 
-  echo.color=0b
   echo.down
 exit /b
 
@@ -175,12 +193,44 @@ exit /b
 
 
 
-  echo.color=0f
+  echo.color=%color_accent%
   echo.text=^(!arg_option!^)
 
   echo.up
   echo.right=4
-  echo.color=0b
+  echo.color=%color_default%
+  call echo.text=%%lang_!arg_name!%%
+
+  echo.left=4
+exit /b
+
+
+
+
+
+
+
+:message
+  set arg_level=%1
+  if "!arg_level!" NEQ "" set arg_level=!arg_level:"=!
+  if "!arg_level!" NEQ "%message_info%" if "!arg_level!" NEQ "%message_warn%" if "!arg_level!" NEQ "%message_error%" exit /b
+
+  set arg_msg=%2
+  if "!arg_msg!" NEQ "" set arg_msg=!arg_msg:"=!
+  if "!arg_msg!" ==  "" exit /b
+
+
+
+  echo.color=%color_accent%
+         if "!arg_level!" == "%message_info%" ( echo.text=^(i^)
+  ) else if "!arg_level!" == "%message_warn%" ( echo.text=^(^^^!^)
+  ) else if "!arg_level!" == "%message_error%"  echo.text=^(E^)
+
+  echo.up
+  echo.right=4
+         if "!arg_level!" == "%message_info%" ( echo.color=%color_info%
+  ) else if "!arg_level!" == "%message_warn%" ( echo.color=%color_warn%
+  ) else if "!arg_level!" == "%message_error%"  echo.color=%color_error%
   call echo.text=%%lang_!arg_name!%%
 
   echo.left=4
@@ -194,6 +244,6 @@ exit /b
 
 :input
   echo.cursor1=1 39
-  echo.color=0f
+  echo.color=%color_accent%
   echo.text=^>
 exit /b
