@@ -108,7 +108,14 @@ exit /b
     echo.text=^(A^) %lang_main_tools_admin%
     echo.text=^(B^) %lang_main_tools_sfc%
 
-    echo.cursor1=61 10
+    echo.down=2
+    echo.text=^(L^) %lang_main_language%
+    echo.text=^(0^) %lang_main_exit%
+
+    echo.down=2
+    echo.text=^(^^^!^) %lang_eula%
+
+    %column_right%
     echo.text=%lang_main_programs%
     echo.right=2
     echo.text=^(5^) %lang_main_programs_system%
@@ -122,11 +129,6 @@ exit /b
     echo.text=^(8^) %lang_main_services_wuaserv%
     echo.text=^(9^) %lang_main_services_sppsvc%
 
-    echo.cursor1=3 20
-    echo.text=^(L^) %lang_main_language%
-    echo.text=^(0^) %lang_main_exit%
-    echo.down=2
-    echo.text=^(^^^!^) %lang_eula%
     %input%
   )>%layout%
   rem if "%error_reg%"         == "true" call :msg_error_reg main_menu

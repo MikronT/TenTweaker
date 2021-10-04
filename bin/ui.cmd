@@ -15,6 +15,12 @@ exit /b !errorLevel!
 
 
 
+  set column_left=call !exec! :column_left
+  set column_right=call !exec! :column_right
+
+  set align_left=call !exec! :align_left
+  set align_right=call !exec! :align_right
+
   set logo=call !exec! :logo
   set input=call !exec! :input
 
@@ -30,6 +36,39 @@ exit /b
 
 
 
+
+
+
+
+
+
+
+:column_left
+  echo.cursor1=1 10
+exit /b
+
+
+
+:column_right
+  echo.cursor1=61 10
+exit /b
+
+
+
+
+
+
+
+:align_left
+  echo.left=120
+exit /b
+
+
+
+:align_right
+  %align_left%
+  echo.right=60
+exit /b
 
 
 
@@ -63,7 +102,7 @@ exit /b
   echo.cursor1=8 6
   echo.text=github.com/MikronT
 
-  echo.cursor1=1 10
+  %column_left%
 exit /b
 
 
@@ -73,7 +112,7 @@ exit /b
 
 
 :input
-  echo.left=120
+  %align_left%
   echo.down=3
   echo.text=^>
 exit /b
