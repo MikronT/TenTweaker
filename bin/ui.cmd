@@ -22,6 +22,7 @@ exit /b !errorLevel!
   set align_right=call !exec! :align_right
 
   set logo=call !exec! :logo
+  set title=call !exec! :title
   set input=call !exec! :input
 
 
@@ -111,8 +112,35 @@ exit /b
 
 
 
+:title
+  set arg_title=%1
+  if "!arg_title!" NEQ "" set arg_title=!arg_title:"=!
+  if "!arg_title!" ==  "" exit /b
+
+  set arg_sub=%2
+  if "!arg_sub!" NEQ "" set arg_sub=!arg_sub:"=!
+
+
+
+  echo.color=0f
+  echo.text=!arg_title!
+
+  if "!arg_sub!" NEQ "" (
+    echo.color=0a
+    echo.text=!arg_sub!
+  )
+
+  echo.color=0b
+  echo.down
+exit /b
+
+
+
+
+
+
+
 :input
-  %align_left%
-  echo.down=3
+  echo.cursor1=1 39
   echo.text=^>
 exit /b

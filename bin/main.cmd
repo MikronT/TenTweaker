@@ -41,9 +41,7 @@ exit /b
 :language_menu
   (
     %logo%
-    echo.text=%lang_language%
-
-    echo.right=2
+    %title% "%lang_language%" "%lang_language_hint%"
     echo.text=^(1^) English
     echo.text=^(2^) Português
     echo.text=^(3^) Русский
@@ -53,6 +51,7 @@ exit /b
       echo.down
       echo.text=^(0^) %lang_menu_goBack%
     )
+
     %input%
   )>%layout%
   %module_cursor%
@@ -94,17 +93,14 @@ exit /b
 
   (
     %logo%
-    echo.text=%lang_main_interface%
-    echo.right=2
+    %title% %lang_main_interface%
     echo.text=^(1^) %lang_main_interface_desktop%
     echo.text=^(2^) %lang_main_interface_taskbar%
     echo.text=^(3^) %lang_main_interface_explorer%
     echo.text=^(4^) %lang_main_interface_input%
-    echo.left=2
 
-    echo.down
-    echo.text=%lang_main_tools%
-    echo.right=2
+    echo.down=2
+    %title% %lang_main_tools%
     echo.text=^(A^) %lang_main_tools_admin%
     echo.text=^(B^) %lang_main_tools_sfc%
 
@@ -116,16 +112,13 @@ exit /b
     echo.text=^(^^^!^) %lang_eula%
 
     %column_right%
-    echo.text=%lang_main_programs%
-    echo.right=2
+    %title% %lang_main_programs%
     echo.text=^(5^) %lang_main_programs_system%
     echo.text=^(6^) %lang_main_programs_office%
     echo.text=^(7^) %lang_main_programs_gpedit%
-    echo.left=2
 
-    echo.down
-    echo.text=%lang_main_services%
-    echo.right=2
+    echo.down=2
+    %title% %lang_main_services%
     echo.text=^(8^) %lang_main_services_wuaserv%
     echo.text=^(9^) %lang_main_services_sppsvc%
 
