@@ -97,7 +97,6 @@ exit /b
   (
     %logo%
     echo.text=%lang_main_interface%
-
     echo.right=2
     echo.text=^(1^) %lang_main_interface_desktop%
     echo.text=^(2^) %lang_main_interface_taskbar%
@@ -107,14 +106,12 @@ exit /b
 
     echo.down
     echo.text=%lang_main_tools%
-
     echo.right=2
     echo.text=^(A^) %lang_main_tools_admin%
     echo.text=^(B^) %lang_main_tools_sfc%
 
     echo.cursor1=61 10
     echo.text=%lang_main_programs%
-
     echo.right=2
     echo.text=^(5^) %lang_main_programs_system%
     echo.text=^(6^) %lang_main_programs_office%
@@ -123,7 +120,6 @@ exit /b
 
     echo.down
     echo.text=%lang_main_services%
-
     echo.right=2
     echo.text=^(8^) %lang_main_services_wuaserv%
     echo.text=^(9^) %lang_main_services_sppsvc%
