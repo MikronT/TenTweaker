@@ -24,10 +24,10 @@ sBuilder_never=never
 
 
 
-menuItem_goBack=Go back
-menuItem_rebootComputer=Reboot computer
-menuItem_restartExplorer=Restart Windows Explorer
-menuItem_updateGroupPolicy=Update group policy
+menu_goBack=Go back
+menu_rebootComputer=Reboot computer
+menu_restartExplorer=Restart Windows Explorer
+menu_updateGroupPolicy=Update group policy
 
 logo1=Version %program_version%
 logo2=Check for other programs here:

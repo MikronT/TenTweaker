@@ -1,7 +1,7 @@
-menuItem_goBack=Voltar
-menuItem_rebootComputer=Reiniciar o Computador
-menuItem_restartExplorer=Reiniciar Windows Explorer
-menuItem_updateGroupPolicy=Atualizar política de grupo
+menu_goBack=Voltar
+menu_rebootComputer=Reiniciar o Computador
+menu_restartExplorer=Reiniciar Windows Explorer
+menu_updateGroupPolicy=Atualizar política de grupo
 
 sBuilder_error=[erro]            
 sBuilder_enabled=Ativado           

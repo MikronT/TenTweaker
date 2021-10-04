@@ -51,7 +51,7 @@ exit /b
 
     if "%1" NEQ "force" (
       echo.down
-      echo.text=^(0^) %lang_menuItem_goBack%
+      echo.text=^(0^) %lang_menu_goBack%
     )
     echo.left=2
 
@@ -155,7 +155,7 @@ exit /b
   ) else if "%command%" == "10" ( call :tools_admin
   ) else if "%command%" == "11" ( call :tools_syscheck
   ) else if "%command%" == "12" ( call :language_menu
-  ) else if "%command%" == "13" ( rd /s /q temp & exit )
+  ) else if "%command%" == "13"   exit
 goto :main_menu
 
 
@@ -217,9 +217,9 @@ echo.    %sBuilder_text%
 
 echo.
 echo.    %lang_interface_desktop09%
-echo.    ^(Y^) %lang_menuItem_restartExplorer%
+echo.    ^(Y^) %lang_menu_restartExplorer%
 echo.
-echo.    ^(0^) %lang_menuItem_goBack%
+echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
@@ -311,9 +311,9 @@ echo.    %sBuilder_text%
 
 echo.
 echo.    %lang_interface_taskbar08%
-echo.    ^(Y^) %lang_menuItem_restartExplorer%
+echo.    ^(Y^) %lang_menu_restartExplorer%
 echo.
-echo.    ^(0^) %lang_menuItem_goBack%
+echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
@@ -470,9 +470,9 @@ echo.    %sBuilder_text%
 
 echo.
 echo.    %lang_interface_explorer22%
-echo.    ^(Y^) %lang_menuItem_restartExplorer%
+echo.    ^(Y^) %lang_menu_restartExplorer%
 echo.
-echo.    ^(0^) %lang_menuItem_goBack%
+echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
@@ -633,7 +633,7 @@ set sBuilder_text=^(6^) %lang_interface_input09%
 echo.    %sBuilder_text%
 
 echo.
-echo.    ^(0^) %lang_menuItem_goBack%
+echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
@@ -860,7 +860,7 @@ echo.
 echo.    ^(V^) %lang_programs_system33%
 echo.    ^(W^) %lang_programs_system34%
 echo.
-echo.    ^(0^) %lang_menuItem_goBack%
+echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
@@ -941,9 +941,9 @@ echo.^(^>^) %lang_programs_office02%
 echo.    ^(1^) %lang_programs_office03%
 echo.
 echo.    %lang_programs_office04%
-echo.    ^(Z^) %lang_menuItem_rebootComputer%
+echo.    ^(Z^) %lang_menu_rebootComputer%
 echo.
-echo.    ^(0^) %lang_menuItem_goBack%
+echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
@@ -1021,7 +1021,7 @@ set sBuilder_text=^(1^) %lang_programs_gpeditMSC03%
 echo.    %sBuilder_text%
 
 echo.
-echo.    ^(0^) %lang_menuItem_goBack%
+echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
@@ -1078,7 +1078,7 @@ set sBuilder_text=^(2^) %lang_services_wuaserv04%
 echo.    %sBuilder_text%
 
 echo.
-echo.    ^(0^) %lang_menuItem_goBack%
+echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
@@ -1144,9 +1144,9 @@ echo.    %sBuilder_text%
 echo.
 echo.    %lang_services_sppsvc04%
 echo.    %lang_services_sppsvc05%
-echo.    ^(Z^) %lang_menuItem_rebootComputer%
+echo.    ^(Z^) %lang_menu_rebootComputer%
 echo.
-echo.    ^(0^) %lang_menuItem_goBack%
+echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
@@ -1232,17 +1232,17 @@ echo.    %sBuilder_text%
 
 echo.
 echo.    %lang_tools_admin09%
-echo.    ^(X^) %lang_menuItem_updateGroupPolicy%
+echo.    ^(X^) %lang_menu_updateGroupPolicy%
 echo.
 echo.    %lang_tools_admin10%
-echo.    ^(Y^) %lang_menuItem_restartExplorer%
+echo.    ^(Y^) %lang_menu_restartExplorer%
 echo.
 if "%key_hiddenOptions%" == "true" (
   echo.    %lang_tools_admin11%
-  echo.    ^(Z^) %lang_menuItem_rebootComputer%
+  echo.    ^(Z^) %lang_menu_rebootComputer%
   echo.
 )
-echo.    ^(0^) %lang_menuItem_goBack%
+echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
@@ -1321,9 +1321,9 @@ echo.^(^>^) %lang_tools_syscheck02%
 echo.    ^(1^) %lang_tools_syscheck03%
 echo.
 echo.    %lang_tools_syscheck04%
-echo.    ^(Z^) %lang_menuItem_rebootComputer%
+echo.    ^(Z^) %lang_menu_rebootComputer%
 echo.
-echo.    ^(0^) %lang_menuItem_goBack%
+echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.
@@ -1426,7 +1426,7 @@ echo.
 echo.^(^>^) %lang_rebootComputer02%
 echo.    ^(1^) %lang_rebootComputer03%
 echo.
-echo.    ^(0^) %lang_menuItem_goBack%
+echo.    ^(0^) %lang_menu_goBack%
 echo.
 echo.
 echo.

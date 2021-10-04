@@ -1,7 +1,7 @@
-menuItem_goBack=Назад
-menuItem_rebootComputer=Перезавантажити комп'ютер
-menuItem_restartExplorer=Перезавантажити Провідник Windows
-menuItem_updateGroupPolicy=Оновити групову політику
+menu_goBack=Назад
+menu_rebootComputer=Перезавантажити комп'ютер
+menu_restartExplorer=Перезавантажити Провідник Windows
+menu_updateGroupPolicy=Оновити групову політику
 
 sBuilder_error=[помилка]         
 sBuilder_enabled=увімкнено         
