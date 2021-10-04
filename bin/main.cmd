@@ -89,7 +89,7 @@ exit /b
   %getState%
   %settings_save%
 
-  if exist temp\return_update_available set update_available=true
+  if exist "temp\return_update_available" set update_available=true
 
   (
     %logo%
@@ -122,11 +122,12 @@ exit /b
     %item% 8 main_services_wuaserv
     %item% 9 main_services_sppsvc
 
+    if "%error_reg%"         == "true" call :msg_error_reg main_menu
+    if "%key_hiddenOptions%" == "true" call :msg_warning_hiddenOptions
+    if "%update_available%"  == "true" call :msg_info_update
+
     %input%
   )>%layout%
-  rem if "%error_reg%"         == "true" call :msg_error_reg main_menu
-  rem if "%key_hiddenOptions%" == "true" call :msg_warning_hiddenOptions
-  rem if "%update_available%"  == "true" call :msg_info_update
   %module_cursor%
   %module_choice% /c 123456789ABL0
   set command=%errorLevel%
@@ -1352,10 +1353,14 @@ goto :tools_syscheck
 
 
 :msg_info_update
-  echo.    ^(^^^!^) %lang_msg_info_update1%
-  echo.        %lang_msg_info_update2%
-  echo.            github.com/MikronT/TenTweaker/releases/latest
-  echo.
+  echo.down=3
+  %message% %message_info% msg_info_update1
+
+  echo.right=4
+  echo.text=%lang_msg_info_update2%
+  echo.text=github.com/MikronT/TenTweaker/releases/latest
+
+  echo.left=4
 exit /b
 
 

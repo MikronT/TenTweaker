@@ -174,6 +174,7 @@ exit /b
   )
 
   echo.down
+  echo.color=%color_default%
 exit /b
 
 
@@ -202,6 +203,7 @@ exit /b
   call echo.text=%%lang_!arg_name!%%
 
   echo.left=4
+  echo.color=%color_default%
 exit /b
 
 
@@ -231,9 +233,10 @@ exit /b
          if "!arg_level!" == "%message_info%" ( echo.color=%color_info%
   ) else if "!arg_level!" == "%message_warn%" ( echo.color=%color_warn%
   ) else if "!arg_level!" == "%message_error%"  echo.color=%color_error%
-  call echo.text=%%lang_!arg_name!%%
+  call echo.text=%%lang_!arg_msg!%%
 
   echo.left=4
+  echo.color=%color_default%
 exit /b
 
 
