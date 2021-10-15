@@ -164,87 +164,61 @@ goto :main_menu
 :interface_desktop
   %getState% interface_desktop
 
-%logo%
-echo.^(i^) %lang_interface_desktop01%
-echo.
-echo.
-echo.^(^>^) %lang_interface_desktop02%
+  (
+    %logo%
+    %title% interface_desktop interface_desktop_hint
+    %item% 1 interface_desktop_thisPC  %interface_desktop_thisPC%
+    %item% 2 interface_desktop_userDir %interface_desktop_userFolder%
+    %item% 3 interface_desktop_trash   %interface_desktop_trash%
+    %item% 4 interface_desktop_net     %interface_desktop_net%
+    %item% 5 interface_desktop_control %interface_desktop_control%
 
-set sBuilder_text=^(1^) %lang_interface_desktop03%
-       if "%interface_desktop_thisPC%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_desktop_thisPC%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                               %sBuilder_build% %lang_sBuilder_error%
-%sBuilder_build%    ^(4^) %lang_interface_desktop04%
-       if "%interface_desktop_userFolder%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_desktop_userFolder%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                   %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
+    echo.down=2
+    %message% %message_info% interface_desktop_note
+    %item% Y menu_restartExplorer
+    %item% 0 main_exit
 
-set sBuilder_text=^(2^) %lang_interface_desktop05%
-       if "%interface_desktop_trash%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_desktop_trash%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                              %sBuilder_build% %lang_sBuilder_error%
-%sBuilder_build%    ^(5^) %lang_interface_desktop06%
-       if "%interface_desktop_net%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_desktop_net%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                            %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
 
-set sBuilder_text=^(3^) %lang_interface_desktop07%
-       if "%interface_desktop_control%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_desktop_control%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
+    %column_right%
+    echo.down=3
+    %item% 6 interface_desktop_logonBlur %interface_desktop_logonBlur%
 
-echo.
-
-set sBuilder_text=^(6^) %lang_interface_desktop08%
-       if "%interface_desktop_logonBlur%" == "enabled"  ( %sBuilder_build% %lang_sBuilder_enabled%
-) else if "%interface_desktop_logonBlur%" == "disabled" ( %sBuilder_build% %lang_sBuilder_disabled%
-) else                                                    %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
-
-echo.
-echo.    %lang_interface_desktop09%
-echo.    ^(Y^) %lang_menu_restartExplorer%
-echo.
-echo.    ^(0^) %lang_menu_goBack%
-echo.
-echo.
-echo.
-%module_choice% /c 123456Y0 /m "> "
-set command=%errorLevel%
+    %input%
+  )>%layout%
+  %module_cursor%
+  %module_choice% /c 123456Y0
+  set command=%errorLevel%
 
 
 
-if "%error_reg%" NEQ "true" (
-  if "%command%" == "1" (
-    if "%interface_desktop_thisPC%"     == "hidden"  ( set temp_cmd=0 ) else set temp_cmd=1
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D} /t REG_DWORD /d !temp_cmd! /f
+  if "%error_reg%" NEQ "true" (
+           if "%command%" == "1" (
+      if "%interface_desktop_thisPC%"     == "hidden"  ( set temp_cmd=0 ) else set temp_cmd=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D} /t REG_DWORD /d !temp_cmd! /f
 
-  ) else if "%command%" == "2" (
-    if "%interface_desktop_trash%"      == "hidden"  ( set temp_cmd=0 ) else set temp_cmd=1
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {645FF040-5081-101B-9F08-00AA002F954E} /t REG_DWORD /d !temp_cmd! /f
+    ) else if "%command%" == "2" (
+      if "%interface_desktop_trash%"      == "hidden"  ( set temp_cmd=0 ) else set temp_cmd=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {645FF040-5081-101B-9F08-00AA002F954E} /t REG_DWORD /d !temp_cmd! /f
 
-  ) else if "%command%" == "3" (
-    if "%interface_desktop_control%"    == "hidden"  ( set temp_cmd=0 ) else set temp_cmd=1
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0} /t REG_DWORD /d !temp_cmd! /f
+    ) else if "%command%" == "3" (
+      if "%interface_desktop_control%"    == "hidden"  ( set temp_cmd=0 ) else set temp_cmd=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0} /t REG_DWORD /d !temp_cmd! /f
 
-  ) else if "%command%" == "4" (
-    if "%interface_desktop_userFolder%" == "hidden"  ( set temp_cmd=0 ) else set temp_cmd=1
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee} /t REG_DWORD /d !temp_cmd! /f
+    ) else if "%command%" == "4" (
+      if "%interface_desktop_userFolder%" == "hidden"  ( set temp_cmd=0 ) else set temp_cmd=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee} /t REG_DWORD /d !temp_cmd! /f
 
-  ) else if "%command%" == "5" (
-    if "%interface_desktop_net%"        == "hidden"  ( set temp_cmd=0 ) else set temp_cmd=1
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C} /t REG_DWORD /d !temp_cmd! /f
+    ) else if "%command%" == "5" (
+      if "%interface_desktop_net%"        == "hidden"  ( set temp_cmd=0 ) else set temp_cmd=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C} /t REG_DWORD /d !temp_cmd! /f
 
-  ) else if "%command%" == "6" (
-    if "%interface_desktop_logonBlur%"  == "disabled" ( set temp_cmd=0 ) else set temp_cmd=1
-    reg add HKLM\Software\Policies\Microsoft\Windows\System /v DisableAcrylicBackgroundOnLogon /t REG_DWORD /d !temp_cmd! /f
-  )
-)>nul 2>nul
-if "%command%" == "7" ( %restartExplorer%
-) else if "%command%" == "8" exit /b
+    ) else if "%command%" == "6" (
+      if "%interface_desktop_logonBlur%"  == "disabled" ( set temp_cmd=0 ) else set temp_cmd=1
+      reg add HKLM\Software\Policies\Microsoft\Windows\System /v DisableAcrylicBackgroundOnLogon /t REG_DWORD /d !temp_cmd! /f
+    )
+  )>nul 2>nul
+         if "%command%" == "7" ( %restartExplorer%
+  ) else if "%command%" == "8" exit /b
 goto :interface_desktop
 
 
