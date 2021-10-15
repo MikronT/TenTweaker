@@ -31,7 +31,9 @@ exit /b !errorLevel!
 
 
   set column_left=call !exec! :column_left
+  set column_left_values=call !exec! :column_left_values
   set column_right=call !exec! :column_right
+  set column_right_values=call !exec! :column_right_values
 
   set align_left=call !exec! :align_left
   set align_right=call !exec! :align_right
@@ -74,8 +76,20 @@ exit /b
 
 
 
+:column_left_values
+  echo.cursor1=50 10
+exit /b
+
+
+
 :column_right
   echo.cursor1=61 10
+exit /b
+
+
+
+:column_right_values
+  echo.cursor1=110 10
 exit /b
 
 
