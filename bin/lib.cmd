@@ -156,11 +156,11 @@ if %errorLevel% GEQ 1 (
   set interface_desktop_net=error
   set interface_desktop_logonBlur=error
 
-  set interface_taskbar_people=error
   set interface_taskbar_winXcmd=error
   set interface_taskbar_taskView=error
   set interface_taskbar_small=error
   set interface_taskbar_combined=error
+  set interface_taskbar_people=error
 
   set interface_explorer_extensions=error
   set interface_explorer_hidden=error
@@ -233,9 +233,6 @@ if "%1" == "interface_desktop" (
 
 
 if "%1" == "interface_taskbar" (
-  set interface_taskbar_people=hidden
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand') do if "%%i" == "0x1" set interface_taskbar_people=shown
-
   set interface_taskbar_winXcmd=ps
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX') do if "%%i" == "0x1" set interface_taskbar_winXcmd=cmd
 
@@ -250,6 +247,9 @@ if "%1" == "interface_taskbar" (
     if "%%i" == "0x1" set interface_taskbar_combined=ifFull
     if "%%i" == "0x2" set interface_taskbar_combined=never
   )
+
+  set interface_taskbar_people=hidden
+  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand') do if "%%i" == "0x1" set interface_taskbar_people=shown
 )>nul 2>nul
 
 

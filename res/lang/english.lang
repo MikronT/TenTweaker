@@ -24,6 +24,7 @@ value_never=never
 
 
 
+menu_hint=Choose a preference from the list to change it
 menu_goBack=Go back
 menu_rebootComputer=Reboot computer
 menu_restartExplorer=Restart Windows Explorer
@@ -64,7 +65,6 @@ main_exit=Exit
 
 
 interface_desktop=Desktop
-interface_desktop_hint=Choose a preference from the list to change it
 interface_desktop_thisPC=This PC
 interface_desktop_userDir=User Folder
 interface_desktop_trash=Recycle Bin
@@ -76,7 +76,6 @@ interface_desktop_note=These features require to restart Windows Explorer
 
 
 interface_taskbar=Windows Task Bar
-interface_taskbar_hint=Choose a preference from the list to change it
 interface_taskbar_small=Small icons
 interface_taskbar_winXcmd=Command prompt on Win+X
 interface_taskbar_combined=Buttons combine
@@ -86,8 +85,7 @@ interface_taskbar_note=Note: These features require to restart Windows Explorer
 
 
 
-interface_explorer01=Windows Explorer
-interface_explorer02=Choose an action to configure Windows Explorer
+interface_explorer=Windows Explorer
 interface_explorer03=File extensions
 interface_explorer04=Ribbon ^(option bar^)
 interface_explorer05=Hidden files
