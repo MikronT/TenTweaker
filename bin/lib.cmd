@@ -150,16 +150,16 @@ reg query HKCU >nul 2>nul
 
 if %errorLevel% GEQ 1 (
   set interface_desktop_thisPC=error
-  set interface_desktop_trash=error
-  set interface_desktop_control=error
   set interface_desktop_userDir=error
+  set interface_desktop_trash=error
   set interface_desktop_net=error
+  set interface_desktop_control=error
   set interface_desktop_logonBlur=error
 
-  set interface_taskbar_winXcmd=error
-  set interface_taskbar_taskView=error
   set interface_taskbar_small=error
   set interface_taskbar_combined=error
+  set interface_taskbar_winXcmd=error
+  set interface_taskbar_taskView=error
   set interface_taskbar_people=error
 
   set interface_explorer_extensions=error
@@ -168,16 +168,16 @@ if %errorLevel% GEQ 1 (
   set interface_explorer_emptyDrives=error
   set interface_explorer_conflicts=error
   set interface_explorer_ribbon=error
-  set interface_explorer_expand=error
   set interface_explorer_statusbar=error
   set interface_explorer_infoTip=error
+  set interface_explorer_expand=error
+  set interface_explorer_thisPC_3DObjects=error
   set interface_explorer_thisPC_desktop=error
   set interface_explorer_thisPC_documents=error
   set interface_explorer_thisPC_downloads=error
   set interface_explorer_thisPC_music=error
   set interface_explorer_thisPC_pictures=error
   set interface_explorer_thisPC_videos=error
-  set interface_explorer_thisPC_3DObjects=error
   set interface_explorer_oneDrive=error
   set interface_explorer_autoType=error
 
@@ -191,7 +191,7 @@ if %errorLevel% GEQ 1 (
 
   set services_wuaserv_center=error
 
-  set services_sppsvc_sve=error
+  set services_sppsvc_svc=error
 
   set tools_admin_taskMgr=error
   set tools_admin_control=error
@@ -484,8 +484,8 @@ if "%1" == "services_wuaserv" (
 
 
 if "%1" == "services_sppsvc" (
-  set services_sppsvc_sve=enabled
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKLM\System\ControlSet001\Services\sppsvc /v Start') do if "%%i" == "0x4" set services_sppsvc_sve=disabled
+  set services_sppsvc_svc=enabled
+  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKLM\System\ControlSet001\Services\sppsvc /v Start') do if "%%i" == "0x4" set services_sppsvc_svc=disabled
 )>nul 2>nul
 
 

@@ -968,8 +968,8 @@ echo.
 echo.^(^>^) %lang_services_sppsvc02%
 
 set sBuilder_text=^(1^) %lang_services_sppsvc03%
-       if "%services_sppsvc_sve%" == "enabled"  ( %sBuilder_build% %lang_sBuilder_enabled%
-) else if "%services_sppsvc_sve%" == "disabled" ( %sBuilder_build% %lang_sBuilder_disabled%
+       if "%services_sppsvc_svc%" == "enabled"  ( %sBuilder_build% %lang_sBuilder_enabled%
+) else if "%services_sppsvc_svc%" == "disabled" ( %sBuilder_build% %lang_sBuilder_disabled%
 ) else                                            %sBuilder_build% %lang_sBuilder_error%
 echo.    %sBuilder_text%
 

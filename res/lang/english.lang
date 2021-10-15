@@ -24,14 +24,16 @@ value_never=never
 
 
 
+logo1=Version %program_version%
+logo2=Check other stuff
+
 menu_hint=Choose a preference from the list to change it
 menu_goBack=Go back
 menu_rebootComputer=Reboot computer
 menu_restartExplorer=Restart Windows Explorer
 menu_updateGroupPolicy=Update group policy
 
-logo1=Version %program_version%
-logo2=Check for other programs here:
+
 
 
 
@@ -87,7 +89,7 @@ interface_taskbar_winXcmd=Command prompt on Win+X
 interface_taskbar_taskView=Task view button
 interface_taskbar_people=People band
 
-interface_taskbar_note=Note: These features require to restart Windows Explorer
+interface_taskbar_note=These features require to restart Windows Explorer
 
 
 
@@ -116,7 +118,7 @@ interface_explorer_thisPC_videos=Videos
 interface_explorer_oneDrive=OneDrive
 interface_explorer_autoType=Auto folder type discovery
 
-interface_explorer_note=Note: These features require to restart Windows Explorer
+interface_explorer_note=These features require to restart Windows Explorer
 
 
 
@@ -174,7 +176,7 @@ programs_system34=Uninstall all
 programs_office01=Microsoft Office Professional+ 2016
 programs_office02=Choose an action
 programs_office03=Run setup
-programs_office04=Note: This feature requires to reboot your computer
+programs_office_note=This feature requires to reboot your computer
 programs_office05=Downloading Microsoft Office Professional+ 2016...
 programs_office06=Mounting iso file...
 programs_office07=Setup...
@@ -198,8 +200,8 @@ services_wuaserv04=Update Center ^(wuauserv^)
 services_sppsvc01=Software Protection Platform Service ^(sppsvc^)
 services_sppsvc02=Choose an action
 services_sppsvc03=Restore service
-services_sppsvc04=Note: This feature requires to reboot your computer two times
-services_sppsvc05=      The computer will automatically restart after the next system boot
+services_sppsvc_note1=This feature requires to reboot your computer two times
+services_sppsvc_note2=The computer will automatically restart after the next system boot
 
 
 
@@ -211,16 +213,16 @@ tools_admin05=Control Panel
 tools_admin06=Command Prompt
 tools_admin07=Run ^(Win + R^)
 tools_admin08=Task Manager
-tools_admin09=Note: Features ^(2^) and ^(3^) require to update group policy
-tools_admin10=Note: Feature ^(1^) requires to restart Windows Explorer
-tools_admin11=Note: Feature ^(5^) requires to reboot your computer
+tools_admin09_note1=Features ^(2^) and ^(3^) require to update group policy
+tools_admin10_note2=Feature ^(1^) requires to restart Windows Explorer
+tools_admin11_note3=Feature ^(5^) requires to reboot your computer
 
 
 
 tools_syscheck01=System Resource Checker
 tools_syscheck02=Choose an action
 tools_syscheck03=Run System Resource Scan and automatically repair all files having problems
-tools_syscheck04=Note: This feature requires to reboot your computer
+tools_syscheck_note=This feature requires to reboot your computer
 
 
 
@@ -234,7 +236,7 @@ rebootComputer04=Rebooting...
 message_info_disclaimer=The developer is not responsible for any possible damage to your computer
 
 message_info_update1=An update for %program_name% is available
-message_info_update2=Download it now:
+message_info_update2=Download it now
 
 message_warn_hiddenOptions=Use hidden options at your own risk
 
