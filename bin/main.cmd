@@ -236,51 +236,30 @@ goto :interface_desktop
 
 
 :interface_taskbar
-
-%logo%
-echo.^(i^) %lang_interface_taskbar01%
-echo.
-echo.
-echo.^(^>^) %lang_interface_taskbar02%
   %getState% interface_taskbar
 
-set sBuilder_text=^(1^) %lang_interface_taskbar03%
-       if "%interface_taskbar_people%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_taskbar_people%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                               %sBuilder_build% %lang_sBuilder_error%
-%sBuilder_build%    ^(4^) %lang_interface_taskbar04%
-       if "%interface_taskbar_small%" == "enabled"  ( %sBuilder_build% %lang_sBuilder_enabled%
-) else if "%interface_taskbar_small%" == "disabled" ( %sBuilder_build% %lang_sBuilder_disabled%
-) else                                                %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
+  (
+    %logo% lang_interface_taskbar01 lang_interface_taskbar02
+    %title%
+    %item% 1 interface_taskbar_small    %interface_taskbar_small%
+    %item% 2 interface_taskbar_winXcmd  %interface_taskbar_winXcmd%
+    %item% 3 interface_taskbar_combined %interface_taskbar_combined%
+    %item% 4 interface_taskbar_taskView %interface_taskbar_taskView%
 
-set sBuilder_text=^(2^) %lang_interface_taskbar05%
-       if "%interface_taskbar_winXcmd%" == "ps"  ( %sBuilder_build% %lang_sBuilder_ps%
-) else if "%interface_taskbar_winXcmd%" == "cmd" ( %sBuilder_build% %lang_sBuilder_cmd%
-) else                                             %sBuilder_build% %lang_sBuilder_error%
-%sBuilder_build%    ^(5^) %lang_interface_taskbar06%
-       if "%interface_taskbar_combined%" == "always" ( %sBuilder_build% %lang_sBuilder_always%
-) else if "%interface_taskbar_combined%" == "ifFull" ( %sBuilder_build% %lang_sBuilder_ifFull%
-) else if "%interface_taskbar_combined%" == "never"  ( %sBuilder_build% %lang_sBuilder_never%
-) else                                                 %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
+    echo.down=2
+    %message% %message_info% interface_desktop_note
+    %item% Y menu_restartExplorer
+    %item% 0 menu_goBack
 
-set sBuilder_text=^(3^) %lang_interface_taskbar07%
-       if "%interface_taskbar_taskView%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_taskbar_taskView%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                 %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
+    %column_right%
+    echo.down=3
+    %item% 5 interface_taskbar_people %interface_taskbar_people%
 
-echo.
-echo.    %lang_interface_taskbar08%
-echo.    ^(Y^) %lang_menu_restartExplorer%
-echo.
-echo.    ^(0^) %lang_menu_goBack%
-echo.
-echo.
-echo.
-%module_choice% /c 12345Y0 /m "> "
-set command=%errorLevel%
+    %input%
+  )>%layout%
+  %module_cursor%
+  %module_choice% /c 12345Y0 /m "> "
+  set command=%errorLevel%
 
 
 
