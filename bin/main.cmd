@@ -304,119 +304,46 @@ goto :interface_taskbar
 
 
 :interface_explorer
-%getState% interface_explorer
+  %getState% interface_explorer
 
-%logo%
-echo.^(i^) %lang_interface_explorer01% menu_hint
-echo.
-echo.
+  (
+    %logo% interface_taskbar menu_hint
+    %title%
+    %item% 1 interface_explorer_extensions  %interface_explorer_extensions%
+    %item% 2 interface_explorer_hidden      %interface_explorer_hidden%
+    %item% 3 interface_explorer_hiddenSys   %interface_explorer_hiddenSys%
+    %item% 4 interface_explorer_emptyDrives %interface_explorer_emptyDrives%
+    %item% 5 interface_explorer_conflicts   %interface_explorer_conflicts%
+    %item% 6 interface_explorer_ribbon      %interface_explorer_ribbon%
+    %item% 7 interface_explorer_statusbar   %interface_explorer_statusbar%
+    %item% 8 interface_explorer_infoTip     %interface_explorer_infoTip%
+    %item% 9 interface_explorer_expand      %interface_explorer_expand%
 
-set sBuilder_text=^(1^) %lang_interface_explorer03%
-       if "%interface_explorer_extensions%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_extensions%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                    %sBuilder_build% %lang_sBuilder_error%
-%sBuilder_build%    ^(6^) %lang_interface_explorer04%
-       if "%interface_explorer_ribbon%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_ribbon%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
+    echo.down=2
+    %message% %message_info% interface_explorer_note
+    %item% Y menu_restartExplorer
+    %item% 0 menu_goBack
 
-set sBuilder_text=^(2^) %lang_interface_explorer05%
-       if "%interface_explorer_hidden%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_hidden%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                %sBuilder_build% %lang_sBuilder_error%
-%sBuilder_build%    ^(7^) %lang_interface_explorer06%
-       if "%interface_explorer_expand%" == "enabled"  ( %sBuilder_build% %lang_sBuilder_enabled%
-) else if "%interface_explorer_expand%" == "disabled" ( %sBuilder_build% %lang_sBuilder_disabled%
-) else                                                  %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
 
-set sBuilder_text=^(3^) %lang_interface_explorer07%
-       if "%interface_explorer_hiddenSys%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_hiddenSys%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                   %sBuilder_build% %lang_sBuilder_error%
-%sBuilder_build%    ^(8^) %lang_interface_explorer08%
-       if "%interface_explorer_statusbar%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_statusbar%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                   %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
+    %column_right%
+    echo.down=3
+    %item% A interface_explorer_thisPC_3DObjects %interface_explorer_thisPC_3DObjects%
+    %item% B interface_explorer_thisPC_desktop   %interface_explorer_thisPC_desktop%
+    %item% C interface_explorer_thisPC_documents %interface_explorer_thisPC_documents%
+    %item% D interface_explorer_thisPC_downloads %interface_explorer_thisPC_downloads%
+    %item% E interface_explorer_thisPC_music     %interface_explorer_thisPC_music%
+    %item% F interface_explorer_thisPC_pictures  %interface_explorer_thisPC_pictures%
+    %item% G interface_explorer_thisPC_videos    %interface_explorer_thisPC_videos%
 
-set sBuilder_text=^(4^) %lang_interface_explorer09%
-       if "%interface_explorer_emptyDrives%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_emptyDrives%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                     %sBuilder_build% %lang_sBuilder_error%
-%sBuilder_build%    ^(9^) %lang_interface_explorer10%
-       if "%interface_explorer_infoTip%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_infoTip%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                 %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
+    echo.down=3
+    %item% H interface_explorer_oneDrive %interface_explorer_oneDrive%
+    %item% I interface_explorer_autoType %interface_explorer_autoType%
 
-set sBuilder_text=^(5^) %lang_interface_explorer11%
-       if "%interface_explorer_conflicts%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_conflicts%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                   %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
-
-echo.
-echo.    %lang_interface_explorer12%
-
-set sBuilder_text=^(A^) %lang_interface_explorer13%
-       if "%interface_explorer_thisPC_desktop%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_thisPC_desktop%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                        %sBuilder_build% %lang_sBuilder_error%
-%sBuilder_build%    ^(E^) %lang_interface_explorer14%
-       if "%interface_explorer_thisPC_pictures%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_thisPC_pictures%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                         %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
-
-set sBuilder_text=^(B^) %lang_interface_explorer15%
-       if "%interface_explorer_thisPC_documents%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_thisPC_documents%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                          %sBuilder_build% %lang_sBuilder_error%
-%sBuilder_build%    ^(F^) %lang_interface_explorer16%
-       if "%interface_explorer_thisPC_videos%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_thisPC_videos%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                       %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
-
-set sBuilder_text=^(C^) %lang_interface_explorer17%
-       if "%interface_explorer_thisPC_downloads%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_thisPC_downloads%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                          %sBuilder_build% %lang_sBuilder_error%
-%sBuilder_build%    ^(G^) %lang_interface_explorer18%
-       if "%interface_explorer_thisPC_3DObjects%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_thisPC_3DObjects%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                          %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
-
-set sBuilder_text=^(D^) %lang_interface_explorer19%
-       if "%interface_explorer_thisPC_music%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_thisPC_music%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                      %sBuilder_build% %lang_sBuilder_error%
-%sBuilder_build%    ^(H^) %lang_interface_explorer20%
-       if "%interface_explorer_oneDrive%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
-) else if "%interface_explorer_oneDrive%" == "hidden" ( %sBuilder_build% %lang_sBuilder_hidden%
-) else                                                  %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
-echo.
-
-set sBuilder_text=^(I^) %lang_interface_explorer21%
-       if "%interface_explorer_autoType%" == "enabled"  ( %sBuilder_build% %lang_sBuilder_enabled%
-) else if "%interface_explorer_autoType%" == "disabled" ( %sBuilder_build% %lang_sBuilder_disabled%
-) else                                                    %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
-
-echo.
-echo.    %lang_interface_explorer22%
-echo.    ^(Y^) %lang_menu_restartExplorer%
-echo.
-echo.    ^(0^) %lang_menu_goBack%
-echo.
-echo.
-echo.
-%module_choice% /c 123456789ABCDEFGHIY0 /m "> "
-set command=%errorLevel%
+    %input%
+  )>%layout%
+  %module_cursor%
+  %module_choice% /c 123456789ABCDEFGHIY0 /m "> "
+  set command=%errorLevel%
 
 
 

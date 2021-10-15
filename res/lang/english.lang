@@ -86,26 +86,26 @@ interface_taskbar_note=Note: These features require to restart Windows Explorer
 
 
 interface_explorer=Windows Explorer
-interface_explorer03=File extensions
-interface_explorer04=Ribbon ^(option bar^)
-interface_explorer05=Hidden files
-interface_explorer06=Expand to open folder
-interface_explorer07=Protected system files
-interface_explorer08=Status bar
-interface_explorer09=Empty drives
-interface_explorer10=File info tip
-interface_explorer11=Folder merge conflicts
-interface_explorer12=This PC and navigation bar objects
-interface_explorer13=Desktop
-interface_explorer14=Pictures
-interface_explorer15=Documents
-interface_explorer16=Videos
-interface_explorer17=Downloads
-interface_explorer18=3DObjects
-interface_explorer19=Music
-interface_explorer20=OneDrive
-interface_explorer21=Auto folder type discovery
-interface_explorer22=Note: These features require to restart Windows Explorer
+interface_explorer_extensions=File extensions
+interface_explorer_hidden=Hidden files
+interface_explorer_hiddenSys=Protected system files
+interface_explorer_emptyDrives=Empty drives
+interface_explorer_conflicts=Folder merge conflicts
+interface_explorer_ribbon=Ribbon ^(option bar^)
+interface_explorer_statusbar=Status bar
+interface_explorer_infoTip=File info tip
+interface_explorer_expand=Expand to open folder
+interface_explorer_thisPC=This PC and navigation bar objects
+interface_explorer_thisPC_3DObjects=3DObjects
+interface_explorer_thisPC_desktop=Desktop
+interface_explorer_thisPC_documents=Documents
+interface_explorer_thisPC_downloads=Downloads
+interface_explorer_thisPC_music=Music
+interface_explorer_thisPC_pictures=Pictures
+interface_explorer_thisPC_videos=Videos
+interface_explorer_oneDrive=OneDrive
+interface_explorer_autoType=Auto folder type discovery
+interface_explorer_note=Note: These features require to restart Windows Explorer
 
 
 
