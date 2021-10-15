@@ -181,13 +181,13 @@ if %errorLevel% GEQ 1 (
   set interface_explorer_oneDrive=error
   set interface_explorer_autoType=error
 
-  set interface_input_suggestions=error
-  set interface_input_completion=error
-  set interface_input_progTracking=error
-  set interface_input_onTyping=error
+  set interface_input_tips_suggestions=error
+  set interface_input_tips_completion=error
+  set interface_input_tips_progTracking=error
+  set interface_input_tips_onTyping=error
 
-  set interface_input_langKey=error
-  set interface_input_layoutKey=error
+  set interface_input_keys_lang=error
+  set interface_input_keys_layout=error
 
   set services_wuaserv_center=error
 

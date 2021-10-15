@@ -175,6 +175,8 @@ goto :main_menu
 
     echo.down=2
     %message% %message_info% interface_desktop_note
+
+    echo.down=2
     %item% Y menu_restartExplorer
     %item% 0 menu_goBack
 
@@ -239,14 +241,16 @@ goto :interface_desktop
   %getState% interface_taskbar
 
   (
-    %logo% interface_taskbar menu_hint
-    %title%
+    %logo%
+    %title% interface_taskbar menu_hint
     %item% 1 interface_taskbar_small    %interface_taskbar_small%
     %item% 2 interface_taskbar_combined %interface_taskbar_combined%
     %item% 3 interface_taskbar_winXcmd  %interface_taskbar_winXcmd%
 
     echo.down=2
     %message% %message_info% interface_taskbar_note
+
+    echo.down=2
     %item% Y menu_restartExplorer
     %item% 0 menu_goBack
 
@@ -308,8 +312,8 @@ goto :interface_taskbar
   %getState% interface_explorer
 
   (
-    %logo% interface_taskbar menu_hint
-    %title%
+    %logo%
+    %title% interface_taskbar menu_hint
     %item% 1 interface_explorer_extensions  %interface_explorer_extensions%
     %item% 2 interface_explorer_hidden      %interface_explorer_hidden%
     %item% 3 interface_explorer_hiddenSys   %interface_explorer_hiddenSys%
@@ -322,12 +326,14 @@ goto :interface_taskbar
 
     echo.down=2
     %message% %message_info% interface_explorer_note
+
+    echo.down=2
     %item% Y menu_restartExplorer
     %item% 0 menu_goBack
 
 
     %column_right%
-    echo.down=3
+    %subtitle% interface_explorer_thisPC
     %item% A interface_explorer_thisPC_3DObjects %interface_explorer_thisPC_3DObjects%
     %item% B interface_explorer_thisPC_desktop   %interface_explorer_thisPC_desktop%
     %item% C interface_explorer_thisPC_documents %interface_explorer_thisPC_documents%
@@ -336,7 +342,7 @@ goto :interface_taskbar
     %item% F interface_explorer_thisPC_pictures  %interface_explorer_thisPC_pictures%
     %item% G interface_explorer_thisPC_videos    %interface_explorer_thisPC_videos%
 
-    echo.down=3
+    echo.down=2
     %item% H interface_explorer_oneDrive %interface_explorer_oneDrive%
     %item% I interface_explorer_autoType %interface_explorer_autoType%
 

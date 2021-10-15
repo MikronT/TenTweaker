@@ -19,7 +19,7 @@ exit /b !errorLevel!
   set color_logo=0f
   set color_title=%color_logo%
   set color_subtitle=%color_default%
-  set color_accent=0e
+  set color_accent=03
   set color_info=%color_default%
   set color_warn=%color_title%
   set color_error=0c
@@ -40,6 +40,7 @@ exit /b !errorLevel!
 
   set logo=call !exec! :logo
   set title=call !exec! :title
+  set subtitle=call !exec! :subtitle
   set item=call !exec! :item
   set input=call !exec! :input
 
@@ -191,6 +192,27 @@ exit /b
     echo.color=%color_subtitle%
     call echo.text=%%lang_!arg_sub!%%
   )
+
+  echo.down
+  echo.color=%color_default%
+exit /b
+
+
+
+
+
+
+
+:subtitle
+  set arg_title=%1
+  if "!arg_title!" NEQ "" set arg_title=!arg_title:"=!
+  if "!arg_title!" ==  "" exit /b
+
+
+
+  echo.down
+  echo.color=%color_subtitle%
+  call echo.text=%%lang_!arg_sub!%%
 
   echo.down
   echo.color=%color_default%
