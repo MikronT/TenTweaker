@@ -317,30 +317,30 @@ if "%1" == "interface_explorer" (
 
 
 if "%1" == "interface_input" (
-  set interface_input_suggestions=disabled
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v AutoSuggest') do if "%%i" == "yes" set interface_input_suggestions=enabled
+  set interface_input_tips_suggestions=disabled
+  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v AutoSuggest') do if "%%i" == "yes" set interface_input_tips_suggestions=enabled
 
-  set interface_input_completion=disabled
-  for /f "skip=2 tokens=4,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v "Append Completion"') do if "%%i" == "yes" set interface_input_completion=enabled
+  set interface_input_tips_completion=disabled
+  for /f "skip=2 tokens=4,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v "Append Completion"') do if "%%i" == "yes" set interface_input_tips_completion=enabled
 
-  set interface_input_progTracking=disabled
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs') do if "%%i" == "0x1" set interface_input_progTracking=enabled
+  set interface_input_tips_progTracking=disabled
+  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackProgs') do if "%%i" == "0x1" set interface_input_tips_progTracking=enabled
 
-  set interface_input_onTyping=disabled
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Input\Settings /v EnableHwkbTextPrediction') do if "%%i" == "0x1" set interface_input_onTyping=enabled
+  set interface_input_tips_onTyping=disabled
+  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Input\Settings /v EnableHwkbTextPrediction') do if "%%i" == "0x1" set interface_input_tips_onTyping=enabled
 
-  set interface_input_langKey=leftAltShift
+  set interface_input_keys_lang=leftAltShift
   for /f "skip=2 tokens=4,* delims= " %%i in ('reg query "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey"') do (
-    if "%%i" == "3" set interface_input_langKey=notAssigned
-    if "%%i" == "2" set interface_input_langKey=ctrlShift
-    if "%%i" == "4" set interface_input_langKey=graveAccent
+    if "%%i" == "3" set interface_input_keys_lang=notAssigned
+    if "%%i" == "2" set interface_input_keys_lang=ctrlShift
+    if "%%i" == "4" set interface_input_keys_lang=graveAccent
   )
 
-  set interface_input_layoutKey=ctrlShift
+  set interface_input_keys_layout=ctrlShift
   for /f "skip=2 tokens=4,* delims= " %%i in ('reg query "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey"') do (
-    if "%%i" == "3" set interface_input_layoutKey=notAssigned
-    if "%%i" == "1" set interface_input_layoutKey=leftAltShift
-    if "%%i" == "4" set interface_input_layoutKey=graveAccent
+    if "%%i" == "3" set interface_input_keys_layout=notAssigned
+    if "%%i" == "1" set interface_input_keys_layout=leftAltShift
+    if "%%i" == "4" set interface_input_keys_layout=graveAccent
   )
 )>nul 2>nul
 
