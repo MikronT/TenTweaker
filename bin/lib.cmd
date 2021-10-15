@@ -152,7 +152,7 @@ if %errorLevel% GEQ 1 (
   set interface_desktop_thisPC=error
   set interface_desktop_trash=error
   set interface_desktop_control=error
-  set interface_desktop_userFolder=error
+  set interface_desktop_userDir=error
   set interface_desktop_net=error
   set interface_desktop_logonBlur=error
 
@@ -218,8 +218,8 @@ if "%1" == "interface_desktop" (
   set interface_desktop_control=hidden
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}') do if "%%i" == "0x0" set interface_desktop_control=shown
 
-  set interface_desktop_userFolder=hidden
-  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee}') do if "%%i" == "0x0" set interface_desktop_userFolder=shown
+  set interface_desktop_userDir=hidden
+  for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee}') do if "%%i" == "0x0" set interface_desktop_userDir=shown
 
   set interface_desktop_net=hidden
   for /f "skip=2 tokens=3,* delims= " %%i in ('reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C}') do if "%%i" == "0x0" set interface_desktop_net=shown

@@ -168,7 +168,7 @@ goto :main_menu
     %logo%
     %title% interface_desktop menu_hint
     %item% 1 interface_desktop_thisPC  %interface_desktop_thisPC%
-    %item% 2 interface_desktop_userDir %interface_desktop_userFolder%
+    %item% 2 interface_desktop_userDir %interface_desktop_userDir%
     %item% 3 interface_desktop_trash   %interface_desktop_trash%
     %item% 4 interface_desktop_net     %interface_desktop_net%
     %item% 5 interface_desktop_control %interface_desktop_control%
@@ -197,20 +197,20 @@ goto :main_menu
       reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {20D04FE0-3AEA-1069-A2D8-08002B30309D} /t REG_DWORD /d !value! /f
 
     ) else if "%command%" == "2" (
+      if "%interface_desktop_userDir%"    == "hidden"  ( set value=0 ) else set value=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee} /t REG_DWORD /d !value! /f
+
+    ) else if "%command%" == "3" (
       if "%interface_desktop_trash%"      == "hidden"  ( set value=0 ) else set value=1
       reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {645FF040-5081-101B-9F08-00AA002F954E} /t REG_DWORD /d !value! /f
 
-    ) else if "%command%" == "3" (
-      if "%interface_desktop_control%"    == "hidden"  ( set value=0 ) else set value=1
-      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0} /t REG_DWORD /d !value! /f
-
     ) else if "%command%" == "4" (
-      if "%interface_desktop_userFolder%" == "hidden"  ( set value=0 ) else set value=1
-      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {59031a47-3f72-44a7-89c5-5595fe6b30ee} /t REG_DWORD /d !value! /f
-
-    ) else if "%command%" == "5" (
       if "%interface_desktop_net%"        == "hidden"  ( set value=0 ) else set value=1
       reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {F02C1A0D-BE21-4350-88B0-7367FC96EF3C} /t REG_DWORD /d !value! /f
+
+    ) else if "%command%" == "5" (
+      if "%interface_desktop_control%"    == "hidden"  ( set value=0 ) else set value=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel /v {5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0} /t REG_DWORD /d !value! /f
 
     ) else if "%command%" == "6" (
       if "%interface_desktop_logonBlur%"  == "disabled" ( set value=0 ) else set value=1
@@ -242,18 +242,19 @@ goto :interface_desktop
     %logo% interface_taskbar menu_hint
     %title%
     %item% 1 interface_taskbar_small    %interface_taskbar_small%
-    %item% 2 interface_taskbar_winXcmd  %interface_taskbar_winXcmd%
-    %item% 3 interface_taskbar_combined %interface_taskbar_combined%
-    %item% 4 interface_taskbar_taskView %interface_taskbar_taskView%
+    %item% 2 interface_taskbar_combined %interface_taskbar_combined%
+    %item% 3 interface_taskbar_winXcmd  %interface_taskbar_winXcmd%
 
     echo.down=2
     %message% %message_info% interface_taskbar_note
     %item% Y menu_restartExplorer
     %item% 0 menu_goBack
 
+
     %column_right%
     echo.down=3
-    %item% 5 interface_taskbar_people %interface_taskbar_people%
+    %item% 4 interface_taskbar_taskView %interface_taskbar_taskView%
+    %item% 5 interface_taskbar_people   %interface_taskbar_people%
 
     %input%
   )>%layout%
@@ -265,24 +266,24 @@ goto :interface_desktop
 
   if "%error_reg%" NEQ "true" (
            if "%command%" == "1" (
-      if "%interface_taskbar_people%"   == "shown"    ( set value=0 ) else set value=1
-      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand       /t REG_DWORD /d !value! /f
-
-    ) else if "%command%" == "2" (
-      if "%interface_taskbar_winXcmd%"  == "ps"       ( set value=1 ) else set value=0
-      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX /t REG_DWORD /d !value! /f
-
-    ) else if "%command%" == "3" (
-      if "%interface_taskbar_taskView%" == "shown"    ( set value=0 ) else set value=1
-      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowTaskViewButton      /t REG_DWORD /d !value! /f
-
-    ) else if "%command%" == "4" (
       if "%interface_taskbar_small%"    == "disabled" ( set value=1 ) else set value=0
       reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarSmallIcons       /t REG_DWORD /d !value! /f
 
-    ) else if "%command%" == "5" (
+    ) else if "%command%" == "2" (
       if "%interface_taskbar_combined%" == "always"   ( set value=1 ) else if "%interface_taskbar_combined%" == "ifFull" ( set value=2 ) else set value=0
       reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarGlomLevel        /t REG_DWORD /d !value! /f
+
+    ) else if "%command%" == "3" (
+      if "%interface_taskbar_winXcmd%"  == "ps"       ( set value=1 ) else set value=0
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX /t REG_DWORD /d !value! /f
+
+    ) else if "%command%" == "4" (
+      if "%interface_taskbar_taskView%" == "shown"    ( set value=0 ) else set value=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowTaskViewButton      /t REG_DWORD /d !value! /f
+
+    ) else if "%command%" == "5" (
+      if "%interface_taskbar_people%"   == "shown"    ( set value=0 ) else set value=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand       /t REG_DWORD /d !value! /f
     )
   )>nul 2>nul
          if "%command%" == "6" ( %restartExplorer%
@@ -347,83 +348,83 @@ goto :interface_taskbar
 
 
 
-if "%error_reg%" NEQ "true" (
-  if "%command%" == "1" (
-    if "%interface_explorer_extensions%"       == "hidden"  ( set value=0 ) else set value=1
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideFileExt                  /t REG_DWORD /d !value! /f
+  if "%error_reg%" NEQ "true" (
+           if "%command%" == "1" (
+      if "%interface_explorer_extensions%"       == "hidden"  ( set value=0 ) else set value=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideFileExt                  /t REG_DWORD /d !value! /f
 
-  ) else if "%command%" == "2" (
-    if "%interface_explorer_hidden%"           == "hidden"  ( set value=1 ) else set value=2
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Hidden                       /t REG_DWORD /d !value! /f
+    ) else if "%command%" == "2" (
+      if "%interface_explorer_hidden%"           == "hidden"  ( set value=1 ) else set value=2
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Hidden                       /t REG_DWORD /d !value! /f
 
-  ) else if "%command%" == "3" (
-    if "%interface_explorer_hiddenSys%"        == "hidden"  ( set value=1 ) else set value=0
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowSuperHidden              /t REG_DWORD /d !value! /f
+    ) else if "%command%" == "3" (
+      if "%interface_explorer_hiddenSys%"        == "hidden"  ( set value=1 ) else set value=0
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowSuperHidden              /t REG_DWORD /d !value! /f
 
-  ) else if "%command%" == "4" (
-    if "%interface_explorer_emptyDrives%"      == "hidden"  ( set value=0 ) else set value=1
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideDrivesWithNoMedia        /t REG_DWORD /d !value! /f
+    ) else if "%command%" == "4" (
+      if "%interface_explorer_emptyDrives%"      == "hidden"  ( set value=0 ) else set value=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideDrivesWithNoMedia        /t REG_DWORD /d !value! /f
 
-  ) else if "%command%" == "5" (
-    if "%interface_explorer_conflicts%"        == "hidden"  ( set value=0 ) else set value=1
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideMergeConflicts           /t REG_DWORD /d !value! /f
+    ) else if "%command%" == "5" (
+      if "%interface_explorer_conflicts%"        == "hidden"  ( set value=0 ) else set value=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideMergeConflicts           /t REG_DWORD /d !value! /f
 
-  ) else if "%command%" == "6" (
-    if "%interface_explorer_ribbon%"           == "hidden"  ( set value=0 ) else set value=1
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Ribbon   /v MinimizedStateTabletModeOff  /t REG_DWORD /d !value! /f
+    ) else if "%command%" == "6" (
+      if "%interface_explorer_ribbon%"           == "hidden"  ( set value=0 ) else set value=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Ribbon   /v MinimizedStateTabletModeOff  /t REG_DWORD /d !value! /f
 
-  ) else if "%command%" == "7" (
-    if "%interface_explorer_expand%"           == "enabled" ( set value=0 ) else set value=1
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v NavPaneExpandToCurrentFolder /t REG_DWORD /d !value! /f
+    ) else if "%command%" == "7" (
+      if "%interface_explorer_statusbar%"        == "shown"   ( set value=0 ) else set value=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowStatusBar                /t REG_DWORD /d !value! /f
 
-  ) else if "%command%" == "8" (
-    if "%interface_explorer_statusbar%"        == "shown"   ( set value=0 ) else set value=1
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowStatusBar                /t REG_DWORD /d !value! /f
+    ) else if "%command%" == "8" (
+      if "%interface_explorer_infoTip%"          == "shown"   ( set value=0 ) else set value=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowInfoTip                  /t REG_DWORD /d !value! /f
 
-  ) else if "%command%" == "9" (
-    if "%interface_explorer_infoTip%"          == "shown"   ( set value=0 ) else set value=1
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowInfoTip                  /t REG_DWORD /d !value! /f
+    ) else if "%command%" == "9" (
+      if "%interface_explorer_expand%"           == "enabled" ( set value=0 ) else set value=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v NavPaneExpandToCurrentFolder /t REG_DWORD /d !value! /f
 
-  ) else if "%command%" == "10" (
-    if "%interface_explorer_thisPC_desktop%"   == "shown"   ( set value=delete ) else set value=add
-    reg !value! HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641} /f
+    ) else if "%command%" == "10" (
+      if "%interface_explorer_thisPC_3DObjects%" == "shown"   ( set value=delete ) else set value=add
+      reg !value! HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A} /f
 
-  ) else if "%command%" == "11" (
-    if "%interface_explorer_thisPC_documents%" == "shown"   ( set value=delete ) else set value=add
-    reg !value! HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{d3162b92-9365-467a-956b-92703aca08af} /f
+    ) else if "%command%" == "11" (
+      if "%interface_explorer_thisPC_desktop%"   == "shown"   ( set value=delete ) else set value=add
+      reg !value! HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641} /f
 
-  ) else if "%command%" == "12" (
-    if "%interface_explorer_thisPC_downloads%" == "shown"   ( set value=delete ) else set value=add
-    reg !value! HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088e3905-0323-4b02-9826-5d99428e115f} /f
+    ) else if "%command%" == "12" (
+      if "%interface_explorer_thisPC_documents%" == "shown"   ( set value=delete ) else set value=add
+      reg !value! HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{d3162b92-9365-467a-956b-92703aca08af} /f
 
-  ) else if "%command%" == "13" (
-    if "%interface_explorer_thisPC_music%"     == "shown"   ( set value=delete ) else set value=add
-    reg !value! HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de} /f
+    ) else if "%command%" == "13" (
+      if "%interface_explorer_thisPC_downloads%" == "shown"   ( set value=delete ) else set value=add
+      reg !value! HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088e3905-0323-4b02-9826-5d99428e115f} /f
 
-  ) else if "%command%" == "14" (
-    if "%interface_explorer_thisPC_pictures%"  == "shown"   ( set value=delete ) else set value=add
-    reg !value! HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24ad3ad4-a569-4530-98e1-ab02f9417aa8} /f
+    ) else if "%command%" == "14" (
+      if "%interface_explorer_thisPC_music%"     == "shown"   ( set value=delete ) else set value=add
+      reg !value! HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de} /f
 
-  ) else if "%command%" == "15" (
-    if "%interface_explorer_thisPC_videos%"    == "shown"   ( set value=delete ) else set value=add
-    reg !value! HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a} /f
+    ) else if "%command%" == "15" (
+      if "%interface_explorer_thisPC_pictures%"  == "shown"   ( set value=delete ) else set value=add
+      reg !value! HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24ad3ad4-a569-4530-98e1-ab02f9417aa8} /f
 
-  ) else if "%command%" == "16" (
-    if "%interface_explorer_thisPC_3DObjects%" == "shown"   ( set value=delete ) else set value=add
-    reg !value! HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A} /f
+    ) else if "%command%" == "16" (
+      if "%interface_explorer_thisPC_videos%"    == "shown"   ( set value=delete ) else set value=add
+      reg !value! HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a} /f
 
-  ) else if "%command%" == "17" (
-    if "%interface_explorer_oneDrive%"         == "shown"   ( set value=0 ) else set value=1
-    reg add HKCR\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6} /v System.IsPinnedToNameSpaceTree /t REG_DWORD /d !value! /f
+    ) else if "%command%" == "17" (
+      if "%interface_explorer_oneDrive%"         == "shown"   ( set value=0 ) else set value=1
+      reg add HKCR\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6} /v System.IsPinnedToNameSpaceTree /t REG_DWORD /d !value! /f
 
-  ) else if "%command%" == "18" (
-    if "%interface_explorer_autoType%" == "disabled" (
-        reg delete "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /v FolderType /f
-    ) else reg add "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /v FolderType /t REG_SZ /d NotSpecified /f
-  )
-)>nul 2>nul
-if "%command%" == "19" ( %restartExplorer%
-) else if "%command%" == "20" exit /b
+    ) else if "%command%" == "18" (
+      if "%interface_explorer_autoType%" == "disabled" (
+          reg delete "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /v FolderType /f
+      ) else reg add "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /v FolderType /t REG_SZ /d NotSpecified /f
+    )
+  )>nul 2>nul
+         if "%command%" == "19" ( %restartExplorer%
+  ) else if "%command%" == "20"   exit /b
 goto :interface_explorer
 
 

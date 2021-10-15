@@ -77,8 +77,8 @@ interface_desktop_note=These features require to restart Windows Explorer
 
 interface_taskbar=Windows Task Bar
 interface_taskbar_small=Small icons
-interface_taskbar_winXcmd=Command prompt on Win+X
 interface_taskbar_combined=Buttons combine
+interface_taskbar_winXcmd=Command prompt on Win+X
 interface_taskbar_taskView=Task view button
 interface_taskbar_people=People band
 interface_taskbar_note=Note: These features require to restart Windows Explorer
