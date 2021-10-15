@@ -1,26 +1,26 @@
-value_error=[error]           
-value_enabled=enabled           
-value_disabled=disabled          
-value_shown=shown             
-value_hidden=hidden            
-value_exist=exist             
-value_notExist=not exist         
-value_locked=locked            
-value_unlocked=unlocked          
-value_installed=installed         
-value_uninstalled=uninstalled       
+value_error=[error]
+value_enabled=enabled
+value_disabled=disabled
+value_shown=shown
+value_hidden=hidden
+value_exist=exist
+value_notExist=not exist
+value_locked=locked
+value_unlocked=unlocked
+value_installed=installed
+value_uninstalled=uninstalled
 
-value_notAssigned=not assigned      
-value_ctrlShift=Ctrl + Shift      
-value_leftAltShift=left Alt + Shift  
-value_graveAccent=grave accent ^(`^)  
+value_notAssigned=not assigned
+value_ctrlShift=Ctrl + Shift
+value_leftAltShift=left Alt + Shift
+value_graveAccent=grave accent ^(`^)
 
-value_ps=PowerShell        
-value_cmd=Command Prompt    
+value_ps=PowerShell
+value_cmd=Command Prompt
 
-value_always=always            
-value_ifFull=when full         
-value_never=never             
+value_always=always
+value_ifFull=when full
+value_never=never
 
 
 
@@ -64,7 +64,7 @@ main_exit=Exit
 
 
 interface_desktop=Desktop
-interface_desktop_hint=Choose an action to configure your desktop
+interface_desktop_hint=Choose a preference from the list to change it
 interface_desktop_thisPC=This PC
 interface_desktop_userDir=User Folder
 interface_desktop_trash=Recycle Bin
@@ -75,86 +75,86 @@ interface_desktop_note=These features require to restart Windows Explorer
 
 
 
-interface_taskbar01=Windows Task Bar
-interface_taskbar02=Choose an action to configure Windows Task Bar
-interface_taskbar03=People band                       
-interface_taskbar04=Small icons                       
-interface_taskbar05=Command prompt on Win+X         
-interface_taskbar06=Buttons combine                   
-interface_taskbar07=Task view button                  
-interface_taskbar08=Note: These features require to restart Windows Explorer
+interface_taskbar=Windows Task Bar
+interface_taskbar_hint=Choose a preference from the list to change it
+interface_taskbar_small=Small icons
+interface_taskbar_winXcmd=Command prompt on Win+X
+interface_taskbar_combined=Buttons combine
+interface_taskbar_taskView=Task view button
+interface_taskbar_people=People band
+interface_taskbar_note=Note: These features require to restart Windows Explorer
 
 
 
 interface_explorer01=Windows Explorer
 interface_explorer02=Choose an action to configure Windows Explorer
-interface_explorer03=File extensions                   
-interface_explorer04=Ribbon ^(option bar^)               
-interface_explorer05=Hidden files                      
-interface_explorer06=Expand to open folder             
-interface_explorer07=Protected system files            
-interface_explorer08=Status bar                        
-interface_explorer09=Empty drives                      
-interface_explorer10=File info tip                     
-interface_explorer11=Folder merge conflicts            
+interface_explorer03=File extensions
+interface_explorer04=Ribbon ^(option bar^)
+interface_explorer05=Hidden files
+interface_explorer06=Expand to open folder
+interface_explorer07=Protected system files
+interface_explorer08=Status bar
+interface_explorer09=Empty drives
+interface_explorer10=File info tip
+interface_explorer11=Folder merge conflicts
 interface_explorer12=This PC and navigation bar objects
-interface_explorer13=Desktop                           
-interface_explorer14=Pictures                          
-interface_explorer15=Documents                         
-interface_explorer16=Videos                            
-interface_explorer17=Downloads                         
-interface_explorer18=3DObjects                         
-interface_explorer19=Music                             
-interface_explorer20=OneDrive                          
-interface_explorer21=Auto folder type discovery        
+interface_explorer13=Desktop
+interface_explorer14=Pictures
+interface_explorer15=Documents
+interface_explorer16=Videos
+interface_explorer17=Downloads
+interface_explorer18=3DObjects
+interface_explorer19=Music
+interface_explorer20=OneDrive
+interface_explorer21=Auto folder type discovery
 interface_explorer22=Note: These features require to restart Windows Explorer
 
 
 
 interface_input01=Input
 interface_input02=Choose an action to enable/disable input suggestions
-interface_input03=Auto suggestions                  
-interface_input04=Auto completion                   
-interface_input05=Program tracking ^(Run menu^)       
-interface_input06=Suggestions when typing           
+interface_input03=Auto suggestions
+interface_input04=Auto completion
+interface_input05=Program tracking ^(Run menu^)
+interface_input06=Suggestions when typing
 interface_input07=Choose an action to change key sequences
-interface_input08=Input language                    
-interface_input09=Keyboard layout                   
+interface_input08=Input language
+interface_input09=Keyboard layout
 
 
 
 programs_system01=System Programs
 programs_system02=Choose action to install/uninstall system programs
-programs_system03=3D Builder                        
-programs_system04=Alarms and Clock                  
-programs_system05=3D Viewer                         
-programs_system06=Camera                            
-programs_system07=Feedback Hub                      
-programs_system08=Game bar                          
-programs_system09=Get Help                          
-programs_system10=Groove Music                      
-programs_system11=Mail and Calendar                 
-programs_system12=Movies and TV                     
-programs_system13=Maps                              
-programs_system14=My Office                         
-programs_system15=Messaging                         
-programs_system16=Paint 3D                          
-programs_system17=Mixed Reality Portal              
-programs_system18=Photos                            
-programs_system19=Mobile Plans                      
-programs_system20=Skype                             
-programs_system21=OneNote                           
-programs_system22=Snip and Sketch                   
-programs_system23=People                            
-programs_system24=Sticky Notes                      
-programs_system25=Print 3D                          
-programs_system26=Store                             
-programs_system27=Solitare                          
-programs_system28=Voice Recorder                    
-programs_system29=Tips                              
-programs_system30=Weather                           
-programs_system31=Your Phone                        
-programs_system32=Xbox                              
+programs_system03=3D Builder
+programs_system04=Alarms and Clock
+programs_system05=3D Viewer
+programs_system06=Camera
+programs_system07=Feedback Hub
+programs_system08=Game bar
+programs_system09=Get Help
+programs_system10=Groove Music
+programs_system11=Mail and Calendar
+programs_system12=Movies and TV
+programs_system13=Maps
+programs_system14=My Office
+programs_system15=Messaging
+programs_system16=Paint 3D
+programs_system17=Mixed Reality Portal
+programs_system18=Photos
+programs_system19=Mobile Plans
+programs_system20=Skype
+programs_system21=OneNote
+programs_system22=Snip and Sketch
+programs_system23=People
+programs_system24=Sticky Notes
+programs_system25=Print 3D
+programs_system26=Store
+programs_system27=Solitare
+programs_system28=Voice Recorder
+programs_system29=Tips
+programs_system30=Weather
+programs_system31=Your Phone
+programs_system32=Xbox
 programs_system33=Install all
 programs_system34=Uninstall all
 
@@ -173,20 +173,20 @@ programs_office08=Unmounting iso file...
 
 programs_gpeditMSC01=Group Policy Editor
 programs_gpeditMSC02=Choose an action
-programs_gpeditMSC03=Setup/repair gpedit.msc           
+programs_gpeditMSC03=Setup/repair gpedit.msc
 
 
 
 services_wuaserv01=Windows Update ^(wuauserv^)
 services_wuaserv02=Choose an action to enable/disable Windows Update
-services_wuaserv03=Update distributions              
-services_wuaserv04=Update Center ^(wuauserv^)          
+services_wuaserv03=Update distributions
+services_wuaserv04=Update Center ^(wuauserv^)
 
 
 
 services_sppsvc01=Software Protection Platform Service ^(sppsvc^)
 services_sppsvc02=Choose an action
-services_sppsvc03=Restore service                   
+services_sppsvc03=Restore service
 services_sppsvc04=Note: This feature requires to reboot your computer two times
 services_sppsvc05=      The computer will automatically restart after the next system boot
 
@@ -194,12 +194,12 @@ services_sppsvc05=      The computer will automatically restart after the next s
 
 tools_admin01=Windows Administrative Tools
 tools_admin02=Choose a Windows Administrative Tool to enable/disable it
-tools_admin03=Desktop                           
-tools_admin04=Registry Tools                    
-tools_admin05=Control Panel                     
-tools_admin06=Command Prompt                    
-tools_admin07=Run ^(Win + R^)                     
-tools_admin08=Task Manager                      
+tools_admin03=Desktop
+tools_admin04=Registry Tools
+tools_admin05=Control Panel
+tools_admin06=Command Prompt
+tools_admin07=Run ^(Win + R^)
+tools_admin08=Task Manager
 tools_admin09=Note: Features ^(2^) and ^(3^) require to update group policy
 tools_admin10=Note: Feature ^(1^) requires to restart Windows Explorer
 tools_admin11=Note: Feature ^(5^) requires to reboot your computer

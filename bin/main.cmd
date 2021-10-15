@@ -176,7 +176,7 @@ goto :main_menu
     echo.down=2
     %message% %message_info% interface_desktop_note
     %item% Y menu_restartExplorer
-    %item% 0 main_exit
+    %item% 0 menu_goBack
 
 
     %column_right%
@@ -218,7 +218,7 @@ goto :main_menu
     )
   )>nul 2>nul
          if "%command%" == "7" ( %restartExplorer%
-  ) else if "%command%" == "8" exit /b
+  ) else if "%command%" == "8"   exit /b
 goto :interface_desktop
 
 
@@ -236,13 +236,13 @@ goto :interface_desktop
 
 
 :interface_taskbar
-%getState% interface_taskbar
 
 %logo%
 echo.^(i^) %lang_interface_taskbar01%
 echo.
 echo.
 echo.^(^>^) %lang_interface_taskbar02%
+  %getState% interface_taskbar
 
 set sBuilder_text=^(1^) %lang_interface_taskbar03%
        if "%interface_taskbar_people%" == "shown"  ( %sBuilder_build% %lang_sBuilder_shown%
@@ -284,30 +284,30 @@ set command=%errorLevel%
 
 
 
-if "%error_reg%" NEQ "true" (
-  if "%command%" == "1" (
-    if "%interface_taskbar_people%"   == "shown"    ( set temp_cmd=0 ) else set temp_cmd=1
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand       /t REG_DWORD /d !temp_cmd! /f
+  if "%error_reg%" NEQ "true" (
+           if "%command%" == "1" (
+      if "%interface_taskbar_people%"   == "shown"    ( set temp_cmd=0 ) else set temp_cmd=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People /v PeopleBand       /t REG_DWORD /d !temp_cmd! /f
 
-  ) else if "%command%" == "2" (
-    if "%interface_taskbar_winXcmd%"  == "ps"       ( set temp_cmd=1 ) else set temp_cmd=0
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX /t REG_DWORD /d !temp_cmd! /f
+    ) else if "%command%" == "2" (
+      if "%interface_taskbar_winXcmd%"  == "ps"       ( set temp_cmd=1 ) else set temp_cmd=0
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontUsePowerShellOnWinX /t REG_DWORD /d !temp_cmd! /f
 
-  ) else if "%command%" == "3" (
-    if "%interface_taskbar_taskView%" == "shown"    ( set temp_cmd=0 ) else set temp_cmd=1
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowTaskViewButton      /t REG_DWORD /d !temp_cmd! /f
+    ) else if "%command%" == "3" (
+      if "%interface_taskbar_taskView%" == "shown"    ( set temp_cmd=0 ) else set temp_cmd=1
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowTaskViewButton      /t REG_DWORD /d !temp_cmd! /f
 
-  ) else if "%command%" == "4" (
-    if "%interface_taskbar_small%"    == "disabled" ( set temp_cmd=1 ) else set temp_cmd=0
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarSmallIcons       /t REG_DWORD /d !temp_cmd! /f
+    ) else if "%command%" == "4" (
+      if "%interface_taskbar_small%"    == "disabled" ( set temp_cmd=1 ) else set temp_cmd=0
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarSmallIcons       /t REG_DWORD /d !temp_cmd! /f
 
-  ) else if "%command%" == "5" (
-    if "%interface_taskbar_combined%" == "always"   ( set temp_cmd=1 ) else if "%interface_taskbar_combined%" == "ifFull" ( set temp_cmd=2 ) else set temp_cmd=0
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarGlomLevel        /t REG_DWORD /d !temp_cmd! /f
-  )
-)>nul 2>nul
-if "%command%" == "6" ( %restartExplorer%
-) else if "%command%" == "7" exit /b
+    ) else if "%command%" == "5" (
+      if "%interface_taskbar_combined%" == "always"   ( set temp_cmd=1 ) else if "%interface_taskbar_combined%" == "ifFull" ( set temp_cmd=2 ) else set temp_cmd=0
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarGlomLevel        /t REG_DWORD /d !temp_cmd! /f
+    )
+  )>nul 2>nul
+         if "%command%" == "6" ( %restartExplorer%
+  ) else if "%command%" == "7"   exit /b
 goto :interface_taskbar
 
 
