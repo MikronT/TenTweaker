@@ -120,15 +120,15 @@ interface_explorer_note=Note: These features require to restart Windows Explorer
 
 
 
-interface_input=Input suggestions
+interface_input=Input
 
-interface_input_tips=Choose an action to enable/disable input suggestions
+interface_input_tips=Input suggestions
 interface_input_tips_suggestions=Auto suggestions
 interface_input_tips_completion=Auto completion
 interface_input_tips_progTracking=Program tracking ^(Run menu^)
 interface_input_tips_onTyping=Suggestions when typing
 
-interface_input_keys=Choose an action to change key sequences
+interface_input_keys=Key sequences
 interface_input_keys_lang=Input language
 interface_input_keys_layout=Keyboard layout
 

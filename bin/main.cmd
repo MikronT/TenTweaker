@@ -448,111 +448,75 @@ goto :interface_explorer
 
 
 :interface_input
-%getState% interface_input
-if "%error_reg%" NEQ "true" if "%interface_input_langKey%" == "%interface_input_layoutKey%" (
-  if "%interface_input_langKey%" NEQ "notAssigned" (
-           set error_identicalKeys=true
+  %getState% interface_input
+
+  if "%error_reg%" NEQ "true" if "%interface_input_keys_lang%" == "%interface_input_keys_layout%" (
+    if "%interface_input_keys_lang%" NEQ "notAssigned" (
+             set error_identicalKeys=true
+    ) else set error_identicalKeys=false
   ) else set error_identicalKeys=false
-) else set error_identicalKeys=false
 
-%logo%
-echo.^(i^) %lang_interface_input01%
-echo.
-echo.
-echo.^(^>^) %lang_interface_input02%
+  (
+    %logo%
+    %title% interface_taskbar interface_input_tips
+    %item% 1 interface_input_tips_suggestions  %interface_input_tips_suggestions%
+    %item% 2 interface_input_tips_completion   %interface_input_tips_completion%
+    %item% 3 interface_input_tips_progTracking %interface_input_tips_progTracking%
+    %item% 4 interface_input_tips_onTyping     %interface_input_tips_onTyping%
 
-set sBuilder_text=^(1^) %lang_interface_input03%
-       if "%interface_input_suggestions%" == "enabled"  ( %sBuilder_build% %lang_sBuilder_enabled%
-) else if "%interface_input_suggestions%" == "disabled" ( %sBuilder_build% %lang_sBuilder_disabled%
-) else                                                    %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
+    echo.down=2
+    %item% 0 menu_goBack
 
-set sBuilder_text=^(2^) %lang_interface_input04%
-       if "%interface_input_completion%" == "enabled"  ( %sBuilder_build% %lang_sBuilder_enabled%
-) else if "%interface_input_completion%" == "disabled" ( %sBuilder_build% %lang_sBuilder_disabled%
-) else                                                   %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
+    if "%error_identicalKeys%" == "true" %message_error_keys%
 
-set sBuilder_text=^(3^) %lang_interface_input05%
-       if "%interface_input_progTracking%" == "enabled"  ( %sBuilder_build% %lang_sBuilder_enabled%
-) else if "%interface_input_progTracking%" == "disabled" ( %sBuilder_build% %lang_sBuilder_disabled%
-) else                                                     %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
 
-set sBuilder_text=^(4^) %lang_interface_input06%
-       if "%interface_input_onTyping%" == "enabled"  ( %sBuilder_build% %lang_sBuilder_enabled%
-) else if "%interface_input_onTyping%" == "disabled" ( %sBuilder_build% %lang_sBuilder_disabled%
-) else                                                 %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
+    %column_right%
+    %subtitle% interface_input_keys
+    %item% 5 interface_input_keys_lang   %interface_input_keys_lang%
+    %item% 6 interface_input_keys_layout %interface_input_keys_layout%
 
-echo.
-echo.^(^>^) %lang_interface_input07%
+    %input%
+  )>%layout%
+  %module_cursor%
 
-set sBuilder_text=^(5^) %lang_interface_input08%
-       if "%interface_input_langKey%" == "notAssigned"  ( %sBuilder_build% %lang_sBuilder_notAssigned%
-) else if "%interface_input_langKey%" == "ctrlShift"    ( %sBuilder_build% %lang_sBuilder_ctrlShift%
-) else if "%interface_input_langKey%" == "leftAltShift" ( %sBuilder_build% %lang_sBuilder_leftAltShift%
-) else if "%interface_input_langKey%" == "graveAccent"  ( %sBuilder_build% %lang_sBuilder_graveAccent%
-) else                                                    %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
-
-set sBuilder_text=^(6^) %lang_interface_input09%
-       if "%interface_input_layoutKey%" == "notAssigned"  ( %sBuilder_build% %lang_sBuilder_notAssigned%
-) else if "%interface_input_layoutKey%" == "ctrlShift"    ( %sBuilder_build% %lang_sBuilder_ctrlShift%
-) else if "%interface_input_layoutKey%" == "leftAltShift" ( %sBuilder_build% %lang_sBuilder_leftAltShift%
-) else if "%interface_input_layoutKey%" == "graveAccent"  ( %sBuilder_build% %lang_sBuilder_graveAccent%
-) else                                                      %sBuilder_build% %lang_sBuilder_error%
-echo.    %sBuilder_text%
-
-echo.
-echo.    ^(0^) %lang_menu_goBack%
-echo.
-echo.
-echo.
-
-if "%error_identicalKeys%" == "true" (
-  %message_error_keys%
-  color 0c
-) else color 0b
-
-%module_choice% /c 1234560 /m "> "
-set command=%errorLevel%
+  %module_choice% /c 1234560 /m "> "
+  set command=%errorLevel%
 
 
 
-if "%error_reg%" NEQ "true" (
-  if "%command%" == "1" (
-    if "%interface_input_suggestions%"  == "disabled" ( set value=yes ) else set value=no
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v AutoSuggest         /t REG_SZ    /d !value! /f
+  if "%error_reg%" NEQ "true" (
+           if "%command%" == "1" (
+      if "%interface_input_tips_suggestions%"  == "disabled" ( set value=yes ) else set value=no
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v AutoSuggest         /t REG_SZ    /d !value! /f
 
-  ) else if "%command%" == "2" (
-    if "%interface_input_completion%"   == "disabled" ( set value=yes ) else set value=no
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v "Append Completion" /t REG_SZ    /d !value! /f
+    ) else if "%command%" == "2" (
+      if "%interface_input_tips_completion%"   == "disabled" ( set value=yes ) else set value=no
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoComplete /v "Append Completion" /t REG_SZ    /d !value! /f
 
-  ) else if "%command%" == "3" (
-    if "%interface_input_progTracking%" == "disabled" ( set value=1 ) else set value=0
-    reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced     /v Start_TrackProgs    /t REG_DWORD /d !value! /f
+    ) else if "%command%" == "3" (
+      if "%interface_input_tips_progTracking%" == "disabled" ( set value=1 ) else set value=0
+      reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced     /v Start_TrackProgs    /t REG_DWORD /d !value! /f
 
-  ) else if "%command%" == "4" (
-    if "%interface_input_onTyping%"     == "disabled" ( set value=1 ) else set value=0
-    reg add HKCU\Software\Microsoft\Input\Settings /v EnableHwkbTextPrediction /t REG_DWORD /d !value! /f
+    ) else if "%command%" == "4" (
+      if "%interface_input_tips_onTyping%"     == "disabled" ( set value=1 ) else set value=0
+      reg add HKCU\Software\Microsoft\Input\Settings /v EnableHwkbTextPrediction /t REG_DWORD /d !value! /f
 
-  ) else if "%command%" == "5" (
-           if "%interface_input_langKey%" == "notAssigned"  ( set value=2
-    ) else if "%interface_input_langKey%" == "ctrlShift"    ( set value=1
-    ) else if "%interface_input_langKey%" == "leftAltShift" ( set value=4
-    ) else if "%interface_input_langKey%" == "graveAccent"    set value=3
-    reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d !value! /f
+    ) else if "%command%" == "5" (
+             if "%interface_input_keys_lang%" == "notAssigned"  ( set value=2
+      ) else if "%interface_input_keys_lang%" == "ctrlShift"    ( set value=1
+      ) else if "%interface_input_keys_lang%" == "leftAltShift" ( set value=4
+      ) else if "%interface_input_keys_lang%" == "graveAccent"    set value=3
+      reg add "HKCU\Keyboard Layout\Toggle" /v "Language Hotkey" /t REG_SZ /d !value! /f
 
-  ) else if "%command%" == "6" (
-           if "%interface_input_layoutKey%" == "notAssigned"  ( set value=2
-    ) else if "%interface_input_layoutKey%" == "ctrlShift"    ( set value=1
-    ) else if "%interface_input_layoutKey%" == "leftAltShift" ( set value=4
-    ) else if "%interface_input_layoutKey%" == "graveAccent"    set value=3
-    reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d !value! /f
-  )
-)>nul 2>nul
-if "%command%" == "7" if "%error_identicalKeys%" NEQ "true" exit /b
+    ) else if "%command%" == "6" (
+             if "%interface_input_keys_layout%" == "notAssigned"  ( set value=2
+      ) else if "%interface_input_keys_layout%" == "ctrlShift"    ( set value=1
+      ) else if "%interface_input_keys_layout%" == "leftAltShift" ( set value=4
+      ) else if "%interface_input_keys_layout%" == "graveAccent"    set value=3
+      reg add "HKCU\Keyboard Layout\Toggle" /v "Layout Hotkey" /t REG_SZ /d !value! /f
+    )
+  )>nul 2>nul
+  if "%command%" == "7" if "%error_identicalKeys%" NEQ "true" exit /b
 goto :interface_input
 
 
