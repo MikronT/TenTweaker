@@ -263,7 +263,7 @@ goto :interface_desktop
     %input%
   )>%layout%
   %module_cursor%
-  %module_choice% /c 12345Y0 /m "> "
+  %module_choice% /c 12345Y0
   set command=%errorLevel%
 
 
@@ -313,7 +313,7 @@ goto :interface_taskbar
 
   (
     %logo%
-    %title% interface_taskbar menu_hint
+    %title% interface_explorer menu_hint
     %item% 1 interface_explorer_extensions  %interface_explorer_extensions%
     %item% 2 interface_explorer_hidden      %interface_explorer_hidden%
     %item% 3 interface_explorer_hiddenSys   %interface_explorer_hiddenSys%
@@ -349,7 +349,7 @@ goto :interface_taskbar
     %input%
   )>%layout%
   %module_cursor%
-  %module_choice% /c 123456789ABCDEFGHIY0 /m "> "
+  %module_choice% /c 123456789ABCDEFGHIY0
   set command=%errorLevel%
 
 
@@ -478,8 +478,7 @@ goto :interface_explorer
     %input%
   )>%layout%
   %module_cursor%
-
-  %module_choice% /c 1234560 /m "> "
+  %module_choice% /c 1234560
   set command=%errorLevel%
 
 

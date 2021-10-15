@@ -31,9 +31,7 @@ exit /b !errorLevel!
 
 
   set column_left=call !exec! :column_left
-  set column_left_values=call !exec! :column_left_values
   set column_right=call !exec! :column_right
-  set column_right_values=call !exec! :column_right_values
 
   set align_left=call !exec! :align_left
   set align_right=call !exec! :align_right
@@ -77,20 +75,8 @@ exit /b
 
 
 
-:column_left_values
-  echo.cursor1=50 10
-exit /b
-
-
-
 :column_right
   echo.cursor1=61 10
-exit /b
-
-
-
-:column_right_values
-  echo.cursor1=110 10
 exit /b
 
 
@@ -212,7 +198,7 @@ exit /b
 
   echo.down
   echo.color=%color_subtitle%
-  call echo.text=%%lang_!arg_sub!%%
+  call echo.text=%%lang_!arg_title!%%
 
   echo.down
   echo.color=%color_default%
@@ -248,9 +234,9 @@ exit /b
 
   if "!arg_value!" NEQ "" (
     echo.up
-    echo.right=45
+    echo.right=40
     call echo.text=%%lang_value_!arg_value!%%
-    echo.left=45
+    echo.left=40
   )
 
   echo.left=4
