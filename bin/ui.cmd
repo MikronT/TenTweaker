@@ -19,7 +19,7 @@ exit /b !errorLevel!
   set color_logo=0f
   set color_title=%color_logo%
   set color_subtitle=%color_default%
-  set color_accent=0b
+  set color_accent=0e
   set color_info=%color_default%
   set color_warn=%color_title%
   set color_error=0c
@@ -211,6 +211,9 @@ exit /b
   if "!arg_name!" NEQ "" set arg_name=!arg_name:"=!
   if "!arg_name!" ==  "" exit /b
 
+  set arg_value=%3
+  if "!arg_value!" NEQ "" set arg_value=!arg_value:"=!
+
 
 
   echo.color=%color_accent%
@@ -220,6 +223,13 @@ exit /b
   echo.right=4
   echo.color=%color_default%
   call echo.text=%%lang_!arg_name!%%
+
+  if "!arg_value!" NEQ "" (
+    echo.up
+    echo.right=45
+    call echo.text=%%lang_value_!arg_value!%%
+    echo.left=45
+  )
 
   echo.left=4
   echo.color=%color_default%

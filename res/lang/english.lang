@@ -1,26 +1,26 @@
-sBuilder_error=[error]           
-sBuilder_enabled=enabled           
-sBuilder_disabled=disabled          
-sBuilder_shown=shown             
-sBuilder_hidden=hidden            
-sBuilder_exist=exist             
-sBuilder_notExist=not exist         
-sBuilder_locked=locked            
-sBuilder_unlocked=unlocked          
-sBuilder_installed=installed         
-sBuilder_uninstalled=uninstalled       
+value_error=[error]           
+value_enabled=enabled           
+value_disabled=disabled          
+value_shown=shown             
+value_hidden=hidden            
+value_exist=exist             
+value_notExist=not exist         
+value_locked=locked            
+value_unlocked=unlocked          
+value_installed=installed         
+value_uninstalled=uninstalled       
 
-sBuilder_notAssigned=not assigned      
-sBuilder_ctrlShift=Ctrl + Shift      
-sBuilder_leftAltShift=left Alt + Shift  
-sBuilder_graveAccent=grave accent ^(`^)  
+value_notAssigned=not assigned      
+value_ctrlShift=Ctrl + Shift      
+value_leftAltShift=left Alt + Shift  
+value_graveAccent=grave accent ^(`^)  
 
-sBuilder_ps=PowerShell        
-sBuilder_cmd=Command Prompt    
+value_ps=PowerShell        
+value_cmd=Command Prompt    
 
-sBuilder_always=always            
-sBuilder_ifFull=when full         
-sBuilder_never=never             
+value_always=always            
+value_ifFull=when full         
+value_never=never             
 
 
 
