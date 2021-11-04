@@ -19,7 +19,7 @@ exit /b !errorLevel!
   set color_logo=0f
   set color_title=%color_logo%
   set color_subtitle=%color_default%
-  set color_accent=03
+  set color_accent=09
   set color_info=%color_default%
   set color_warn=%color_title%
   set color_error=0c
